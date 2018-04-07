@@ -1,4 +1,4 @@
-local gravity = -35
+local gravity = -50
 local jump_takeoff_speed = 1200
 
 function init(self)
@@ -11,23 +11,15 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
-local function play_animation(self, anim)
-	if self.anim ~= anim then
-		spine.play("#spinemodel", anim, go.PLAYBACK_LOOP_FORWARD, 0.15)
-		self.anim = anim
-	end
-end
-
-
 local function update_animation(self)
-	if self.ground_contact then
-		play_animation(self, hash("run_right"))
-	else
-		if(self.velocity.y > 0) then
-			play_animation(self, hash("jump_right"))
-		else
-			play_animation(self, hash("fall_right"))
-		end
+	if not self.ground_contact then
+		msg.post("#sprite", "play_animation", {id = hash("player-left")})
+	--else
+		--if(self.velocity.y > 0) then
+			--play_animation(self, hash("jump_right"))
+		--else
+			--play_animation(self, hash("fall_right"))
+		--end
 	end
 end
 
@@ -61,31 +53,30 @@ local function handle_geometry_contact(self, normal, distance)
 end
 
 function on_message(self, message_id, message, sender)
-    if message_id == hash("reset") then
-        self.velocity = vmath.vector3(0, 0, 0)
+	if message_id == hash("animation_done") then
+		msg.post("#sprite", "play_animation", {id = hash("player-left")})
+	end
+	if message_id == hash("reset") then
+		self.velocity = vmath.vector3(0, 0, 0)
         self.correction = vmath.vector3()
         self.ground_contact = false
         self.anim = nil
         go.set(".", "euler.z", 0)
         go.set_position(self.position)
         msg.post("#collisionobject", "enable")
-
-    elseif message_id == hash("contact_point_response") then
-        -- check if we received a contact point message
-        if message.group == hash("danger") then
-            -- Die and restart
-            play_animation(self, hash("die_right"))
-            msg.post("#collisionobject", "disable")
-            
-            go.animate(".", "euler.z", go.PLAYBACK_ONCE_FORWARD, 160, go.EASING_LINEAR, 0.7)
-            go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y - 200, go.EASING_INSINE, 0.5, 0.2,
+	elseif message_id == hash("contact_point_response") then
+		if message.group == hash("danger") then
+		play_animation(self, hash("die_right"))
+		msg.post("#collisionobject", "disable")
+		go.animate(".", "euler.z", go.PLAYBACK_ONCE_FORWARD, 160, go.EASING_LINEAR, 0.7)
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y - 200, go.EASING_INSINE, 0.5, 0.2,
                 function()
                     msg.post("#", "reset")
                 end)
-        elseif message.group == hash("geometry") then
-            handle_geometry_contact(self, message.normal, message.distance)
-        end
-    end
+		elseif message.group == hash("geometry") then
+			handle_geometry_contact(self, message.normal, message.distance)
+		end
+	end
 end
 
 local function jump(self)

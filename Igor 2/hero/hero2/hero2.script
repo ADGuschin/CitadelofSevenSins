@@ -4,7 +4,8 @@ local jump_takeoff_speed = 1200
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.position = go.get_position()
-	msg.post("#", "reset")
+	msg.post("/hero/hero2/hero2#script", "reset")
+	self.velocity = vmath.vector3(0,0,0)
 end
 
 function final(self)
@@ -58,20 +59,20 @@ function on_message(self, message_id, message, sender)
 	end
 	if message_id == hash("reset") then
 		self.velocity = vmath.vector3(0, 0, 0)
-        self.correction = vmath.vector3()
-        self.ground_contact = false
-        self.anim = nil
-        go.set(".", "euler.z", 0)
-        go.set_position(self.position)
-        msg.post("#collisionobject", "enable")
+		self.correction = vmath.vector3()
+		self.ground_contact = false
+		self.anim = nil
+		go.set(".", "euler.z", 0)
+		go.set_position(self.position)
+		msg.post("#collisionobject", "enable")
 	elseif message_id == hash("contact_point_response") then
 		if message.group == hash("danger") then
-		play_animation(self, hash("die_right"))
+		--play_animation(self, hash("die_right"))
 		msg.post("#collisionobject", "disable")
 		go.animate(".", "euler.z", go.PLAYBACK_ONCE_FORWARD, 160, go.EASING_LINEAR, 0.7)
 		go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y - 200, go.EASING_INSINE, 0.5, 0.2,
                 function()
-                    msg.post("#", "reset")
+					msg.post("/level/controller#script", "reset")
                 end)
 		elseif message.group == hash("geometry") then
 			handle_geometry_contact(self, message.normal, message.distance)

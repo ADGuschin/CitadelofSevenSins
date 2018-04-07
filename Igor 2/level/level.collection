@@ -1,10 +1,10 @@
 name: "default"
 instances {
-  id: "hero2"
-  prototype: "/hero/hero2/hero2.go"
+  id: "shadow"
+  prototype: "/shadow/shadow.go"
   position {
-    x: 169.70045
-    y: 178.14322
+    x: -291.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -14,16 +14,16 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
 instances {
-  id: "shadow"
-  prototype: "/shadow/shadow.go"
+  id: "hero2"
+  prototype: "/hero/hero2/hero2.go"
   position {
-    x: -291.0
+    x: 0.0
     y: 0.0
     z: 0.0
   }
@@ -104,6 +104,24 @@ embedded_instances {
   "  id: \"platform_long_factory\"\n"
   "  type: \"factory\"\n"
   "  data: \"prototype: \\\"/level/platform_long.go\\\"\\n"
+  "load_dynamically: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"herofactory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/hero/hero2/hero2.go\\\"\\n"
   "load_dynamically: false\\n"
   "\"\n"
   "  position {\n"

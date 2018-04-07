@@ -6,6 +6,7 @@ function init(self)
 	self.position = go.get_position()
 	msg.post("hero2#script", "reset")
 	self.velocity = vmath.vector3(0,0,0)
+
 end
 
 function final(self)
@@ -58,12 +59,14 @@ function on_message(self, message_id, message, sender)
 		msg.post("#sprite", "play_animation", {id = hash("player-left")})
 	end
 	if message_id == hash("reset") then
+		
 		self.velocity = vmath.vector3(0, 0, 0)
 		self.correction = vmath.vector3()
 		self.ground_contact = false
 		self.anim = nil
 		go.set(".", "euler.z", 0)
 		go.set_position(self.position)
+		msg.post("/level/controller#script", "spawnhero")
 		msg.post("#collisionobject", "enable")
 	elseif message_id == hash("contact_point_response") then
 		if message.group == hash("danger") then

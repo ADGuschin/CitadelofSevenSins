@@ -78,7 +78,7 @@ embedded_components {
   "  data: 10.0\n"
   "  data: 10.0\n"
   "  data: 15.0\n"
-  "  data: 10.0\n"
+  "  data: 9.593\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"

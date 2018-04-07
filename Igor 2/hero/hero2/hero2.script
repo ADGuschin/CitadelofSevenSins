@@ -4,7 +4,7 @@ local jump_takeoff_speed = 1200
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.position = go.get_position()
-	msg.post("hero2#script", "reset")
+	--msg.post("hero2#script", "reset")
 	self.velocity = vmath.vector3(0,0,0)
 
 end

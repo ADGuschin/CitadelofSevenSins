@@ -1,10 +1,10 @@
 name: "default"
 instances {
-  id: "hero"
-  prototype: "/hero/hero.go"
+  id: "hero2"
+  prototype: "/hero/hero2/hero2.go"
   position {
-    x: 220.0
-    y: 100.0
+    x: 169.70045
+    y: 178.14322
     z: 0.0
   }
   rotation {

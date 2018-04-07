@@ -20,3 +20,7 @@ scale = 0.02
 [script]
 shared_state = 1
 
+[graphics]
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
+

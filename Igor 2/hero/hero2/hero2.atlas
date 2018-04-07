@@ -1,13 +1,28 @@
 animations {
   id: "player-left"
   images {
-    image: "/hero/hero2/images/khuy1.png"
+    image: "/hero/hero2/images/hero1.png"
   }
   images {
-    image: "/hero/hero2/images/khuy2.png"
+    image: "/hero/hero2/images/hero2.png"
   }
   images {
-    image: "/hero/hero2/images/khuy3.png"
+    image: "/hero/hero2/images/hero3.png"
+  }
+  images {
+    image: "/hero/hero2/images/hero4.png"
+  }
+  images {
+    image: "/hero/hero2/images/hero5.png"
+  }
+  images {
+    image: "/hero/hero2/images/hero6.png"
+  }
+  images {
+    image: "/hero/hero2/images/hero7.png"
+  }
+  images {
+    image: "/hero/hero2/images/hero8.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 20

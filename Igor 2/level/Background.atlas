@@ -1,0 +1,15 @@
+images {
+  image: "/level/images/background_1-4_1.png"
+}
+images {
+  image: "/level/images/background_1-4_2.png"
+}
+images {
+  image: "/level/images/background_1-4_3.png"
+}
+images {
+  image: "/level/images/background_1-4_4.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

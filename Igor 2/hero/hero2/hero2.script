@@ -10,7 +10,8 @@ function init(self)
 	self.position = go.get_position()
 	--msg.post("hero2#script", "reset")
 	self.velocity = vmath.vector3(0,0,0)
-
+	msg.post("#running_state", "enable")
+	msg.post("#sliding_state", "disable")
 end
 
 function final(self)
@@ -54,6 +55,11 @@ function update(self, dt)
 
 	if slide_cooldown < slide_cooldown_max then
 		slide_cooldown = slide_cooldown + 1
+	end
+
+	if isSliding == 0 then
+		msg.post("#running_state", "enable")
+		msg.post("#sliding_state", "disable")
 	end
 	
 	if isSliding > 0 then
@@ -120,6 +126,8 @@ end
 
 local function slide(self)
 	if self.ground_contact then
+		msg.post("#sliding_state", "enable")
+		msg.post("#running_state", "disable")
 		isSliding = 1
 	end
 end

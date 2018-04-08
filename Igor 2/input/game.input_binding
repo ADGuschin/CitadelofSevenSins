@@ -3,7 +3,7 @@ key_trigger {
   action: "jump"
 }
 key_trigger {
-  input: KEY_KP_ADD
+  input: KEY_DOWN
   action: "slide"
 }
 touch_trigger {

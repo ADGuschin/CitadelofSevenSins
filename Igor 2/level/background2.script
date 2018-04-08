@@ -11,7 +11,7 @@ end
 function update(self, dt)
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
-		if pos.x <= -228 then
+		if pos.x <= -600 then
 			pos.x = 1368 + (pos.x + 228)
 		end
 		pos.x = pos.x - self.speed * dt
@@ -21,7 +21,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("set_speed") then 
-		self.speed = message.speed 
+		self.speed = message.speed
 	end
 end
 

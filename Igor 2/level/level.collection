@@ -54,8 +54,8 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 11.0
-    y: 11.0
+    x: 5.0
+    y: 5.0
     z: 1.0
   }
 }
@@ -84,7 +84,7 @@ collection_instances {
   collection: "/level/background1.collection"
   position {
     x: 658.0
-    y: 350.0
+    y: 466.0
     z: -0.5
   }
   rotation {

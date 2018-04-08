@@ -1,28 +1,54 @@
 animations {
-  id: "player-left"
+  id: "player_right"
   images {
-    image: "/hero/hero2/images/hero1.png"
+    image: "/hero/hero2/images/running_animation/hero1.png"
   }
   images {
-    image: "/hero/hero2/images/hero2.png"
+    image: "/hero/hero2/images/running_animation/hero2.png"
   }
   images {
-    image: "/hero/hero2/images/hero3.png"
+    image: "/hero/hero2/images/running_animation/hero3.png"
   }
   images {
-    image: "/hero/hero2/images/hero4.png"
+    image: "/hero/hero2/images/running_animation/hero4.png"
   }
   images {
-    image: "/hero/hero2/images/hero5.png"
+    image: "/hero/hero2/images/running_animation/hero5.png"
   }
   images {
-    image: "/hero/hero2/images/hero6.png"
+    image: "/hero/hero2/images/running_animation/hero6.png"
   }
   images {
-    image: "/hero/hero2/images/hero7.png"
+    image: "/hero/hero2/images/running_animation/hero7.png"
   }
   images {
-    image: "/hero/hero2/images/hero8.png"
+    image: "/hero/hero2/images/running_animation/hero8.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_jump"
+  images {
+    image: "/hero/hero2/images/khuy1.png"
+  }
+  images {
+    image: "/hero/hero2/images/khuy2.png"
+  }
+  images {
+    image: "/hero/hero2/images/khuy3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 1
+}
+animations {
+  id: "player_slide"
+  images {
+    image: "/hero/hero2/images/sliding_animation/XEAmtvIA1KE.jpg"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 20

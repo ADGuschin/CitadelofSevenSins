@@ -43,8 +43,8 @@ instances {
   id: "Background"
   prototype: "/level/Background.go"
   position {
-    x: 660.0
-    y: 355.0
+    x: 394.0
+    y: 226.0
     z: -1.0
   }
   rotation {
@@ -54,8 +54,8 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 11.0
-    y: 11.0
+    x: 6.5
+    y: 6.5
     z: 1.0
   }
 }

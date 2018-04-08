@@ -8,7 +8,9 @@ function init(self)
     msg.post("ground/controller#script", "set_speed", { speed = self.speed })
     self.gridw = 0
     self.spawns = {}
-    factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
+    --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
+    --table.insert(self.spawns, p)
+    msg.post("#", "spawnhero")
 end
 
 function update(self, dt)

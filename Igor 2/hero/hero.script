@@ -67,7 +67,7 @@ function on_message(self, message_id, message, sender)
         self.ground_contact = false
         self.anim = nil
         go.set(".", "euler.z", 0)
-        go.set_position(self.position)
+		go.set_position(self.position)
         msg.post("#collisionobject", "enable")
 
     elseif message_id == hash("contact_point_response") then

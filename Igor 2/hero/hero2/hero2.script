@@ -2,8 +2,8 @@ local gravity = -50
 local jump_takeoff_speed = 1300
 local isSliding = 0
 local isFirstTimeRun = true
-local slide_cooldown_max = 100
-local slide_cooldown = 100
+local slide_cooldown_max = 40
+local slide_cooldown = 40
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -59,7 +59,7 @@ function update(self, dt)
 	if isSliding > 0 then
 		isSliding = isSliding + 1
 		slide_cooldown = 0
-		if isSliding == 100 then
+		if isSliding == 75 then
 			isSliding = 0
 		end
 	end

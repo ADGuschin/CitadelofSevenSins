@@ -40,8 +40,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 369.31937\n"
-  "  data: 61.565853\n"
+  "  data: 60.0\n"
+  "  data: 12.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
@@ -61,135 +61,15 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "spike"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: -373.7144
-    y: 0.49288327
-    z: -0.01
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "spike1"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 372.56726
-    y: 1.399531
-    z: -0.01
-  }
-  rotation {
-    x: 6.123234E-17
-    y: 6.123234E-17
-    z: -1.0
-    w: 3.7493994E-33
-  }
-}
-embedded_components {
-  id: "spike2"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: -64.28592
-    y: -73.79053
-    z: -0.01
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.70327944
-    w: 0.71091354
-  }
-}
-embedded_components {
-  id: "spike3"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 83.295135
-    y: -73.79053
-    z: -0.01
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.7055403
-    w: 0.7086698
-  }
-}
-embedded_components {
-  id: "spike4"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: -198.50461
-    y: -77.73814
-    z: -0.01
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.70327944
-    w: 0.71091354
-  }
-}
-embedded_components {
-  id: "spike5"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 212.25035
-    y: -72.474655
-    z: -0.01
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.7055403
-    w: 0.7086698
-  }
-}
-embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"rock_planks\"\n"
+  "default_animation: \"\\320\\272\\320\\276\\321\\200\\320\\276\\320\\277\\320\\272\\320\\260\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: -186.98395
+    x: 0.0
     y: 0.0
     z: 0.0
   }
@@ -204,12 +84,72 @@ embedded_components {
   id: "sprite1"
   type: "sprite"
   data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"rock_planks\"\n"
+  "default_animation: \"\\320\\272\\320\\276\\321\\200\\320\\276\\320\\277\\320\\272\\320\\260\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: 191.20163
+    x: 24.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "sprite2"
+  type: "sprite"
+  data: "tile_set: \"/level/level.atlas\"\n"
+  "default_animation: \"\\320\\272\\320\\276\\321\\200\\320\\276\\320\\277\\320\\272\\320\\260\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  ""
+  position {
+    x: -24.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "sprite3"
+  type: "sprite"
+  data: "tile_set: \"/level/level.atlas\"\n"
+  "default_animation: \"\\320\\272\\320\\276\\321\\200\\320\\276\\320\\277\\320\\272\\320\\260\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  ""
+  position {
+    x: 48.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "sprite4"
+  type: "sprite"
+  data: "tile_set: \"/level/level.atlas\"\n"
+  "default_animation: \"\\320\\272\\320\\276\\321\\200\\320\\276\\320\\277\\320\\272\\320\\260\"\n"
+  "material: \"/builtins/materials/sprite.material\"\n"
+  "blend_mode: BLEND_MODE_ALPHA\n"
+  ""
+  position {
+    x: -48.0
     y: 0.0
     z: 0.0
   }

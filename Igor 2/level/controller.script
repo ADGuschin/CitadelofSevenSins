@@ -23,13 +23,11 @@ function update(self, dt)
         if math.random() > 0.2 then
             local h = platform_heights[math.random(#platform_heights)]
             local f = "#platform_factory"
-            local size = 5
             if math.random() > 0.5 then
                 f = "#platform_long_factory"
-                size = 0.6
             end
 
-            local p = factory.create(f, vmath.vector3(1600, h, 0), nil, {}, size)
+            local p = factory.create(f, vmath.vector3(1600, h, 0), nil, {}, 5)
             msg.post(p, "set_speed", { speed = self.speed })
             table.insert(self.spawns, p) 
         end

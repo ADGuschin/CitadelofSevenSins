@@ -1,5 +1,5 @@
 local gravity = -50
-local jump_takeoff_speed = 1200
+local jump_takeoff_speed = 1300
 
 function init(self)
 	msg.post(".", "acquire_input_focus")

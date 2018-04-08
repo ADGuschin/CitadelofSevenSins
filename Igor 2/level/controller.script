@@ -1,7 +1,7 @@
 -- controller.script
 go.property("speed", 360)
 
-local grid = 460
+local grid = 600
 local platform_heights = { 100, 200, 350 }
 
 function init(self)

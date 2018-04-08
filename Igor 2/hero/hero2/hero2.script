@@ -98,7 +98,7 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("contact_point_response") then
 		if message.group == hash("danger") then
 		play_animation(self, hash("player_die"))
-			msg.post("#collisionobject", "disable")
+			msg.post("#running_state", "disable")
 			go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y - 200, go.EASING_INSINE, 0.5, 0.2,
 				function()
 					if isFirstTimeRun == false then

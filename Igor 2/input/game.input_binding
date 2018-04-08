@@ -1,10 +1,14 @@
 key_trigger {
-  input: KEY_SPACE
+  input: KEY_UP
   action: "jump"
 }
 key_trigger {
   input: KEY_DOWN
   action: "slide"
+}
+key_trigger {
+  input: KEY_SPACE
+  action: "pause"
 }
 touch_trigger {
   input: TOUCH_MULTI

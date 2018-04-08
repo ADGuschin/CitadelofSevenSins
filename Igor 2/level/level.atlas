@@ -11,7 +11,7 @@ images {
   image: "/level/images/spikes.png"
 }
 images {
-  image: "/level/images/\320\272\320\276\321\200\320\276\320\277\320\272\320\260.png"
+  image: "/level/images/box.png"
 }
 images {
   image: "/level/images/ground.png"

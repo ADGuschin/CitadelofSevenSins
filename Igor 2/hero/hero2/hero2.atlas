@@ -24,7 +24,7 @@ animations {
   images {
     image: "/hero/hero2/images/hero8.png"
   }
-  playback: PLAYBACK_ONCE_FORWARD
+  playback: PLAYBACK_LOOP_FORWARD
   fps: 20
   flip_horizontal: 0
   flip_vertical: 0

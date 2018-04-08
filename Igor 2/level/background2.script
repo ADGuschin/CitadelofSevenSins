@@ -1,6 +1,6 @@
 local pieces = {"grass", "grass1", "grass2", "grass3"}
 function init(self)
-	self.speed = 200
+	self.speed = 50
 end
 
 function final(self)

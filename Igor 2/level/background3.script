@@ -1,6 +1,6 @@
 local pieces = {"sand", "sand1", "sand2", "sand3"}
 function init(self)
-	self.speed = 600
+	self.speed = 200
 end
 
 function final(self)

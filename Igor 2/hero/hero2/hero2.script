@@ -94,7 +94,7 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("reset") then
 		msg.post("/level/controller#script", "spawnhero")
-		msg.post("#collisionobject", "enable")
+		msg.post("#running_state", "enable")
 	elseif message_id == hash("contact_point_response") then
 		if message.group == hash("danger") then
 		play_animation(self, hash("player_die"))

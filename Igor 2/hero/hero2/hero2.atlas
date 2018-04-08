@@ -32,23 +32,23 @@ animations {
 animations {
   id: "player_jump"
   images {
-    image: "/hero/hero2/images/khuy1.png"
+    image: "/hero/hero2/images/jumping_animation/jump1.png"
   }
-  images {
-    image: "/hero/hero2/images/khuy2.png"
-  }
-  images {
-    image: "/hero/hero2/images/khuy3.png"
-  }
-  playback: PLAYBACK_LOOP_FORWARD
+  playback: PLAYBACK_ONCE_FORWARD
   fps: 20
   flip_horizontal: 0
-  flip_vertical: 1
+  flip_vertical: 0
 }
 animations {
   id: "player_slide"
   images {
-    image: "/hero/hero2/images/sliding_animation/XEAmtvIA1KE.jpg"
+    image: "/hero/hero2/images/sliding_animation/hero_lies_64x64_3.png"
+  }
+  images {
+    image: "/hero/hero2/images/sliding_animation/hero_lies_64x64_4.png"
+  }
+  images {
+    image: "/hero/hero2/images/sliding_animation/hero_lies_64x64_5.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 20
@@ -57,14 +57,20 @@ animations {
 }
 animations {
   id: "player_fall"
-  playback: PLAYBACK_LOOP_FORWARD
+  images {
+    image: "/hero/hero2/images/jumping_animation/jump2.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
   fps: 20
   flip_horizontal: 0
   flip_vertical: 0
 }
 animations {
   id: "player_die"
-  playback: PLAYBACK_LOOP_FORWARD
+  images {
+    image: "/hero/hero2/images/dying_animation/hero_lies_64x64_2.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
   fps: 20
   flip_horizontal: 0
   flip_vertical: 0

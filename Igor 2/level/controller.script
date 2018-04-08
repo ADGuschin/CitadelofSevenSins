@@ -34,7 +34,8 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("spawnhero") then
-        factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
+        local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
+        table.insert(self.spawns, p) 
     elseif message_id == hash("reset") then 
         -- Tell the hero to reset.
         msg.post("hero2#script", "reset")

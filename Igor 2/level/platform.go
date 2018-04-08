@@ -27,8 +27,8 @@ embedded_components {
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
-  "      x: -1.069428\n"
-  "      y: -3.208284\n"
+  "      x: 0.0\n"
+  "      y: 0.0\n"
   "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
@@ -40,8 +40,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 183.8506\n"
-  "  data: 61.565853\n"
+  "  data: 12.0\n"
+  "  data: 12.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
@@ -61,96 +61,16 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "spike"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: -194.75612
-    y: -2.138856
-    z: -0.01
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "spike1"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 187.02965
-    y: 1.3638117
-    z: -0.01
-  }
-  rotation {
-    x: 6.123234E-17
-    y: 6.123234E-17
-    z: -1.0
-    w: 3.7493994E-33
-  }
-}
-embedded_components {
-  id: "spike2"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: -64.28592
-    y: -73.79053
-    z: -0.01
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.70327944
-    w: 0.71091354
-  }
-}
-embedded_components {
-  id: "spike3"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"spikes\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 83.295135
-    y: -73.79053
-    z: -0.01
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.7055403
-    w: 0.7086698
-  }
-}
-embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"rock_planks\"\n"
+  "default_animation: \"\\320\\272\\320\\276\\321\\200\\320\\276\\320\\277\\320\\272\\320\\260\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: 4.3922353
-    y: -4.5614195
+    x: 0.0
+    y: 0.0
     z: 0.0
   }
   rotation {

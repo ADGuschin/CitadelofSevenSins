@@ -35,8 +35,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -64,7 +64,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 2400.0
+    x: 480.0
     y: 0.0
     z: 0.0
   }
@@ -75,8 +75,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -104,7 +104,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 4800.0
+    x: 960.0
     y: 0.0
     z: 0.0
   }
@@ -115,8 +115,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -144,7 +144,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 7200.0
+    x: 1440.0
     y: 0.0
     z: 0.0
   }
@@ -155,8 +155,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }

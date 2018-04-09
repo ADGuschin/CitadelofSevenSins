@@ -1,7 +1,7 @@
 name: "main"
 instances {
-  id: "death_screen"
-  prototype: "/main_menu/death_screen.go"
+  id: "score_hud"
+  prototype: "/main_menu/score_hud.go"
   position {
     x: 0.0
     y: 0.0

@@ -163,8 +163,8 @@ embedded_instances {
 embedded_instances {
   id: "controller"
   data: "components {\n"
-  "  id: \"background3\"\n"
-  "  component: \"/level/background3.script\"\n"
+  "  id: \"script\"\n"
+  "  component: \"/level/background1.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"

@@ -1,6 +1,8 @@
-local pieces = {"sand", "sand1", "sand2", "sand3"}
+local pieces = {"mountain"}
 function init(self)
-	self.speed = 200
+	self.speed = 2
+	local pos = go.get_position("mountain")
+	start_pos = pos.x
 end
 
 function final(self)
@@ -21,7 +23,11 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("set_speed") then 
-		self.speed = message.speed 
+		self.speed = (message.speed * 2) / 360
+	elseif message_id == hash("reset") then
+		local pos = go.get_position("mountain")
+		pos.x = start_pos
+		go.set_position(pos, "mountain")
 	end
 end
 

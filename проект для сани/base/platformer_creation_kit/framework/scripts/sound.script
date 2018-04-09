@@ -1,0 +1,17 @@
+go.property("play_on_awake", false)
+go.property("volume", 1)
+
+function init(self)
+    if self.play_on_awake then
+    	msg.post("#sound", "play_sound", { gain = self.volume}) 
+    end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("play") then
+		msg.post("#sound", "play_sound", { gain = self.volume})
+	end
+	if message_id == hash("play") then
+		msg.post("#sound", "stop_sound")
+	end
+end

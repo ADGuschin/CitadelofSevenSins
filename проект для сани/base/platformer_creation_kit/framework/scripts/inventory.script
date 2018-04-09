@@ -1,0 +1,35 @@
+go.property("keys", 0)
+go.property("coins", 0) 
+
+local listeners = {}
+
+local function post_event(self, event, params)
+	for i, p in ipairs(listeners) do
+		msg.post(p, event, params)
+	end
+end
+
+function init(self)
+    
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("change_coins") then
+    	self.coins = self.coins + message.amount
+    	post_event(self, "change_coins", { value = self.coins })
+    end
+    if message_id == hash("change_keys") then
+    	self.keys = self.keys + message.amount
+    	post_event(self, "change_keys", { value = self.keys })
+    end
+    if message_id == hash("add_listener") then
+    	table.insert(listeners, sender)
+    end
+    if message_id == hash("remove_listener") then
+    	for i, p in ipairs(listeners) do
+    		if p == sender then
+    			table.remove(p, i)
+    		end
+    	end
+    end
+end

@@ -1,0 +1,16 @@
+go.property("reference_value", 0)
+go.property("true_action", msg.url(""))
+go.property("false_action", msg.url(""))
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger") then
+		amount = go.get("hero#inventory", "keys")
+		if amount >= self.reference_value then
+			self.true_action.fragment = "script"
+			msg.post(self.true_action, "trigger")
+		else
+			self.false_action.fragment = "script"
+			msg.post(self.false_action, "trigger")
+		end
+	end
+end

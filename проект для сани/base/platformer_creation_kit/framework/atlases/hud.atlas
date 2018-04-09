@@ -1,0 +1,42 @@
+images {
+  image: "/platformer_creation_kit/framework/sprites/speech_bubble_new.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/flatDark03.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/flatDark06.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/flatDark25.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/flatDark47.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/GUI/Bar_base.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/GUI/bg_pop_up.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/GUI/bt_green.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/GUI/bt_x.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/GUI/header.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/GUI/HP bar.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/GUI/ic_HP.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/GUI/Portrai BG.png"
+}
+margin: 16
+extrude_borders: 0
+inner_padding: 0

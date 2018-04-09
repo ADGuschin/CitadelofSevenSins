@@ -1,0 +1,94 @@
+local input_left = hash("left")
+local input_right = hash("right")
+local input_up = hash("up")
+local input_down = hash("down")
+local input_jump = hash("jump")
+local input_sprint = hash("sprint")
+local input_touch = hash("touch")
+local input_fire = hash("fire")
+
+local touch_jump_timeout = 0.2
+
+require "platformer_creation_kit.framework.modules.game_state"
+
+function init(self)
+   	msg.post("#", "acquire_input_focus")
+   	self.direction = 1 
+end
+
+function on_input(self, action_id, action)
+	if not is_paused() then
+	    if action_id == input_left then
+	        msg.post("#movement", input_left, { value = action.value})
+	        self.direction = -1
+	        msg.post("#class", "update_direction", {direction = self.direction})
+	    elseif action_id == input_right then
+	        msg.post("#movement", input_right, { value = action.value})
+	        self.direction = 1
+	        msg.post("#class", "update_direction", {direction = self.direction})
+	    elseif action_id == input_up then
+	    	msg.post("#movement", input_up, { value = action.value })
+	    elseif action_id == input_down then
+	    	msg.post("#movement", input_down, { value = action.value })
+	    elseif action_id == input_jump then
+	        --[[if action.pressed then
+	            msg.post("#movement", input_jump, { pressed = true})
+	        elseif action.released then
+	            msg.post("#movement", input_jump, { released = true})
+	        end--]]
+	        if action.released then
+	        	msg.post("#movement", input_jump, { released = true})
+	        else
+	        	msg.post("#movement", input_jump, { pressed = true})
+	        end
+	    elseif action_id == input_fire then
+	    	msg.post("#class", "shoot", {direction = self.direction})
+	    elseif action_id == input_sprint then
+	    	if action.pressed then
+				msg.post("#movement", input_sprint, { pressed = true})
+	    	elseif action.released then
+	    		msg.post("#movement", input_sprint, { released = true})
+	    	end
+	    elseif action_id == input_touch and #action.touch > 0 then
+	    	for i, tpoint in ipairs(action.touch) do
+	    		if tpoint.x > 95 and tpoint.x < 170 and tpoint.y > 130 and tpoint.y < 205 then
+	    			if tpoint.released then
+	    				msg.post("#movement", input_left, { value = 0})
+	    			else
+		    			msg.post("#movement", input_left, { value = 1})
+		    			self.direction = -1
+	    			end
+	    		elseif tpoint.x > 240 and tpoint.x < 315 and tpoint.y > 130 and tpoint.y < 205 then
+	    			if tpoint.released then
+	    				msg.post("#movement", input_right, { value = 0})
+	    			else
+		    			msg.post("#movement", input_right, { value = 1})
+		    			self.direction = 1
+	    			end
+	    		end
+	    		if tpoint.x > 170 and tpoint.x < 245 and tpoint.y > 55 and tpoint.y < 130 then
+	    			if tpoint.released then
+	    				msg.post("#movement", input_down, { value = 0})
+	    			else
+	    				msg.post("#movement", input_down, { value = 1})
+	    			end
+	    		elseif tpoint.x > 170 and tpoint.x < 245 and tpoint.y > 205 and tpoint.y < 280 then
+	    			if tpoint.released then
+	    				msg.post("#movement", input_up, { value = 0})
+	    			else
+	    				msg.post("#movement", input_up, { value = 1})
+	    			end
+	    		end
+	    		if tpoint.y > 45 and tpoint.y < 195 and tpoint.x > 1050 and tpoint.x < 1200 then
+	    			if tpoint.pressed then
+	    				msg.post("#movement", input_jump, { pressed = true})
+	    			elseif tpoint.released then
+	    				msg.post("#movement", input_jump, { released = true})
+	    			end
+	    		elseif tpoint.y > 45 and tpoint.y < 195 and tpoint.x > 875 and tpoint.x < 1025 then
+	    			msg.post("#class", "shoot", { direction = self.direction})
+	    		end
+	    	end
+	    end
+    end
+end

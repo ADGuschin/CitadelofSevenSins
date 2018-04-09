@@ -1,0 +1,9 @@
+require "platformer_creation_kit.content.collection_proxy_content"
+
+go.property("proxy_index", 1)
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger") then
+	   	msg.post("main:/collection_proxy_controller#controller", "load", { proxy = collection_proxies[self.proxy_index]})
+   	end
+end

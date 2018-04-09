@@ -1,0 +1,19 @@
+go.property("amount_to_heal", 1)
+go.property("affect_max_health", false)
+
+local pickup = hash("pickup")
+
+function on_message(self, message_id, message, sender)
+    if message_id == pickup then
+    	url = msg.url(sender)
+    	url.fragment = "health"
+    	if self.affect_max_health then
+    		msg.post(url, "change_max_hp", {amount = self.amount_to_heal})
+    	else
+    		msg.post(url, "change_hp", {amount = self.amount_to_heal})
+    	end
+    	particlefx.play("#pickupfx")
+    	msg.post("#pickup_sound", "play_sound", {gain = 0.5})
+    	go.delete(go.get_id())
+    end
+end

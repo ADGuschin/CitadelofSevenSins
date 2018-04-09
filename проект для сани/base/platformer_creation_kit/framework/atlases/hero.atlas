@@ -1,0 +1,9 @@
+images {
+  image: "/platformer_creation_kit/framework/sprites/hero02.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/arroooooo.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

@@ -1,0 +1,92 @@
+require "platformer_creation_kit.framework.modules.ui_func"
+
+local function fade_out(func, self)
+	gui.animate(self.bg, "color.w", 1, gui.EASING_LINEAR, 1)
+	gui.animate(self.msg, "color.w", 0, gui.EASING_OUTQUAD, 1)
+	gui.animate(self.restart, "color.w", 0, gui.EASING_OUTQUAD, 1)
+	gui.animate(self.menu, "color.w", 0, gui.EASING_OUTQUAD, 1, 0, func)
+end
+
+function init(self)
+	self.bg = gui.get_node("bg")
+	self.msg = gui.get_node("msg")
+	self.restart = gui.get_node("restart_btn")
+	self.menu = gui.get_node("menu_btn")
+	self.logo = gui.get_node("logo")
+    gui.set_enabled(self.bg, false)
+    gui.set_enabled(self.msg, false)
+    gui.set_enabled(self.restart, false)
+    gui.set_enabled(self.menu, false)
+    gui.set_enabled(self.logo, false)
+    self.nodes = {
+    				{
+    					node = gui.get_node("restart_btn"),
+    					action = function () msg.post("main:/collection_proxy_controller#controller", "reload_active") end 
+					},
+					{
+						node = gui.get_node("menu_btn"),
+						action = function () msg.post("main:/collection_proxy_controller#controller", "load", {proxy = "#main_menu_proxy"}) end
+					}
+				}
+    self.hovered_node = nil
+    self.picked_node = nil
+    init_ui(self)
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("win") then
+    	gui.set_enabled(self.bg, true)
+	    gui.set_enabled(self.msg, true)
+	    gui.set_enabled(self.restart, true)
+	    gui.set_enabled(self.menu, true)
+	    gui.set_enabled(self.logo, true)
+	    msg.post("hero#health", "unregister")
+	    local col = gui.get_color(self.bg);
+	    col.w = 0
+	    gui.set_color(self.bg, col)
+	    col = gui.get_color(self.msg)
+	    col.w = 0 
+	    gui.set_color(self.msg, col)
+	    col = gui.get_color(self.menu)
+	    col.w = 0 
+	    gui.set_color(self.menu, col)
+	    col = gui.get_color(self.restart)
+	    col.w = 0 
+	    gui.set_color(self.logo, col)
+	    col = gui.get_color(self.logo)
+	    col.w = 0 
+	    gui.set_color(self.restart, col)
+	    gui.animate(self.bg, "color.w", 1, gui.EASING_LINEAR, 1)
+	    gui.animate(self.msg, "color.w", 1, gui.EASING_OUTQUAD, 3)
+	    gui.animate(self.msg, "scale", 2, gui.EASING_OUTQUAD, 3)
+	    gui.animate(self.menu, "color.w", 1, gui.EASING_OUTQUAD, 3)
+	    gui.animate(self.restart, "color.w", 1, gui.EASING_OUTQUAD, 3)
+	    gui.animate(self.logo, "color.w", 1, gui.EASING_OUTQUAD, 3)
+	    msg.post(".", "acquire_input_focus")
+    end
+end
+
+function on_input(self, action_id, action)
+    --[[if action_id == hash("click") or action_id == hash("touch") then
+    	if gui.pick_node(self.restart, action.x, action.y) then
+    		gui.animate(self.bg, "color.w", 1, gui.EASING_LINEAR, 1)
+	    	gui.animate(self.msg, "color.w", 0, gui.EASING_OUTQUAD, 1)
+	    	gui.animate(self.restart, "color.w", 0, gui.EASING_OUTQUAD, 1)
+	    	gui.animate(self.menu, "color.w", 0, gui.EASING_OUTQUAD, 1, 0, restart)
+    	elseif gui.pick_node(self.menu, action.x, action.y) then
+    		gui.animate(self.bg, "color.w", 1, gui.EASING_LINEAR, 1)
+	    	gui.animate(self.msg, "color.w", 0, gui.EASING_OUTQUAD, 1)
+	    	gui.animate(self.restart, "color.w", 0, gui.EASING_OUTQUAD, 1)
+	    	gui.animate(self.menu, "color.w", 0, gui.EASING_OUTQUAD, 1, 0, to_menu)
+    	end
+    end--]]
+    if action_id == hash("click") or action_id == hash("touch") then
+    	if action.pressed then
+	    	handle_press(self, action.x, action.y)
+    	end
+    	if action.released then
+			handle_click(self, action.x, action.y)
+    	end
+    end
+    handle_hover(self, action.x, action.y)
+end

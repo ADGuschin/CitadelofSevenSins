@@ -1,0 +1,14 @@
+go.property("trigger", msg.url(""))
+go.property("value_to_set", true)
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger") then
+    	--self.trigger.fragment = "script"
+    	if self.value_to_set then
+    		print("TRIGGER ENABLED")
+    		msg.post(self.trigger, "enable_trigger")
+    	else
+    		msg.post(self.trigger, "disable_trigger")
+    	end
+    end
+end

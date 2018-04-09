@@ -1,0 +1,45 @@
+go.property("is_locked", false)
+go.property("is_open", false)
+
+function init(self)
+	if self.is_open then
+		msg.post("#closed_sprite", "disable")
+		msg.post("#door_collider", "disable")
+	else
+		msg.post("#open_sprite", "disable")
+	end
+end
+
+function on_message(self, message_id, message, sender)
+    --[[if message_id == hash("unlock_door") then
+    	self.is_locked = false;
+    end
+    if message_id == hash("lock_door") then
+    	self.is_locked = true;
+    end--]]
+    if message_id == hash("open") then
+    	if self.is_locked then
+    		local keys = go.get("hero#inventory", "keys")
+    		if keys > 0 then
+    			msg.post("hero#inventory", "change_keys", { amount = -1 })
+    			self.is_locked = false;
+    			self.is_open = true;
+	    		msg.post("#closed_sprite", "disable")
+				msg.post("#door_collider", "disable")
+				msg.post("#open_sprite", "enable")
+    		end
+    	else
+			self.is_open = true;
+    		msg.post("#closed_sprite", "disable")
+			msg.post("#door_collider", "disable")
+			msg.post("#open_sprite", "enable")
+    	end
+    end
+    if message_id == hash("close") then
+    	self.is_open = false
+    		msg.post("#closed_sprite", "enable")
+			msg.post("#door_collider", "enable")
+			msg.post("#open_sprite", "disable")
+    	-- TODO: change the sprite and enable collision
+    end
+end

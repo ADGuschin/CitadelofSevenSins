@@ -1,0 +1,24 @@
+function init(self)
+    --[[ 
+		Lets start assembling FAQ here!
+BASICS		
+		1) My Level is a folder for you to keep your art, scripts and other assets.
+		2) Story 1 is the main big polished story, an example level for you to look into.
+		3) Story 2 is a smaller example scene - feel free to tweak it, play with it.
+		4) Story 3 is a 
+		5) Story 4 is a basic scene for you to tweak and try out things.
+		6) My Story is your story, your game. This is a clean scene to work on.
+		
+HOW TO DO SOMETHING
+		1) Open My Level/story5.collection - this is a base for you to start building 
+
+IF SOMETHING DOES NOT WORK
+		1) Is there an *asterisk next to the tab? Yup, you forgot to save your changes.
+		2) Your level tile map cannot be on the negative Y axis, move it up. Otherways Hero dies.
+		
+		 
+    --]]
+    
+    print("The FAQ is in the Readme.txt script in the project explorer")
+end
+

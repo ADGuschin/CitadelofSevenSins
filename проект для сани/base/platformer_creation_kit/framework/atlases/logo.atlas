@@ -1,0 +1,21 @@
+images {
+  image: "/platformer_creation_kit/framework/sprites/death_img.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/win_img.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/Title bg.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/BG 01.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/BG_02.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/BG_03.jpg"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

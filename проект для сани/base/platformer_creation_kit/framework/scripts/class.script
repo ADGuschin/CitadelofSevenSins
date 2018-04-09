@@ -1,0 +1,103 @@
+go.property("class", hash("warrior"))
+
+go.property("arrow_delay", 0)
+go.property("arrow_cooldown", 1)
+go.property("arrow_speed", 1500)
+go.property("arrow_offset", vmath.vector3(0,200,0.5))
+go.property("arrow_direction", vmath.vector3(1,0,0))
+
+go.property("missile_delay", 0)
+go.property("missile_cooldown", 1)
+go.property("missile_speed", 1500)
+go.property("missile_offset", vmath.vector3(0,200,0.5))
+go.property("missile_direction", vmath.vector3(1,0,0))
+
+go.property("swing_delay", 0)
+go.property("swing_cooldown", 1)
+
+function init(self)
+    self.attack_time = 0
+    self.missile_released = false;
+    self.attack_direction = 1
+end
+
+function update(self, dt)
+	if self.attack_time > 0 then
+		self.attack_time = self.attack_time - dt;
+		if self.attack_time <= 0 then
+			self.attack_time = 0
+		end
+	    if self.class == hash("warrior") then
+	    	if self.attack_time <= self.swing_cooldown and not self.missile_released then
+	    		self.missile_released = true
+	    		local shot_vector = vmath.vector3(self.missile_direction)
+				if shot_vector == vmath.vector3(0,0,0) then
+					print("Direction vector is zero")
+					shot_vector = vmath.vector3(1,0,0);
+				end
+				shot_vector.x = shot_vector.x * self.attack_direction
+				shot_vector = vmath.normalize(shot_vector)
+				msg.post("#swing", "stop_sound")
+				msg.post("#swing", "play_sound", {gain = 0.4})
+				factory.create("#swing_factory", go.get_position() + vmath.vector3(100 * self.attack_direction, 100, 0), vmath.quat_rotation_z(0), { velocity = vmath.vector3(0,0,0)})
+	    	end
+	    elseif self.class == hash("mage") then
+	    	if self.attack_time <= self.missile_cooldown and not self.missile_released then
+	    		self.missile_released = true
+	    		particlefx.play("#cast_bg")
+	    		local shot_vector = vmath.vector3(self.missile_direction)
+				if shot_vector == vmath.vector3(0,0,0) then
+					print("Direction vector is zero")
+					shot_vector = vmath.vector3(1,0,0);
+				end
+				shot_vector.x = shot_vector.x * self.attack_direction
+				shot_vector = vmath.normalize(shot_vector)
+				msg.post("#spell_cast", "stop_sound")
+				msg.post("#spell_cast", "play_sound", {gain = 0.4})
+				local offset = vmath.vector3(self.missile_offset.x * self.attack_direction, self.missile_offset.y, self.missile_offset.z)
+				factory.create("#missile_factory", go.get_position() + offset, vmath.quat_rotation_z(0), { velocity = shot_vector * self.missile_speed})
+	    	end
+	    else
+	    	if self.attack_time <= self.missile_cooldown and not self.missile_released then
+	    		self.missile_released = true
+	    		local shot_vector = vmath.vector3(self.arrow_direction)
+				if shot_vector == vmath.vector3(0,0,0) then
+					print("Direction vector is zero")
+					shot_vector = vmath.vector3(1,0,0);
+				end
+				shot_vector.x = shot_vector.x * self.attack_direction
+				shot_vector = vmath.normalize(shot_vector)
+				msg.post("#arrow_release", "stop_sound")
+				msg.post("#arrow_release", "play_sound", {gain = 0.4})
+				local offset = vmath.vector3(self.arrow_offset.x * self.attack_direction, self.arrow_offset.y, self.arrow_offset.z)
+				factory.create("#arrow_factory", go.get_position() + offset, vmath.quat_rotation_z(0), { velocity = shot_vector * self.arrow_speed})
+	    	end
+	    end
+    end
+end
+
+local function shoot(self, direction)
+	if self.attack_time == 0 then
+		self.attack_direction = direction
+		self.missile_released = false;
+		if self.class == hash("warrior") then
+			self.attack_time = self.swing_delay + self.swing_cooldown
+			msg.post("#movement", "melee", {})
+		elseif self.class == hash("mage") then
+			self.attack_time = self.missile_delay + self.missile_cooldown
+			msg.post("#movement", "spell", {})
+		else
+			self.attack_time = self.arrow_delay + self.arrow_cooldown
+			msg.post("#movement", "arrow_shot", {})
+		end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("shoot") then
+		shoot(self, message.direction)
+	end
+	if message_id == hash("update_direction") then
+		self.attack_direction = message.direction
+	end
+end

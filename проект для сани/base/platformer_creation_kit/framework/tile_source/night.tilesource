@@ -1,0 +1,258 @@
+image: "/platformer_creation_kit/framework/sprites/night_tileset.png"
+tile_width: 140
+tile_height: 140
+tile_margin: 0
+tile_spacing: 0
+collision: "/platformer_creation_kit/framework/sprites/collision_tileset.png"
+material_tag: "tile"
+convex_hulls {
+  index: 0
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 4
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 8
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 12
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 16
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 20
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 24
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "obstacle"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "obstacle"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "ladder_end"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "ladder"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "obstacle"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 28
+  count: 0
+  collision_group: "obstacle"
+}
+convex_hulls {
+  index: 28
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 32
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 36
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 40
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 44
+  count: 4
+  collision_group: "ladder"
+}
+convex_hulls {
+  index: 48
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 52
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 56
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 60
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 64
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 68
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 68
+  count: 4
+  collision_group: "ladder"
+}
+convex_hulls {
+  index: 72
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 72
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 72
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 72
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 72
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 72
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 76
+  count: 4
+  collision_group: "ladder_end"
+}
+convex_hulls {
+  index: 80
+  count: 4
+  collision_group: "one_sided"
+}
+convex_hulls {
+  index: 84
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 84
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 84
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 84
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 84
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 84
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 84
+  count: 0
+  collision_group: ""
+}
+convex_hulls {
+  index: 84
+  count: 0
+  collision_group: ""
+}
+collision_groups: "ladder"
+collision_groups: "ladder_end"
+collision_groups: "obstacle"
+collision_groups: "one_sided"
+extrude_borders: 2
+inner_padding: 0

@@ -1,0 +1,17 @@
+go.property("speech_index", 0)
+go.property("action_url", msg.url(""))
+
+function init(self)
+    msg.post("speech_controller#script", "add_listener", { id = go.get_id()})
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("speech_ended") then
+    	if message.index == self.speech_index then
+    	print("shizzle")
+    		local url = msg.url(self.action_url)
+    		url.fragment = "script"
+    		msg.post(url, "trigger", {})
+    	end
+    end
+end

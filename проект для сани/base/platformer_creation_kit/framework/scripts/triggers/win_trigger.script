@@ -1,0 +1,31 @@
+go.property("action_url", msg.url(""))
+go.property("destroy_after_trigger", true)
+go.property("enabled", true)
+
+local function win(self)
+	if self.enabled then
+		print("AAAAAAAAAAAAAAaaaaaAAA")
+		msg.post("win_screen", "win", {})
+		msg.post("hero#movement", "win", {})
+    	if self.destroy_after_trigger then
+    		go.delete()
+    	end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger_response") then
+    	if message.enter then
+			win(self)    		
+    	end
+    end
+    if message_id == hash("trigger") then
+    	win(self)
+    end
+    if message_id == hash("enable_trigger") then
+    	self.enabled = true;
+    end
+    if message_id == hash("disable_trigger") then
+    	self.enabled = false;
+    end
+end

@@ -1,0 +1,49 @@
+require "platformer_creation_kit.content.collection_proxy_content"
+require "platformer_creation_kit.framework.modules.ui_func"
+
+function init(self)
+    msg.post(".", "acquire_input_focus")
+    --gui.set_color(gui.get_node("quit_btn"), self.normal_color);
+    --gui.set_color(gui.get_node("start_btn"), self.normal_color);
+    self.hovered_node = nil
+    self.picked_node = nil
+    self.nodes = {
+    				{
+    					node = gui.get_node("quit_btn"),
+    					action = function () msg.post("@system:", "exit", {code = 0}) end 
+					},
+					{
+						node = gui.get_node("start_btn"),
+						action = function () msg.post("main:/collection_proxy_controller#controller", "load", {proxy = collection_proxies[2]}) end
+					},
+					{
+						node = gui.get_node("story2_btn"),
+						action = function () msg.post("main:/collection_proxy_controller#controller", "load", {proxy = collection_proxies[3]}) end
+					},
+					{
+						node = gui.get_node("story3_btn"),
+						action = function () msg.post("main:/collection_proxy_controller#controller", "load", {proxy = collection_proxies[4]}) end
+					},
+					{
+						node = gui.get_node("story4_btn"),
+						action = function () msg.post("main:/collection_proxy_controller#controller", "load", {proxy = collection_proxies[5]}) end
+					},
+					{
+						node = gui.get_node("mystory_btn"),
+						action = function () msg.post("main:/collection_proxy_controller#controller", "load", {proxy = collection_proxies[6]}) end
+					},
+				}
+	init_ui(self)
+end
+
+function on_input(self, action_id, action)
+    if action_id == hash("click") or action_id == hash("touch") then
+    	if action.pressed then
+	    	handle_press(self, action.x, action.y)
+    	end
+    	if action.released then
+			handle_click(self, action.x, action.y)
+    	end
+    end
+	handle_hover(self, action.x, action.y)
+end

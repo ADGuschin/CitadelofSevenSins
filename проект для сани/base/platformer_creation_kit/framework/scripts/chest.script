@@ -1,0 +1,41 @@
+go.property("potions_contained", 0)
+go.property("keys_contained", 0)
+go.property("coins_contained", 0)
+go.property("locked", false)
+
+function init(self)
+	self.open = false
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("open") then
+		if not self.open then
+			-- try open chest
+			if self.locked then
+				local keys = go.get("hero#inventory", "keys")
+	    		if keys > 0 then
+	    			msg.post("hero#inventory", "change_keys", { amount = -1 })
+	    			self.open = true;
+	    		end
+			else
+				self.open = true;
+			end
+			
+			-- distribute items
+			if self.open then
+    			for i = 1,self.potions_contained, 1 do
+					local obj = factory.create("#potion_factory", go.get_position(), vmath.quat(), { start_on_awake = false, start_delay = 0.525})
+					go.animate(obj, "position", go.PLAYBACK_ONCE_FORWARD, go.get_position() + vmath.vector3(math.random(-200, 200), math.random(100, 200), 0), go.EASING_OUTCUBIC, 0.5)
+				end
+				for i = 1, self.coins_contained, 1 do
+					local obj = factory.create("#coin_factory", go.get_position(), vmath.quat(), { start_on_awake = false, start_delay = 1})
+					go.animate(obj, "position", go.PLAYBACK_ONCE_FORWARD, go.get_position() + vmath.vector3(math.random(-200, 200), math.random(100, 200), 0), go.EASING_OUTCUBIC, 0.5)
+				end
+				for i = 1, self.keys_contained, 1 do
+					local obj = factory.create("#key_factory", go.get_position(), vmath.quat(), { start_on_awake = false, start_delay = 1})
+					go.animate(obj, "position", go.PLAYBACK_ONCE_FORWARD, go.get_position() + vmath.vector3(math.random(-200, 200), math.random(100, 200), 0), go.EASING_OUTCUBIC, 0.5)
+				end
+			end
+		end
+	end
+end

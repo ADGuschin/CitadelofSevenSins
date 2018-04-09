@@ -1,0 +1,12 @@
+go.property("object_to_play", msg.url(""))
+go.property("stop_sound", false)
+
+function on_message(self, message_id, message, sender)
+    if hash("trigger") == message_id then
+    	if self.stop_sound then
+    		msg.post(self.object_to_play, "stop")
+    	else
+    		msg.post(self.object_to_play, "play")
+    	end
+    end
+end

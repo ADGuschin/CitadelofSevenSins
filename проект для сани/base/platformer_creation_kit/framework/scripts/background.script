@@ -1,0 +1,24 @@
+go.property("type", hash("day"))
+
+function init(self)
+    go.set_position(vmath.vector3(640, 360, 0))
+    if self.type == hash("day") then
+    	msg.post("#sprite", "play_animation", {id = hash("BG 01") })
+    	go.set("#sprite", "scale", vmath.vector3(1.0))
+    	msg.post("#sprite1", "enable")
+    	msg.post("#sprite2", "enable")
+    	msg.post("#sprite3", "enable")
+    elseif self.type == hash("night") then
+    	msg.post("#sprite", "play_animation", {id = hash("BG_03") })
+    	go.set("#sprite", "scale", vmath.vector3(.666));
+    	msg.post("#sprite1", "disable")
+    	msg.post("#sprite2", "disable")
+    	msg.post("#sprite3", "disable")
+    elseif self.type == hash("evening") then
+    	msg.post("#sprite", "play_animation", {id = hash("BG_02") })
+    	go.set("#sprite", "scale", vmath.vector3(.666));
+    	msg.post("#sprite1", "disable")
+    	msg.post("#sprite2", "disable")
+    	msg.post("#sprite3", "disable")
+    end
+end

@@ -1,0 +1,15 @@
+go.property("target_url", msg.url(""))
+go.property("action_url", msg.url(""))
+
+function init(self)
+	self.target_url.fragment = "health"
+    msg.post(self.target_url, "register", { id = go.get_id()})
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("die") then
+		local url = msg.url(self.action_url)
+		url.fragment = "script"
+		msg.post(url, "trigger", {})
+    end
+end

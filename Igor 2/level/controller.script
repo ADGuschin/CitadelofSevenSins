@@ -19,6 +19,7 @@ end
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
     self.speed = self.speed + acceleration * dt
+    msg.post("platform#script", "set_speed", { speed = self.speed })
     msg.post("ground/controller#script", "set_speed", { speed = self.speed })
     if self.gridw >= grid then
         self.gridw = 0

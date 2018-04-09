@@ -1,6 +1,6 @@
 components {
   id: "death_screen"
-  component: "/main_menu/death_screen.gui"
+  component: "/gui/death_screen.gui"
   position {
     x: 0.0
     y: 0.0

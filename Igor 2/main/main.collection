@@ -1,7 +1,7 @@
 name: "main"
 instances {
   id: "score_hud"
-  prototype: "/main_menu/score_hud.go"
+  prototype: "/gameobjects/score_hud.go"
   position {
     x: 0.0
     y: 0.0

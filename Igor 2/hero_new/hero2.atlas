@@ -102,7 +102,7 @@ animations {
     image: "/hero_new/images/running_animation/hero8.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 30
+  fps: 25
   flip_horizontal: 0
   flip_vertical: 0
 }

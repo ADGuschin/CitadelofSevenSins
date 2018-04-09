@@ -2,13 +2,17 @@ local gravity = -50
 local jump_takeoff_speed = 1300
 local isSliding = 0
 local isFirstTimeRun = true
-local slide_cooldown_max = 40
-local slide_cooldown = 40
-
+local slide_cooldown_max = 15
+local slide_cooldown = 15
+local slide_time = 40
+local pushed = false
+local current_posititon
+local catch_up_speed = 50
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.position = go.get_position()
+	current_posititon = self.position.x
 	--msg.post("hero2#script", "reset")
 	self.velocity = vmath.vector3(0,0,0)
 	msg.post("#running_state", "enable")
@@ -60,11 +64,16 @@ function update(self, dt)
 		isSliding = 0
 	end
 
-	if hero_position.x < 360  then
-		self.velocity.x = 100
-	else
-		self.velocity.x = 0
+	if hero_position.x < current_posititon  then
+		msg.post("/level/controller#script", "reset_speed")
+		current_posititon = hero_position.x
 	end
+	
+	if hero_position.x < 360  then
+		self.velocity.x = catch_up_speed
+	else
+		self.velocity.x = 0	
+	end	
 	
 	if slide_cooldown < slide_cooldown_max then
 		slide_cooldown = slide_cooldown + 1
@@ -78,7 +87,7 @@ function update(self, dt)
 	if isSliding > 0 then
 		isSliding = isSliding + 1
 		slide_cooldown = 0
-		if isSliding == 75 then
+		if isSliding == slide_time then
 			isSliding = 0
 		end
 	end
@@ -113,13 +122,17 @@ function on_message(self, message_id, message, sender)
 		if message.group == hash("danger") then
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
-			go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y - 200, go.EASING_INSINE, 0.5, 0.2,
+			if isFirstTimeRun == false then
+				msg.post("/level/controller#script", "reset")
+			end
+			isFirstTimeRun = false
+			--[[go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y - 200, go.EASING_INSINE, 0.5, 0.2,
 				function()
 					if isFirstTimeRun == false then
 						msg.post("/level/controller#script", "reset")
 					end
 					isFirstTimeRun = false
-                end)
+                end)]]
 		elseif message.group == hash("geometry") then
 			handle_geometry_contact(self, message.normal, message.distance)
 		end

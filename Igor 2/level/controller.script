@@ -2,7 +2,7 @@
 local grid = 600
 local platform_heights = { 100, 200, 300 }
 local default_speed = 360
-acceleration = 10;
+acceleration = 20;
 
 function init(self)
     self.speed = default_speed
@@ -46,7 +46,7 @@ function on_message(self, message_id, message, sender)
     elseif message_id == hash("reset") then 
         -- Tell the hero to reset.
         self.speed = default_speed
-        msg.post("hero2#script", "reset")
+        msg.post(sender, "reset")
         msg.post("background3/controller#script", "reset")
         -- Delete all platforms
         for i,p in ipairs(self.spawns) do
@@ -60,6 +60,8 @@ function on_message(self, message_id, message, sender)
                 go.delete(p)
             end
         end
+    elseif message_id == hash("reset_speed") then
+        self.speed = default_speed
     end
 end
 
@@ -68,5 +70,4 @@ function update_speed(self)
     msg.post("background1/controller#script", "set_speed", { speed = self.speed })
     msg.post("background2/controller#script", "set_speed", { speed = self.speed })
     msg.post("background3/controller#script", "set_speed", { speed = self.speed })
-    --msg.post("mountian/controller#script", "set_speed", { speed = self.speed })
 end

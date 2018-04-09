@@ -1,10 +1,9 @@
 -- controller.script
-go.property("speed", 360)
-
 local grid = 600
 local platform_heights = { 100, 200, 300 }
 
 function init(self)
+    self.speed = 360
     msg.post("ground/controller#script", "set_speed", { speed = self.speed })
     --msg.post("background1/controller#script", "set_speed", { speed = self.speed })
     --msg.post("background2/controller#script", "set_speed", { speed = self.speed })
@@ -17,10 +16,10 @@ end
 
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
-
+    self.speed = self.speed + 10 * dt
+    msg.post("ground/controller#script", "set_speed", { speed = self.speed })
     if self.gridw >= grid then
         self.gridw = 0
-
         -- Maybe spawn a platform at random height
         if math.random() > 0.2 then
             local h = platform_heights[math.random(#platform_heights)]

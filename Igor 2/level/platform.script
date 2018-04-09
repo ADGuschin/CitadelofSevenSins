@@ -13,6 +13,6 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("set_speed") then
-        self.speed = message.speed
+        self.speed = message.speed 
     end
 end

@@ -1,0 +1,7 @@
+font: "/platformer_creation_kit/framework/sprites/GUI/Fonts/KGHAPPYSolid.ttf"
+material: "/builtins/fonts/font.material"
+size: 32
+shadow_alpha: 1.0
+shadow_blur: 1
+shadow_x: -8.0
+shadow_y: -8.0

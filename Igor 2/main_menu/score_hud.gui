@@ -3,10 +3,6 @@ fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"
 }
-textures {
-  name: "Background"
-  texture: "/level/Background.atlas"
-}
 background_color {
   x: 0.0
   y: 0.0
@@ -15,62 +11,8 @@ background_color {
 }
 nodes {
   position {
-    x: 640.0
-    y: 360.0
-    z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 1280.0
-    y: 720.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: "Background/background_1-4_4"
-  id: "background"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 0.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_MANUAL
-}
-nodes {
-  position {
-    x: 500.0
-    y: 360.0
+    x: 1230.0
+    y: 670.0
     z: 0.0
     w: 1.0
   }
@@ -93,18 +35,18 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.3019608
-    y: 0.5019608
-    z: 0.3019608
+    x: 0.6
+    y: 0.6
+    z: 0.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "start_button"
+  id: "score_box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_NE
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
   inherit_alpha: true
@@ -123,8 +65,8 @@ nodes {
 }
 nodes {
   position {
-    x: 0.0
-    y: 0.0
+    x: -25.0
+    y: -50.0
     z: 0.0
     w: 1.0
   }
@@ -135,8 +77,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 3.0
+    y: 3.0
     z: 1.0
     w: 1.0
   }
@@ -147,16 +89,16 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Start"
+  text: "0"
   font: "main_menu_font"
-  id: "Start"
+  id: "Score_num"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -174,7 +116,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "start_button"
+  parent: "score_box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -186,8 +128,8 @@ nodes {
 }
 nodes {
   position {
-    x: 780.0
-    y: 360.0
+    x: -115.0
+    y: -50.0
     z: 0.0
     w: 1.0
   }
@@ -198,8 +140,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 1.0
-    y: 1.0
+    x: 3.0
+    y: 3.0
     z: 1.0
     w: 1.0
   }
@@ -210,70 +152,16 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.3019608
-    y: 0.5019608
-    z: 0.3019608
-    w: 1.0
-  }
-  type: TYPE_BOX
-  blend_mode: BLEND_MODE_ALPHA
-  texture: ""
-  id: "quit_button"
-  xanchor: XANCHOR_NONE
-  yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
-  adjust_mode: ADJUST_MODE_FIT
-  layer: ""
-  inherit_alpha: true
-  slice9 {
-    x: 20.0
-    y: 20.0
-    z: 20.0
-    w: 20.0
-  }
-  clipping_mode: CLIPPING_MODE_NONE
-  clipping_visible: true
-  clipping_inverted: false
-  alpha: 1.0
-  template_node_child: false
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
     x: 0.0
     y: 0.0
     z: 0.0
-    w: 1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale {
-    x: 2.0
-    y: 2.0
-    z: 1.0
-    w: 1.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-    z: 0.0
-    w: 1.0
-  }
-  color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
     w: 1.0
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Quit"
+  text: "Score:"
   font: "main_menu_font"
-  id: "Quit"
+  id: "Score_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -291,7 +179,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "quit_button"
+  parent: "score_box"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

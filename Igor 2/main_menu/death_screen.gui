@@ -3,10 +3,6 @@ fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"
 }
-textures {
-  name: "Background"
-  texture: "/level/Background.atlas"
-}
 background_color {
   x: 0.0
   y: 0.0
@@ -15,8 +11,8 @@ background_color {
 }
 nodes {
   position {
-    x: 640.0
-    y: 360.0
+    x: 0.0
+    y: 0.0
     z: 0.0
     w: 1.0
   }
@@ -39,18 +35,18 @@ nodes {
     w: 1.0
   }
   color {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 0.0
+    y: 0.2
+    z: 0.2
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "Background/background_1-4_4"
+  texture: ""
   id: "background"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
-  pivot: PIVOT_CENTER
+  pivot: PIVOT_SW
   adjust_mode: ADJUST_MODE_FIT
   layer: ""
   inherit_alpha: true
@@ -93,15 +89,15 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.3019608
-    y: 0.5019608
-    z: 0.3019608
+    x: 0.5019608
+    y: 0.6
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "start_button"
+  id: "restart_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -154,9 +150,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Start"
+  text: "Restart"
   font: "main_menu_font"
-  id: "Start"
+  id: "Restart"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -174,7 +170,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "start_button"
+  parent: "restart_button"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -210,15 +206,15 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.3019608
-    y: 0.5019608
-    z: 0.3019608
+    x: 0.5019608
+    y: 0.6
+    z: 1.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "quit_button"
+  id: "menu_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -226,10 +222,10 @@ nodes {
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 20.0
-    y: 20.0
-    z: 20.0
-    w: 20.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -271,9 +267,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Quit"
+  text: "Menu"
   font: "main_menu_font"
-  id: "Quit"
+  id: "Menu"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -291,7 +287,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "quit_button"
+  parent: "menu_button"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

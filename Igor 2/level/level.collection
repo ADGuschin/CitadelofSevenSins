@@ -41,7 +41,7 @@ instances {
 }
 instances {
   id: "Background"
-  prototype: "/level/Background.go"
+  prototype: "/level/background/Background.go"
   position {
     x: 960.0
     y: 362.0
@@ -81,7 +81,7 @@ collection_instances {
 }
 collection_instances {
   id: "background1"
-  collection: "/level/background1.collection"
+  collection: "/level/background/background1.collection"
   position {
     x: 962.0
     y: 423.0
@@ -101,7 +101,7 @@ collection_instances {
 }
 collection_instances {
   id: "background2"
-  collection: "/level/background2.collection"
+  collection: "/level/background/background2.collection"
   position {
     x: 964.0
     y: 364.0
@@ -121,7 +121,7 @@ collection_instances {
 }
 collection_instances {
   id: "background3"
-  collection: "/level/background3.collection"
+  collection: "/level/background/background3.collection"
   position {
     x: 1186.0
     y: 255.0
@@ -160,7 +160,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"platform_factory\"\n"
   "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/level/platform.go\\\"\\n"
+  "  data: \"prototype: \\\"/level/obstacles/platform.go\\\"\\n"
   "load_dynamically: false\\n"
   "\"\n"
   "  position {\n"
@@ -178,7 +178,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"platform_long_factory\"\n"
   "  type: \"factory\"\n"
-  "  data: \"prototype: \\\"/level/platform_long.go\\\"\\n"
+  "  data: \"prototype: \\\"/level/obstacles/platform_long.go\\\"\\n"
   "load_dynamically: false\\n"
   "\"\n"
   "  position {\n"

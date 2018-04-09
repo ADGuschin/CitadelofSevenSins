@@ -43,7 +43,7 @@ instances {
   id: "Background"
   prototype: "/level/Background.go"
   position {
-    x: 967.0
+    x: 960.0
     y: 362.0
     z: -1.0
   }

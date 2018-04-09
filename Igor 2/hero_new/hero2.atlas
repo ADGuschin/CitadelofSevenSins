@@ -75,6 +75,37 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "player_fast_right"
+  images {
+    image: "/hero_new/images/running_animation/hero1.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation/hero2.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation/hero3.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation/hero4.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation/hero5.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation/hero6.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation/hero7.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation/hero8.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 30
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

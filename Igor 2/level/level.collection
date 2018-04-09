@@ -120,8 +120,8 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "mountain"
-  collection: "/level/mountian.collection"
+  id: "background3"
+  collection: "/level/background3.collection"
   position {
     x: 1186.0
     y: 255.0

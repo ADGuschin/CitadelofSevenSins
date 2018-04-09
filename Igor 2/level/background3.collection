@@ -44,7 +44,7 @@ embedded_instances {
   id: "controller"
   data: "components {\n"
   "  id: \"script\"\n"
-  "  component: \"/level/mountian.script\"\n"
+  "  component: \"/level/background3.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"

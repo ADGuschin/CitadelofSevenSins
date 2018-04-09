@@ -43,6 +43,7 @@ function on_message(self, message_id, message, sender)
     elseif message_id == hash("reset") then 
         -- Tell the hero to reset.
         msg.post("hero2#script", "reset")
+        msg.post("mountain/controller#script", "reset")
         -- Delete all platforms
         for i,p in ipairs(self.spawns) do
             go.delete(p)

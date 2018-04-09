@@ -121,7 +121,7 @@ collection_instances {
 }
 collection_instances {
   id: "mountain"
-  collection: "/level/mountain.collection"
+  collection: "/level/mountian.collection"
   position {
     x: 1186.0
     y: 255.0

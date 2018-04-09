@@ -6,9 +6,8 @@ acceleration = 10;
 
 function init(self)
     self.speed = default_speed
-    msg.post("ground/controller#script", "set_speed", { speed = self.speed })
-    --msg.post("background1/controller#script", "set_speed", { speed = self.speed })
-    --msg.post("background2/controller#script", "set_speed", { speed = self.speed })
+    update_speed(self)
+    --msg.post("/controller#script", "set_speed", { speed = self.speed })
     self.gridw = 0
     self.spawns = {}
     --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
@@ -19,7 +18,7 @@ end
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
     self.speed = self.speed + acceleration * dt
-    msg.post("ground/controller#script", "set_speed", { speed = self.speed })
+    update_speed(self)
     if self.gridw >= grid then
         self.gridw = 0
         -- Maybe spawn a platform at random height
@@ -62,4 +61,11 @@ function on_message(self, message_id, message, sender)
             end
         end
     end
+end
+
+function update_speed(self)
+    msg.post("ground/controller#script", "set_speed", { speed = self.speed })
+    msg.post("background1/controller#script", "set_speed", { speed = self.speed })
+    msg.post("background2/controller#script", "set_speed", { speed = self.speed })
+    --msg.post("mountian/controller#script", "set_speed", { speed = self.speed })
 end

@@ -67,5 +67,6 @@ function update_speed(self)
     msg.post("ground/controller#script", "set_speed", { speed = self.speed })
     msg.post("background1/controller#script", "set_speed", { speed = self.speed })
     msg.post("background2/controller#script", "set_speed", { speed = self.speed })
+    msg.post("mountain/controller#script", "set_speed", { speed = self.speed })
     --msg.post("mountian/controller#script", "set_speed", { speed = self.speed })
 end

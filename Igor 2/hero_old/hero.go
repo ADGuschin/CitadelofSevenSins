@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/hero/hero.script"
+  component: "/hero_old/hero.script"
   position {
     x: 0.0
     y: 0.0
@@ -81,7 +81,7 @@ embedded_components {
 embedded_components {
   id: "spinemodel"
   type: "spinemodel"
-  data: "spine_scene: \"/hero/hero.spinescene\"\n"
+  data: "spine_scene: \"/hero_old/hero.spinescene\"\n"
   "default_animation: \"run_right\"\n"
   "skin: \"\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"

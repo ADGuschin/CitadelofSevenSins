@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/hero/hero2/hero2.script"
+  component: "/hero_new/hero2.script"
   position {
     x: 0.0
     y: 0.0
@@ -64,7 +64,7 @@ embedded_components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "tile_set: \"/hero/hero2/hero2.atlas\"\n"
+  data: "tile_set: \"/hero_new/hero2.atlas\"\n"
   "default_animation: \"player_right\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"

@@ -1,0 +1,38 @@
+images {
+  image: "/platformer_creation_kit/framework/sprites/alienBlue_hurt.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/alienBlue_jump.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/alienBlue_stand.png"
+}
+animations {
+  id: "ladder"
+  images {
+    image: "/platformer_creation_kit/framework/sprites/alienBlue_climb1.png"
+  }
+  images {
+    image: "/platformer_creation_kit/framework/sprites/alienBlue_climb2.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "walk"
+  images {
+    image: "/platformer_creation_kit/framework/sprites/alienBlue_walk1.png"
+  }
+  images {
+    image: "/platformer_creation_kit/framework/sprites/alienBlue_walk2.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 1
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

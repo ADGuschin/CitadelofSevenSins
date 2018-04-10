@@ -1,0 +1,7 @@
+go.property("is_shown", true)
+
+function init(self)
+    if not self.is_shown then
+    	msg.post("#gui", "hide")
+    end 
+end

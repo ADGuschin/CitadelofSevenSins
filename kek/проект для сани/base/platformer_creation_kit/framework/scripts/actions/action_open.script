@@ -1,0 +1,13 @@
+go.property("object_to_open", msg.url(""))
+go.property("close", false)
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger") then
+    	--self.door_to_open.fragment = "script"
+    	if self.close then
+    		msg.post(self.object_to_open, "close", {})
+    	else
+    		msg.post(self.object_to_open, "open", {})
+    	end
+    end
+end

@@ -1,0 +1,7 @@
+go.property("amount", 0)
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger") then
+    	msg.post("hero#inventory", "change_keys", { amount = self. amount })
+    end
+end

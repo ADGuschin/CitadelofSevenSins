@@ -1,0 +1,81 @@
+require "platformer_creation_kit.framework.modules.game_state"
+
+go.property("velocity", vmath.vector3(0,0,0))
+go.property("gravity", -1000)
+go.property("arrow_life_time", 3)
+go.property("destroy_on_hit", false);
+go.property("has_particles", false)
+go.property("has_impact_fx", false);
+
+local enemy_group = hash("enemy")
+local obstacle_group = hash("obstacle")
+
+local msg_contact_point_response = hash("contact_point_response")
+
+local impact_sounds = { "#hit1", "#hit2" }
+
+function init(self)
+    self.hit_something = false
+    self.hit_target = nil
+    self.offset = nil
+    self.arrow_time = 0;
+    if self.has_particles then
+    	particlefx.play("#projectile_fx")
+    end
+end
+
+function update(self, dt)
+	if not is_paused() then
+		if not self.hit_something then
+	    	self.velocity = self.velocity + vmath.vector3(0, self.gravity, 0) * dt
+	    	local angle = math.atan2(self.velocity.y, self.velocity.x)
+	    	go.set_rotation(vmath.quat_rotation_z(angle))
+	    	go.set_position(go.get_position() + self.velocity * dt)
+	    else
+	    	if self.destroy_on_hit then
+	    		go.delete()
+	    	end
+	    	if self.hit_target ~= nil then
+	    		go.set_position(go.get_position(self.hit_target) + self.offset)
+	    	end
+	    	--print(go.get_position())
+	    end
+	    self.arrow_time = self.arrow_time + dt
+	    if self.arrow_time > self.arrow_life_time then
+	    	go.delete()
+	    end
+    end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("collision_response") then
+    	if not self.hit_something then
+	    	if message.group == enemy_group then
+	    		local url = msg.url(message.other_id)
+	    		url.fragment = "movement"
+	    		if not go.get(url, "dead") then
+		    		msg.post(message.other_id, "arrow", { other_position = go.get_position() })
+		    		self.hit_target = message.other_id
+		    		self.offset = go.get_position() - go.get_position(self.hit_target)
+		    		self.hit_something = true;
+		    		for i, p in ipairs(impact_sounds) do
+		    			msg.post(p, "stop_sound")
+		    		end
+		    		msg.post(impact_sounds[math.random(#impact_sounds)], "play_sound", { gain = 0.25 })
+		    		if self.has_impact_fx then
+		    			particlefx.play("#impact_fx")
+		    		end
+	    		end
+	    	elseif message.group == obstacle_group then
+	    		self.hit_something = true;
+	    		for i, p in ipairs(impact_sounds) do
+	    			msg.post(p, "stop_sound")
+	    		end
+	    		msg.post(impact_sounds[math.random(#impact_sounds)], "play_sound", { gain = 0.25 })
+		 		if self.has_impact_fx then
+	    			particlefx.play("#impact_fx")
+	    		end
+	    	end
+    	end
+    end
+end

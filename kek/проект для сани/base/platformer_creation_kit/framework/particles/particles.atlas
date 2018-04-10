@@ -1,0 +1,27 @@
+images {
+  image: "/platformer_creation_kit/framework/particles/_Textures/pt_flame.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/particles/_Textures/pt_magic_01.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/particles/_Textures/pt_magic_circle.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/particles/_Textures/pt_poof.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/particles/_Textures/pt_riple.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/particles/_Textures/pt_slash.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/particles/_Textures/pt_spark.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/particles/_Textures/pt_star.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

@@ -1,0 +1,76 @@
+
+require "platformer_creation_kit.content.speech_content"
+
+local current_speech_bubble = { index = -1, content = nil }
+
+function init(self)
+    self.render_scale = 1;
+    self.listeners = {}
+    msg.post(".", "acquire_input_focus")
+    --go.set_position(go.get_position() + vmath.vector3(0,0,.1))
+end
+
+local function post_event(event, self, args)
+	for i, p in ipairs(self.listeners) do
+		msg.post(p, event, args)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger_speech") then
+    	msg.post("#pop", "play_sound", {gain = 0.25})
+    	if current_speech_bubble.index ~= nil then
+    		post_event("speech_ended", self, current_speech_bubble)
+    	end
+    	print("destroying speech bubble, probably id: "..current_speech_bubble.index)
+    	msg.post("#gui", "destroy_speech_bubble", {})
+    	current_speech_bubble.index = message.id
+    	current_speech_bubble.content = speech_content[message.id]
+    	msg.post("#gui", "new_speech_bubble", {content = speech_content[message.id]})
+    	print("making new bubble, id: "..current_speech_bubble.index)
+    	post_event("speech_created", self, current_speech_bubble)
+    end
+    if message_id == hash("end_speech") then
+    	if current_speech_bubble.index ~= nil then
+    		post_event("speech_ended", self, current_speech_bubble)
+    	end
+    	print("ending speech bubble, probably id: "..current_speech_bubble.index)
+    	current_speech_bubble.index = -1;
+    	current_speech_bubble.content = nil;
+    	msg.post("#gui", "destroy_speech_bubble", {})
+    end
+    if message_id == hash("set_render_scale") then
+    	self.render_scale = message.value;
+    end
+    if message_id == hash("option_one") then
+    	if message.content.choices[1].next ~= nil then
+    		msg.post(".", "trigger_speech", {id = message.content.choices[1].next})
+    	else
+    		msg.post(".", "end_speech", {})
+    	end
+    end
+    if message_id == hash("option_two") then
+	    if message.content.choices[2].next ~= nil then
+	    	msg.post(".", "trigger_speech", {id = message.content.choices[2].next})
+	    else
+	    	msg.post(".", "end_speech", {})
+	    end
+    end
+    if message_id == hash("option_three") then
+    	if message.content.choices[3].next ~= nil then
+    		msg.post(".", "trigger_speech", {id = message.content.choices[3].next})
+    	else
+    		msg.post(".", "end_speech", {})
+    	end
+    end
+    if message_id == hash("add_listener") then
+    	table.insert(self.listeners, message.id)
+	end
+	if message_id == hash("remove_listener") then
+		for i, p in ipairs(self.listeners) do
+			if(p == message.id) then
+				table.remove(self.listeners, i)
+			end
+		end
+    end
+end

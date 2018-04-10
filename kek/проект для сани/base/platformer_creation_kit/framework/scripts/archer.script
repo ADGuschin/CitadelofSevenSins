@@ -1,0 +1,37 @@
+go.property("shot_cooldown", 1)
+go.property("shot_speed", 1500)
+go.property("shot_offset", vmath.vector3(0,200,0.5))
+go.property("shot_direction", vmath.vector3(1,0,0))
+
+function init(self)
+	math.randomseed(os.time())
+    self.shot_time = 0;
+end
+
+function update(self, dt)
+    if self.shot_time > 0 then
+    	self.shot_time = self.shot_time - dt
+    end
+end
+
+local function shoot(self, dir)
+	if self.shot_time <= 0 then	
+		local shot_vector = vmath.vector3(self.shot_direction)
+		if shot_vector == vmath.vector3(0,0,0) then
+			print("Direction vector is zero")
+			shot_vector = vmath.vector3(1,0,0);
+		end
+		shot_vector.x = shot_vector.x * dir
+		shot_vector = vmath.normalize(shot_vector)
+		msg.post("#arrow_release", "stop_sound")
+		msg.post("#arrow_release", "play_sound", {gain = 0.4})
+		factory.create("#arrow_factory", go.get_position() + self.shot_offset, vmath.quat_rotation_z(0), { velocity = shot_vector * self.shot_speed})
+		self.shot_time = self.shot_cooldown
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("shoot") then
+		shoot(self, message.direction)
+	end
+end

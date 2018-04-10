@@ -1,0 +1,65 @@
+go.property("max_health", 3)
+go.property("max_health_change_heals", true)
+
+local change_hp = hash("change_hp")
+local change_max_hp = hash("change_max_hp")
+local die = hash("die")
+
+local function send_event(listeners, event, params)
+	if listeners ~= nil then
+		for i,p in ipairs(listeners) do
+			msg.post(p, event, params)
+		end
+	end
+end
+
+local function change_hp_value(self, amount)
+		self.current_health = self.current_health + amount
+		if self.current_health <= 0 then
+			self.current_health = 0
+				send_event(self.event_listeners, "die", {})
+		elseif self.current_health > self.max_health then
+			self.current_health = self.max_health
+		end
+		send_event(self.event_listeners, "change_health", { health = self.current_health, max_health = self.max_health, health_change = amount})
+end
+
+local function change_hp_max_value(self, amount)
+	self.max_health = self.max_health + amount
+	if self.max_health_change_heals then
+		self.current_health = self.current_health + amount
+	end
+	send_event(self.event_listeners, "change_health", { health = self.current_health, max_health = self.max_health, health_change = amount })
+end
+
+function init(self)
+    self.current_health = self.max_health
+    self.current_invulnurability_time = 0
+    send_event(self.event_listeners, "change_health", { health = self.current_health, max_health = self.max_health, health_change = amount })
+    self.event_listeners = {}
+end
+
+function on_message(self, message_id, message, sender)
+   	if message_id == change_hp then
+   		change_hp_value(self, message.amount)
+   	end
+   	if message_id == change_max_hp then
+   		change_hp_max_value(self, message.amount)
+   	end
+   	if message_id == die then
+   		change_hp_value(self, -self.max_health)
+   	end
+   	if message_id == hash("register") then
+   		table.insert(self.event_listeners, sender)
+   		--table[sender] = sender;
+   		send_event(self.event_listeners, "change_health", { health = self.current_health, max_health = self.max_health, health_change = 0 })
+   	end
+   	if message_id == hash("unregister") then
+   		for i = 0, #self.event_listeners do
+   			--table.remove(self.event_listeners, sender)
+   			if table[i] == sender then
+   				table.remove(self.event_listeners, i)
+   			end
+   		end
+   	end
+end

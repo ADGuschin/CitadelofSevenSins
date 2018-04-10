@@ -1,0 +1,72 @@
+images {
+  image: "/platformer_creation_kit/framework/sprites/tree.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/tree red.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/ladder.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/door_closed.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/door_open.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/coin.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/BG 01.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/cloud 01.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/cloud 02.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/cloud 03.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/key.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/Potion_HP.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/Potion_Mana.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/spike.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/stone1.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/stone2.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/stone3.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/box.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/cave to next level.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/chest.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/window.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/BG_02.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/BG_03.jpg"
+}
+margin: 8
+extrude_borders: 2
+inner_padding: 2

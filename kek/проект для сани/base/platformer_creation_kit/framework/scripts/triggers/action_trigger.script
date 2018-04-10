@@ -1,0 +1,25 @@
+go.property("action_url", msg.url(""))
+go.property("destroy_after_trigger", true)
+go.property("enabled", true)
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger_response") then
+    	if self.enabled then
+	    	if message.enter then
+		    	local url = msg.url(self.action_url)
+	    		--url.fragment = "script"
+	    		print("getting triggered")
+	    		msg.post(url, "trigger", {})
+		    	if self.destroy_after_trigger then
+		    		go.delete()
+		    	end
+	    	end
+    	end
+    end
+    if message_id == hash("enable_trigger") then
+    	self.enabled = true;
+    end
+    if message_id == hash("disable_trigger") then
+    	self.enabled = false;
+    end
+end

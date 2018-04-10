@@ -1,0 +1,218 @@
+local background = nil
+local header = nil
+local header_text = nil
+local portrait_bg = nil
+local portrait = nil
+local content_text = nil
+local option_one = nil
+local option_one_content = nil
+local option_two = nil
+local option_two_content = nil
+local option_three = nil
+local option_three_content = nil
+
+local current_content = nil
+
+require "platformer_creation_kit.framework.modules.game_state"
+require "platformer_creation_kit.framework.modules.ui_func"
+
+function init(self)
+	background = gui.get_node("speech_bg")
+	header = gui.get_node("header")
+	header_text = gui.get_node("header_text")
+	portrait_bg = gui.get_node("portrait_bg")
+	portrait = gui.get_node("portrait")
+	content_text = gui.get_node("content")
+	option_one = gui.get_node("choice1")
+	option_one_content = gui.get_node("choice1_text")
+	option_two = gui.get_node("choice2")
+	option_two_content = gui.get_node("choice2_text")
+	option_three = gui.get_node("choice3")
+	option_three_content = gui.get_node("choice3_text")
+	local vzero = vmath.vector3(0,0,0)
+	gui.set_size(background, vzero)
+	gui.set_size(header, vzero)
+	gui.set_size(header_text, vzero)
+	gui.set_size(portrait_bg, vzero)
+	gui.set_scale(portrait, vzero)
+	gui.set_size(content_text, vzero)
+	gui.set_size(option_one, vzero)
+	gui.set_size(option_one_content, vzero)
+	gui.set_size(option_two, vzero)
+	gui.set_size(option_two_content, vzero)
+	gui.set_size(option_three, vzero)
+	gui.set_size(option_three_content, vzero)
+	gui.set_enabled(background, false)
+	gui.set_enabled(header, false)
+	gui.set_enabled(header_text, false)
+	gui.set_enabled(portrait_bg, false)
+	gui.set_enabled(portrait, false)
+	gui.set_enabled(content_text, false)
+	gui.set_enabled(option_one, false)
+	gui.set_enabled(option_one_content, false)
+	gui.set_enabled(option_two, false)
+	gui.set_enabled(option_two_content, false)
+	gui.set_enabled(option_three, false)
+	gui.set_enabled(option_three_content, false)
+	self.is_speaking = false
+	self.timeout = 1
+end
+
+function update(self, dt)
+	if self.timeout < 0.5 then
+		self.timeout = self.timeout + dt
+	end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("new_speech_bubble") then
+    	pause()
+    	self.is_speaking = true;
+    	current_content = message.content
+    	
+    	gui.set_enabled(content_text, true)
+    	gui.set_text(content_text, current_content.content)
+		
+		gui.set_enabled(portrait_bg, true)
+    	gui.animate(portrait_bg, "size", vmath.vector3(150, 150, 0), gui.EASING_LINEAR, 0.1)
+		--[[gui.set_texture(portrait, "portraits")
+    	gui.play_flipbook(portrait, current_content.texture)
+    	gui.animate(portrait, "size", vmath.vector3(140, 140, 0), gui.EASING_LINEAR, 0.1)--]]
+    	gui.set_enabled(portrait, true)
+    	gui.animate(portrait, "scale", vmath.vector3(0.75, 0.75, 0.75), gui.EASING_LINEAR, 0.1)
+    	gui.set_spine_skin(portrait, hash(current_content.texture))
+    	
+    	
+    	gui.set_enabled(header, true)
+    	gui.animate(header, "size", vmath.vector3(720, 74, 0), gui.EASING_LINEAR, 0.1)
+    	gui.set_enabled(header_text, true)
+    	gui.set_text(header_text, current_content.display_name)
+    	
+    	gui.set_enabled(background, true)
+    	gui.animate(background, "size", vmath.vector3(960, 576, 0), gui.EASING_LINEAR, 0.1)
+		
+		if current_content.choices ~= nil then
+			if current_content.choices[1] ~= nil then
+				gui.set_enabled(option_one, true)
+    			gui.animate(option_one, "size", vmath.vector3(875, 74, 0), gui.EASING_LINEAR, 0.1)
+				gui.set_enabled(option_one_content, true)
+				gui.set_text(option_one_content, "- "..current_content.choices[1].text)
+			else
+				gui.set_enabled(option_one, false)
+				gui.set_enabled(option_one_content, false)
+			end
+			
+			if current_content.choices[2] ~= nil then
+				gui.set_enabled(option_two, true)
+    			gui.animate(option_two, "size", vmath.vector3(875, 74, 0), gui.EASING_LINEAR, 0.1)
+				gui.set_enabled(option_two_content, true)
+				gui.set_text(option_two_content, "- "..current_content.choices[2].text)
+			else
+				gui.set_enabled(option_two, false)
+				gui.set_enabled(option_two_content, false)
+			end
+			
+			if current_content.choices[3] ~= nil then
+				gui.set_enabled(option_three, true)
+    			gui.animate(option_three, "size", vmath.vector3(875, 74, 0), gui.EASING_LINEAR, 0.1)
+				gui.set_enabled(option_three_content, true)
+				gui.set_text(option_three_content, "- "..current_content.choices[3].text)
+			else
+				gui.set_enabled(option_three, false)
+				gui.set_enabled(option_three_content, false)
+			end
+		else
+			gui.set_enabled(option_one, true)
+			gui.animate(option_one, "size", vmath.vector3(875, 74, 0), gui.EASING_LINEAR, 0.1)
+			gui.set_enabled(option_one_content, true)
+			gui.set_text(option_one_content, "- Continue...")
+		end
+	end
+    if message_id == hash("destroy_speech_bubble") then
+    	unpause()
+    	self.is_speaking = false;
+    	--gui.set_enabled(background, false)
+    	gui.animate(background, "size", vmath.vector3(0, 0, 0), gui.EASING_LINEAR, 0.1)
+		--gui.set_enabled(header, false)
+		gui.animate(header, "size", vmath.vector3(0, 0, 0), gui.EASING_LINEAR, 0.1)
+		gui.set_enabled(header_text, false)
+		--gui.set_enabled(portrait_bg, false)
+		gui.animate(portrait_bg, "size", vmath.vector3(0, 0, 0), gui.EASING_LINEAR, 0.1)
+		--gui.set_enabled(portrait, false)
+		--gui.animate(portrait, "size", vmath.vector3(0, 0, 0), gui.EASING_LINEAR, 0.1)
+		gui.animate(portrait, "scale", vmath.vector3(0, 0, 0), gui.EASING_LINEAR, 0.1)
+		gui.set_enabled(content_text, false)
+		--gui.set_enabled(option_one, false)
+		gui.animate(option_one, "size", vmath.vector3(0, 0, 0), gui.EASING_LINEAR, 0.1)
+		gui.set_enabled(option_one_content, false)
+		--gui.set_enabled(option_two, false)
+		gui.animate(option_two, "size", vmath.vector3(0, 0, 0), gui.EASING_LINEAR, 0.1)
+		gui.set_enabled(option_two_content, false)
+		--gui.set_enabled(option_three, false)
+		gui.animate(option_three, "size", vmath.vector3(0, 0, 0), gui.EASING_LINEAR, 0.1)
+		gui.set_enabled(option_three_content, false)
+	end
+end
+
+function on_input(self, action_id, action)
+	if self.is_speaking then
+		if current_content ~= nil then
+			local click = false;
+			if action_id == hash("click") or action_id == hash("touch") then
+				if action.released and self.timeout >= 0.5 then
+					click = true;
+				end
+			end
+			if option_one ~= nil then
+				if gui.pick_node(option_one, action.x, action.y) then
+					gui.set_color(option_one, hover_color)				
+					if click and current_content.choices ~= nil then
+						print("CHOOSING OPTION ONE")
+						if current_content.choices[1] ~= nil then
+							msg.post("speech_controller#script", "option_one", { content = current_content })
+						end
+						self.timeout = 0
+					elseif click then
+						print("CHOOSING OPTION ONE")
+						if current_content.next == nil then
+							msg.post("speech_controller#script", "end_speech", {})
+						else
+							msg.post("speech_controller#script", "trigger_speech", { id = current_content.next })
+						end
+						self.timeout = 0
+					end
+				else
+					gui.set_color(option_one, normal_color)
+				end 
+			end
+			if option_two ~= nil then
+				if gui.pick_node(option_two, action.x, action.y) then
+					gui.set_color(option_two, hover_color)
+					if click and current_content.choices ~= nil then
+						print("CHOOSING OPTION TWO")
+						if current_content.choices[2] ~= nil then
+							msg.post("speech_controller#script", "option_two", { content = current_content })
+						end
+						self.timeout = 0
+					end
+				else
+					gui.set_color(option_two, normal_color)
+				end 
+			end 
+			if option_three ~= nil then
+				if gui.pick_node(option_three, action.x, action.y) then
+					gui.set_color(option_three, hover_color)
+					if click and current_content.choices ~= nil then
+						print("CHOOSING OPTION THREE")
+						if current_content.choices[3] ~= nil then
+							msg.post("speech_controller#script", "option_three", { content = current_content })
+						end
+						self.timeout = 0
+					end
+				else
+					gui.set_color(option_three, normal_color)
+				end 
+			end  
+		end
+	end
+end

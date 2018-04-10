@@ -1,0 +1,495 @@
+go.property("move_acceleration", 3500)
+go.property("can_sprint", true)
+go.property("sprint_speed_modifier", 2)
+go.property("air_acceleration_factor", 0.8)
+go.property("max_speed", 450)
+go.property("gravity", -1000)
+go.property("jump_takeoff_speed", 550)
+go.property("knockback_force", 500)
+go.property("min_invulnurability_duration", .5)
+go.property("player_alpha", 1)
+go.property("invulnurable_after_hit", true)
+go.property("dead", false)
+
+-- pre-hashing ids improves performance
+local msg_contact_point_response = hash("contact_point_response")
+local msg_trigger_response = hash("trigger_response")
+local msg_animation_done = hash("animation_done")
+local group_obstacle = hash("obstacle")
+local group_spikes = hash("spikes")
+local group_enemy = hash("enemy")
+local group_pickup = hash("pickup")
+local arrow_shot = hash("arrow")
+
+local anim_run = hash("run")
+local anim_idle = hash("idle")
+local anim_jump = hash("jump")
+local anim_fall = hash("fall")
+
+local input_left = hash("left")
+local input_right = hash("right")
+local input_up = hash("up")
+local input_down = hash("down")
+local input_jump = hash("jump")
+local input_sprint = hash("sprint")
+local input_touch = hash("touch")
+
+local input_fly = hash("gravity")
+
+local touch_jump_timeout = 0.2
+
+local footstep_timeout = 0.5;
+
+local footstep_sounds = { "#footstep1", "#footstep2", "#footstep3" }
+local ladder_sounds = { "#ladder_step1", "#ladder_step2", "#ladder_step3" }
+
+require "platformer_creation_kit.framework.modules.game_state"
+require "platformer_creation_kit.framework.modules.util"
+require "platformer_creation_kit.content.game_variables"
+
+function init(self)
+
+    self.velocity = vmath.vector3(0, 0, 0)
+    self.correction = vmath.vector3()
+    self.ground_contact = false
+    self.move_input = 0
+    self.ladder_input = 0
+    self.anim = nil
+    self.touch_jump_timer = 0
+    self.invulnurability_duration = 0
+    self.invulnurable = false
+    self.enable_input = true
+    self.sprinting = false
+    self.player_alpha = 1
+    self.ground_contact_last_frame = false
+    self.touch_jump_timer = 0
+    self.dead = false;
+    self.is_spine_animated = true
+    if self.is_spine_animated then
+    	msg.post("#spinemodel_left", "disable") 
+    end
+    self.touching_ladder = false;
+    self.moving_on_ladder = false;
+    self.begin_of_ladder = false;
+    self.end_of_ladder = false;
+    self.current_ladder = nil;
+    msg.post("#health", "register")
+    self.move_down_onesided = false;
+    self.was_moving_down_slope_last_frame = false;
+    
+    self.footstep_time = footstep_timeout * 0.75;
+    self.ladder_time = footstep_timeout;
+    self.last_position = go.get_position()
+    self.was_touching_ladder = false;
+    self.animation_lock = false;
+end
+
+local function play_animation(self, anim, play_mode)
+    if self.anim ~= anim then
+    	if self.is_spine_animated then
+    		if self.animation_lock then
+    			spine.play("#spinemodel_left", anim, play_mode, 0.25, function (self) self.animation_lock = false end)
+    			spine.play("#spinemodel_right", anim, play_mode, 0.25,  function (self) self.animation_lock = false end)
+    		else
+    			spine.play("#spinemodel_left", anim, play_mode, 0.25)
+    			spine.play("#spinemodel_right", anim, play_mode, 0.25)
+    		end
+    	else
+    		msg.post("#sprite", "play_animation", {id = anim})
+    	end
+        self.anim = anim
+        print(anim)
+    end
+end
+
+local function update_animations(self)
+	if not self.is_spine_animated then
+		if self.move_input ~= 0 then
+			sprite.set_hflip("#sprite", self.move_input < 0)
+		end
+	else
+		if self.move_input ~= 0 then
+			if self.move_input > 0 then
+				msg.post("#spinemodel_right", "enable")
+				msg.post("#spinemodel_left", "disable") 
+			else
+				msg.post("#spinemodel_right", "disable")
+				msg.post("#spinemodel_left", "enable")
+			end
+		end
+	end
+	if not self.dead then
+		if not self.animation_lock then
+			if self.moving_on_ladder then
+				if math.abs( self.ladder_input ) > 0 then
+					play_animation(self, "Climb", go.PLAYBACK_LOOP_FORWARD)
+				else
+					spine.cancel("#spinemodel_right")
+					spine.cancel("#spinemodel_left")
+					self.anim = nil
+				end
+	    	elseif self.ground_contact then
+		        if self.velocity.x == 0 then
+		            play_animation(self, "Idle", go.PLAYBACK_LOOP_FORWARD)
+		        else
+		            play_animation(self, "Run", go.PLAYBACK_LOOP_FORWARD)
+		        end
+		    else
+		    	if self.anim ~= "Take Damage" then
+		    		if not self.ground_contact_last_frame then
+				        if self.velocity.y > 0 then
+				            play_animation(self, "Jump", go.PLAYBACK_ONCE_FORWARD)
+				        else
+				            play_animation(self, "Jump Landing", go.PLAYBACK_ONCE_FORWARD)
+				        end
+			        end
+			    end
+		    end
+	    end
+    end
+end
+
+local function update_defold(self, dt)
+	if not is_paused() then
+		self.last_position = go.get_position()
+		if not self.was_touching_ladder and self.moving_on_ladder then
+			self.moving_on_ladder = false
+			self.velocity.y = self.velocity.y * 0.5
+		end
+	    local target_speed = self.move_input * self.max_speed
+	    if self.sprinting then
+	    	target_speed = target_speed * self.sprint_speed_modifier
+	    end
+	    if self.invulnurability_duration > 0 then
+	    	self.invulnurability_duration = self.invulnurability_duration - dt
+	    	if self.invulnurability_duration <= 0 then
+				self.invulnurability_duration = 0
+	    	end
+	    end
+	    if self.invulnurable then
+	    	if not self.is_spine_animated then
+	    		sprite.set_constant("#sprite", "tint", vmath.vector4(1,1,1, self.player_alpha))
+	    	else
+	    		spine.set_constant("#spinemodel_left", "tint", vmath.vector4(1,1,1, self.player_alpha))
+	    		spine.set_constant("#spinemodel_right", "tint", vmath.vector4(1,1,1, self.player_alpha))
+	    	end
+	    end
+	    local speed_diff = target_speed - self.velocity.x
+	    local acceleration = vmath.vector3(0, self.gravity, 0)
+	    if self.moving_on_ladder then
+	    	acceleration.y = 0
+	    end
+	    if speed_diff ~= 0 then
+	        if speed_diff < 0 then
+	            acceleration.x = -self.move_acceleration
+	        else
+	            acceleration.x = self.move_acceleration
+	        end
+	        if not self.ground_contact then
+	        	if self.invulnurable then
+	        		acceleration.x = 0
+	        	else
+	            	acceleration.x = self.air_acceleration_factor * acceleration.x
+	            end
+	        end
+	    end
+	    local dv = acceleration * dt
+	    if math.abs(dv.x) > math.abs(speed_diff) then
+	        dv.x = speed_diff
+	    end
+	    local v0 = self.velocity
+	    self.velocity = self.velocity + dv
+		
+		if self.touching_ladder then
+	    	if self.moving_on_ladder then
+				self.velocity.y = 0;
+			end
+			if self.ladder_input < 0 then
+				if not self.touching_ladder_end then
+					self.velocity.y = -500
+					self.moving_on_ladder = true
+				end
+			elseif self.ladder_input > 0 then
+				self.velocity.y = 500
+				self.moving_on_ladder = true
+			end
+			if self.ladder_input ~= 0 then
+				if self.ladder_time > footstep_timeout then
+	        		self.ladder_time = self.ladder_time - dt
+	        	else
+	        		self.ladder_time = self.ladder_time + footstep_timeout
+	        		for i, p in ipairs(ladder_sounds) do
+	    				msg.post(p, "stop_sound")
+	    			end
+	        		msg.post(ladder_sounds[math.random(#ladder_sounds)], "play_sound", {gain = .5 })
+	        	end
+	        end
+		end
+		
+	    local dp = (v0 + self.velocity) * dt * 0.5
+	    if dp.x ~= 0 and self.ground_contact then
+	    	self.footstep_time = self.footstep_time - dt;
+	    	if self.footstep_time < 0 then
+	    		self.footstep_time = self.footstep_time + footstep_timeout * 0.75
+	    		for i, p in ipairs(footstep_sounds) do
+	    			msg.post(p, "stop_sound")
+	    		end
+	    		msg.post(footstep_sounds[math.random(#footstep_sounds)], "play_sound", {gain = .35 })
+	    	end
+	    end
+	    go.set_position(go.get_position() + dp)
+	
+	    if self.touch_jump_timer > 0 then
+	        self.touch_jump_timer = self.touch_jump_timer - dt
+	    end
+	    
+	    if go.get_position().y <= kill_y_position and not self.dead then
+			msg.post("#health", "die", {})
+		end
+		
+	    update_animations(self)
+		
+	    self.correction = vmath.vector3()
+	    self.move_input = 0
+	    self.ladder_input = 0
+	    self.ground_contact_last_frame = self.ground_contact
+	    self.ground_contact = false
+	    self.was_touching_ladder = self.touching_ladder
+	    self.touching_ladder = false;
+	    self.was_touching_ladder_end = self.touching_ladder_end
+	    self.touching_ladder_end = false;
+    end
+end
+
+local function handle_obstacle_contact_defold(self, data)
+	if not self.moving_on_ladder then
+	    local proj = vmath.dot(self.correction, data.normal)
+	    local comp = (data.distance - proj) * data.normal
+	    -- Add a little skin to the compensation
+	    self.correction = self.correction + comp
+	    go.set_position(go.get_position() + comp)
+	    if data.normal.y > 0.7 then
+	        self.ground_contact = true
+	        if self.invulnurability_duration == 0 then
+		        self.enable_input = true
+		        self.invulnurable = false
+		        go.cancel_animations("#", "player_alpha")
+		        self.player_alpha = 1
+		        if not self.is_spine_animated then
+		        	sprite.set_constant("#sprite", "tint", vmath.vector4(1,1,1,1))
+		        else
+		        	spine.set_constant("#spinemodel_left", "tint", vmath.vector4(1,1,1,1))
+		        	spine.set_constant("#spinemodel_right", "tint", vmath.vector4(1,1,1,1))
+		        end
+	        end
+	        self.velocity.y = 0
+	    end
+	    
+	    proj = vmath.dot(self.velocity, data.normal)
+	    if proj < 0 then
+	        self.velocity = self.velocity - proj * data.normal
+	    end
+    end
+end
+
+function update(self, dt)
+    update_defold(self, dt)
+end
+
+local function handle_obstacle_contact(self, data)
+
+	handle_obstacle_contact_defold(self, data)
+end
+
+local function handle_damage_contact(self, other_pos, hit_pos)
+	if not self.invulnurable then
+		newvel = vmath.vector3(0)
+		go_pos = go.get_position()
+		if go_pos.x - other_pos.x > 0 then
+			newvel.x = 1
+		else
+			newvel.x = -1
+		end
+		newvel.y = 1
+		newvel = vmath.normalize(newvel);
+    	self.velocity = newvel * self.knockback_force;
+    	self.invulnurability_duration = self.min_invulnurability_duration
+    	self.enable_input = false
+    	if self.invulnurable_after_hit then
+        	self.invulnurable = true
+    	end
+    	msg.post("#health", "change_hp", {amount = -1})
+		play_animation(self, "Take Damage", go.PLAYBACK_ONCE_FORWARD)
+    	go.animate("#", "player_alpha", go.PLAYBACK_LOOP_PINGPONG, .5, go.EASING_LINEAR, 0.15)
+    	factory.create("particle_factory#hit_fx_factory", hit_pos)
+	end
+end
+
+local function handle_one_sided(self, data)
+	local vely = vmath.vector3(0, self.velocity.y, 0)
+	local dot = vmath.dot(vmath.normalize(vely), data.normal)
+	local collide = self.velocity.y < 0 and dot < -0.7 and (self.last_position.y + 8) > data.position.y
+	
+	if (self.velocity.y < 0 and collide and self.ladder_input >= 0) then
+		handle_obstacle_contact(self, data)
+	end
+end
+
+local function jump(self)
+    if self.ground_contact_last_frame or self.moving_on_ladder and self.ladder_input == 0 then
+        self.velocity.y = self.jump_takeoff_speed
+        self.moving_on_ladder = false
+        --play_animation(self, "Jump", go.PLAYBACK_ONCE_FORWARD)
+		msg.post("#jump_sound", "stop_sound")
+        msg.post("#jump_sound", "play_sound", { gain = 0.1 })
+    end
+end
+
+local function gravityf(self)
+   --[[ if self.ground_contact_last_frame or self.moving_on_ladder and self.ladder_input == 0 then
+        self.velocity.y = self.jump_takeoff_speed
+        self.moving_on_ladder = false
+        --play_animation(self, "Jump", go.PLAYBACK_ONCE_FORWARD)
+		msg.post("#jump_sound", "stop_sound")
+        msg.post("#jump_sound", "play_sound", { gain = 0.1 })
+    end
+  	--]]
+  	print("before: " .. self.gravity)
+  	if self.gravity < 0 then
+  		self.gravity = 1000
+  		else self.gravity = -1000
+  	end
+    print("after: " .. self.gravity)
+end
+
+local function abort_jump(self)
+    if self.velocity.y > 0 then
+        self.velocity.y = self.velocity.y * 0.5
+    end
+end
+
+
+
+local function die(self)
+	self.dead = true
+	play_animation(self, "Death", go.PLAYBACK_ONCE_FORWARD)
+	msg.post("#health", "unregister")
+	--msg.post("#collisionobject", "disable", {})
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == msg_contact_point_response then
+        if message.group == group_obstacle then
+            handle_obstacle_contact(self, message)
+        end
+        if message.group == hash("one_sided") or message.group == hash("ladder_end") then
+    		handle_one_sided(self, message)
+        end
+        if not self.dead then
+	        if message.group == group_spikes and invulnurable ~= true then
+	        	print("spikes")
+	        	handle_damage_contact(self, message.other_position, message.position)
+	        	--handle_obstacle_contact(self, message)
+	        end
+	        if message.group == group_enemy and invulnurable ~= true then
+	        	print("enemy")
+	        	url = msg.url(message.other_id)
+	        	url.fragment = "movement"
+	        	if not go.get(url, "dead") then
+		        	handle_damage_contact(self, message.other_position, message.position)
+		        	--handle_obstacle_contact(self, message)
+	        	end
+	        end
+        end
+    end
+    if message_id == hash("collision_response") then
+    	if message.group == hash("ladder") then
+        	self.touching_ladder = true;
+        	print("ladder touch")
+        end
+        if message.group == hash("ladder_end") then
+        	self.touching_ladder_end = true;
+        end
+    end
+    if message_id == arrow_shot and not self.dead then
+    	handle_damage_contact(self, message.other_position, message.position)
+    end
+    if message_id == msg_trigger_response and not self.dead then
+    	if message.group == group_pickup then
+	    	url = msg.url(message.other_id)
+	    	url.fragment = "pickup"
+	    	msg.post(url, "pickup")
+    	end
+    	if message.group == hash("ladder") then
+    		self.touching_ladder = message.enter;
+    		print(message.enter)
+    		print("triggered")
+    		if self.touching_ladder then
+    			--print("touching ladder")
+    			self.current_ladder = message.other_id;
+    		else
+    			--self.moving_on_ladder = false
+    			self.current_ladder = nil;
+    			--print("nolonger touching ladder")
+    		end
+    	end
+    end
+    if message_id == hash("die") then
+    	die(self)
+    end
+    if self.enable_input and not self.dead then
+    	if message_id == input_fly then
+    		print(self.gravity)
+	   	--	self.gravity = -self.gravity
+	    elseif message_id == input_left then
+	        self.move_input = -message.value
+	    elseif message_id == input_right then
+	        self.move_input = message.value
+	    elseif message_id == input_up then
+	    	self.ladder_input = message.value
+	    elseif message_id == input_down then
+	    	self.ladder_input = -message.value;
+	    elseif message_id == input_jump then
+	        if message.pressed then
+	        	--gravityf(self)	        
+	            jump(self)
+	        elseif message.released then
+	            abort_jump(self)
+	        end
+	    elseif message_id == input_sprint then
+	    	if message.pressed then
+				self.sprinting = true
+	    	elseif message.released then
+	    		self.sprinting = false
+	    	end
+	    elseif message_id == hash("melee")then
+	    self.animation_lock = true
+	    	play_animation(self, "Hit (melee)", go.PLAYBACK_ONCE_FORWARD)
+	    elseif message_id == hash("spell")then
+	    	self.animation_lock = true
+	    	play_animation(self, "Hit (magic)", go.PLAYBACK_ONCE_FORWARD)
+    	elseif message_id == hash("arrow_shot")then
+    		self.animation_lock = true
+    		play_animation(self, "Hit (Bow)", go.PLAYBACK_ONCE_FORWARD)
+	    elseif message_id == input_touch then
+	        local diff = message.x - go.get_position().x
+	        if math.abs(diff) > 10 then
+	            self.move_input = diff / 100
+	            self.move_input = math.min(1, math.max(-1, self.move_input))
+	        end
+	        if message.released then
+	            self.touch_jump_timer = touch_jump_timeout
+	        elseif message.pressed then
+	            if self.touch_jump_timer > 0 then
+	                jump(self)
+	            end
+	        end
+	    end
+    end
+    
+    
+    if message_id == hash("win") then
+    	self.enable_input = false;
+    end
+    
+end

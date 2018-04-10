@@ -1,0 +1,35 @@
+[project]
+title = Platformer Creation Kit
+version = 0.1
+
+[bootstrap]
+main_collection = /main/main.collectionc
+render = /platformer_creation_kit/framework/renderer/platformer.renderc
+
+[input]
+game_binding = /input/game.input_bindingc
+
+[display]
+width = 1280
+height = 720
+display_profiles = /builtins/render/default.display_profilesc
+high_dpi = 0
+variable_dt = 0
+update_frequency = 60
+
+[physics]
+scale = 0.02
+debug = 0
+
+[script]
+shared_state = 1
+
+[android]
+package = com.defold.platformercreationkit
+app_icon_36x36 = 
+app_icon_192x192 = /platformer_creation_kit/framework/sprites/hero.png
+version_code = 1
+
+[sound]
+max_sound_buffers = 64
+

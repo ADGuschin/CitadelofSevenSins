@@ -1,0 +1,17 @@
+function init(self)
+    msg.post("hero#health", "register")
+end
+
+function on_message(self, message_id, message, sender)
+   	if message_id == hash("die") then
+   		msg.post("hero#health", "unregister")
+   		gui.animate(gui.get_node("box"), "color.w", 0, gui.EASING_LINEAR, .25)
+   		gui.animate(gui.get_node("shoot"), "color.w", 0, gui.EASING_LINEAR, .25)
+   		gui.animate(gui.get_node("jump"), "color.w", 0, gui.EASING_LINEAR, .25)
+   	end
+   	if message_id == hash("hide") then
+   		gui.set_enabled(gui.get_node("box"), false);
+   		gui.set_enabled(gui.get_node("shoot"), false);
+   		gui.set_enabled(gui.get_node("jump"), false);
+   	end
+end

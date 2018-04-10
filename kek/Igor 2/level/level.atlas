@@ -1,0 +1,21 @@
+images {
+  image: "/level/images/ground01.png"
+}
+images {
+  image: "/level/images/ground02.png"
+}
+images {
+  image: "/level/images/rock_planks.png"
+}
+images {
+  image: "/level/images/spikes.png"
+}
+images {
+  image: "/level/images/box.png"
+}
+images {
+  image: "/level/images/ground.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

@@ -1,0 +1,60 @@
+-- controller.script
+go.property("speed", 360)
+
+local grid = 600
+local platform_heights = { 100, 200, 300 }
+
+function init(self)
+    msg.post("ground/controller#script", "set_speed", { speed = self.speed })
+    --msg.post("background1/controller#script", "set_speed", { speed = self.speed })
+    --msg.post("background2/controller#script", "set_speed", { speed = self.speed })
+    self.gridw = 0
+    self.spawns = {}
+    --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
+    --table.insert(self.spawns, p)
+    msg.post("#", "spawnhero")
+end
+
+function update(self, dt)
+    self.gridw = self.gridw + self.speed * dt
+
+    if self.gridw >= grid then
+        self.gridw = 0
+
+        -- Maybe spawn a platform at random height
+        if math.random() > 0.2 then
+            local h = platform_heights[math.random(#platform_heights)]
+            local f = "#platform_factory"
+            if math.random() > 0.5 then
+                f = "#platform_long_factory"
+            end
+
+            local p = factory.create(f, vmath.vector3(1600, h, 0), nil, {}, 5)
+            msg.post(p, "set_speed", { speed = self.speed })
+            table.insert(self.spawns, p) 
+        end
+    end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("spawnhero") then
+        local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
+        table.insert(self.spawns, p) 
+    elseif message_id == hash("reset") then 
+        -- Tell the hero to reset.
+        msg.post("hero2#script", "reset")
+        msg.post("mountain/controller#script", "reset")
+        -- Delete all platforms
+        for i,p in ipairs(self.spawns) do
+            go.delete(p)
+        end
+        self.spawns = {}
+    elseif message_id == hash("delete_spawn") then 
+        for i,p in ipairs(self.spawns) do
+            if p == message.id then
+                table.remove(self.spawns, i)
+                go.delete(p)
+            end
+        end
+    end
+end

@@ -1,0 +1,46 @@
+local health_indicators = {}
+
+local screen_width
+local screen_height
+
+local function change_health(self, params)
+	local step = 315 / params.max_health
+	gui.set_size(gui.get_node("hp"), vmath.vector3(step * params.health,41,0))
+	if params.health == 0 then
+		gui.animate(gui.get_node("heart_icon"), "color.w", 0, gui.EASING_LINEAR, .25)
+		gui.animate(gui.get_node("key_logo"), "color.w", 0, gui.EASING_LINEAR, .25)
+		gui.animate(gui.get_node("coin_logo"), "color.w", 0, gui.EASING_LINEAR, .25)
+		--[[gui.set_enabled(gui.get_node("heart_icon"), false)
+		gui.set_enabled(gui.get_node("key_logo"), false)
+		gui.set_enabled(gui.get_node("coin_logo"), false)--]]
+	end
+end
+
+local function change_coins(self, message)
+	gui.set_text(self.coin_num, message.value)
+end
+
+local function change_keys(self, message)
+	gui.set_text(self.key_num, message.value)
+end
+
+function init(self)
+	screen_width = tonumber(sys.get_config("display.width"))
+    screen_height = tonumber(sys.get_config("display.height"))
+    msg.post("hero#health", "register")
+    msg.post("hero#inventory", "add_listener")
+    self.coin_num = gui.get_node("coin_num")
+    self.key_num = gui.get_node("key_num")
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("change_health") then
+    	change_health(self, message)
+    end
+    if message_id == hash("change_coins") then
+    	change_coins(self, message)
+    end
+    if message_id == hash("change_keys") then
+    	change_keys(self, message)
+    end
+end

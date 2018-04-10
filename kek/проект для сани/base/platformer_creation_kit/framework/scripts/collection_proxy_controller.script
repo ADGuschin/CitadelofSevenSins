@@ -1,0 +1,37 @@
+require "platformer_creation_kit.content.collection_proxy_content"
+
+function init(self)
+	math.randomseed(os.time())
+	self.active_proxy = nil
+	self.proxy_to_load = nil
+	msg.post("#", "load", { proxy = collection_proxies[1]})
+    --msg.post("#main_menu_proxy", "load")
+    msg.post(".", "acquire_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("proxy_loaded") then
+    	msg.post(sender, "enable")
+    	self.active_proxy = sender
+    	print("SENDER: "..sender)
+    end
+    if message_id == hash("load") then
+    	self.proxy_to_load = message.proxy;
+    	if self.active_proxy ~= nil then
+    		msg.post("#", "unload")
+    	else
+    		msg.post(message.proxy, "load")
+    	end
+    end
+    if message_id == hash("unload") then
+    	msg.post(self.active_proxy, "unload")
+    end
+    if message_id == hash("proxy_unloaded") then
+    	msg.post(self.proxy_to_load, "load")
+    end
+    if message_id == hash("reload_active") then
+    	if self.active_proxy ~= nil then
+    		msg.post("#", "load", { proxy = self.active_proxy })
+    	end
+    end
+end

@@ -1,0 +1,17 @@
+go.property("door_to_unlock", msg.url(""))
+
+local pickup = hash("pickup")
+
+function init(self)
+	particlefx.play("#shinefx")
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == pickup then
+    	url = msg.url(self.door_to_unlock)
+    	url.fragment = "script"
+		--msg.post(url, "unlock_door", {})
+		msg.post("hero#inventory", "change_keys", { amount = 1 })
+    	go.delete(go.get_id())
+    end
+end

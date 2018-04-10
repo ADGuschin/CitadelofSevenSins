@@ -1,0 +1,7 @@
+go.property("speech_index", -1)
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger") then
+    	msg.post("speech_controller#script", "trigger_speech", { id = self.speech_index })
+    end
+end

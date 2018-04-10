@@ -1,0 +1,21 @@
+
+function init(self)
+	self.last_position = go.get_position()
+	self.dead = false
+	msg.post("#health", "register")
+end
+
+function update(self, dt)
+	if not self.dead then
+		local d = go.get_position() - self.last_position
+	    msg.post("camera#script", "set_position", { position = go.get_position(), delta = d, delta_t = dt})
+	    self.last_position = go.get_position()
+    end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("die") then
+		msg.post("#health", "unregister")
+		self.dead = true
+	end
+end

@@ -1,0 +1,8 @@
+go.property("condition", msg.url(""))
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("trigger") then
+    	self.condition.fragment = "script"
+    	msg.post(self.condition, "trigger")
+    end
+end

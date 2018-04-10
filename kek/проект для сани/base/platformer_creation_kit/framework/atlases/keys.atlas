@@ -1,0 +1,15 @@
+images {
+  image: "/platformer_creation_kit/framework/sprites/blue_key.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/green_key.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/red_key.png"
+}
+images {
+  image: "/platformer_creation_kit/framework/sprites/yellow_key.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

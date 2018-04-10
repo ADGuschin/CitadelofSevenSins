@@ -1,0 +1,15 @@
+go.property("rotation_axis", vmath.vector3())
+go.property("rotation_amplitude", 45)
+go.property("rotation_frequency", 1)
+
+function init(self)
+	--initial_rot = go.get_rotation()
+    if self.rotation_axis == vmath.vector3(0) then
+    	self.rotation_axis = math.vector3(0,0,1)
+    end
+    self.rotation_axis = vmath.normalize(self.rotation_axis)
+    min_rot = vmath.quat_axis_angle(self.rotation_axis, -self.rotation_amplitude)
+    max_rot = vmath.quat_axis_angle(self.rotation_axis, self.rotation_amplitude)
+    go.set_rotation(min_rot)
+    go.animate(go.get_id(), "rotation", go.PLAYBACK_LOOP_PINGPONG, max_rot, go.EASING_INOUTSINE, 1 / self.rotation_frequency)
+end

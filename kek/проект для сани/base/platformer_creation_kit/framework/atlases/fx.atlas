@@ -1,0 +1,6 @@
+images {
+  image: "/platformer_creation_kit/framework/sprites/shine.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

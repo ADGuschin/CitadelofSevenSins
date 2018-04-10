@@ -1,0 +1,88 @@
+go.property("follow_horizontally", true)
+go.property("follow_vertically", true)
+go.property("render_scale", 1)
+go.property("offset_x", 0)
+go.property("offset_y", 100)
+go.property("face_forward", true)
+go.property("fixed_position", false)
+go.property("initial_fixed_position", vmath.vector3(0,0,0))
+
+local screen_width
+local screen_height
+
+function init(self)
+    -- Add initialization code here
+    -- Remove this function if not needed
+    msg.post("#camera", "acquire_camera_focus")
+    screen_width = tonumber(sys.get_config("display.width"))
+    screen_height = tonumber(sys.get_config("display.height"))
+    msg.post("@render:", "set_render_scale", {value = self.render_scale})
+    msg.post("speech_controller#script", "set_render_scale", {value = self.render_scale})
+    self.current_offset = 0
+    self.lerp_dir = 1;
+    if self.fixed_position then
+    	go.set_position(self.initial_fixed_position)
+    end
+    self.target_position = go.get_position() 
+end
+
+function update(self, dt)
+	local delta = self.target_position - go.get_position()
+	if delta ~= vmath.vector3(0,0,0) then
+		local toMove = 1280 * vmath.normalize(delta) * dt
+		if vmath.length(toMove) > vmath.length(delta) then
+			go.set_position(self.target_position)
+		else
+			go.set_position(go.get_position() + toMove)	
+		end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+    if message_id == hash("set_position") then
+    	self.target_position = go.get_position()
+    	if not self.fixed_position then
+	    	if self.follow_horizontally then
+				self.target_position.x = message.position.x + (self.offset_x - screen_width / 2) * self.render_scale
+			end
+			if self.follow_vertically then
+				self.target_position.y = message.position.y + (self.offset_y - screen_height / 2) * self.render_scale
+			end
+		else
+			--print("target pos: "..self.target_position)
+			--print("position: "..message.position)
+			--local d = self.target_position - message.position
+			--print("delta: "..d)
+			--[[if d.x < 0 then
+				self.target_position.x = self.target_position.x + screen_width
+			end
+			if d.x > screen_width then
+				self.target_position.x = self.target_position.x - screen_width
+			end
+			if d.y < 0 then
+				self.target_position.y = self.target_position.y + screen_height
+			end
+			if d.y > screen_height then
+				self.target_position.y = self.target_position.y - screen_height
+			end--]]
+			
+			while message.position.x < self.target_position.x do
+				self.target_position.x = self.target_position.x - screen_width * self.render_scale
+			end
+			
+			while message.position.x > self.target_position.x + (screen_width * self.render_scale) do
+				self.target_position.x = self.target_position.x + screen_width * self.render_scale
+			end
+			
+			while message.position.y < self.target_position.y do
+				self.target_position.y = self.target_position.y - screen_height * self.render_scale
+			end
+			
+			while message.position.y > self.target_position.y + (screen_height * self.render_scale) do
+				self.target_position.y = self.target_position.y + screen_height * self.render_scale
+			end
+			
+		end
+    	go.set_position(self.target_position)
+    end
+end

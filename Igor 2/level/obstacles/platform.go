@@ -94,7 +94,7 @@ embedded_components {
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
-  "      x: -10.1\n"
+  "      x: -10.0\n"
   "      y: 0.0\n"
   "      z: 0.0\n"
   "    }\n"

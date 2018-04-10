@@ -33,7 +33,9 @@ end
 
 
 local function update_animation(self)
-	if self.ground_contact then
+	if self.velocity.x < 0 then
+		play_animation(self, hash("hero_impact"))
+	elseif self.ground_contact then
 		if isSliding > 0 then
 			play_animation(self, hash("player_slide"))
 		else

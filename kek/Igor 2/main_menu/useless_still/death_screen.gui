@@ -1,7 +1,7 @@
 script: ""
 fonts {
   name: "main_menu_font"
-  font: "/fonts/main_menu_font.font"
+  font: "/builtins/fonts/system_font.font"
 }
 background_color {
   x: 0.0

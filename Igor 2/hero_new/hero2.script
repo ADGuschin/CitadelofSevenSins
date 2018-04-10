@@ -156,6 +156,8 @@ local function slide(self)
 		msg.post("#sliding_state", "enable")
 		msg.post("#running_state", "disable")
 		isSliding = 1
+	else 
+		self.velocity.y = -1000
 	end
 end
 
@@ -167,7 +169,7 @@ function on_input(self, action_id, action)
 			abort_jump(self)
 		end
 	end
-	if action_id == hash("slide") and isSliding == 0 and slide_cooldown == slide_cooldown_max then
+	if action_id == hash("slide")then
 		slide(self)
 	end
 end

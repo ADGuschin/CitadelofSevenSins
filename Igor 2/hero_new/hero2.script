@@ -135,6 +135,8 @@ function on_message(self, message_id, message, sender)
                 end)]]
 		elseif message.group == hash("geometry") then
 			handle_geometry_contact(self, message.normal, message.distance)
+		elseif message.group == hash("stillslide") then
+			isSliding = 1
 		end
 	end
 end

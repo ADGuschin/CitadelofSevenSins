@@ -1,4 +1,0 @@
-function init(self)
-    particlefx.play("#particlefx")
-    --go.delete(go.get_id())
-end

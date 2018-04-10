@@ -1,4 +1,4 @@
-script: ""
+script: "/gui/score_hud.gui_script"
 fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"

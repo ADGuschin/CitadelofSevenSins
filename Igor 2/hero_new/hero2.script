@@ -159,6 +159,12 @@ function on_message(self, message_id, message, sender)
 			on_impact(self, "hard")
 			
 		end
+	--[[elseif message_id == hash("slide") and slide_cooldown == slide_cooldown_max then
+		if self.ground_contact then
+			slide(self)
+		else 
+			jump_break(self)
+		end]]
 	end
 end
 

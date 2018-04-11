@@ -1,6 +1,6 @@
 [project]
-title = My project
-version = 0.1
+title = Igor 2
+version = 0.8
 
 [bootstrap]
 main_collection = /main/main.collectionc
@@ -23,4 +23,7 @@ shared_state = 1
 [graphics]
 default_texture_min_filter = nearest
 default_texture_mag_filter = nearest
+
+[android]
+app_icon_36x36 = /level/images/box.png
 

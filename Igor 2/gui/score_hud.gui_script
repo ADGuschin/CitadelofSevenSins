@@ -3,21 +3,23 @@ function init(self)
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("click") or action_id == hash("touch") or action_id == hash("pause") then
+	if action_id == hash("click") or action_id == hash("touch") then
 		local x = action.x
 		local y = action.y
 		-- Get the "pause" node and see if player has pressed it.
 		local pausenode = gui.get_node("pause_button")
 		local slidenode = gui.get_node("slide_button")
-		if gui.pick_node(pausenode, x, y) or action_id == hash("pause") then
+		if gui.pick_node(pausenode, x, y) then
 			-- Tell the pause menu to take over.
 			msg.post("pause_screen", "show")
-			msg.post("/level/controller#script", "pause")
-			--msg.post("/level/controller#script", "reset")
-			--msg.post("/level/controller#script", "spawnhero")
+			--msg.post("/level/controller#script", "pause")
 			--msg.post("#proxy", "set_time_step", {factor = 1, mode = 1})
 		elseif gui.pick_node(slidenode, x, y) then
 			msg.post("/level/controller#hero2", "slide")
 		end
+	elseif action_id == hash("pause") then
+		msg.post("pause_screen", "show")
+		--msg.post("/level/controller#script", "pause")
+		--msg.post("#proxy", "set_time_step", {factor = 1, mode = 1})
 	end
 end

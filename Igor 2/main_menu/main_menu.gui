@@ -1,4 +1,4 @@
-script: ""
+script: "/start_scene/main_menu.gui_script"
 fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"
@@ -33,7 +33,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 1280.0
+    x: 1270.0
     y: 720.0
     z: 0.0
     w: 1.0
@@ -93,9 +93,9 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.3019608
-    y: 0.5019608
-    z: 0.3019608
+    x: 0.7019608
+    y: 0.3019608
+    z: 0.101960786
     w: 1.0
   }
   type: TYPE_BOX
@@ -135,8 +135,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -156,7 +156,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Start"
   font: "main_menu_font"
-  id: "Start"
+  id: "start_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -210,15 +210,15 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.3019608
-    y: 0.5019608
-    z: 0.3019608
+    x: 0.7019608
+    y: 0.3019608
+    z: 0.101960786
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "quit_button"
+  id: "exit_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -226,10 +226,10 @@ nodes {
   layer: ""
   inherit_alpha: true
   slice9 {
-    x: 20.0
-    y: 20.0
-    z: 20.0
-    w: 20.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 0.0
   }
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
@@ -252,8 +252,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -271,9 +271,9 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Quit"
+  text: "Exit"
   font: "main_menu_font"
-  id: "Quit"
+  id: "exit_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
@@ -291,7 +291,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "quit_button"
+  parent: "exit_button"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

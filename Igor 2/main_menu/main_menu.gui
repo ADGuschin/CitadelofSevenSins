@@ -1,4 +1,4 @@
-script: "/start_scene/main_menu.gui_script"
+script: "/main_menu/main_menu.gui_script"
 fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"

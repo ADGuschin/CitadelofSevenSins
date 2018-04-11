@@ -4,7 +4,7 @@ embedded_instances {
   id: "collection_proxy_controller"
   data: "components {\n"
   "  id: \"collection_proxy_controller\"\n"
-  "  component: \"/main_menu/collection_proxy_controller.script\"\n"
+  "  component: \"/start_scene/collection_proxy_controller.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"

@@ -12,18 +12,17 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("proxy_loaded") then
+        --msg.post(sender, "init")
     	msg.post(sender, "enable")
-    	self.active_proxy = sender
-    	print("SENDER: "..sender)
+        self.active_proxy = sender 
     end
-    if message_id == hash("load") then
-    	self.proxy_to_load = message.proxy;
-    	msg.post(message.proxy, "load")
-    	if not (self.active_proxy == nil) then
-    		msg.post("#", "unload")
-    	else
-    		msg.post(message.proxy, "load")
-    	end
+    if message_id == hash("load") then 
+        self.proxy_to_load = message.proxy; 
+        if self.active_proxy ~= nil then 
+            msg.post("#", "unload") 
+        else 
+            msg.post(message.proxy, "load") 
+        end 
     end
     if message_id == hash("unload") then
     	msg.post(self.active_proxy, "unload")

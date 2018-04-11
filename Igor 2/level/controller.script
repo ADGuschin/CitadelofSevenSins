@@ -47,6 +47,7 @@ function on_message(self, message_id, message, sender)
         -- Tell the hero to reset.
         self.speed = default_speed
         msg.post(sender, "reset")
+        --print(sender)
         msg.post("background3/controller#script", "reset")
         -- Delete all platforms
         for i,p in ipairs(self.spawns) do

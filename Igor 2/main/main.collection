@@ -1,4 +1,4 @@
-name: "main"
+name: "default"
 instances {
   id: "score_hud"
   prototype: "/gameobjects/score_hud.go"

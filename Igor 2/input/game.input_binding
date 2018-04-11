@@ -10,6 +10,10 @@ key_trigger {
   input: KEY_SPACE
   action: "pause"
 }
+key_trigger {
+  input: KEY_ESC
+  action: "unpause"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "click"

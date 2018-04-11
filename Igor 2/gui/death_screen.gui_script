@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --[[main_menu.ui_func"
 
 local function fade_out(func, self)
@@ -121,3 +122,5 @@ function on_reload(self)
 	-- Add input-handling code here
 	-- Remove this function if not needed
 end]]
+=======
+>>>>>>> 6bbd095f05cc0bb0de33ace9bbd84bcfb71c7777

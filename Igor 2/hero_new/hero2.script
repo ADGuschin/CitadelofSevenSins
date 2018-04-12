@@ -18,7 +18,6 @@ function init(self)
 	self.position = go.get_position()
 	self.velocity = vmath.vector3(0,0,0)
 	msg.post("#running_state", "enable")
-	print("msg.postrunning_stateenable")
 	msg.post("#sliding_state", "disable")
 	msg.post("#rolling_over_state", "disable")
 end
@@ -87,16 +86,13 @@ local function break_slide(self)--на всякий пожарный,	 можн�
 	isSliding = 0
 	msg.post("#sliding_state", "disable")
 	msg.post("#running_state", "enable")
-	print("msg.postrunning_stateenable")
 	play_animation(self, hash("break_slide"))
 end
 
 local function end_roll(self)
 	msg.post("#running_state", "enable")
-	print("msg.postrunning_stateenable")
 	msg.post("#rolling_over_state", "disable")
 	rolling_over = false
-	print("ending rolling")
 end
 
 function update(self, dt)
@@ -153,15 +149,11 @@ local function roll_over(self)
 	msg.post("#running_state", "disable")
 	msg.post("#rolling_over_state", "enable")
 	rolling_over = true
-	print("begin rolling")
 end
 
 local function on_impact(self, impact_type)
 	if impact_type == "hard" then
 		play_animation(self, hash("hero_impact"))
-		msg.post("/level/controller#script", "reset_speed")
-		self.velocity.y = 500
-		self.velocity.x = -1000
 		msg.post("controller#script", "reset_speed")
 		self.velocity.y = 750
 		self.velocity.x = -1250
@@ -189,7 +181,6 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("reset") then
 		msg.post("controller#script", "spawnhero")
 		msg.post("#running_state", "enable")
-		print("msg.postrunning_stateenable")
 	elseif message_id == hash("contact_point_response") then
 		if message.group == hash("danger") then
 			play_animation(self, hash("player_die"))

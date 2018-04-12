@@ -3,8 +3,8 @@ require "main_menu.ui_func"
 
 function init(self)
     msg.post(".", "acquire_input_focus")
-    --gui.set_color(gui.get_node("quit_btn"), self.normal_color);
-    --gui.set_color(gui.get_node("start_btn"), self.normal_color);
+    --gui.set_color(gui.get_node("exit_button"), self.normal_color);
+    --gui.set_color(gui.get_node("start_button"), self.normal_color);
     self.hovered_node = nil
     self.picked_node = nil
     self.nodes = {
@@ -14,7 +14,7 @@ function init(self)
 					},
 					{
 						node = gui.get_node("start_button"),
-						action = function () msg.post("start_scene:/collection_proxy_controller", "load", {proxy = "#level_proxy"}) end
+						action = function () msg.post("start_scene:/collection_proxy_controller", "load", {proxy = "#main_proxy"}) end
 					},
 				}
 	init_ui(self)

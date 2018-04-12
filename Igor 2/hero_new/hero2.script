@@ -159,9 +159,15 @@ end
 local function on_impact(self, impact_type)
 	if impact_type == "hard" then
 		play_animation(self, hash("hero_impact"))
+<<<<<<< HEAD
 		msg.post("/level/controller#script", "reset_speed")
 		self.velocity.y = 500
 		self.velocity.x = -1000
+=======
+		msg.post("controller#script", "reset_speed")
+		self.velocity.y = 750
+		self.velocity.x = -1250
+>>>>>>> 35da803875d42a76043a0bc7821e80fa472935a3
 		pushed = true
 	elseif impact_type == "soft" then
 		roll_over(self)
@@ -184,7 +190,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("reset") then
-		msg.post("/level/controller#script", "spawnhero")
+		msg.post("controller#script", "spawnhero")
 		msg.post("#running_state", "enable")
 		print("msg.postrunning_stateenable")
 	elseif message_id == hash("contact_point_response") then
@@ -192,7 +198,7 @@ function on_message(self, message_id, message, sender)
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
 			if isFirstTimeRun == false then
-				msg.post("/level/controller#script", "reset")
+				msg.post("controller#script", "reset")
 			end
 			isFirstTimeRun = false
 		elseif message.group == hash("still_slide") then

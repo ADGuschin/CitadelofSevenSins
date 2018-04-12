@@ -1,6 +1,6 @@
 components {
   id: "pause_screen"
-  component: "/gui/pause_screen.gui"
+  component: "/gui/gui_files/pause_screen.gui"
   position {
     x: 0.0
     y: 0.0

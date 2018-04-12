@@ -4,6 +4,18 @@ images {
 images {
   image: "/level/images/ground.png"
 }
+images {
+  image: "/level/images/\321\202\320\260\320\273\320\273.png"
+}
+images {
+  image: "/level/images/\321\201\320\274\320\276\320\273\320\273.png"
+}
+images {
+  image: "/level/images/\321\202\320\276\320\277.png"
+}
+images {
+  image: "/level/images/\320\264\320\276\320\274.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

@@ -5,7 +5,7 @@ fonts {
 }
 textures {
   name: "Background"
-  texture: "/level/background/Background.atlas"
+  texture: "/level/images/background/Background.atlas"
 }
 background_color {
   x: 0.0

@@ -1,6 +1,6 @@
 -- controller.script
 local grid = 600
-local platform_heights = { 100, 200, 300 }
+local platform_height = 48
 local default_speed = 360
 acceleration = 20;
 
@@ -23,12 +23,15 @@ function update(self, dt)
         self.gridw = 0
         -- Maybe spawn a platform at random height
         if math.random() > 0.2 then
-            local h = platform_heights[math.random(#platform_heights)]
-            local f = "#platform_factory"
-            if math.random() > 0.5 then
-                f = "#platform_long_factory"
+            local h = platform_height
+            --Сделать
+            local f = "#obstacle_small"
+            if math.random() > 0.7 then
+                f = "#obstacle_tall"
+            elseif math.random() < 0.3 then
+                f = "#obstacle_top"
             end
-
+            --Сделать для фэктори
             local p = factory.create(f, vmath.vector3(1600, h, 0), nil, {}, 5)
             msg.post(p, "set_speed", { speed = self.speed })
             table.insert(self.spawns, p) 

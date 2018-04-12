@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/level/obstacles/platform.script"
+  component: "/level/obstacles/obstacle_still.script"
   position {
     x: 0.0
     y: 0.0

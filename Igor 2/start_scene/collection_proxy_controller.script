@@ -25,7 +25,9 @@ function on_message(self, message_id, message, sender)
         end 
     end
     if message_id == hash("unload") then
-    	msg.post(self.active_proxy, "unload")
+        msg.post(self.active_proxy, "disable")
+        msg.post(self.active_proxy, "final")
+        msg.post(self.active_proxy, "unload")
     end
     if message_id == hash("proxy_unloaded") then
     	msg.post(self.proxy_to_load, "load")

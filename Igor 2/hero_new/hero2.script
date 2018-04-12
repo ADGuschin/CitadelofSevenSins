@@ -159,15 +159,12 @@ end
 local function on_impact(self, impact_type)
 	if impact_type == "hard" then
 		play_animation(self, hash("hero_impact"))
-<<<<<<< HEAD
 		msg.post("/level/controller#script", "reset_speed")
 		self.velocity.y = 500
 		self.velocity.x = -1000
-=======
 		msg.post("controller#script", "reset_speed")
 		self.velocity.y = 750
 		self.velocity.x = -1250
->>>>>>> 35da803875d42a76043a0bc7821e80fa472935a3
 		pushed = true
 	elseif impact_type == "soft" then
 		roll_over(self)

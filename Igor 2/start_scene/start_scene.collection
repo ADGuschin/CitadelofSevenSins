@@ -18,7 +18,7 @@ embedded_instances {
   "  }\n"
   "}\n"
   "embedded_components {\n"
-  "  id: \"level_proxy\"\n"
+  "  id: \"main_proxy\"\n"
   "  type: \"collectionproxy\"\n"
   "  data: \"collection: \\\"/main/main.collection\\\"\\n"
   "exclude: false\\n"

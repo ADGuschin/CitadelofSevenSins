@@ -1,11 +1,11 @@
-script: "/gui/score_hud.gui_script"
+script: "/gui/scripts/score_hud.gui_script"
 fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"
 }
 textures {
   name: "gui"
-  texture: "/gui/gui.atlas"
+  texture: "/gui/gui_images/gui.atlas"
 }
 background_color {
   x: 0.0

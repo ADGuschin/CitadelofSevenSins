@@ -116,7 +116,7 @@ end
 local function on_impact(self, impact_type)
 	if impact_type == "hard" then
 		play_animation(self, hash("hero_impact"))
-		msg.post("/level/controller#script", "reset_speed")
+		msg.post("controller#script", "reset_speed")
 		self.velocity.y = 750
 		self.velocity.x = -1250
 		pushed = true
@@ -141,14 +141,14 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("reset") then
-		msg.post("/level/controller#script", "spawnhero")
+		msg.post("controller#script", "spawnhero")
 		msg.post("#running_state", "enable")
 	elseif message_id == hash("contact_point_response") then
 		if message.group == hash("danger") then
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
 			if isFirstTimeRun == false then
-				msg.post("/level/controller#script", "reset")
+				msg.post("controller#script", "reset")
 			end
 			isFirstTimeRun = false
 		elseif message.group == hash("geometry") then

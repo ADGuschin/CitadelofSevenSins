@@ -1,7 +1,7 @@
 name: "default"
 instances {
-  id: "score_hud"
-  prototype: "/gui/gameobjects/score_hud.go"
+  id: "pause_screen"
+  prototype: "/gui/gameobjects/pause_screen.go"
   position {
     x: 0.0
     y: 0.0

@@ -3,6 +3,9 @@ function init(self)
 	-- Everything is childed under it.
 	local node = gui.get_node("background")
 	gui.set_enabled(node, false)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#proxy", "load")
+	self.paused = false
 end
 
 function on_message(self, message_id, message, sender)
@@ -32,8 +35,10 @@ function on_input(self, action_id, action)
 
 			-- Finally, release input.
 			msg.post(".", "release_input_focus")
+			msg.post("#proxy", "set_time_step", {factor = 1, mode = 1})
 			--msg.post("/level/controller#script", "resume")
 		elseif gui.pick_node(menunode, x, y) then
+			--msg.post("/collection_proxy_controller#collection_proxy_controller", "load")
 			msg.post("@system:", "exit", {code = 0})
 			-- Going back to Menu
 		end

@@ -14,6 +14,8 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("proxy_loaded") then
 		msg.post(sender, "enable")
+	elseif message_id == hash("resume") then
+		msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
 	end
 end
 
@@ -22,10 +24,11 @@ function on_input(self, action_id, action)
 		self.paused = not self.paused
 		if self.paused then
 			--gui.play_flipbook(self.pause_node, hash("right"))
+			msg.post("/pause_screen", "show")
 			msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1})
 		else
 			--gui.play_flipbook(self.pause_node, hash("pause"))
-			msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
+			--msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
 		end
 	end
 end

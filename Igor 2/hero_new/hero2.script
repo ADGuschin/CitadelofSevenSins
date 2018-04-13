@@ -1,3 +1,4 @@
+require "hero_new.swipe"
 local gravity = -50
 local jump_takeoff_speed = 1300
 local isSliding = 0

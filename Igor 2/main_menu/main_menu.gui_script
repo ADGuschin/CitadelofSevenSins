@@ -8,13 +8,13 @@ function init(self)
     self.hovered_node = nil
     self.picked_node = nil
     self.nodes = {
-    				{
-    					node = gui.get_node("exit_button"),
-    					action = function () msg.post("@system:", "exit", {code = 0}) end 
-					},
 					{
 						node = gui.get_node("start_button"),
 						action = function () msg.post("start_scene:/collection_proxy_controller", "load", {proxy = "#main_proxy"}) end
+					},
+					{
+						node = gui.get_node("exit_button"),
+						action = function () msg.post("@system:", "exit", {code = 0}) end 
 					},
 				}
 	init_ui(self)

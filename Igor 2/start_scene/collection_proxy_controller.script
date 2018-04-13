@@ -1,5 +1,4 @@
 require "main_menu.collection_proxy_content"
-first = false
 
 function init(self)
 	math.randomseed(os.time())

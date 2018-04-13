@@ -14,6 +14,10 @@ key_trigger {
   input: KEY_ESC
   action: "unpause"
 }
+key_trigger {
+  input: KEY_RIGHT
+  action: "roll_over"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "click"

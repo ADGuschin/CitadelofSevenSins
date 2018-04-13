@@ -1,12 +1,12 @@
 require "hero_new.swipe"
 local gravity = -50
 local jump_takeoff_speed = 1300
-local isSliding = 0
+local current_slide_moment = 0
 local isFirstTimeRun = true
 local slide_cooldown_max = 15
 local slide_cooldown = 15
-local invincibility_max = 30
-local invincibility = 30
+local invincibility_max = 35
+local invincibility = 35
 local slide_time = 30
 local pushed = false
 local catch_up_speed = 50
@@ -14,6 +14,8 @@ local jump_break_speed = -2000
 local invincible = false
 local rolling_over = false
 local pause = false
+local impact_soft = false
+local lock_character = false
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.position = go.get_position()
@@ -39,6 +41,13 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
+local function flicker(self, flickers)
+	if flicker then
+		--go.animate("", "self.position.y", go.PLAYBACK_LOOP_FORWARD, 10, go.EASING_LINEAR, 1)
+	else
+	end
+end
+
 local function play_animation(self, anim)
 	if self.anim ~= anim then
 		msg.post("#sprite", "play_animation", {id = anim})
@@ -48,10 +57,11 @@ end
 
 
 local function update_animation(self)
+	flicker(self, invincible)
 	if self.velocity.x < 0 then
 		play_animation(self, hash("hero_impact"))
 	elseif self.ground_contact then
-		if isSliding > 0 then
+		if current_slide_moment > 0 then
 			play_animation(self, hash("player_slide"))
 		elseif rolling_over then
 			play_animation(self, hash("roll_over"))
@@ -90,7 +100,7 @@ local function check_inv(self)
 end
 
 local function break_slide(self)--на всякий пожарный,	 можно перенести в апдейт
-	isSliding = 0
+	current_slide_moment = 0
 	msg.post("#sliding_state", "disable")
 	msg.post("#running_state", "enable")
 	play_animation(self, hash("break_slide"))
@@ -137,10 +147,10 @@ function update(self, dt)
 	
 	slide_cooldown_tick(self)
 	
-	if isSliding > 0 then
-		isSliding = isSliding + 1
+	if current_slide_moment > 0 then
+		current_slide_moment = current_slide_moment + 1
 		slide_cooldown = 0
-		if isSliding == slide_time then
+		if current_slide_moment == slide_time then
 			break_slide(self)
 		end
 	end
@@ -157,9 +167,12 @@ end
 
 local function roll_over(self)
 	--play_animation(self, hash("get_up_to_roll"))
-	msg.post("#running_state", "disable")
-	msg.post("#rolling_over_state", "enable")
-	rolling_over = true
+	if current_slide_moment == 0 then
+		msg.post("#running_state", "disable")
+		msg.post("#rolling_over_state", "enable")
+		rolling_over = true
+		impact_soft = false
+	end
 end
 
 local function on_impact(self, impact_type)
@@ -170,7 +183,7 @@ local function on_impact(self, impact_type)
 		self.velocity.x = -1250
 		pushed = true
 	elseif impact_type == "soft" then
-		roll_over(self)
+		impact_soft = true
 	end
 end
 
@@ -203,7 +216,7 @@ function on_message(self, message_id, message, sender)
 			end
 			isFirstTimeRun = false
 		elseif message.group == hash("still_slide") then
-			isSliding = slide_time / 2
+			current_slide_moment = slide_time / 2
 		elseif (message.group == hash("impact") and not pushed and not invincible) then
 			on_impact(self, "hard")
 		elseif message.group == hash("impact_soft") then
@@ -240,7 +253,7 @@ end
 local function slide(self)
 	msg.post("#sliding_state", "enable")
 	msg.post("#running_state", "disable")
-	isSliding = 1
+	current_slide_moment = 1
 end
 
 local function jump_break(self)
@@ -252,7 +265,7 @@ end
 function on_input(self, action_id, action)
 	if action_id == hash("jump") or action_id == hash("touch") then
 		if action.pressed then
-			if isSliding ~= 0 then
+			if current_slide_moment ~= 0 then
 				break_slide(self)--на всякий пожарный
 			end
 			jump(self)
@@ -265,6 +278,17 @@ function on_input(self, action_id, action)
 			slide(self)
 		else 
 			jump_break(self)
+		end
+	end
+	if action_id == hash("roll_over") then
+		if action.pressed then
+			if impact_soft and not lock_character then
+				roll_over(self)
+			else
+				lock_character = true
+			end
+		elseif action.released then
+			lock_character = false
 		end
 	end
 end

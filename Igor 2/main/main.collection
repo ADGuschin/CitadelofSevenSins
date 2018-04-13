@@ -1,6 +1,6 @@
 name: "default"
 instances {
-  id: "score_hud"
+  id: "hud"
   prototype: "/gui/gui_gameobjects/hud.go"
   position {
     x: 0.0

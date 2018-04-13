@@ -1,7 +1,11 @@
-script: ""
+script: "/gui/gui_scripts/death_screen.gui_script"
 fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"
+}
+textures {
+  name: "Background"
+  texture: "/level/images/background/Background.atlas"
 }
 background_color {
   x: 0.0
@@ -35,14 +39,14 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.0
-    y: 0.2
-    z: 0.2
+    x: 0.9019608
+    y: 0.3019608
+    z: 0.3019608
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "Background/test2_red-4"
   id: "background"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -59,7 +63,7 @@ nodes {
   clipping_mode: CLIPPING_MODE_NONE
   clipping_visible: true
   clipping_inverted: false
-  alpha: 1.0
+  alpha: 0.5
   template_node_child: false
   size_mode: SIZE_MODE_MANUAL
 }
@@ -89,19 +93,20 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.5019608
+    x: 0.6
     y: 0.6
-    z: 1.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "restart_button"
+  id: "restart"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
+  parent: "background"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -170,7 +175,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "restart_button"
+  parent: "restart"
   layer: ""
   inherit_alpha: true
   alpha: 1.0
@@ -206,19 +211,20 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.5019608
+    x: 0.6
     y: 0.6
-    z: 1.0
+    z: 0.0
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "menu_button"
+  id: "menu"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER
   adjust_mode: ADJUST_MODE_FIT
+  parent: "background"
   layer: ""
   inherit_alpha: true
   slice9 {
@@ -287,7 +293,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "menu_button"
+  parent: "menu"
   layer: ""
   inherit_alpha: true
   alpha: 1.0

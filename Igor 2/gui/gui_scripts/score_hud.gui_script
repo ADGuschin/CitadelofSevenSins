@@ -34,6 +34,8 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "enable")
 	elseif message_id == hash("resume") then
 		msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
+	elseif message_id == hash("score") then
+		--SOMETHING
 	--elseif message_id == hash("check_for_pause") and self.paused then
 		--msg.post(sender, "paused")
 	end

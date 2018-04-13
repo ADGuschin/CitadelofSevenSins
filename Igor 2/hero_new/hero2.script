@@ -5,8 +5,8 @@ local isSliding = 0
 local isFirstTimeRun = true
 local slide_cooldown_max = 15
 local slide_cooldown = 15
-local invincibility_max = 30
-local invincibility = 30
+local invincibility_max = 35
+local invincibility = 35
 local slide_time = 30
 local pushed = false
 local catch_up_speed = 50
@@ -14,6 +14,7 @@ local jump_break_speed = -2000
 local invincible = false
 local rolling_over = false
 local pause = false
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.position = go.get_position()
@@ -39,6 +40,13 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
+local function flicker(self, flickers)
+	if flicker then
+		go.animate("", "self.position.y", go.PLAYBACK_LOOP_FORWARD, 10, go.EASING_LINEAR, 1)
+	else
+	end
+end
+
 local function play_animation(self, anim)
 	if self.anim ~= anim then
 		msg.post("#sprite", "play_animation", {id = anim})
@@ -48,6 +56,7 @@ end
 
 
 local function update_animation(self)
+	flicker(self, invincible)
 	if self.velocity.x < 0 then
 		play_animation(self, hash("hero_impact"))
 	elseif self.ground_contact then

@@ -1,5 +1,5 @@
-normal_color = vmath.vector4(.9, .9, .9, 1)
-hover_color = vmath.vector4(1, 1, 1, 1);
+normal_color = vmath.vector4(.9, .3, .0, .9);
+hover_color = vmath.vector4(.9, .9, .9, .9);
 pressed_color = vmath.vector4(.6, .6, .6, 1);
 
 function init_ui(self)

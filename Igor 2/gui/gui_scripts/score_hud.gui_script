@@ -4,7 +4,25 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	msg.post("#level_proxy", "load")
 	self.paused = false
-	self.pause_node = gui.get_node("pause_button")
+	--
+	self.hovered_node = nil
+	self.picked_node = nil
+	
+	self.nodes = {
+		{
+			node = gui.get_node("pause_button"),
+			action = function () msg.post("start_scene:/collection_proxy_controller", "pause"); msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}) end
+		},
+		{
+			node = gui.get_node("slide_button"),
+			action = function () msg.post("start_scene:/collection_proxy_controller", "pause"); msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}) end
+		},
+		{
+			node = gui.get_node("score_box")
+		},
+	}
+	init_ui(self)
+	--
 end
 
 function final(self)
@@ -16,19 +34,32 @@ function on_message(self, message_id, message, sender)
 		msg.post(sender, "enable")
 	elseif message_id == hash("resume") then
 		msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
+	--elseif message_id == hash("check_for_pause") and self.paused then
+		--msg.post(sender, "paused")
 	end
 end
 
 function on_input(self, action_id, action)
-	if action.released and gui.pick_node(self.pause_node, action.x, action.y) then
+	--[[if action.released and gui.pick_node(self.pause_node, action.x, action.y) then
 		self.paused = not self.paused
 		if self.paused then
 			--gui.play_flipbook(self.pause_node, hash("right"))
+			--msg.post("hero_new:/hero2", "pause")
+			msg.post("start_scene:/collection_proxy_controller", "pause")
 			msg.post("/pause_screen", "show")
 			msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1})
 		else
 			--gui.play_flipbook(self.pause_node, hash("pause"))
 			--msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
 		end
+	end]]
+	if action_id == hash("click") or action_id == hash("touch") then
+		if action.pressed then
+			handle_press(self, action.x, action.y)
+		end
+		if action.released then
+			handle_click(self, action.x, action.y)
+		end
 	end
+	handle_hover(self, action.x, action.y)
 end

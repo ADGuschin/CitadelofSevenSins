@@ -111,7 +111,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"\\321\\201\\320\\274\\320\\276\\320\\273\\320\\273\"\n"
+  "default_animation: \"box\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

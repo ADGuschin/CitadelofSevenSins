@@ -1,6 +1,6 @@
 components {
   id: "score_hud"
-  component: "/gui/gui_files/score_hud.gui"
+  component: "/gui/gui_files/hud.gui"
   position {
     x: 0.0
     y: 0.0

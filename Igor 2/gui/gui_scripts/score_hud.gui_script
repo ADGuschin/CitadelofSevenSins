@@ -9,18 +9,18 @@ function init(self)
 	self.picked_node = nil
 	
 	self.nodes = {
-		{
-			node = gui.get_node("pause_button"),
-			action = function () msg.post("start_scene:/collection_proxy_controller", "pause"); msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}) end
-		},
-		{
-			node = gui.get_node("slide_button"),
-			action = function () msg.post("start_scene:/collection_proxy_controller", "pause"); msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}) end
-		},
-		{
-			node = gui.get_node("score_box")
-		},
-	}
+					{
+						node = gui.get_node("pause_button"),
+						action = function () msg.post("start_scene:/collection_proxy_controller", "pause"); msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}) end
+					},
+					{
+						node = gui.get_node("slide_button"),
+						action = function () msg.post("start_scene:/collection_proxy_controller", "pause"); msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}) end
+					},
+					{
+						node = gui.get_node("score_box")
+					},
+				}
 	init_ui(self)
 	--
 end

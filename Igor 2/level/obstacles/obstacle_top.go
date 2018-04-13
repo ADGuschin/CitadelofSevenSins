@@ -111,13 +111,13 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"box\"\n"
+  "default_animation: \"\\320\\261\\320\\276\\321\\207\\320\\272\\320\\260\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
     x: 0.0
-    y: 28.0
+    y: 32.0
     z: 0.0
   }
   rotation {
@@ -165,26 +165,6 @@ embedded_components {
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "sprite1"
-  type: "sprite"
-  data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"box\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 0.0
-    y: 36.0
     z: 0.0
   }
   rotation {

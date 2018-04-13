@@ -10,6 +10,18 @@ images {
 images {
   image: "/level/images/background_1-4_4.png"
 }
+images {
+  image: "/level/images/test2_red-1.png"
+}
+images {
+  image: "/level/images/test2_red-2.png"
+}
+images {
+  image: "/level/images/test2_red-3.png"
+}
+images {
+  image: "/level/images/test2_red-4.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

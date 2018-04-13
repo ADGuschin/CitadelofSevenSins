@@ -6,7 +6,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/images/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_1-4_3\\\"\\n"
+  "default_animation: \\\"test2_red-3\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"

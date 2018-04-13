@@ -1,6 +1,9 @@
 images {
   image: "/gui/gui_images/flatDark25.png"
 }
+images {
+  image: "/level/images/pause.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

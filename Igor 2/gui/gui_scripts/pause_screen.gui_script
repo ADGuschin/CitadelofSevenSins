@@ -17,7 +17,7 @@ function init(self)
 							gui.set_enabled(node, false)
 
 							msg.post(".", "release_input_focus")
-							msg.post("/score_hud", "resume") 
+							msg.post("/score_hud", "resume")
 						end
 					},
 					{

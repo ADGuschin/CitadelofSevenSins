@@ -11,9 +11,6 @@ images {
   image: "/level/images/background_1-4_4.png"
 }
 images {
-  image: "/level/images/test2_red-1.png"
-}
-images {
   image: "/level/images/test2_red-2.png"
 }
 images {
@@ -21,6 +18,9 @@ images {
 }
 images {
   image: "/level/images/test2_red-4.png"
+}
+images {
+  image: "/level/images/test2_red1.png"
 }
 margin: 0
 extrude_borders: 0

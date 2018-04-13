@@ -31,7 +31,7 @@ function checkSwipeDirection(self)
 			if beginX > endX then
 				totalSwipeDistanceLeft = beginX - endX
 				if totalSwipeDistanceLeft > self.minSwipeDistance then
-					print("Swiped Left")
+					--action_id = hash("Swiped Left")
 				end
 			else
 				totalSwipeDistanceRight = endX - beginX
@@ -43,12 +43,12 @@ function checkSwipeDirection(self)
 			if beginY > endY then
 				totalSwipeDistanceUp = beginY - endY
 				if totalSwipeDistanceUp > self.minSwipeDistance then
-					print("Swiped Down")
+					action_id = "jump" --print("Swiped Down")
 				end
 			else
 				totalSwipeDistanceDown = endY - beginY
 				if totalSwipeDistanceDown > self.minSwipeDistance then
-					print("Swiped Up")
+					action_id = "slide"--print("Swiped Up")
 				end
 			end
 		end

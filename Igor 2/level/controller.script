@@ -2,6 +2,7 @@
 local grid = 600
 local platform_height = 48
 local default_speed = 360
+local score = 0
 acceleration = 20;
 
 function init(self)
@@ -37,7 +38,8 @@ function update(self, dt)
             table.insert(self.spawns, p) 
         end
     end
-    msg.post("/score#score", "score")
+    score = score + 1
+    msg.post("/score#score", "score", {value = score})
     for i,p in ipairs(self.spawns) do
         msg.post(p,"set_speed",{speed = self.speed })
     end

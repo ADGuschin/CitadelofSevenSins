@@ -16,7 +16,8 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("score") then
 		local node = gui.get_node("score_box")
-		node.Score_num = 1
+		gui.set_text(gui.get_node("Score_num"), message.value)
+		--gui.set_Score_num(node, 1)
 	end
 end
 

@@ -1,4 +1,4 @@
-script: ""
+script: "/gui/gui_scripts/score.gui_script"
 fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"

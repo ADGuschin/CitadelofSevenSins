@@ -1,6 +1,6 @@
 [project]
 title = Igor 2
-version = 0.8
+version = 0.9
 
 [bootstrap]
 main_collection = /start_scene/start_scene.collectionc

@@ -24,7 +24,7 @@ function init(self)
 						action = function () 
 							local node = gui.get_node("background")
 							gui.set_enabled(node, false)
-							msg.post("start_scene:/collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
+							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
 						end
 					}
 				}

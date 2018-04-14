@@ -11,6 +11,7 @@ function init(self)
     --msg.post("/controller#script", "set_speed", { speed = self.speed })
     self.gridw = 0
     self.spawns = {}
+    self.paused = false
     --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
     --table.insert(self.spawns, p)
     msg.post("#", "spawnhero")
@@ -39,7 +40,9 @@ function update(self, dt)
             table.insert(self.spawns, p) 
         end
     end
-    score = score + self.speed / 10000
+    if self.paused == false then
+        score = score + self.speed / 10000
+    end
     msg.post("/score#score", "score", {value = math.ceil(score)})
     for i,p in ipairs(self.spawns) do
         msg.post(p,"set_speed",{speed = self.speed })
@@ -73,6 +76,8 @@ function on_message(self, message_id, message, sender)
         end
     elseif message_id == hash("reset_speed") then
         self.speed = default_speed
+    elseif message_id == hash("paused") then
+        self.paused = message.value
     end
 end
 

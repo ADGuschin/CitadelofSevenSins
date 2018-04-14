@@ -15,7 +15,6 @@ function init(self)
 						action = function () 
 							local node = gui.get_node("background")
 							gui.set_enabled(node, false)
-
 							msg.post(".", "release_input_focus")
 							msg.post("/hud", "resume")
 						end
@@ -25,7 +24,6 @@ function init(self)
 						action = function () 
 							local node = gui.get_node("background")
 							gui.set_enabled(node, false)
-
 							msg.post("start_scene:/collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
 						end
 					}

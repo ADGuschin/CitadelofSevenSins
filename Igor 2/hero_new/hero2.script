@@ -360,7 +360,7 @@ function on_input(self, action_id, action)
 			bDoingTouch = false
 		end
 	end
-	if action_id == hash("jump") --[[or action_id == hash("touch")]] then
+	if action_id == hash("jump") or action_id == hash("touch") then
 		if action.pressed then
 			if current_slide_moment ~= 0 then
 				break_slide(self)--на всякий пожарный

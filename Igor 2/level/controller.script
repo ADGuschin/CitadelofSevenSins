@@ -14,6 +14,7 @@ function init(self)
     --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
     --table.insert(self.spawns, p)
     msg.post("#", "spawnhero")
+    print(msg.url())
 end
 
 function update(self, dt)
@@ -50,6 +51,8 @@ function on_message(self, message_id, message, sender)
         local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
         table.insert(self.spawns, p)
         score = 0 
+    elseif message_id == hash("jump") then
+        msg.post(p,"jump")
     elseif message_id == hash("reset") then 
         -- Tell the hero to reset.
         self.speed = default_speed

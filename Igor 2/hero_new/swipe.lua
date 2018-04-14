@@ -43,7 +43,7 @@ function checkSwipeDirection(self)
 			if beginY > endY then
 				totalSwipeDistanceUp = beginY - endY
 				if totalSwipeDistanceUp > self.minSwipeDistance then
-					action_id = "jump" --print("Swiped Down")
+					msg.post("level:/controller#script", "jump")
 				end
 			else
 				totalSwipeDistanceDown = endY - beginY

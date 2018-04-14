@@ -3,6 +3,7 @@ local grid = 600
 local platform_height = 48
 local default_speed = 360
 local score = 0
+local pause_state = false
 acceleration = 20;
 
 function init(self)
@@ -11,7 +12,6 @@ function init(self)
     --msg.post("/controller#script", "set_speed", { speed = self.speed })
     self.gridw = 0
     self.spawns = {}
-    self.paused = false
     --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
     --table.insert(self.spawns, p)
     msg.post("#", "spawnhero")
@@ -40,10 +40,10 @@ function update(self, dt)
             table.insert(self.spawns, p) 
         end
     end
-    if self.paused == false then
+    if pause_state == false then
         score = score + self.speed / 10000
+        msg.post("/score#score", "score", {value = math.ceil(score)})
     end
-    msg.post("/score#score", "score", {value = math.ceil(score)})
     for i,p in ipairs(self.spawns) do
         msg.post(p,"set_speed",{speed = self.speed })
     end
@@ -60,7 +60,6 @@ function on_message(self, message_id, message, sender)
         -- Tell the hero to reset.
         self.speed = default_speed
         msg.post(sender, "reset")
-        --print(sender)
         msg.post("background3/controller#script", "reset")
         -- Delete all platforms
         for i,p in ipairs(self.spawns) do
@@ -76,8 +75,8 @@ function on_message(self, message_id, message, sender)
         end
     elseif message_id == hash("reset_speed") then
         self.speed = default_speed
-    elseif message_id == hash("paused") then
-        self.paused = message.value
+    elseif message_id == hash("pause_state") then
+        pause_state = message.value
     end
 end
 

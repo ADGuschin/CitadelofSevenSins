@@ -99,7 +99,6 @@ end
 local function go_invincible(self)
 	invincible = true
 	print("going invincible")
-	print(msg.url())
 	invincibility = 0
 end
 

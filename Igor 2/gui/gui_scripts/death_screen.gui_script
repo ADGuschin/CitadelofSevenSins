@@ -18,7 +18,7 @@ function init(self)
 
 				msg.post("/hud", "death_pause", {value = false})
 				msg.post(".", "release_input_focus")
-				msg.post("start_scene:/collection_proxy_controller", "load", {proxy = "#main_proxy"})
+				msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
 			end
 		},
 		{
@@ -27,7 +27,7 @@ function init(self)
 				local node = gui.get_node("background")
 				gui.set_enabled(node, false)
 
-				msg.post("start_scene:/collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
+				msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
 			end
 		}
 	}

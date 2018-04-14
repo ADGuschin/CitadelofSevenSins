@@ -1,11 +1,18 @@
+local save_file = sys.get_save_file("my_game", "gamedata")
+
+local shared_data = {
+	player = {
+		highscore = 0,
+		score = 0
+	}
+}
+
 function init(self)
-	-- Add initialization code here
-	-- Remove this function if not needed
+	load_gamedata()
 end
 
 function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
+	save_gamedata()
 end
 
 function update(self, dt)
@@ -15,7 +22,15 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("score") then
-		gui.set_text(gui.get_node("Score_num"), message.value)
+		local score = message.value
+		gui.set_text(gui.get_node("score_num"), score)
+		gui.set_text(gui.get_node("highscore_num"), shared_data.player.highscore)
+		
+		shared_data.player.score = score
+		if score > shared_data.player.highscore then
+			shared_data.player.highscore = score
+			--print(shared_data.player.highscore)
+		end
 	end
 end
 
@@ -27,4 +42,26 @@ end
 function on_reload(self)
 	-- Add input-handling code here
 	-- Remove this function if not needed
+end
+
+---------------------------------------------------
+
+function save_gamedata(self)
+	-- Save gamedata
+	if not sys.save(save_file, shared_data) then
+		print("Gamedata isn't saved")
+	end
+end
+
+function load_gamedata(self)
+	--	Load gamedata
+	local gamedata = sys.load(save_file)
+
+	if next(gamedata) then
+		print(gamedata)
+		shared_data.player.highscore = gamedata.player.highscore
+	else
+		print("Gamedata is empty")
+		sys.save(save_file, shared_data)
+	end
 end

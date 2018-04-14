@@ -20,7 +20,7 @@ function init(self)
 					},
 				}
 				
-	--init_ui(self)
+	init_ui(self)
 end
 
 function on_input(self, action_id, action)

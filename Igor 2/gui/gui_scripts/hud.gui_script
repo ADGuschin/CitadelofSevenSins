@@ -5,8 +5,6 @@ local pause_state = false
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	msg.post("#level_proxy", "load")
-	
-	self.paused = false
 	--
 	self.hovered_node = nil
 	self.picked_node = nil

@@ -16,6 +16,67 @@ local rolling_over = false
 local pause = false
 local impact_soft = false
 local lock_character = false
+
+local beginX
+local beginY
+local endX
+local endY
+
+local startTime
+
+local xDistance
+local yDistance
+
+go.property("minSwipeDistance", 50)
+go.property("minSwipeTime", 0.4)
+
+local bDoingTouch
+local totalSwipeDistanceLeft
+local totalSwipeDistanceRight
+local totalSwipeDistanceUp
+local totalSwipeDistanceDown
+
+local touch
+
+function checkSwipeDirection(self)
+	if bDoingTouch == true then
+		xDistance =  math.abs(endX - beginX) -- math.abs will return the absolute, or non-negative value, of a given value.
+		yDistance =  math.abs(endY - beginY)
+		if xDistance > yDistance then
+			if beginX > endX then
+				totalSwipeDistanceLeft = beginX - endX
+				if totalSwipeDistanceLeft > self.minSwipeDistance then
+					--action_id = hash("Swiped Left")
+				end
+			else
+				totalSwipeDistanceRight = endX - beginX
+				if totalSwipeDistanceRight > self.minSwipeDistance then
+					print("Swiped Right")
+				end
+			end
+		else
+			if beginY > endY then
+				totalSwipeDistanceUp = beginY - endY
+				if totalSwipeDistanceUp > self.minSwipeDistance then
+					if action.pressed then
+						if current_slide_moment ~= 0 then
+							break_slide(self)--на всякий пожарный
+						end
+						jump(self)
+					elseif action.released then
+						abort_jump(self)
+					end
+				end
+			else
+				totalSwipeDistanceDown = endY - beginY
+				if totalSwipeDistanceDown > self.minSwipeDistance then
+					action_id = "slide"--print("Swiped Up")
+				end
+			end
+		end
+	end
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.position = go.get_position()
@@ -273,7 +334,24 @@ end
 
 
 function on_input(self, action_id, action)
-	if action_id == hash("jump") or action_id == hash("touch") then
+	if action_id == hash("touch") then
+		touch = action.touch[1]
+		if touch.pressed then
+			bDoingTouch = true
+			beginX = touch.x
+			beginY = touch.y
+			startTime = socket.gettime()
+		end
+		if touch.released  then
+			endX = touch.x
+			endY = touch.y
+			if socket.gettime() - startTime < self.minSwipeTime then
+				checkSwipeDirection(self);
+			end
+			bDoingTouch = false
+		end
+	end
+	if action_id == hash("jump") --[[or action_id == hash("touch")]] then
 		if action.pressed then
 			if current_slide_moment ~= 0 then
 				break_slide(self)--на всякий пожарный

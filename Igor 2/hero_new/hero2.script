@@ -70,7 +70,11 @@ function checkSwipeDirection(self)
 			else
 				totalSwipeDistanceDown = endY - beginY
 				if totalSwipeDistanceDown > self.minSwipeDistance then
-					action_id = "slide"--print("Swiped Up")
+					if self.ground_contact then
+						slide(self)
+					else 
+						jump_break(self)
+					end
 				end
 			end
 		end

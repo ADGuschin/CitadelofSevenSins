@@ -11,16 +11,19 @@ images {
   image: "/level/images/background_1-4_4.png"
 }
 images {
-  image: "/level/images/test2_red-2.png"
-}
-images {
-  image: "/level/images/test2_red-3.png"
-}
-images {
-  image: "/level/images/test2_red-4.png"
-}
-images {
   image: "/level/images/test2_red1.png"
+}
+images {
+  image: "/level/images/test2_red2.png"
+}
+images {
+  image: "/level/images/test2_red3.png"
+}
+images {
+  image: "/level/images/test2_red4.png"
+}
+images {
+  image: "/level/images/cotinue_background.png"
 }
 margin: 0
 extrude_borders: 0

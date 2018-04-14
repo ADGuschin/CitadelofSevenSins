@@ -111,13 +111,13 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/level/level.atlas\"\n"
-  "default_animation: \"KAROBBKA\"\n"
+  "default_animation: \"kalesa\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
     x: 0.0
-    y: 8.0
+    y: 20.0
     z: 0.0
   }
   rotation {

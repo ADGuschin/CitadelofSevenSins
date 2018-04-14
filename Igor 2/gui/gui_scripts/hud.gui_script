@@ -11,7 +11,7 @@ function init(self)
 	self.nodes = {
 					{
 						node = gui.get_node("pause_button"),
-						action = function () msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}) end
+						action = function () msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}); msg.post("level:/controller#script", "pause") end
 					},
 					{
 						node = gui.get_node("slide_button"),

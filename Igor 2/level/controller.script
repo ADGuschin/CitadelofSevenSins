@@ -37,6 +37,7 @@ function update(self, dt)
             table.insert(self.spawns, p) 
         end
     end
+    msg.post("/score#score", "score")
     for i,p in ipairs(self.spawns) do
         msg.post(p,"set_speed",{speed = self.speed })
     end

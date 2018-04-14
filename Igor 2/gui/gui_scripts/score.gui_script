@@ -1,4 +1,4 @@
-local save_file = sys.get_save_file("my_game", "gamedata")
+local save_file = sys.get_save_file("Igor2", "gamedata")
 
 local shared_data = {
 	player = {

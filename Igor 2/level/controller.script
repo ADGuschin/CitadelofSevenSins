@@ -37,17 +37,20 @@ function update(self, dt)
         local allowed_obstacles = obstacle_table[previous_obstacle]
         local random = math.random(table_length(self, allowed_obstacles))
         previous_obstacle = allowed_obstacles[random]
-        local p = factory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 5)
-        msg.post(p, "set_speed", { speed = self.speed })
-        table.insert(self.spawns, p) 
+        local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 5)
+       --[[ for x in pairs(p) do
+            print(x)
+            msg.post(x, "set_speed", { speed = self.speed })
+            table.insert(self.spawns, x) 
+        end]]
     end
     if pause_state == false then
         score = score + self.speed / 10000
         msg.post("/score#score", "score", {value = math.ceil(score)})
     end
-    for i,p in ipairs(self.spawns) do
+    --[[for i,p in ipairs(self.spawns) do
         msg.post(p,"set_speed",{speed = self.speed })
-    end
+    end]]
 end
 
 function on_message(self, message_id, message, sender)
@@ -78,6 +81,8 @@ function on_message(self, message_id, message, sender)
         self.speed = default_speed
     elseif message_id == hash("pause_state") then
         pause_state = message.value
+    elseif message_id == hash("speed_request") then
+        msg.post(sender, "set_speed", { speed = self.speed })
     end
 end
 

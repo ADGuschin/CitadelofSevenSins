@@ -1,14 +1,15 @@
-function init(self)
+    function init(self)
     self.speed = 900
 end
 
 function update(self, dt)
     local pos = go.get_position()
     if pos.x < -500 then
-       msg.post("controller#script", "delete_spawn", { id = go.get_id() })
+       msg.post("level:/controller#script", "delete_spawn", { id = go.get_id() })
     end
     pos.x = pos.x - self.speed * dt
     go.set_position(pos)
+    msg.post("level:/controller#script", "speed_request")
 end
 
 function on_message(self, message_id, message, sender)

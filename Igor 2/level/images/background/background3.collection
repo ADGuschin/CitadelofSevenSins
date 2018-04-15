@@ -22,6 +22,7 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
+<<<<<<< HEAD
   "embedded_components {\n"
   "  id: \"sprite1\"\n"
   "  type: \"sprite\"\n"
@@ -42,6 +43,8 @@ embedded_instances {
   "    w: 1.0\n"
   "  }\n"
   "}\n"
+=======
+>>>>>>> cf05751f11253d95ef2c0001a330b2d6c48cf325
   ""
   position {
     x: 0.0

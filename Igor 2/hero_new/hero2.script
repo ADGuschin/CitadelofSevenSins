@@ -16,7 +16,7 @@ local rolling_over = false
 local pause = false
 local impact_soft = false
 local lock_character = false
-local is_auto_restart = false
+--local is_auto_restart = false
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -204,8 +204,8 @@ local function handle_geometry_contact(self, normal, distance)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("is_auto_restart") then
-		is_auto_restart = message.value end
+	--if message_id == hash("is_auto_restart") then
+		--is_auto_restart = message.value end
 	if message_id == hash("jump") then
 		if action.pressed then
 			if current_slide_moment ~= 0 then
@@ -229,10 +229,11 @@ function on_message(self, message_id, message, sender)
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
 			if isFirstTimeRun == false then
-				--if isAutoRestart == true then
-					--msg.post("controller#script", "reset")
+				if is_auto_restart == true then
+					msg.post("controller#script", "reset")
+				else
 					msg.post("default:/death_screen#death_screen", "death") 
-				--end
+				end
 			end
 			isFirstTimeRun = false
 		elseif message.group == hash("still_slide") then

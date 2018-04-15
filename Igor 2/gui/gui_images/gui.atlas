@@ -4,6 +4,12 @@ images {
 images {
   image: "/level/images/pause.png"
 }
+images {
+  image: "/gui/gui_images/1600.png"
+}
+images {
+  image: "/gui/gui_images/Volume_up_font_awesome.svg.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

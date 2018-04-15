@@ -9,11 +9,22 @@ function init(self)
 	self.hovered_node = nil
 	self.picked_node = nil
 	
+	gui.set_enabled(gui.get_node("soundon_button"), false);
+	msg.post("start_scene:/sound#sound", "sound_on")
+	
 	self.nodes = {
 					{
 						node = gui.get_node("pause_button"),
 						action = function () pause_state = true; msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}); msg.post("level:/controller#script", "pause_state", {value = true}) end
 					},
+					{
+						node = gui.get_node("soundoff_button"),
+						action = function () msg.post("start_scene:/sound#sound", "sound_off"); gui.set_enabled(gui.get_node("soundoff_button"), false); gui.set_enabled(gui.get_node("soundon_button"), true) end
+					},
+					--[[{
+						node = gui.get_node("soundon_button"),
+						action = function () --[[msg.post("level:/sound#sound", "sound_on"); gui.set_enabled(gui.get_node("soundon_button"), false); gui.set_enabled(gui.get_node("soundoff_button"), true) end
+					},]]
 					--[[{
 						node = gui.get_node("slide_button"),
 						action = function ()  msg.post("level:/controller#script", "slide") end

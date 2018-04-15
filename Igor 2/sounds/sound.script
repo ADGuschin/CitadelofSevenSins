@@ -1,5 +1,7 @@
+local sound = true
+
 function init(self)
-	msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
+	print(msg.url())
 end
 
 function final(self)
@@ -13,8 +15,13 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Remove this function if not needed
+	if message_id == hash("sound_off") then 
+		msg.post("sound", "stop_sound", {delay = 0, gain = 0.5})
+		sound = false
+	elseif message_id == hash("sound_on") and sound then 
+		msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
+		--sound = true
+	end
 end
 
 function on_input(self, action_id, action)

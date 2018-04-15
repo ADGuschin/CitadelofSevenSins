@@ -1,9 +1,10 @@
-name: "level"
+name: "default"
 instances {
-  id: "shadow"
-  prototype: "/shadow/shadow.go"
+  id: "score"
+  prototype: "/gui/gui_gameobjects/score.go"
+  children: "sound"
   position {
-    x: -180.0
+    x: 0.0
     y: 0.0
     z: 0.0
   }
@@ -40,8 +41,28 @@ instances {
   }
 }
 instances {
-  id: "score"
-  prototype: "/gui/gui_gameobjects/score.go"
+  id: "shadow"
+  prototype: "/shadow/shadow.go"
+  position {
+    x: -180.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "sound"
+  prototype: "/sounds/sound.go"
   position {
     x: 0.0
     y: 0.0
@@ -60,12 +81,12 @@ instances {
   }
 }
 collection_instances {
-  id: "ground"
-  collection: "/level/ground.collection"
+  id: "background3"
+  collection: "/level/images/background/background3.collection"
   position {
-    x: 0.0
-    y: 50.0
-    z: 0.0
+    x: 1186.0
+    y: 255.0
+    z: -1.0
   }
   rotation {
     x: 0.0
@@ -74,8 +95,8 @@ collection_instances {
     w: 1.0
   }
   scale3 {
-    x: 1.0
-    y: 1.0
+    x: 5.0
+    y: 5.0
     z: 1.0
   }
 }
@@ -100,6 +121,26 @@ collection_instances {
   }
 }
 collection_instances {
+  id: "ground"
+  collection: "/level/ground.collection"
+  position {
+    x: 0.0
+    y: 50.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+collection_instances {
   id: "background2"
   collection: "/level/images/background/background2.collection"
   position {
@@ -119,32 +160,30 @@ collection_instances {
     z: 1.0
   }
 }
-collection_instances {
-  id: "background3"
-  collection: "/level/images/background/background3.collection"
-  position {
-    x: 1186.0
-    y: 255.0
-    z: -1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 5.0
-    y: 5.0
-    z: 1.0
-  }
-}
 scale_along_z: 0
 embedded_instances {
   id: "controller"
   data: "components {\n"
   "  id: \"script\"\n"
   "  component: \"/level/controller.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"collectionfactory\"\n"
+  "  type: \"collectionfactory\"\n"
+  "  data: \"prototype: \\\"/level/obstacles/obstacle_collection1.collection\\\"\\n"
+  "load_dynamically: false\\n"
+  "\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"
@@ -215,24 +254,6 @@ embedded_instances {
   "  id: \"obstacle_top\"\n"
   "  type: \"factory\"\n"
   "  data: \"prototype: \\\"/level/obstacles/obstacle_top.go\\\"\\n"
-  "load_dynamically: false\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  "embedded_components {\n"
-  "  id: \"collectionfactory\"\n"
-  "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"/level/obstacles/obstacle_collection1.collection\\\"\\n"
   "load_dynamically: false\\n"
   "\"\n"
   "  position {\n"

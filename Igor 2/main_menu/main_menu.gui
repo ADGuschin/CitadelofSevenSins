@@ -303,8 +303,8 @@ nodes {
 }
 nodes {
   position {
-    x: 1178.0
-    y: 32.0
+    x: 1100.0
+    y: 70.0
     z: 0.0
     w: 1.0
   }
@@ -357,7 +357,7 @@ nodes {
 }
 nodes {
   position {
-    x: -23.0
+    x: -30.0
     y: 0.0
     z: 0.0
     w: 1.0
@@ -388,7 +388,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Auto restart: "
+  text: "Autorestart: "
   font: "main_menu_font"
   id: "auto_restart_text"
   xanchor: XANCHOR_NONE
@@ -420,7 +420,7 @@ nodes {
 }
 nodes {
   position {
-    x: 122.0
+    x: 115.0
     y: 0.0
     z: 0.0
     w: 1.0

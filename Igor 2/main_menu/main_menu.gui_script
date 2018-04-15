@@ -11,16 +11,11 @@ function init(self)
 	--anim1(gui.get_node("background"), d)
     self.nodes = {
 					{
-						--node = gui.get_node("start_button"),
-						node = gui.get_node("freerun_button"),
+						node = gui.get_node("start_button"),
 						action = function () msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"}) end
 					},
 					{
-						node = gui.get_node("story_button"),
-						action = function () pprint("KEK") end 
-					},
-					{
-						node = gui.get_node("quit_button"),
+						node = gui.get_node("exit_button"),
 						action = function () msg.post("@system:", "exit", {code = 0}) end 
 					},
 				}

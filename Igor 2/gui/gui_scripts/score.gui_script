@@ -58,7 +58,7 @@ function load_gamedata(self)
 	local gamedata = sys.load(save_file)
 
 	if next(gamedata) then
-		pprint(gamedata)
+		print(gamedata)
 		shared_data.player.highscore = gamedata.player.highscore
 	else
 		print("Gamedata is empty")

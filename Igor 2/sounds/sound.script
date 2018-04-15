@@ -1,7 +1,7 @@
-local sound = true
+sound_off = false
 
 function init(self)
-	print(msg.url())
+	--print(msg.url())
 end
 
 function final(self)
@@ -15,12 +15,16 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("sound_off") then 
+	if message_id == hash("sound_off") and sound then 
 		msg.post("sound", "stop_sound", {delay = 0, gain = 0.5})
-		sound = false
-	elseif message_id == hash("sound_on") and sound then 
+	elseif message_id == hash("sound_on") then 
 		msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
-		--sound = true
+	elseif message_id == hash("soundoff_but") then 
+		msg.post("sound", "stop_sound", {delay = 0, gain = 0.5})
+		sound_off = true
+	elseif message_id == hash("soundon_but") then 
+		msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
+		sound_off = false
 	end
 end
 

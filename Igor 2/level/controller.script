@@ -1,12 +1,23 @@
+require "level.obstacle_table"
 -- controller.script
 local grid = 600
 local platform_height = 48
 local default_speed = 360
 local score = 0
 local pause_state = false
+<<<<<<< HEAD
 local is_auto_restart = false
 
+=======
+local previous_obstacle
+>>>>>>> b33399db8ee3c17b699ef226fea0e3e3f2a0f049
 acceleration = 20;
+
+function table_length(self, table)
+    local count = 0
+    for x in pairs(table) do count = count + 1 end
+    return count
+end
 
 function init(self)
     self.speed = default_speed
@@ -14,10 +25,12 @@ function init(self)
     --msg.post("/controller#script", "set_speed", { speed = self.speed })
     self.gridw = 0
     self.spawns = {}
+    previous_obstacle = obstacle_table["init"][math.random(table_length(self, obstacle_table["init"]))]
     --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
     --table.insert(self.spawns, p)
     msg.post("#", "spawnhero")
 end
+
 
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
@@ -25,29 +38,24 @@ function update(self, dt)
     update_speed(self)
     if self.gridw >= grid then
         self.gridw = 0
-        -- Maybe spawn a platform at random height
-        if math.random() > 0.2 then
-            local h = platform_height
-            --Сделать
-            local f = "#obstacle_small"
-            if math.random() > 0.7 then
-                f = "#obstacle_tall"
-            elseif math.random() < 0.3 then
-                f = "#obstacle_top"
-            end
-            --Сделать для фэктори
-            local p = factory.create(f, vmath.vector3(1600, h, 0), nil, {}, 5)
-            msg.post(p, "set_speed", { speed = self.speed })
-            table.insert(self.spawns, p) 
-        end
+        local h = platform_height
+        local allowed_obstacles = obstacle_table[previous_obstacle]
+        local random = math.random(table_length(self, allowed_obstacles))
+        previous_obstacle = allowed_obstacles[random]
+        local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 5)
+       --[[ for x in pairs(p) do
+            print(x)
+            msg.post(x, "set_speed", { speed = self.speed })
+            table.insert(self.spawns, x) 
+        end]]
     end
     if pause_state == false then
         score = score + self.speed / 10000
         msg.post("/score#score", "score", {value = math.ceil(score)})
     end
-    for i,p in ipairs(self.spawns) do
+    --[[for i,p in ipairs(self.spawns) do
         msg.post(p,"set_speed",{speed = self.speed })
-    end
+    end]]
 end
 
 function on_message(self, message_id, message, sender)
@@ -78,9 +86,14 @@ function on_message(self, message_id, message, sender)
         self.speed = default_speed
     elseif message_id == hash("pause_state") then
         pause_state = message.value
+<<<<<<< HEAD
     elseif message_id == hash("is_auto_restart") then
         is_auto_restart = message.value
         msg.post(p, "is_auto_restart", is_auto_restart)
+=======
+    elseif message_id == hash("speed_request") then
+        msg.post(sender, "set_speed", { speed = self.speed })
+>>>>>>> b33399db8ee3c17b699ef226fea0e3e3f2a0f049
     end
 end
 

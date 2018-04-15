@@ -41,7 +41,7 @@ embedded_components {
   "    count: 3\n"
   "  }\n"
   "  data: 12.0\n"
-  "  data: 24.0\n"
+  "  data: 23.0\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"
@@ -137,7 +137,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 36.0
+    y: 35.0
     z: 0.0
   }
   rotation {

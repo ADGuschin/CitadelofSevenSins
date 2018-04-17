@@ -22,7 +22,7 @@ instances {
 }
 instances {
   id: "Background"
-  prototype: "/level/images/background/Background.go"
+  prototype: "/level/background/Background.go"
   position {
     x: 960.0
     y: 362.0
@@ -82,7 +82,7 @@ instances {
 }
 collection_instances {
   id: "background3"
-  collection: "/level/images/background/background3.collection"
+  collection: "/level/background/background3.collection"
   position {
     x: 1186.0
     y: 255.0
@@ -102,7 +102,7 @@ collection_instances {
 }
 collection_instances {
   id: "background1"
-  collection: "/level/images/background/background1.collection"
+  collection: "/level/background/background1.collection"
   position {
     x: 962.0
     y: 423.0
@@ -142,7 +142,7 @@ collection_instances {
 }
 collection_instances {
   id: "background2"
-  collection: "/level/images/background/background2.collection"
+  collection: "/level/background/background2.collection"
   position {
     x: 964.0
     y: 364.0

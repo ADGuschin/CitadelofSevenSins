@@ -24,31 +24,37 @@ local totalSwipeDistanceDown
 local touch
 
 function checkSwipeDirection(self)
+	print("hui")
 	if bDoingTouch == true then
 		xDistance =  math.abs(endX - beginX) -- math.abs will return the absolute, or non-negative value, of a given value.
+		print("xd"..xDistance)
 		yDistance =  math.abs(endY - beginY)
+		print("yd"..yDistance)
 		if xDistance > yDistance then
 			if beginX > endX then
 				totalSwipeDistanceLeft = beginX - endX
 				if totalSwipeDistanceLeft > self.minSwipeDistance then
-					--action_id = hash("Swiped Left")
+					print("Swiped Left")
+					action_id = hash("Swiped Left")
 				end
 			else
 				totalSwipeDistanceRight = endX - beginX
 				if totalSwipeDistanceRight > self.minSwipeDistance then
 					print("Swiped Right")
+					print(self)
 				end
 			end
 		else
 			if beginY > endY then
 				totalSwipeDistanceUp = beginY - endY
 				if totalSwipeDistanceUp > self.minSwipeDistance then
-					msg.post("level:/controller#script", "jump")
+					print("Swiped Down")
 				end
 			else
 				totalSwipeDistanceDown = endY - beginY
 				if totalSwipeDistanceDown > self.minSwipeDistance then
-					action_id = "slide"--print("Swiped Up")
+					action_id = "slide"
+					print("Swiped Up")
 				end
 			end
 		end
@@ -56,25 +62,27 @@ function checkSwipeDirection(self)
 end
 
 function init(self)
+	--msg.post(self.url, "release_input_focus")
 	msg.post(".", "acquire_input_focus")
 end
 
 function final(self)
 	msg.post(".", "release_input_focus")
+	--msg.post(self.url, "acquire_input_focus")
 end
 
-function on_input(self, action_id, action)
-	if action_id == hash("touch") then
-		touch = action.touch[1]
-		if touch.pressed then
+function swipe_on_input(self, action_id, action)
+	if action_id == hash("click") then
+		--touch = action.click
+		if action.pressed then
 			bDoingTouch = true
-			beginX = touch.x
-			beginY = touch.y
+			beginX = action.x
+			beginY = action.y
 			startTime = socket.gettime()
 		end
-		if touch.released  then
-			endX = touch.x
-			endY = touch.y
+		if action.released  then
+			endX = action.x
+			endY = action.y
 			if socket.gettime() - startTime < self.minSwipeTime then
 				checkSwipeDirection(self);
 			end

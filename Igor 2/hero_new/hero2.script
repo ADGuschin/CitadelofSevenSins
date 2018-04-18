@@ -125,12 +125,12 @@ end
 
 function update(self, dt)
 	check_for_pause(self)
-	
+	if not paused then
 	--local gravity = vmath.vector3(0, gravity, 0)
 	
-	local hero_position = go.get_position()
+		local hero_position = go.get_position()
 
-	if not paused then
+		
 		impact_speed.x = impact_speed.x + acceleration * dt
 		impact_speed.y = impact_speed.y + acceleration * dt
 		if impact_speed.x > max_impact_speed then
@@ -138,60 +138,58 @@ function update(self, dt)
 		elseif impact_speed.x < min_impact_speed then
 			impact_speed.x = min_impact_speed
 		end
-	end
-	if not self.ground_contact and not paused then
-		self.velocity.y = self.velocity.y + gravity
-	end
-	
-	if self.velocity.y ~= 0  then
-		if  current_slide_moment ~= 0 then
-			break_slide(self)
+		if not self.ground_contact then
+			self.velocity.y = self.velocity.y + gravity
 		end
-		if rolling_over then
-			break_roll(self)
+		
+		if self.velocity.y ~= 0  then
+			if  current_slide_moment ~= 0 then
+				break_slide(self)
+			end
+			if rolling_over then
+				break_roll(self)
+			end
 		end
-	end
 
-	if self.velocity.x < 0 then
-		self.velocity.x = self.velocity.x + 65
-	elseif pushed then
-		pushed = false
-		msg.post("#rolling_over_state", "disable")
-		msg.post("#sliding_state", "disable")
-		msg.post("#running_state", "enable")
-		go_invincible(self)
-	end
-	
-	if hero_position.x < 360  then
-		if not pushed then
-			self.velocity.x = catch_up_speed
+		if self.velocity.x < 0 then
+			self.velocity.x = self.velocity.x + 65
+		elseif pushed then
+			pushed = false
+			msg.post("#rolling_over_state", "disable")
+			msg.post("#sliding_state", "disable")
+			msg.post("#running_state", "enable")
+			go_invincible(self)
 		end
-	else
-		self.velocity.x = 0	
-	end
-
-	check_inv(self)
-	
-	slide_cooldown_tick(self)
-	
-	if current_slide_moment > 0 then
-		current_slide_moment = current_slide_moment + 1
-		slide_cooldown = 0
-		if current_slide_moment == slide_time then
-			break_slide(self)
+		
+		if hero_position.x < 360  then
+			if not pushed then
+				self.velocity.x = catch_up_speed
+			end
+		else
+			self.velocity.x = 0	
 		end
-	end
-	
-	go.set_position(go.get_position() + self.velocity * dt)
 
-	if not paused then
+		check_inv(self)
+		
+		slide_cooldown_tick(self)
+		
+		if current_slide_moment > 0 then
+			current_slide_moment = current_slide_moment + 1
+			slide_cooldown = 0
+			if current_slide_moment == slide_time then
+				break_slide(self)
+			end
+		end
+		
+		go.set_position(go.get_position() + self.velocity * dt)
+
 		update_animation(self)
+		
+		self.correction = vmath.vector3()
+		self.ground_contact = false
+		self.platform_contact_from_below_last_frame = self.platform_contact_from_below
+		self.platform_contact_from_below = false
 	end
-	
-	self.correction = vmath.vector3()
-	self.ground_contact = false
-	self.platform_contact_from_below_last_frame = self.platform_contact_from_below
-	self.platform_contact_from_below = false
 end
 
 

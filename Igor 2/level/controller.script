@@ -85,7 +85,7 @@ function on_message(self, message_id, message, sender)
             end
         end
     elseif message_id == hash("reset_speed") then
-        self.speed = default_speed
+        self.speed = self.speed * 0.66
     elseif message_id == hash("pause_state") then
         pause_state = message.value
     --elseif message_id == hash("is_auto_restart") then

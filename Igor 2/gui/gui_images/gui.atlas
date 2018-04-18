@@ -10,21 +10,6 @@ images {
 images {
   image: "/gui/gui_images/Volume_up_font_awesome.svg.png"
 }
-images {
-  image: "/gui/gui_images/896px-Octicons-gear.svg.png"
-}
-images {
-  image: "/gui/gui_images/_avatar180.jpg"
-}
-images {
-  image: "/gui/gui_images/applications-system_1315.png"
-}
-images {
-  image: "/gui/gui_images/artage-io-thumb-2f676f7529aee1f0b883fef2d04ee477.png"
-}
-images {
-  image: "/gui/gui_images/automation-33ced5bdb14928a4-256x256.png"
-}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

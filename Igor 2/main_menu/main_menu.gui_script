@@ -24,10 +24,6 @@ function init(self)
 						node = gui.get_node("auto_restart"),
 						action = function () auto_restart() end
 					},
-					{
-						node = gui.get_node("settings_button"),
-						action = function () auto_restart() end
-					},
 				}
 				
 	init_ui(self)

@@ -231,8 +231,8 @@ function on_message(self, message_id, message, sender)
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
 			if isFirstTimeRun == false then
-				if is_auto_restart == true then
-					msg.post("controller#script", "reset")
+				if is_auto_restart then
+					msg.post("level:/controller#script", "reset")
 				else
 					msg.post("default:/death_screen#death_screen", "death") 
 				end

@@ -29,6 +29,7 @@ function init(self)
     --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
     --table.insert(self.spawns, p)
     msg.post("#", "spawnhero")
+    print(msg.url())
 end
 
 
@@ -43,6 +44,7 @@ function update(self, dt)
         local random = math.random(table_length(self, allowed_obstacles))
         previous_obstacle = allowed_obstacles[random]
         local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 5)
+        table.insert(self.spawns, p)
        --[[ for x in pairs(p) do
             print(x)
             msg.post(x, "set_speed", { speed = self.speed })

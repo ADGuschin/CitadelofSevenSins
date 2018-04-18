@@ -17,6 +17,7 @@ local pause = false
 local roll_allowed = false
 local lock_character = false
 local impact_speed = vmath.vector3(1250, 750,0)
+local max_impact_speed_x = 2500
 --local is_auto_restart = false
 go.property("minSwipeDistance", 50)
 go.property("minSwipeTime", 0.4)
@@ -128,7 +129,7 @@ function update(self, dt)
 	
 	local hero_position = go.get_position()
 
-	if not paused then
+	if not paused and (impact_speed.x < max_impact_speed_x) then
 		impact_speed.x = impact_speed.x + acceleration * dt
 		impact_speed.y = impact_speed.y + acceleration * dt
 	end
@@ -192,7 +193,7 @@ local function on_impact(self, impact_type)
 	if impact_type == "hard" then
 		play_animation(self, hash("hero_impact"))
 		msg.post("controller#script", "reset_speed")
-		self.velocity.y = impact_speed.y 
+		self.velocity.y = impact_speed.y
 		self.velocity.x = -impact_speed.x
 		pushed = true
 		impact_speed = impact_speed * 0.66

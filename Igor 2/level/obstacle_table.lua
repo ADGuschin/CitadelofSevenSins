@@ -6,5 +6,5 @@ obstacle_table = {
 	["init"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"},
 	["#obstacle_small"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"},
 	["#obstacle_tall"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"},
-	["#obstacle_top"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"}
-}    
+	["#obstacle_top"] = {"#obstacle_small", "#obstacle_tall"}
+}

@@ -10,10 +10,10 @@ function init(self)
 	self.picked_node = nil
 
 	if sound_off then
-		gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
-	else
-		msg.post("start_scene:/sound#sound", "sound_on");
 		gui.play_flipbook(gui.get_node("sound_button"), "1600")
+	else
+		msg.post("start_scene:/sound#sound", "sound_on")
+		gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
 	end
 	
 	
@@ -27,10 +27,10 @@ function init(self)
 						action = function ()
 							if sound_off then 
 								msg.post("start_scene:/sound#sound", "soundon_but")
-								gui.play_flipbook(gui.get_node("sound_button"), "1600")
+								gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
 							else
 								msg.post("start_scene:/sound#sound", "soundoff_but")
-								gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
+								gui.play_flipbook(gui.get_node("sound_button"), "1600")
 							end
 						end
 					}

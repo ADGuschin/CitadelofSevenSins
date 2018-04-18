@@ -17,6 +17,8 @@ local pause = false
 local roll_allowed = false
 local lock_character = false
 local impact_speed = vmath.vector3(1250, 750,0)
+local min_impact_speed = 1250
+local max_impact_speed = 2000
 --local is_auto_restart = false
 go.property("minSwipeDistance", 50)
 go.property("minSwipeTime", 0.4)
@@ -25,9 +27,9 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.position = go.get_position()
 	self.velocity = vmath.vector3(0,0,0)
-	msg.post("#running_state", "enable")
 	msg.post("#sliding_state", "disable")
 	msg.post("#rolling_over_state", "disable")
+	msg.post("#running_state", "enable")
 	self.platform_contact_from_below = false
 	self.platform_contact_from_below_last_frame = false
 end
@@ -131,6 +133,11 @@ function update(self, dt)
 	if not paused then
 		impact_speed.x = impact_speed.x + acceleration * dt
 		impact_speed.y = impact_speed.y + acceleration * dt
+		if impact_speed.x > max_impact_speed then
+			impact_speed.x = max_impact_speed
+		elseif impact_speed.x < min_impact_speed then
+			impact_speed.x = min_impact_speed
+		end
 	end
 	if not self.ground_contact and not paused then
 		self.velocity.y = self.velocity.y + gravity

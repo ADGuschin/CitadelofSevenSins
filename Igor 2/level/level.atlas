@@ -16,6 +16,9 @@ images {
 images {
   image: "/level/images/kalesa_32-32.png"
 }
+images {
+  image: "/level/images/train_home.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

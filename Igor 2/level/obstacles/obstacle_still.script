@@ -1,12 +1,18 @@
-    function init(self)
+require "level.utils"
+local p
+function init(self)
     self.speed = 900
+    msg.post("level:/controller#script", "id_request", {url = go.get_id()})
+    p = obstacle_var
 end
 
 function update(self, dt)
     local pos = go.get_position()
-    if pos.x < -500 then
-       msg.post("level:/controller#script", "delete_spawn", { id = go.get_id() })
+    if pos.x < -1000 then
+       obstacle_to_delete = p
+    msg.post("level:/controller#script", "delete_spawn", {id = p, url = go.get_id()})
     end
+    --print(msg.url())
     pos.x = pos.x - self.speed * dt
     go.set_position(pos)
     msg.post("level:/controller#script", "speed_request")
@@ -15,5 +21,8 @@ end
 function on_message(self, message_id, message, sender)
     if message_id == hash("set_speed") then
         self.speed = message.speed 
+    elseif message_id == hash("id_response") then
+        p = message.id
+        print(p)
     end
 end

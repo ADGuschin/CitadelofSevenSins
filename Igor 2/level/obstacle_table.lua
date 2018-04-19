@@ -3,8 +3,9 @@
 -- require "my_directory.my_file"
 -- in any script using the functions.
 obstacle_table = {
-	["init"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"},
-	["#obstacle_small"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"},
-	["#obstacle_tall"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"},
-	["#obstacle_top"] = {"#obstacle_small", "#obstacle_tall"}
+	["init"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top", "#train_home"},
+	["#obstacle_small"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top", "#train_home"},
+	["#obstacle_tall"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top", "#train_home"},
+	["#obstacle_top"] = {"#obstacle_small", "#obstacle_tall", "#train_home"},
+	["#train_home"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"}
 }

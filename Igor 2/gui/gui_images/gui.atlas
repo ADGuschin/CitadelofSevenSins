@@ -25,6 +25,9 @@ images {
 images {
   image: "/gui/gui_images/automation-33ced5bdb14928a4-256x256.png"
 }
+images {
+  image: "/gui/gui_images/close.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

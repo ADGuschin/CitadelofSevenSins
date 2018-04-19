@@ -6,7 +6,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka1\\\"\\n"
+  "default_animation: \\\"background_mysorka_novye_colors1\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -25,7 +25,7 @@ embedded_instances {
   ""
   position {
     x: 0.0
-    y: -20.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -46,7 +46,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka1\\\"\\n"
+  "default_animation: \\\"background_mysorka_novye_colors1\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -65,7 +65,7 @@ embedded_instances {
   ""
   position {
     x: 480.0
-    y: -20.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -86,7 +86,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka1\\\"\\n"
+  "default_animation: \\\"background_mysorka_novye_colors1\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -105,7 +105,7 @@ embedded_instances {
   ""
   position {
     x: 960.0
-    y: -20.0
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -126,7 +126,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka1\\\"\\n"
+  "default_animation: \\\"background_mysorka_novye_colors1\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -145,7 +145,7 @@ embedded_instances {
   ""
   position {
     x: 1440.0
-    y: -20.0
+    y: 0.0
     z: 0.0
   }
   rotation {

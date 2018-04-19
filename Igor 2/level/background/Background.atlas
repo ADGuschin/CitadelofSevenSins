@@ -31,6 +31,18 @@ images {
 images {
   image: "/level/images/background_mysorka2.png"
 }
+images {
+  image: "/level/images/background_mysorka_novye_colors1.png"
+}
+images {
+  image: "/level/images/background_mysorka_novye_colors2.png"
+}
+images {
+  image: "/level/images/background_mysorka_novye_colors3.png"
+}
+images {
+  image: "/level/images/background_mysorka_novye_colors4.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

@@ -8,4 +8,5 @@ obstacle_table = {
 	["#obstacle_tall"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top", "#train_home"},
 	["#obstacle_top"] = {"#obstacle_small", "#obstacle_tall", "#train_home"},
 	["#train_home"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"}
+	--["#coll_1"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top"}
 }

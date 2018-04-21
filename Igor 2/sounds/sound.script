@@ -30,7 +30,7 @@ function on_message(self, message_id, message, sender)
 		sound_off = true
 	elseif message_id == hash("soundon_but") then 
 		msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
-		sound_off = fals
+		sound_off = false
 	end
 end
 

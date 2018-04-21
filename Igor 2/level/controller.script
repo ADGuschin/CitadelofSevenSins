@@ -8,8 +8,6 @@ local score = 0
 local pause_state = false
 local max_speed = 1500
 local obstacle_var = 0
---local is_auto_restart = false
-
 
 local previous_obstacle
 
@@ -100,9 +98,6 @@ function on_message(self, message_id, message, sender)
         end
     elseif message_id == hash("pause_state") then
         pause_state = message.value
-    --elseif message_id == hash("is_auto_restart") then
-        --is_auto_restart = message.value
-        --msg.post(p, "is_auto_restart", is_auto_restart)
     elseif message_id == hash("speed_request") then
         msg.post(sender, "set_speed", { speed = self.speed })
     end

@@ -26,7 +26,11 @@ function init(self)
 							gui.set_enabled(node, false)
 							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
 						end
-					}
+					},
+					{
+						node = gui.get_node("settings_button"),
+						action = function () msg.post("default:/settings#settings", "show") end
+					},
 				}
 	
 	init_ui(self)

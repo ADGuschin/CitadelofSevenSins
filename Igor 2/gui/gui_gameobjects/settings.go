@@ -1,5 +1,5 @@
 components {
-  id: "options"
+  id: "settings"
   component: "/gui/gui_files/settings.gui"
   position {
     x: 0.0

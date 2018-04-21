@@ -9,19 +9,23 @@ function init(self)
 	self.hovered_node = nil
 	self.picked_node = nil
 
-	if sound_off then
+	if not sound_off then
+		msg.post("start_scene:/sound#sound", "sound_on")
+	end
+
+	--[[if sound_off then
 		gui.play_flipbook(gui.get_node("sound_button"), "1600")
 	else
 		msg.post("start_scene:/sound#sound", "sound_on")
 		gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
-	end
+	end]]
 	
 	self.nodes = {
 					{
 						node = gui.get_node("pause_button"),
 						action = function () pause_state = true; msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}); msg.post("level:/controller#script", "pause_state", {value = true}) end
 					},
-					{
+					--[[{
 						node = gui.get_node("sound_button"),
 						action = function ()
 							if sound_off then 
@@ -34,7 +38,7 @@ function init(self)
 								gui.play_flipbook(gui.get_node("sound_button"), "1600")
 							end
 						end
-					},
+					},]]
 				}
 	
 	init_ui(self)

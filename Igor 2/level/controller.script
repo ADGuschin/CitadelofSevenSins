@@ -77,7 +77,7 @@ function on_message(self, message_id, message, sender)
         msg.post("background3/controller#background3", "reset")
         -- Delete all platforms
         for i,p in ipairs(self.spawns) do
-            go.delete(p)
+            go.delete(p, true)
         end
         for i,p in ipairs(self.heroes) do
             go.delete(p)
@@ -85,7 +85,7 @@ function on_message(self, message_id, message, sender)
         self.spawns = {}
         self.heroes = {}
     elseif message_id == hash("delete_spawn") then
-        go.delete(message.url)
+        go.delete(message.url, true)
         table.remove(self.spawns, message.id)
         --[[for i,p in ipairs(self.spawns) do
             if  == message.id then

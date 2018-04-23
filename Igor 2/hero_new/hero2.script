@@ -331,8 +331,8 @@ local startTime
 local xDistance
 local yDistance
 
-go.property("minSwipeDistance", 50)
-go.property("minSwipeTime", 0.4)
+go.property("minSwipeDistance", 20)
+go.property("minSwipeTime", 0.2)
 
 local bDoingTouch
 local totalSwipeDistanceLeft

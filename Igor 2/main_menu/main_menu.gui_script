@@ -1,8 +1,6 @@
 require "main_menu.collection_proxy_content"
 require "main_menu.ui_func"
 
---autorestart_state = false
-
 function init(self)
     msg.post(".", "acquire_input_focus")
     --gui.set_color(gui.get_node("exit_button"), self.normal_color);
@@ -22,7 +20,7 @@ function init(self)
 					},
 					{
 						node = gui.get_node("settings_button"),
-						action = function () msg.post("default:/settings#settings", "show") end
+						action = function () msg.post("/settings#settings", "show") end
 						--action = function () msg.post("/settings", "show") end 
 					},
 				}

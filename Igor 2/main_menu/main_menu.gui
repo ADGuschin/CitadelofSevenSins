@@ -3,6 +3,10 @@ fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"
 }
+fonts {
+  name: "pixels"
+  font: "/pixels.font"
+}
 textures {
   name: "Background"
   texture: "/level/background/Background.atlas"
@@ -159,7 +163,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Start"
-  font: "main_menu_font"
+  font: "pixels"
   id: "start_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -276,7 +280,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Exit"
-  font: "main_menu_font"
+  font: "pixels"
   id: "exit_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -393,7 +397,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Autorestart: "
-  font: "main_menu_font"
+  font: "pixels"
   id: "auto_restart_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -456,7 +460,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "no"
-  font: "main_menu_font"
+  font: "pixels"
   id: "is_auto_restart"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

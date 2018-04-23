@@ -3,6 +3,10 @@ fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"
 }
+fonts {
+  name: "pixels"
+  font: "/pixels.font"
+}
 textures {
   name: "Background"
   texture: "/level/background/Background.atlas"
@@ -21,7 +25,7 @@ nodes {
   position {
     x: 640.0
     y: 360.0
-    z: 0.0
+    z: 1.0
     w: 1.0
   }
   rotation {
@@ -270,7 +274,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Autorestart: "
-  font: "main_menu_font"
+  font: "pixels"
   id: "autorestart_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -333,7 +337,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "no"
-  font: "main_menu_font"
+  font: "pixels"
   id: "autorestart_state"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

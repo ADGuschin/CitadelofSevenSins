@@ -7,7 +7,7 @@ end
 function update(self, dt)
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
-		if pos.x <= -1140 then
+		if pos.x <= -1090 then
 			pos.x = 1368 + (pos.x + 228)
 		end
 		pos.x = pos.x - self.speed * dt

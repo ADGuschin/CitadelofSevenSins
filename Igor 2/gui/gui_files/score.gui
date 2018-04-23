@@ -3,6 +3,10 @@ fonts {
   name: "main_menu_font"
   font: "/fonts/main_menu_font.font"
 }
+fonts {
+  name: "pixels"
+  font: "/pixels.font"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -97,7 +101,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "0"
-  font: "main_menu_font"
+  font: "pixels"
   id: "score_num"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -160,7 +164,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Score:"
-  font: "main_menu_font"
+  font: "pixels"
   id: "score_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -277,7 +281,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "0"
-  font: "main_menu_font"
+  font: "pixels"
   id: "highscore_num"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -340,7 +344,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Highscore:"
-  font: "main_menu_font"
+  font: "pixels"
   id: "highscore_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

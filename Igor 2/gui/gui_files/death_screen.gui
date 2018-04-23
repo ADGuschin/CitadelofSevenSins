@@ -1,7 +1,11 @@
 script: "/gui/gui_scripts/death_screen.gui_script"
 fonts {
   name: "main_menu_font"
-  font: "/fonts/main_menu_font.font"
+  font: "/builtins/fonts/system_font.font"
+}
+fonts {
+  name: "pixels"
+  font: "/pixels.font"
 }
 textures {
   name: "Background"
@@ -156,7 +160,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Restart"
-  font: "main_menu_font"
+  font: "pixels"
   id: "Restart"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -274,7 +278,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Menu"
-  font: "main_menu_font"
+  font: "pixels"
   id: "Menu"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -337,7 +341,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "You died ^_^"
-  font: "main_menu_font"
+  font: "pixels"
   id: "death_message"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

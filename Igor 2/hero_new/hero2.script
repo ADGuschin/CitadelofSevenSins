@@ -9,7 +9,7 @@ local isFirstTimeRun = true
 local slide_cooldown_max = 15
 local slide_cooldown = 15
 local invincibility_max = 50
-local invincibility = 50
+local invincibility = 0
 local slide_time = 30
 local pushed = false
 local catch_up_speed = 20
@@ -21,7 +21,7 @@ local roll_allowed = false
 local lock_character = false
 local impact_speed = vmath.vector3(1250, 750,0)
 local min_impact_speed = 1250
-local max_impact_speed = 1750
+local max_impact_speed = 1500
 go.property("minSwipeDistance", 50)
 go.property("minSwipeTime", 0.4)
 
@@ -32,6 +32,7 @@ function init(self)
 	msg.post("#sliding_state", "disable")
 	msg.post("#rolling_over_state", "disable")
 	msg.post("#running_state", "enable")
+	msg.post("controller#script", "hero_spawned")
 	self.platform_contact_from_below = false
 	self.platform_contact_from_below_last_frame = false
 	counts_of_hero = counts_of_hero + 1
@@ -103,7 +104,7 @@ local function slide_cooldown_tick(self)
 end
 
 local function check_inv(self)
-	print(invincibility)
+	--print(invincibility)
 	if invincibility < invincibility_max then
 		invincibility = invincibility + 1
 	else
@@ -137,7 +138,6 @@ function update(self, dt)
 
 		
 		impact_speed.x = impact_speed.x + acceleration * dt
-		impact_speed.y = impact_speed.y + acceleration * dt
 		if impact_speed.x > max_impact_speed then
 			impact_speed.x = max_impact_speed
 		elseif impact_speed.x < min_impact_speed then
@@ -245,7 +245,8 @@ function on_message(self, message_id, message, sender)
 			paused = false
 		end
 	elseif message_id == hash("contact_point_response") then
-		if message.group == hash("danger") then
+		local pos = go.get_position()
+		if message.group == hash("danger") or pos.x < 10 then
 			print("здох1")
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
@@ -253,6 +254,7 @@ function on_message(self, message_id, message, sender)
 				print("здох4")
 				if autorestart_state then
 					msg.post("level:/controller#script", "reset")
+					go.delete(true)
 					print("здох2")
 				else
 					msg.post("default:/death_screen#death_screen", "death") 

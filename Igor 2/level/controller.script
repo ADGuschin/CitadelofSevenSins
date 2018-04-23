@@ -8,6 +8,8 @@ local score = 0
 local pause_state = false
 local max_speed = 1500
 local obstacle_var = 0
+local reset_timer = 0
+local reset_timer_max = 5
 
 local previous_obstacle
 
@@ -22,78 +24,61 @@ end
 function init(self)
     self.speed = default_speed
     update_speed(self)
-    --msg.post("/controller#script", "set_speed", { speed = self.speed })
     self.gridw = 0
-    self.spawns = {}
-    self.heroes = {}
+    --self.heroes = {}
     previous_obstacle = obstacle_table["init"][math.random(table_length(self, obstacle_table["init"]))]
-    --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
-    --table.insert(self.spawns, p)
     msg.post("#", "spawnhero")
     print(msg.url())
 end
 
+function check_for_reset(self)
+    if reset_timer < reset_timer_max then
+        reset_timer = reset_timer + 1
+    else 
+        reset = false
+    end
+end
 
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
     self.speed = self.speed + acceleration * dt
     update_speed(self)
+    check_for_reset(self)
     if self.gridw >= grid then
         self.gridw = 0
         local h = platform_height
         local allowed_obstacles = obstacle_table[previous_obstacle]
         local random = math.random(table_length(self, allowed_obstacles))
-        previous_obstacle = allowed_obstacles[random]
+        grid = grid_table[allowed_obstacles[random]]
+        pprint(grid_table[previous_obstacle])
+        pprint(previous_obstacle)
+        previous_obstacle = allowed_obstacles[random] 
         local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 5)
-        
-        --table.insert(self.spawns,{[obstacle_var] = p})
-       --[[ for x in pairs(p) do
-            print(x)
-            msg.post(x, "set_speed", { speed = self.speed })
-            table.insert(self.spawns, x) 
-        end]]
     end
     if not pause_state then
         score = score + self.speed / 10000
         msg.post("/score#score", "score", {value = math.ceil(score)})
     end
-    --[[for i,p in ipairs(self.spawns) do
-        msg.post(p,"set_speed",{speed = self.speed })
-    end]]
+
 end
 
 function on_message(self, message_id, message, sender)
-    if message_id == hash("id_request") then
-        table.insert(self.spawns,{[obstacle_var] = message.url})
-        obstacle_var = obstacle_var + 1
-    elseif message_id == hash("spawnhero") then
+
+    if message_id == hash("spawnhero") then
         local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
-        table.insert(self.heroes, p)
+        --table.insert(self.heroes, p)
         score = 0 
     elseif message_id == hash("reset") then 
         -- Tell the hero to reset.
+        reset = true
+        reset_timer = 0
         self.speed = default_speed
         msg.post(sender, "reset")
         msg.post("background3/controller#background3", "reset")
-        -- Delete all platforms
-        for i,p in ipairs(self.spawns) do
-            go.delete(p, true)
-        end
-        for i,p in ipairs(self.heroes) do
+        --[[for i,p in ipairs(self.heroes) do
             go.delete(p)
-        end
-        self.spawns = {}
-        self.heroes = {}
-    elseif message_id == hash("delete_spawn") then
-        go.delete(message.url, true)
-        table.remove(self.spawns, message.id)
-        --[[for i,p in ipairs(self.spawns) do
-            if  == message.id then
-                print("ЭЗЩКЕРЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕ")
-                table.remove(self.spawns, i)
-                go.delete(p)
-            end
-        end--]]
+        end]]
+        --self.heroes = {}
     elseif message_id == hash("reset_speed") then
         self.speed = self.speed * 0.66
         if self.speed < default_speed then

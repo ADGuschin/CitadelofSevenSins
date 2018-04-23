@@ -3,7 +3,7 @@ instances {
   id: "train_home"
   prototype: "/level/obstacles/train_home.go"
   position {
-    x: 0.0
+    x: 67.5
     y: 30.5
     z: 0.0
   }

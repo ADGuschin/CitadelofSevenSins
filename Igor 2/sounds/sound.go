@@ -16,8 +16,8 @@ components {
 embedded_components {
   id: "maintheme"
   type: "sound"
-  data: "sound: \"/sounds/maintheme.wav\"\n"
-  "looping: 0\n"
+  data: "sound: \"/sounds/cxc.wav\"\n"
+  "looping: 1\n"
   "group: \"master\"\n"
   "gain: 1.0\n"
   ""

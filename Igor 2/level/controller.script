@@ -8,6 +8,8 @@ local score = 0
 local pause_state = false
 local max_speed = 1500
 local obstacle_var = 0
+local reset_timer = 0
+local reset_timer_max = 5
 
 local previous_obstacle
 
@@ -24,7 +26,7 @@ function init(self)
     update_speed(self)
     --msg.post("/controller#script", "set_speed", { speed = self.speed })
     self.gridw = 0
-    self.spawns = {}
+    --self.spawns = {}
     self.heroes = {}
     previous_obstacle = obstacle_table["init"][math.random(table_length(self, obstacle_table["init"]))]
     --local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
@@ -33,11 +35,19 @@ function init(self)
     print(msg.url())
 end
 
+function check_for_reset(self)
+    if reset_timer < reset_timer_max then
+        reset_timer = reset_timer + 1
+    else 
+        reset = false
+    end
+end
 
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
     self.speed = self.speed + acceleration * dt
     update_speed(self)
+    check_for_reset(self)
     if self.gridw >= grid then
         self.gridw = 0
         local h = platform_height
@@ -63,30 +73,34 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    if message_id == hash("id_request") then
-        table.insert(self.spawns,{[obstacle_var] = message.url})
-        obstacle_var = obstacle_var + 1
-    elseif message_id == hash("spawnhero") then
+    --[[if message_id == hash("id_request") then
+        --table.insert(self.spawns,{[obstacle_var] = message.url})
+        
+        --obstacle_var = obstacle_var + 1
+    else--]]
+    if message_id == hash("spawnhero") then
         local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
         table.insert(self.heroes, p)
         score = 0 
     elseif message_id == hash("reset") then 
         -- Tell the hero to reset.
+        reset = true
+        reset_timer = 0
         self.speed = default_speed
         msg.post(sender, "reset")
         msg.post("background3/controller#background3", "reset")
         -- Delete all platforms
-        for i,p in ipairs(self.spawns) do
-            go.delete(p, true)
-        end
+        --[[for i,p in ipairs(self.spawns) do
+            go.delete(p)
+        end--]]
         for i,p in ipairs(self.heroes) do
             go.delete(p)
         end
-        self.spawns = {}
+        --self.spawns = {}
         self.heroes = {}
     elseif message_id == hash("delete_spawn") then
-        go.delete(message.url, true)
-        table.remove(self.spawns, message.id)
+        --go.delete(message.url)
+        --table.remove(self.spawns, message.id)
         --[[for i,p in ipairs(self.spawns) do
             if  == message.id then
                 print("ЭЗЩКЕРЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕЕ")

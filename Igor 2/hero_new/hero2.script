@@ -32,7 +32,7 @@ function init(self)
 	msg.post("#sliding_state", "disable")
 	msg.post("#rolling_over_state", "disable")
 	msg.post("#running_state", "enable")
-	msg.post("controller#script", "hero_spawned")
+	--msg.post("controller#script", "hero_spawned")
 	self.platform_contact_from_below = false
 	self.platform_contact_from_below_last_frame = false
 	counts_of_hero = counts_of_hero + 1

@@ -73,7 +73,7 @@ function on_message(self, message_id, message, sender)
         reset = true
         reset_timer = 0
         self.speed = default_speed
-        msg.post(sender, "reset")
+        msg.post("#", "spawnhero")
         msg.post("background3/controller#background3", "reset")
         --[[for i,p in ipairs(self.heroes) do
             go.delete(p)

@@ -5,7 +5,7 @@ function init(self)
 	-- Everything is childed under it.
 	local node = gui.get_node("background")
 	gui.set_enabled(node, false)
-
+	
 	self.hovered_node = nil
 	self.picked_node = nil
 
@@ -43,6 +43,9 @@ function on_message(self, message_id, message, sender)
 		msg.post("/hud", "death_pause", {value = true})
 		msg.post(".", "acquire_input_focus")
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+	elseif message_id == hash("score") then
+		local score = message.value
+		gui.set_text(gui.get_node("score_num"), score)
 	end
 end
 

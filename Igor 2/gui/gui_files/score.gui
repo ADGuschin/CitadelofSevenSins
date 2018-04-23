@@ -132,7 +132,7 @@ nodes {
 }
 nodes {
   position {
-    x: -125.0
+    x: -132.0
     y: -50.0
     z: 0.0
     w: 1.0

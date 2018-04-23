@@ -257,7 +257,8 @@ function on_message(self, message_id, message, sender)
 					go.delete(true)
 					print("здох2")
 				else
-					msg.post("default:/death_screen#death_screen", "death") 
+					msg.post("default:/death_screen#death_screen", "death")
+					msg.post("level:/controller#script", "death")  
 					print("здох3")
 				end
 			end

@@ -21,7 +21,7 @@ local roll_allowed = false
 local lock_character = false
 local impact_speed = vmath.vector3(1250, 750,0)
 local min_impact_speed = 1250
-local max_impact_speed = 1750
+local max_impact_speed = 1500
 go.property("minSwipeDistance", 50)
 go.property("minSwipeTime", 0.4)
 
@@ -104,7 +104,7 @@ local function slide_cooldown_tick(self)
 end
 
 local function check_inv(self)
-	print(invincibility)
+	--print(invincibility)
 	if invincibility < invincibility_max then
 		invincibility = invincibility + 1
 	else
@@ -246,7 +246,7 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("contact_point_response") then
 		local pos = go.get_position()
-		if message.group == hash("danger") or pos.x < 0 then
+		if message.group == hash("danger") or pos.x < 10 then
 			print("здох1")
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
@@ -254,6 +254,7 @@ function on_message(self, message_id, message, sender)
 				print("здох4")
 				if autorestart_state then
 					msg.post("level:/controller#script", "reset")
+					go.delete(true)
 					print("здох2")
 				else
 					msg.post("default:/death_screen#death_screen", "death") 

@@ -27,6 +27,7 @@ function init(self)
 					{
 						node = gui.get_node("settings_button"),
 						action = function () msg.post("default:/settings#settings", "show") end
+						--action = function () msg.post("/settings", "show") end 
 					},
 				}
 				

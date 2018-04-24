@@ -75,7 +75,7 @@ embedded_components {
   position {
     x: 0.0
     y: 0.0
-    z: 0.0
+    z: 1.0
   }
   rotation {
     x: 0.0
@@ -153,7 +153,7 @@ embedded_components {
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
-  "      x: 7.0\n"
+  "      x: 3.0\n"
   "      y: 4.0\n"
   "      z: 0.0\n"
   "    }\n"

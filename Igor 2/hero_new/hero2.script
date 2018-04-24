@@ -200,6 +200,9 @@ end
 
 local function on_impact(self, impact_type)
 	if impact_type == "hard" then
+		msg.post("#rolling_over_state", "disable")--needs looking into
+		msg.post("#sliding_state", "disable")
+		msg.post("#running_state", "enable")
 		play_animation(self, hash("hero_impact"))
 		msg.post("controller#script", "reset_speed")
 		self.velocity.y = impact_speed.y 
@@ -250,7 +253,7 @@ function on_message(self, message_id, message, sender)
 			print("здох1")
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
-			if isFirstTimeRun == false then
+			if true then--isFirstTimeRun == false
 				print("здох4")
 				if autorestart_state then
 					msg.post("level:/controller#script", "reset")
@@ -302,7 +305,7 @@ local function abort_jump(self)
 end
 
 local function roll(self)
-	if roll_allowed and not invincible then
+	if roll_allowed then
 		rolling_over = true
 		msg.post("#rolling_over_state", "enable")
 		msg.post("#running_state", "disable")

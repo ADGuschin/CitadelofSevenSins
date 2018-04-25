@@ -156,6 +156,7 @@ end
 
 local function break_slide(self)--на всякий пожарный,	 можно перенести в апдейт
 	current_slide_moment = 0
+	sliding = false
 	enable_running_state(self)
 	play_animation(self, hash("break_slide"))
 end

@@ -16,5 +16,5 @@ grid_table = {
 	["#obstacle_tall"] = 600,
 	["#obstacle_top"] = 600,
 	["#train_home"] = 1000,
-	["#coll_1"] = 1200
+	["#coll_1"] = 1450
 }

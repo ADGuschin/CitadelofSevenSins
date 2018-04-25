@@ -149,6 +149,7 @@ embedded_components {
   "mask: \"danger\"\n"
   "mask: \"still_roll\"\n"
   "mask: \"obstacle\"\n"
+  "mask: \"rolling_platform\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"

@@ -20,6 +20,5 @@ grid_table = {
 <<<<<<< HEAD
 	["#coll_1"] = 1200,
 	["#obstacle_jumps"] = 3000
-=======
->>>>>>> cc9506ca541550e0d2fd99f36412bfc3783748ee
+	["#coll_1"] = 1450
 }

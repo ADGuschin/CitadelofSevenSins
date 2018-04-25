@@ -12,7 +12,10 @@ function init(self)
     self.nodes = {
 					{
 						node = gui.get_node("start_button"),
-						action = function () msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"}) end
+						action = function () 
+							--gui.is_enabled(gui.get_node("start_button"))
+							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+						end
 					},
 					{
 						node = gui.get_node("exit_button"),
@@ -20,7 +23,12 @@ function init(self)
 					},
 					{
 						node = gui.get_node("settings_button"),
-						action = function () msg.post("/settings#settings", "show") end
+						action = function () 
+							msg.post("/menu#settings", "show")
+							gui.set_enabled(gui.get_node("start_button"), false)
+							gui.set_enabled(gui.get_node("exit_button"), false)
+							gui.set_enabled(gui.get_node("settings_button"), false)
+						end
 						--action = function () msg.post("/settings", "show") end 
 					},
 				}
@@ -31,6 +39,15 @@ end
 function final(self)
 	msg.post(".", "release_input_focus")
 	msg.post("start_scene:/sound#sound", "sound_off");
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show") then
+		gui.set_enabled(gui.get_node("start_button"), true)
+		gui.set_enabled(gui.get_node("exit_button"), true)
+		gui.set_enabled(gui.get_node("settings_button"), true)
+		msg.post(".", "acquire_input_focus")
+	end
 end
 	
 function on_input(self, action_id, action)

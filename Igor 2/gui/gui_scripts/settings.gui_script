@@ -28,6 +28,7 @@ function init(self)
 				local node = gui.get_node("background")
 				gui.set_enabled(node, false)
 				msg.post(".", "release_input_focus")
+				msg.post("/menu#main_menu", "show")
 			end
 		},
 		{

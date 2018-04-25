@@ -3,6 +3,8 @@ require "main.global_variables"
 
 local flicker_mechanism = 0
 
+local step_playing = false
+
 local paused = false
 local gravity = -65
 local jump_takeoff_speed = 1450
@@ -92,6 +94,13 @@ local function play_animation(self, anim)
 	end
 end
 
+local function play_sound(self, sfx)
+	if sfx ~= "step" then
+		msg.post("sfx#sound_script", "stop_step")
+		step_playing = false
+	end
+		msg.post("sfx#sound_script", sfx)
+end
 
 local function update_animation(self)
 	if invincible then
@@ -175,7 +184,11 @@ function update(self, dt)
 		if not self.ground_contact then
 			self.velocity.y = self.velocity.y + gravity
 		else
-			lock_character = false 
+			lock_character = false
+			if not step_playing then
+				--play_sound(self, "step")
+				step_playing = true
+			end
 		end
 		
 		if self.velocity.y ~= 0  then
@@ -222,6 +235,8 @@ function update(self, dt)
 		go.set_position(go.get_position() + self.velocity * dt)
 
 		update_animation(self)
+
+		--update_sound(self)
 		
 		self.correction = vmath.vector3()
 		self.ground_contact = false
@@ -233,6 +248,7 @@ end
 
 local function on_impact(self, impact_type)
 	if impact_type == "hard" then
+		play_sound(self, "impact")
 		enable_running_state(self)
 		play_animation(self, hash("hero_impact"))
 		msg.post("controller#script", "reset_speed")
@@ -329,6 +345,7 @@ function on_message(self, message_id, message, sender)
 end
 
 local function jump(self, speed)
+	play_sound(self, "jump")
 	if self.ground_contact then
 		self.velocity.y = speed
 	end
@@ -342,6 +359,7 @@ end
 
 local function roll(self)
 	if roll_allowed then
+		play_sound(self, "roll")
 		rolling_over = true
 		enable_rolling_state(self)
 	end
@@ -349,12 +367,14 @@ end
 
 local function slide(self)
 	if slide_cooldown == slide_cooldown_max then
+		play_sound(self, "slide")
 		enable_sliding_state(self)
 		current_slide_moment = 1
 	end
 end
 
 local function jump_break(self)
+	play_sound(self, "break_jump")
 	self.velocity.y = jump_break_speed
 end
 

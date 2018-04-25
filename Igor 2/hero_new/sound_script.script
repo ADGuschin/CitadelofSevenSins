@@ -1,0 +1,43 @@
+function init(self)
+	-- Add initialization code here
+	-- Remove this function if not needed
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("step") then
+		print("aga")
+		msg.post("#step", "play_sound")
+	elseif message_id == hash("roll") then
+		msg.post("#roll", "play_sound")
+	elseif message_id == hash("jump") then
+		msg.post("#jump", "play_sound")
+	elseif message_id == hash("slide") then
+		msg.post("#slide", "play_sound")
+	elseif message_id == hash("impact") then
+		msg.post("#impact", "play_sound")
+	elseif message_id == hash("break_jump") then
+		msg.post("#break_jump", "play_sound")
+	elseif message_id == hash("stop_step") then
+		msg.post("#step", "stop_sound")
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

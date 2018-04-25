@@ -1,23 +1,23 @@
 images {
-  image: "/level/images/box.png"
+  image: "/level/background/images/box.png"
 }
 images {
-  image: "/level/images/ground.png"
+  image: "/level/background/images/ground.png"
 }
 images {
-  image: "/level/images/KAROBBKA.png"
+  image: "/level/background/images/KAROBBKA.png"
 }
 images {
-  image: "/level/images/\320\261\320\276\321\207\320\272\320\260.png"
+  image: "/level/background/images/\320\261\320\276\321\207\320\272\320\260.png"
 }
 images {
-  image: "/level/images/kalesa.png"
+  image: "/level/background/images/kalesa.png"
 }
 images {
-  image: "/level/images/kalesa_32-32.png"
+  image: "/level/background/images/kalesa_32-32.png"
 }
 images {
-  image: "/level/images/train_home.png"
+  image: "/level/background/images/train_home.png"
 }
 margin: 0
 extrude_borders: 0

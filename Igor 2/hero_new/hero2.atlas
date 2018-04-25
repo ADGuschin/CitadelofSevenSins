@@ -162,6 +162,16 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "inv"
+  images {
+    image: "/hero_new/images/Novy_kholst.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

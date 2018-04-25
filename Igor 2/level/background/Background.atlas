@@ -44,5 +44,5 @@ images {
   image: "/level/images/background_mysorka_novye_colors4.png"
 }
 margin: 0
-extrude_borders: 0
+extrude_borders: 2
 inner_padding: 0

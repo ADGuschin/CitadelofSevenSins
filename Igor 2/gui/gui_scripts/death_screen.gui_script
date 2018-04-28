@@ -39,7 +39,8 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("death") then
 		local node = gui.get_node("background")
 		gui.set_enabled(node, true)
-		
+
+		msg.post("level:/score#score", "hide")
 		msg.post("/hud", "death_pause", {value = true})
 		msg.post(".", "acquire_input_focus")
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})

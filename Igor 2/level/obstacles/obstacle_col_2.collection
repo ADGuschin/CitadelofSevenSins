@@ -1,10 +1,10 @@
 name: "default"
 instances {
-  id: "pause_screen"
-  prototype: "/gui/gui_gameobjects/pause_screen.go"
+  id: "obstacle_small"
+  prototype: "/level/obstacles/obstacle_small.go"
   position {
-    x: 0.0
-    y: 0.0
+    x: 225.0
+    y: 5.0
     z: 0.0
   }
   rotation {
@@ -20,11 +20,11 @@ instances {
   }
 }
 instances {
-  id: "death_screen"
-  prototype: "/gui/gui_gameobjects/death_screen.go"
+  id: "obstacle_tall"
+  prototype: "/level/obstacles/obstacle_tall.go"
   position {
-    x: 0.0
-    y: 0.0
+    x: 110.0
+    y: 52.0
     z: 0.0
   }
   rotation {
@@ -40,11 +40,11 @@ instances {
   }
 }
 instances {
-  id: "settings"
-  prototype: "/gui/gui_gameobjects/settings.go"
+  id: "obstacle_top"
+  prototype: "/level/obstacles/obstacle_top.go"
   position {
-    x: 0.0
-    y: 0.0
+    x: 50.0
+    y: 52.5
     z: 0.0
   }
   rotation {
@@ -60,11 +60,11 @@ instances {
   }
 }
 instances {
-  id: "training"
-  prototype: "/gui/gui_gameobjects/training.go"
+  id: "train_home"
+  prototype: "/level/obstacles/train_home.go"
   position {
-    x: 0.0
-    y: 0.0
+    x: 70.0
+    y: 30.5
     z: 0.0
   }
   rotation {
@@ -80,11 +80,11 @@ instances {
   }
 }
 instances {
-  id: "hud"
-  prototype: "/gui/gui_gameobjects/hud.go"
+  id: "obstacle_tall1"
+  prototype: "/level/obstacles/obstacle_tall.go"
   position {
-    x: 0.0
-    y: 0.0
+    x: 225.0
+    y: 52.0
     z: 0.0
   }
   rotation {

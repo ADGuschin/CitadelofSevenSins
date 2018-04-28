@@ -28,6 +28,15 @@ images {
 images {
   image: "/gui/gui_images/close.png"
 }
+images {
+  image: "/gui/gui_images/swipe_down.png"
+}
+images {
+  image: "/gui/gui_images/swipe_up.png"
+}
+images {
+  image: "/gui/gui_images/swipe_right.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

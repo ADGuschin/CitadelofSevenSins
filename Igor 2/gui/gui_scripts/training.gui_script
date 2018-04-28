@@ -1,0 +1,54 @@
+function init(self)
+	local node = gui.get_node("background")
+	gui.set_enabled(node, false)
+	
+	--msg.post("default:/training#training", "swipe_up")
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	--[[if message_id == hash("show") then
+		local node = gui.get_node("background")
+		gui.set_enabled(node, true)
+		
+		msg.post(".", "acquire_input_focus")
+	end]]
+	--Не забыть про training_state при отправке сообщений из контроллера(наверное)
+	if message_id == hash("swipe_right") then
+		msg.post(".", "acquire_input_focus")
+		gui.set_enabled(gui.get_node("background"), true)
+		gui.play_flipbook(gui.get_node("hint"), "swipe_right")
+		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+		msg.post("level:/controller#script", "pause_state", {value = true})
+	elseif message_id == hash("swipe_up") then
+		msg.post(".", "acquire_input_focus")
+		gui.set_enabled(gui.get_node("background"), true)
+		gui.play_flipbook(gui.get_node("hint"), "swipe_up")
+		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+		msg.post("level:/controller#script", "pause_state", {value = true})
+	elseif message_id == hash("swipe_down") then
+		msg.post(".", "acquire_input_focus")
+		gui.set_enabled(gui.get_node("background"), true)
+		gui.play_flipbook(gui.get_node("hint"), "swipe_down")
+		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+		msg.post("level:/controller#script", "pause_state", {value = true})
+	end
+end
+
+function on_input(self, action_id, action)
+	--что-то со свайпами из скрипта героя и отправка сообщений для совершения действия
+end
+
+function on_reload(self)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end

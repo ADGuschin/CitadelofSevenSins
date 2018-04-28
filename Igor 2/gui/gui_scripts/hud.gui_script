@@ -23,22 +23,14 @@ function init(self)
 	self.nodes = {
 					{
 						node = gui.get_node("pause_button"),
-						action = function () pause_state = true; msg.post("/pause_screen", "show"); msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1}); msg.post("level:/controller#script", "pause_state", {value = true}) end
-					},
-					--[[{
-						node = gui.get_node("sound_button"),
-						action = function ()
-							if sound_off then 
-								msg.post("start_scene:/sound#sound", "soundon_but")
-								--msg.post("start_scene:/sound#sound", "sound_on")
-								gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
-							else
-								msg.post("start_scene:/sound#sound", "soundoff_but")
-								--msg.post("start_scene:/sound#sound", "sound_off")
-								gui.play_flipbook(gui.get_node("sound_button"), "1600")
-							end
+						action = function () 
+							pause_state = true
+							msg.post("/pause_screen", "show")
+							msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1})
+							msg.post("level:/controller#script", "pause_state", {value = true})
+							msg.post("level:/score#score", "hide")
 						end
-					},]]
+					}
 				}
 	
 	init_ui(self)
@@ -47,7 +39,7 @@ end
 
 function final(self)
 	msg.post(".", "release_input_focus")
-	msg.post("start_scene:/sound#sound", "sound_off");
+	msg.post("start_scene:/sound#sound", "sound_off")
 end
 
 function on_message(self, message_id, message, sender)
@@ -57,6 +49,7 @@ function on_message(self, message_id, message, sender)
 		pause_state = false
 		msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
 		msg.post("level:/controller#script", "pause_state", {value = false})
+		msg.post("level:/score#score", "show")
 	elseif message_id == hash("check_for_pause") then
 		msg.post(sender, "pause_state", {value = pause_state})
 	elseif message_id == hash("death_pause") then

@@ -31,6 +31,10 @@ function on_message(self, message_id, message, sender)
 			shared_data.player.highscore = score
 			--print(shared_data.player.highscore)
 		end
+	elseif message_id == hash("show") then
+		gui.set_enabled(gui.get_node("score_box"), true)
+	elseif message_id == hash("hide") then
+		gui.set_enabled(gui.get_node("score_box"), false)
 	end
 end
 

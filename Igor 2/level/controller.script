@@ -53,7 +53,7 @@ function update(self, dt)
         pprint(grid_table[previous_obstacle])
         pprint(previous_obstacle)
         previous_obstacle = allowed_obstacles[random] 
-        local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 4)
+        local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 5)
     end
     if not pause_state then
         score = score + self.speed / 10000
@@ -65,7 +65,7 @@ end
 function on_message(self, message_id, message, sender)
 
     if message_id == hash("spawnhero") then
-        local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},4)
+        local p = factory.create("#herofactory",vmath.vector3(300, 200, 0), nil,{},5)
         --table.insert(self.heroes, p)
         score = 0 
     elseif message_id == hash("reset") then 

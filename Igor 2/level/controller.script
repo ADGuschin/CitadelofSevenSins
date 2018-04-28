@@ -75,10 +75,6 @@ function on_message(self, message_id, message, sender)
         self.speed = default_speed
         msg.post("#", "spawnhero")
         msg.post("background3/controller#background3", "reset")
-        --[[for i,p in ipairs(self.heroes) do
-            go.delete(p)
-        end]]
-        --self.heroes = {}
     elseif message_id == hash("reset_speed") then
         self.speed = self.speed * 0.66
         if self.speed < default_speed then

@@ -117,22 +117,6 @@ animations {
   flip_vertical: 1
 }
 animations {
-  id: "break_slide"
-  images {
-    image: "/hero_new/images/break_slide_animation/hero_lies_64x64_6.png"
-  }
-  images {
-    image: "/hero_new/images/break_slide_animation/hero_lies_64x64_7.png"
-  }
-  images {
-    image: "/hero_new/images/break_slide_animation/hero_lies_64x64_8.png"
-  }
-  playback: PLAYBACK_ONCE_FORWARD
-  fps: 20
-  flip_horizontal: 0
-  flip_vertical: 0
-}
-animations {
   id: "hero_impact"
   images {
     image: "/hero_new/images/dying_animation/hero_lies_64x64_2.png"
@@ -148,16 +132,6 @@ animations {
     image: "/builtins/graphics/particle_blob.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 20
-  flip_horizontal: 0
-  flip_vertical: 0
-}
-animations {
-  id: "get_up_to_roll"
-  images {
-    image: "/hero_new/images/break_slide_animation/hero_lies_64x64_6.png"
-  }
-  playback: PLAYBACK_ONCE_FORWARD
   fps: 20
   flip_horizontal: 0
   flip_vertical: 0

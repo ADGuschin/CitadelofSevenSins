@@ -1,5 +1,6 @@
 require "main_menu.ui_func"
 require "main.global_variables"
+require "variables"
 --autorestart_state = false
 
 function init(self)
@@ -15,9 +16,11 @@ function init(self)
 			action = function ()
 				if sound_off then 
 					msg.post("start_scene:/sound#sound", "soundon_but")
+					sound = true
 					gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
 				else
 					msg.post("start_scene:/sound#sound", "soundoff_but")
+					sound = false
 					gui.play_flipbook(gui.get_node("sound_button"), "1600")
 				end
 			end
@@ -28,7 +31,9 @@ function init(self)
 				local node = gui.get_node("background")
 				gui.set_enabled(node, false)
 				msg.post(".", "release_input_focus")
-				msg.post("/menu#main_menu", "show")
+				if not in_game then
+					msg.post("/menu#main_menu", "show")
+				end
 			end
 		},
 		{

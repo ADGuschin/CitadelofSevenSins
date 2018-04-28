@@ -1,5 +1,6 @@
 require "main_menu.collection_proxy_content"
 require "main_menu.ui_func"
+require "variables"
 
 function init(self)
     msg.post(".", "acquire_input_focus")
@@ -15,6 +16,7 @@ function init(self)
 						action = function () 
 							--gui.is_enabled(gui.get_node("start_button"))
 							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+							in_game = true
 						end
 					},
 					{

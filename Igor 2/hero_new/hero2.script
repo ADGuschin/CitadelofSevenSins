@@ -1,6 +1,8 @@
 require "hero_new.test"
 require "main.global_variables"
 
+local alive
+
 local flicker_mechanism = 0
 
 local step_playing = false
@@ -19,7 +21,7 @@ local isFirstTimeRun = true
 local invincibility_max = 50
 local invincibility = 0
 local pushed = false
-local catch_up_speed = 20
+local catch_up_speed = 40
 local jump_break_speed = -2000
 local invincible = false
 local rolling_over = false
@@ -28,7 +30,7 @@ local roll_allowed = false
 local lock_character = false
 local impact_speed = vmath.vector3(1250, 750,0)
 local min_impact_speed = 1250
-local max_impact_speed = 1500
+local max_impact_speed = 1400
 go.property("minSwipeDistance", 50)
 go.property("minSwipeTime", 0.4)
 
@@ -55,7 +57,7 @@ function init(self)
 	self.position = go.get_position()
 	self.velocity = vmath.vector3(0,0,0)
 	enable_running_state(self)
-	--msg.post("controller#script", "hero_spawned")
+	alive = true
 	self.platform_contact_from_below = false
 	self.platform_contact_from_below_last_frame = false
 	counts_of_hero = counts_of_hero + 1
@@ -142,7 +144,6 @@ local function slide_cooldown_tick(self)
 end
 
 local function check_inv(self)
-	--print(invincibility)
 	if invincibility < invincibility_max then
 		invincibility = invincibility + 1
 	else
@@ -158,7 +159,6 @@ local function break_slide(self)--на всякий пожарный,	 можн�
 	current_slide_moment = 0
 	sliding = false
 	enable_running_state(self)
-	play_animation(self, hash("break_slide"))
 end
 
 local function break_roll(self)
@@ -166,7 +166,6 @@ local function break_roll(self)
 	rolling_over = false
 	lock_character = false
 	enable_running_state(self)
-	play_animation(self, hash("break_slide"))
 end
 
 function update(self, dt)
@@ -206,19 +205,19 @@ function update(self, dt)
 		end
 		
 		if self.velocity.x < 0 then
-			self.velocity.x = self.velocity.x + 65
+			self.velocity.x = self.velocity.x + 50			
 		elseif pushed then
 			pushed = false
 			enable_running_state(self)
 			go_invincible(self)
 		end
-		
-		if hero_position.x < 360  then
-			if not pushed then
-				self.velocity.x = catch_up_speed
+
+		if not pushed then
+			if hero_position.x < 360  then
+					self.velocity.x = catch_up_speed
+			else
+				self.velocity.x = 0	
 			end
-		else
-			self.velocity.x = 0	
 		end
 
 		check_inv(self)
@@ -238,7 +237,7 @@ function update(self, dt)
 		update_animation(self)
 
 		--update_sound(self)
-		
+		roll_allowed = false	
 		self.correction = vmath.vector3()
 		self.ground_contact = false
 		self.platform_contact_from_below_last_frame = self.platform_contact_from_below
@@ -298,22 +297,22 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("contact_point_response") then
 		local pos = go.get_position()
-		if message.group == hash("danger") or pos.x < 10 then
-			print("здох1")
+		if (message.group == hash("danger") or pos.x < 10) and alive then
+			alive = false
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")
 			msg.post("#rolling_over_state", "disable")
 			msg.post("#sliding_state", "disable")
-			if true then--isFirstTimeRun == false
-				print("здох4")
+			if true then
+				--print("здох4")
 				if autorestart_state then
-					msg.post("level:/controller#script", "reset")
 					go.delete(true)
-					print("здох2")
+					msg.post("level:/controller#script", "reset")
+					--print("здох2")
 				else
 					msg.post("default:/death_screen#death_screen", "death")
 					msg.post("level:/controller#script", "death")  
-					print("здох3")
+					--print("здох3")
 				end
 			end
 			isFirstTimeRun = false
@@ -325,9 +324,9 @@ function on_message(self, message_id, message, sender)
 			on_impact(self, "soft")
 		elseif message.group == hash("geometry") then
 			handle_geometry_contact(self, message.normal, message.distance)
-		elseif (message.group == hash("obstacle") and not invincible) then
+		elseif (message.group == hash("obstacle") and not (pushed or invincible)) then
 			handle_geometry_contact(self, message.normal, message.distance)
-		elseif message.group == hash("obstacle") and invincible then
+		elseif message.group == hash("obstacle") and (invincible or pushed) then
 			invincibility = invincibility_max - 5
 			if message.normal.y > 0 then
 				if not self.platform_contact_from_below_last_frame then

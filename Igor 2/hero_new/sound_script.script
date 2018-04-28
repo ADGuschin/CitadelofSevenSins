@@ -1,3 +1,4 @@
+require "variables"
 function init(self)
 	-- Add initialization code here
 	-- Remove this function if not needed
@@ -14,21 +15,23 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("step") then
-		print("aga")
-		msg.post("#step", "play_sound")
-	elseif message_id == hash("roll") then
-		msg.post("#roll", "play_sound")
-	elseif message_id == hash("jump") then
-		msg.post("#jump", "play_sound")
-	elseif message_id == hash("slide") then
-		msg.post("#slide", "play_sound")
-	elseif message_id == hash("impact") then
-		msg.post("#impact", "play_sound")
-	elseif message_id == hash("break_jump") then
-		msg.post("#break_jump", "play_sound")
-	elseif message_id == hash("stop_step") then
-		msg.post("#step", "stop_sound")
+	if sound then
+		if message_id == hash("step") then
+			print("aga")
+			msg.post("#step", "play_sound")
+		elseif message_id == hash("roll") then
+			msg.post("#roll", "play_sound")
+		elseif message_id == hash("jump") then
+			msg.post("#jump", "play_sound")
+		elseif message_id == hash("slide") then
+			msg.post("#slide", "play_sound")
+		elseif message_id == hash("impact") then
+			msg.post("#impact", "play_sound")
+		elseif message_id == hash("break_jump") then
+			msg.post("#break_jump", "play_sound")
+		elseif message_id == hash("stop_step") then
+			msg.post("#step", "stop_sound")
+		end
 	end
 end
 

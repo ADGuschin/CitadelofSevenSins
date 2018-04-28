@@ -3,6 +3,10 @@ fonts {
   name: "pixels"
   font: "/pixels.font"
 }
+fonts {
+  name: "pixels_big"
+  font: "/pixels_big.font"
+}
 textures {
   name: "Background"
   texture: "/level/background/Background.atlas"
@@ -363,6 +367,7 @@ nodes {
   position {
     x: 640.0
     y: 503.0
+    z: 0.0
     w: 1.0
   }
   rotation {
@@ -372,8 +377,8 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 2.0
-    y: 2.0
+    x: 1.0
+    y: 1.0
     z: 1.0
     w: 1.0
   }
@@ -392,7 +397,7 @@ nodes {
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
   text: "Citadel of seven sins"
-  font: "pixels"
+  font: "pixels_big"
   id: "title"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

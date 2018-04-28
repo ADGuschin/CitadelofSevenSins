@@ -1,5 +1,4 @@
 require "main_menu.ui_func"
-require "main.global_variables"
 require "variables"
 --autorestart_state = false
 

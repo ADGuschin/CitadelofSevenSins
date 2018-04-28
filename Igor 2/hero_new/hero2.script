@@ -1,5 +1,5 @@
 require "hero_new.test"
-require "main.global_variables"
+require "variables"
 
 local alive
 
@@ -8,29 +8,23 @@ local flicker_mechanism = 0
 local step_playing = false
 
 local paused = false
-local gravity = -65
-local jump_takeoff_speed = 1160
 
 local current_slide_moment = 0
 local sliding = false
-local slide_cooldown_max = 15
 local slide_cooldown = 15
 local slide_time = 30
 
 local isFirstTimeRun = true
-local invincibility_max = 50
 local invincibility = 0
 local pushed = false
-local catch_up_speed = 40
-local jump_break_speed = -2000
+
 local invincible = false
 local rolling_over = false
 local pause = false
 local roll_allowed = false
 local lock_character = false
 local impact_speed = vmath.vector3(1250, 750,0)
-local min_impact_speed = 1250
-local max_impact_speed = 1400
+
 go.property("minSwipeDistance", 50)
 go.property("minSwipeTime", 0.4)
 
@@ -327,7 +321,7 @@ function on_message(self, message_id, message, sender)
 		elseif (message.group == hash("obstacle") and not (pushed or invincible)) then
 			handle_geometry_contact(self, message.normal, message.distance)
 		elseif message.group == hash("obstacle") and (invincible or pushed) then
-			invincibility = invincibility_max - 5
+			invincibility = invincibility_max - 10
 			if message.normal.y > 0 then
 				if not self.platform_contact_from_below_last_frame then
 					handle_geometry_contact(self, message.normal, message.distance)

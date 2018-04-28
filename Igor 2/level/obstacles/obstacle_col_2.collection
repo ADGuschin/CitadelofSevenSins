@@ -83,7 +83,7 @@ instances {
   id: "obstacle_tall1"
   prototype: "/level/obstacles/obstacle_tall.go"
   position {
-    x: 225.0
+    x: 228.0
     y: 52.0
     z: 0.0
   }

@@ -321,7 +321,7 @@ function on_message(self, message_id, message, sender)
 		elseif (message.group == hash("obstacle") and not (pushed or invincible)) then
 			handle_geometry_contact(self, message.normal, message.distance)
 		elseif message.group == hash("obstacle") and (invincible or pushed) then
-			invincibility = invincibility_max - 10
+			invincibility = 0.6*invincibility_max
 			if message.normal.y > 0 then
 				if not self.platform_contact_from_below_last_frame then
 					handle_geometry_contact(self, message.normal, message.distance)

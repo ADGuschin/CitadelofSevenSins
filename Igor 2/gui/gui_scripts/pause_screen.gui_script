@@ -1,5 +1,5 @@
 require "main_menu.ui_func"
-
+require "variables"
 function init(self)
 	-- Fetch background node and disable it.
 	-- Everything is childed under it.
@@ -25,6 +25,7 @@ function init(self)
 							local node = gui.get_node("background")
 							gui.set_enabled(node, false)
 							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
+							in_game = false
 						end
 					},
 					{

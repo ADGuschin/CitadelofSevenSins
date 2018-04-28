@@ -33,8 +33,6 @@ function init(self)
 				if not in_game then
 					msg.post("/menu#main_menu", "show")
 				end
-				--msg.post("/menu#main_menu", "show")
-				msg.post("death_screen#death_screen", "show")
 			end
 		},
 		{

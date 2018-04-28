@@ -59,7 +59,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -810.0
+    x: -1200.0
     y: -92.0
     z: 0.0
   }
@@ -99,7 +99,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -540.0
+    x: -538.0
     y: -92.0
     z: 0.0
   }
@@ -139,7 +139,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: -270.0
+    x: 122.0
     y: -92.0
     z: 0.0
   }
@@ -179,7 +179,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 0.0
+    x: 784.0
     y: -92.0
     z: 0.0
   }
@@ -219,7 +219,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 270.0
+    x: 1443.0
     y: -92.0
     z: 0.0
   }
@@ -247,46 +247,6 @@ embedded_instances {
   "\"\n"
   "  position {\n"
   "    x: 188.2\n"
-  "    y: 0.4\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 540.0
-    y: -92.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 5.0
-    y: 5.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "go6"
-  data: "embedded_components {\n"
-  "  id: \"sprite\"\n"
-  "  type: \"sprite\"\n"
-  "  data: \"tile_set: \\\"/level/level.atlas\\\"\\n"
-  "default_animation: \\\"ground\\\"\\n"
-  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
-  "blend_mode: BLEND_MODE_ALPHA\\n"
-  "\"\n"
-  "  position {\n"
-  "    x: 188.6\n"
   "    y: 0.0\n"
   "    z: 0.0\n"
   "  }\n"
@@ -299,7 +259,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 810.0
+    x: 2108.0
     y: -92.0
     z: 0.0
   }

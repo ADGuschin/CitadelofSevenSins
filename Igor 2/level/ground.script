@@ -1,5 +1,5 @@
 --ground.script
-local pieces = {"go", "go1", "go2", "go3", "go4", "go5", "go6"}
+local pieces = {"go", "go1", "go2", "go3", "go4", "go5"}
 function init(self)
 	self.speed = 360
 end
@@ -7,8 +7,8 @@ end
 function update(self, dt)
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
-		if pos.x <= -1090 then
-			pos.x = 1368 + (pos.x + 228)
+		if pos.x <= -1500 then
+			pos.x = 2108 + (pos.x + 330)
 		end
 		pos.x = pos.x - self.speed * dt
 		go.set_position(pos, p)

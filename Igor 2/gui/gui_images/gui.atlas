@@ -2,7 +2,7 @@ images {
   image: "/gui/gui_images/flatDark25.png"
 }
 images {
-  image: "/level/background/images/pause.png"
+  image: "/level/images/pause.png"
 }
 images {
   image: "/gui/gui_images/1600.png"

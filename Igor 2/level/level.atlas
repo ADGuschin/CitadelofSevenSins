@@ -13,6 +13,9 @@ images {
 images {
   image: "/level/images/train_home.png"
 }
+images {
+  image: "/level/images/slide.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

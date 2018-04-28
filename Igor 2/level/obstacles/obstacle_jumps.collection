@@ -159,4 +159,144 @@ instances {
     z: 1.0
   }
 }
+instances {
+  id: "obstacle_fatal"
+  prototype: "/level/obstacles/obstacle_fatal.go"
+  position {
+    x: 160.0
+    y: 16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "obstacle_fatal1"
+  prototype: "/level/obstacles/obstacle_fatal.go"
+  position {
+    x: 192.0
+    y: 16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "obstacle_fatal2"
+  prototype: "/level/obstacles/obstacle_fatal.go"
+  position {
+    x: 224.0
+    y: 16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "obstacle_fatal3"
+  prototype: "/level/obstacles/obstacle_fatal.go"
+  position {
+    x: 257.0
+    y: 16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "obstacle_fatal4"
+  prototype: "/level/obstacles/obstacle_fatal.go"
+  position {
+    x: 290.0
+    y: 16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "obstacle_fatal5"
+  prototype: "/level/obstacles/obstacle_fatal.go"
+  position {
+    x: 323.0
+    y: 16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "obstacle_fatal6"
+  prototype: "/level/obstacles/obstacle_fatal.go"
+  position {
+    x: 356.0
+    y: 16.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
 scale_along_z: 0

@@ -29,6 +29,7 @@ function init(self)
 							msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1})
 							msg.post("level:/controller#script", "pause_state", {value = true})
 							msg.post("level:/score#score", "hide")
+							gui.set_enabled(gui.get_node("pause_button"), false)
 						end
 					}
 				}
@@ -50,15 +51,18 @@ function on_message(self, message_id, message, sender)
 		msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
 		msg.post("level:/controller#script", "pause_state", {value = false})
 		msg.post("level:/score#score", "show")
+		gui.set_enabled(gui.get_node("pause_button"), true)
 	elseif message_id == hash("check_for_pause") then
 		msg.post(sender, "pause_state", {value = pause_state})
 	elseif message_id == hash("death_pause") then
 		if message.value then
 			pause_state = true
 			msg.post("level:/controller#script", "pause_state", {value = true})
+			gui.set_enabled(gui.get_node("pause_button"), false)
 		else
 			pause_state = false
 			msg.post("level:/controller#script", "pause_state", {value = false})
+			--gui.set_enabled(gui.get_node("pause_button"), true)
 		end
 	end
 end

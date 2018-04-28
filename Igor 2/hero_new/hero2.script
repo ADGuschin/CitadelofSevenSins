@@ -9,7 +9,7 @@ local step_playing = false
 
 local paused = false
 local gravity = -65
-local jump_takeoff_speed = 1450
+local jump_takeoff_speed = 1160
 
 local current_slide_moment = 0
 local sliding = false

@@ -16,6 +16,12 @@ images {
 images {
   image: "/level/images/slide.png"
 }
+images {
+  image: "/level/images/pipe1.png"
+}
+images {
+  image: "/level/images/pipe2.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

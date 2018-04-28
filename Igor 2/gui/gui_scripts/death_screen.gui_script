@@ -13,8 +13,7 @@ function init(self)
 		{
 			node = gui.get_node("restart"),
 			action = function () 
-				local node = gui.get_node("background")
-				gui.set_enabled(node, false)
+				gui.set_enabled(gui.get_node("background"), false)
 
 				msg.post("/hud", "death_pause", {value = false})
 				msg.post(".", "release_input_focus")
@@ -23,10 +22,9 @@ function init(self)
 		},
 		{
 			node = gui.get_node("menu"),
-			action = function () 
-				local node = gui.get_node("background")
-				gui.set_enabled(node, false)
-
+			action = function ()
+				gui.set_enabled(gui.get_node("background"), false)
+				in_game = false
 				msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
 			end
 		},
@@ -35,9 +33,8 @@ function init(self)
 			action = function () 
 				msg.post("default:/settings#settings", "show")
 				gui.set_enabled(gui.get_node("box"), false)
-		end
-			--action = function () msg.post("/settings", "show") end  тоже работает
-		},
+			end
+		}
 	}
 	
 	init_ui(self)

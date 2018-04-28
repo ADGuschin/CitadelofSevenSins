@@ -29,9 +29,8 @@ function init(self)
 							msg.post("/menu#settings", "show")
 							gui.set_enabled(gui.get_node("start_button"), false)
 							gui.set_enabled(gui.get_node("exit_button"), false)
-							gui.set_enabled(gui.get_node("settings_button"), false)
+							gui.set_enabled(gui.get_node("title"), false)
 						end
-						--action = function () msg.post("/settings", "show") end 
 					},
 				}
 				
@@ -47,7 +46,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
 		gui.set_enabled(gui.get_node("start_button"), true)
 		gui.set_enabled(gui.get_node("exit_button"), true)
-		gui.set_enabled(gui.get_node("settings_button"), true)
+		gui.set_enabled(gui.get_node("title"), true)
 		msg.post(".", "acquire_input_focus")
 	end
 end

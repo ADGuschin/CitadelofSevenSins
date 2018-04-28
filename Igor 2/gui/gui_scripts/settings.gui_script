@@ -1,6 +1,5 @@
 require "main_menu.ui_func"
 require "variables"
---autorestart_state = false
 
 function init(self)
 	local node = gui.get_node("background")
@@ -30,7 +29,9 @@ function init(self)
 				local node = gui.get_node("background")
 				gui.set_enabled(node, false)
 				msg.post(".", "release_input_focus")
-				if not in_game then
+				if in_game then
+					msg.post("default:/death_screen#death_screen", "show")
+				else
 					msg.post("/menu#main_menu", "show")
 				end
 			end
@@ -46,7 +47,7 @@ function init(self)
 					autorestart_state = true 
 				end
 			end
-		},
+		}
 	}
 
 	init_ui(self)
@@ -59,8 +60,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
-		local node = gui.get_node("background")
-		gui.set_enabled(node, true)
+		gui.set_enabled(gui.get_node("background"), true)
 		
 		if sound_off then
 			gui.play_flipbook(gui.get_node("sound_button"), "1600")
@@ -74,7 +74,9 @@ function on_message(self, message_id, message, sender)
 			gui.set_text(gui.get_node("autorestart_state"), "no")
 		end
 		
-		msg.post(".", "acquire_input_focus")
+		if in_game then
+			msg.post(".", "acquire_input_focus")
+		end
 	end
 end
 

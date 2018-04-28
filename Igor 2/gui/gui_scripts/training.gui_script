@@ -1,6 +1,5 @@
 function init(self)
-	local node = gui.get_node("background")
-	gui.set_enabled(node, false)
+	gui.set_enabled(gui.get_node("background"), false)
 	
 	--msg.post("default:/training#training", "swipe_up")
 end

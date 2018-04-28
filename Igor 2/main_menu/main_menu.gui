@@ -1,9 +1,5 @@
 script: "/main_menu/main_menu.gui_script"
 fonts {
-  name: "main_menu_font"
-  font: "/fonts/main_menu_font.font"
-}
-fonts {
   name: "pixels"
   font: "/pixels.font"
 }

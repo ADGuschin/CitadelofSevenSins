@@ -17,15 +17,15 @@ obstacle_table = {
 }
 
 grid_table = {
-	["#obstacle_small"] = 600, 
-	["#obstacle_tall"] = 400,
-	["#obstacle_top"] = 400,
-	["#train_home"] = 900,
-	["#coll_1"] = 1200,
-	["#obstacle_jumps"] = 3000,
-	["#coll_1"] = 1450,
-	["#coll_2"] = 1600,
-	["#coll_3"] = 1550,
-	["#coll_3.1"] = 1550,
-	["#coll_3.2"] = 1550
+	["#obstacle_small"] = 480, 
+	["#obstacle_tall"] = 320,
+	["#obstacle_top"] = 320,
+	["#train_home"] = 720,
+	["#coll_1"] = 960,
+	["#obstacle_jumps"] = 2400,
+	["#coll_1"] = 1160,
+	["#coll_2"] = 1280,
+	["#coll_3"] = 1240,
+	["#coll_3.1"] = 1240,
+	["#coll_3.2"] = 1240
 }

@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "maintheme"
   type: "sound"
-  data: "sound: \"/sounds/Bylya.wav\"\n"
+  data: "sound: \"/sounds/Kavinsky - Nightcall (ft. Lovefoxxx).wav\"\n"
   "looping: 1\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

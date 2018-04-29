@@ -58,17 +58,25 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("death") then
-		gui.set_enabled(gui.get_node("background"), true)
-		deathscreen_state = true
+		--[[if autorestart_state then
+			msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
 
-		msg.post("level:/score#score", "hide")
-		msg.post("/hud", "death_pause", {value = true})
-		msg.post(".", "acquire_input_focus")
-		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+			if gui_log then
+				print("Пришло сообщение о смерти от", sender, "Загружен прокси main коллекции, т.к. авторестарт = ")
+			end
+		else]]
+			gui.set_enabled(gui.get_node("background"), true)
+			deathscreen_state = true
 
-		if gui_log then
-			print("Пришло сообщение о смерти от", sender, "Показан экран смерти, спрятан интерфейс очков, прокси level коллекции поставлен на паузу")
-		end
+			msg.post("level:/score#score", "hide")
+			msg.post("/hud", "death_pause", {value = true})
+			msg.post(".", "acquire_input_focus")
+			msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+
+			if gui_log then
+				print("Пришло сообщение о смерти от", sender, "Показан экран смерти, спрятан интерфейс очков, прокси level коллекции поставлен на паузу")
+			end
+		--end
 	elseif message_id == hash("score") then
 		gui.set_text(gui.get_node("score_num"), message.value)
 		

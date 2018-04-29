@@ -26,7 +26,11 @@ function init(self)
     update_speed(self)
     self.gridw = 0
     --self.heroes = {}
-    previous_obstacle = "init"--obstacle_table["init"][math.random(table_length(self, obstacle_table["init"]))]
+    if training_state then
+        previous_obstacle = "training"
+    else
+        previous_obstacle = "init"--obstacle_table["init"][math.random(table_length(self, obstacle_table["init"]))]
+    end
     msg.post("#", "spawnhero")
     --print(msg.url())
 end

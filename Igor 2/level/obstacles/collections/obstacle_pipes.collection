@@ -1,27 +1,7 @@
 name: "default"
 instances {
-  id: "obstacle_pipe1"
-  prototype: "/level/obstacles/gameobjects/obstacle_pipe_1.go"
-  position {
-    x: 150.0
-    y: 15.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.70710677
-    w: -0.70710677
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "obstacle_pipe_2"
-  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.go"
+  id: "obstacle_pipe_2.0_2"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.0.go"
   position {
     x: 60.0
     y: 15.0
@@ -40,8 +20,8 @@ instances {
   }
 }
 instances {
-  id: "obstacle_pipe_1"
-  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.go"
+  id: "obstacle_pipe_2.0"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.0.go"
   position {
     x: 30.0
     y: 15.0
@@ -60,8 +40,8 @@ instances {
   }
 }
 instances {
-  id: "obstacle_pipe_3"
-  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.go"
+  id: "obstacle_pipe_2.0_3"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.0.go"
   position {
     x: 90.0
     y: 15.0
@@ -80,8 +60,8 @@ instances {
   }
 }
 instances {
-  id: "obstacle_pipe_4"
-  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.go"
+  id: "obstacle_pipe_2.0_4"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.0.go"
   position {
     x: 120.0
     y: 15.0
@@ -100,11 +80,131 @@ instances {
   }
 }
 instances {
-  id: "obstacle_pipe"
-  prototype: "/level/obstacles/gameobjects/obstacle_pipe_1.go"
+  id: "obstacle_pipe_1.0"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_1.0.go"
   position {
     x: 0.0
     y: 15.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_pipe_1.1"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_1.1.go"
+  position {
+    x: 150.0
+    y: 15.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_pipe_2.1"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.1.go"
+  position {
+    x: 210.0
+    y: 15.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_pipe_2.1_1"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.1.go"
+  position {
+    x: 276.0
+    y: 15.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_pipe_1.0_1"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_1.0.go"
+  position {
+    x: 210.0
+    y: 45.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_pipe_2.0_5"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_2.0.go"
+  position {
+    x: 240.0
+    y: 45.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_pipe_1.1_1"
+  prototype: "/level/obstacles/gameobjects/obstacle_pipe_1.1.go"
+  position {
+    x: 270.0
+    y: 45.0
     z: 0.0
   }
   rotation {

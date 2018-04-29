@@ -7,8 +7,6 @@ local flicker_mechanism = 0
 
 local step_playing = false
 
-local paused = false
-
 local current_slide_moment = 0
 local sliding = false
 local slide_cooldown = 15
@@ -56,10 +54,6 @@ function init(self)
 	self.platform_contact_from_below_last_frame = false
 	counts_of_hero = counts_of_hero + 1
 	print("Номер героя:"..counts_of_hero.." если написалось дважды но герой один значит что-то тут не так")
-end
-
-local function check_for_pause(self)
-	msg.post("default:/hud#hud", "check_for_pause")
 end
 
 local function go_invincible(self)
@@ -181,8 +175,7 @@ local function prepare_to_die(self)
 end
 
 function update(self, dt)
-	check_for_pause(self)
-	if not paused then
+	if not pause_state then
 		local hero_position = go.get_position()
 		
 		local pos = go.get_position()
@@ -222,7 +215,7 @@ function update(self, dt)
 		end
 		
 		if self.velocity.x < 0 then
-			self.velocity.x = self.velocity.x + 50			
+			self.velocity.x = self.velocity.x + 50
 		elseif pushed then
 			pushed = false
 			enable_running_state(self)
@@ -306,12 +299,6 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("reset") then
 		msg.post("controller#script", "spawnhero")
 		msg.post("#running_state", "enable")
-	elseif message_id == hash("pause_state") then
-		if message.value then
-			paused = true
-		else 
-			paused = false
-		end
 	elseif message_id == hash("contact_point_response") then
 		--[[local pos = go.get_position()
 		if (message.group == hash("danger") or pos.x < 10) and alive then

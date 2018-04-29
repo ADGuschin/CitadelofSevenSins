@@ -1,7 +1,5 @@
 require "main_menu.ui_func"
 
-local pause_state = false
-
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	msg.post("#level_proxy", "load")
@@ -28,7 +26,7 @@ function init(self)
 					{
 						node = gui.get_node("pause_button"),
 						action = function () 
-							--[[pause_state = true
+							pause_state = true
 							gui.set_enabled(gui.get_node("pause_button"), false)
 							
 							msg.post("/pause_screen", "show")
@@ -38,8 +36,7 @@ function init(self)
 
 							if gui_log then
 								print("Нажата кнопка паузы, level прокси поставлен на паузу, скрыт интерфейс очков, скрыта кнопка паузы")
-							end]]
-							msg.post("default:/training#training", "swipe_up")
+							end
 						end
 					}
 				}

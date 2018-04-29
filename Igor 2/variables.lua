@@ -5,6 +5,7 @@
 sound = true
 in_game = false
 autorestart_state = false
+pause_state = false
 
 gravity = -65
 slide_cooldown_max = 15

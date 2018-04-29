@@ -11,9 +11,9 @@ function update(self, dt)
 	local pos = go.get_position()
 	if pos.x >= 1000 and pos.x <= 1005 then
 		msg.post("default:/training#training", "swipe_up")
-	elseif pos.x >= 250 and pos.x <= 260 then
+	elseif pos.x >= 100 and pos.x <= 110 then
 		msg.post("default:/training#training", "swipe_down")
-	elseif pos.x >= -450 and pos.x <= -445 then
+	elseif pos.x >= -550 and pos.x <= -540 then
 		msg.post("default:/training#training", "swipe_right")
 	elseif pos.x < -1500 then
 		go.delete()

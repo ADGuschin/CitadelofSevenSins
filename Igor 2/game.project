@@ -1,6 +1,6 @@
 [project]
 title = Citadel of seven sins
-version = 0.13
+version = 0.15
 
 [bootstrap]
 main_collection = /start_scene/start_scene.collectionc

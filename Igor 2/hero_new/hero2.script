@@ -162,10 +162,33 @@ local function break_roll(self)
 	enable_running_state(self)
 end
 
+local function prepare_to_die(self)
+	alive = false
+	play_animation(self, hash("player_die"))
+	msg.post("#running_state", "disable")
+	msg.post("#rolling_over_state", "disable")
+	msg.post("#sliding_state", "disable")
+		--print("здох4")
+	if autorestart_state then
+		go.delete(true)
+		msg.post("level:/controller#script", "reset")
+		--print("здох2")
+	else
+		msg.post("default:/death_screen#death_screen", "death")
+		msg.post("level:/controller#script", "death")  
+		--print("здох3")
+	end
+end
+
 function update(self, dt)
 	check_for_pause(self)
 	if not paused then
 		local hero_position = go.get_position()
+		
+		local pos = go.get_position()
+		if pos.x < 0 and alive then
+			prepare_to_die(self)
+		end
 
 		check_slide(self)
 		
@@ -290,7 +313,7 @@ function on_message(self, message_id, message, sender)
 			paused = false
 		end
 	elseif message_id == hash("contact_point_response") then
-		local pos = go.get_position()
+		--[[local pos = go.get_position()
 		if (message.group == hash("danger") or pos.x < 10) and alive then
 			alive = false
 			play_animation(self, hash("player_die"))
@@ -301,16 +324,16 @@ function on_message(self, message_id, message, sender)
 				--print("здох4")
 				if autorestart_state then
 					go.delete(true)
-					msg.post("level:/controller#script", "reset")
+					--msg.post("level:/controller#script", "reset")
 					--print("здох2")
 				else
 					msg.post("default:/death_screen#death_screen", "death")
 					msg.post("level:/controller#script", "death")  
 					--print("здох3")
 				end
+				isFirstTimeRun = false
 			end
-			isFirstTimeRun = false
-		elseif message.group == hash("still_slide") then
+		else--]]if message.group == hash("still_slide") then
 			current_slide_moment = (2*slide_time) / 3
 		elseif (message.group == hash("impact") and not pushed and not invincible) then
 			on_impact(self, "hard")

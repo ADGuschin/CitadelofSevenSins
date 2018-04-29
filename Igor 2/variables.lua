@@ -5,6 +5,7 @@
 sound = true
 in_game = false
 autorestart_state = false
+
 gravity = -65
 slide_cooldown_max = 15
 jump_takeoff_speed = 1260
@@ -19,3 +20,5 @@ deathscreen_state = false
 
 --Переменные для включения логов
 gui_log = true
+
+training_state = true

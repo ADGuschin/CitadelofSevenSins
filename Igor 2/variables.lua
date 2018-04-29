@@ -13,3 +13,9 @@ min_impact_speed = 1250
 max_impact_speed = 1400
 catch_up_speed = 40
 jump_break_speed = -2000
+
+--Костыль
+deathscreen_state = false
+
+--Переменные для включения логов
+gui_log = true

@@ -1,10 +1,11 @@
 require "main_menu.ui_func"
 require "variables"
 function init(self)
-	-- Fetch background node and disable it.
-	-- Everything is childed under it.
-	local node = gui.get_node("background")
-	gui.set_enabled(node, false)
+	gui.set_enabled(gui.get_node("background"), false)
+
+	if gui_log then
+		print("Экран паузы проинициализирован")
+	end
 
 	self.hovered_node = nil
 	self.picked_node = nil
@@ -13,24 +14,38 @@ function init(self)
 					{
 						node = gui.get_node("resume"),
 						action = function () 
-							local node = gui.get_node("background")
-							gui.set_enabled(node, false)
-							msg.post(".", "release_input_focus")
+							gui.set_enabled(gui.get_node("background"), false)
+							
 							msg.post("/hud", "resume")
+							msg.post(".", "release_input_focus")
+
+							if gui_log then
+								print("Нажата кнопка продолжить, скрыт интерфейс паузы")
+							end
 						end
 					},
 					{
 						node = gui.get_node("menu"),
 						action = function () 
-							local node = gui.get_node("background")
-							gui.set_enabled(node, false)
-							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
 							in_game = false
+							--gui.set_enabled(gui.get_node("background"), false)
+							
+							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
+
+							if gui_log then
+								print("Нажата кнопка меню, загружен прокси главного меню")
+							end
 						end
 					},
 					{
 						node = gui.get_node("settings_button"),
-						action = function () msg.post("default:/settings#settings", "show") end
+						action = function () 
+							msg.post("default:/settings#settings", "show")
+							
+							if gui_log then
+								print("Нажата кнопка настроек")
+							end
+						end
 					}
 				}
 	
@@ -39,11 +54,13 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
-		-- First, show the pause menu.
 		gui.set_enabled(gui.get_node("background"), true)
-		-- Now, acquire input. We're gonna be on top of
-		-- the input stack. Yay!
+		
 		msg.post(".", "acquire_input_focus")
+
+		if gui_log then
+			print("Пришло сообщение о включении экрана паузы от", sender, "Показан экран паузы")
+		end
 	end
 end
 

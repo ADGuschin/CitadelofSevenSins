@@ -28,7 +28,7 @@ function init(self)
     --self.heroes = {}
     previous_obstacle = obstacle_table["init"][math.random(table_length(self, obstacle_table["init"]))]
     msg.post("#", "spawnhero")
-    print(msg.url())
+    --print(msg.url())
 end
 
 function check_for_reset(self)

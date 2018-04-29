@@ -12,7 +12,26 @@ function init(self)
 		{
 			node = gui.get_node("sound_button"),
 			action = function ()
-				if sound_off then 
+				if sound then
+					sound = false
+					gui.play_flipbook(gui.get_node("sound_button"), "1600")
+					
+					msg.post("level:/sound#sound", "sound_off")
+
+					if gui_log then
+						print("Нажата кнопка звука, звук должен был быть включен, нажали на кнопку, выключаем")
+					end
+				else
+					sound = true
+					gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
+					
+					msg.post("level:/sound#sound", "sound_on")
+
+					if gui_log then
+						print("Нажата кнопка звука, звук должен был быть выключен, нажали на кнопку, включаем")
+					end
+				end
+				--[[if sound_off then 
 					msg.post("start_scene:/sound#sound", "soundon_but")
 					sound = true
 					gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
@@ -20,19 +39,24 @@ function init(self)
 					msg.post("start_scene:/sound#sound", "soundoff_but")
 					sound = false
 					gui.play_flipbook(gui.get_node("sound_button"), "1600")
-				end
+				end]]
 			end
 		},
 		{
 			node = gui.get_node("close_button"),
-			action = function () 
-				local node = gui.get_node("background")
-				gui.set_enabled(node, false)
-				msg.post(".", "release_input_focus")
-				if in_game then
+			action = function ()
+				gui.set_enabled(gui.get_node("background"), false)
+				
+				if in_game and deathscreen_state then
 					msg.post("default:/death_screen#death_screen", "show")
-				else
+				elseif not in_game then
 					msg.post("/menu#main_menu", "show")
+				end
+				
+				msg.post(".", "release_input_focus")
+
+				if gui_log then
+					print("Нажата кнопка закрытия окна, окно настроек закрыто")
 				end
 			end
 		},
@@ -45,6 +69,10 @@ function init(self)
 				else
 					gui.set_text(gui.get_node("autorestart_state"), "yes")
 					autorestart_state = true 
+				end
+
+				if gui_log then
+					print("Нажата кнопка авторестарта, состояние авторестарта изменено на", autorestart_state)
 				end
 			end
 		}
@@ -62,10 +90,11 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
 		gui.set_enabled(gui.get_node("background"), true)
 		
-		if sound_off then
-			gui.play_flipbook(gui.get_node("sound_button"), "1600")
-		else
+		--if sound_off then
+		if sound then
 			gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
+		else
+			gui.play_flipbook(gui.get_node("sound_button"), "1600")
 		end
 
 		if autorestart_state then
@@ -76,6 +105,10 @@ function on_message(self, message_id, message, sender)
 		
 		if in_game then
 			msg.post(".", "acquire_input_focus")
+		end
+
+		if gui_log then
+			print("Пришло сообщение о включении экрана настроек от", sender, "Показан экран настроек")
 		end
 	end
 end

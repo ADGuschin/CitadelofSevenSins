@@ -1,59 +1,86 @@
 require "main_menu.ui_func"
+require "variables"
 
 function init(self)
-	-- Fetch background node and disable it.
-	-- Everything is childed under it.
-	local node = gui.get_node("background")
-	gui.set_enabled(node, false)
+	if gui_log then
+		print("Экран смерти проинициализирован")
+	end
+	
+	gui.set_enabled(gui.get_node("background"), false)
 	
 	self.hovered_node = nil
 	self.picked_node = nil
 
 	self.nodes = {
-		{
-			node = gui.get_node("restart"),
-			action = function () 
-				gui.set_enabled(gui.get_node("background"), false)
+					{
+						node = gui.get_node("restart"),
+						action = function () 
+							gui.set_enabled(gui.get_node("background"), false)
 
-				msg.post("/hud", "death_pause", {value = false})
-				msg.post(".", "release_input_focus")
-				msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
-			end
-		},
-		{
-			node = gui.get_node("menu"),
-			action = function ()
-				gui.set_enabled(gui.get_node("background"), false)
-				in_game = false
-				msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
-			end
-		},
-		{
-			node = gui.get_node("settings_button"),
-			action = function () 
-				msg.post("default:/settings#settings", "show")
-				gui.set_enabled(gui.get_node("box"), false)
-			end
-		}
-	}
+							msg.post("/hud", "death_pause", {value = false})
+							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+							msg.post(".", "release_input_focus")
+							
+							if gui_log then
+								print("Нажата кнопка рестарт, загружен прокси main коллекции")
+							end
+						end
+					},
+					{
+						node = gui.get_node("menu"),
+						action = function ()
+							in_game = false
+							gui.set_enabled(gui.get_node("background"), false)
+							
+							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
+
+							if gui_log then
+								print("Нажата кнопка меню, загружен прокси main_menu коллекции")
+							end
+						end
+					},
+					{
+						node = gui.get_node("settings_button"),
+						action = function () 
+							gui.set_enabled(gui.get_node("box"), false)
+
+							msg.post("default:/settings#settings", "show")
+
+							if gui_log then
+								print("Нажата кнопка настроек, скрыт интерфейс экрана смерти")
+							end
+						end
+					}
+				}
 	
 	init_ui(self)
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("death") then
-		local node = gui.get_node("background")
-		gui.set_enabled(node, true)
+		gui.set_enabled(gui.get_node("background"), true)
+		deathscreen_state = true
 
 		msg.post("level:/score#score", "hide")
 		msg.post("/hud", "death_pause", {value = true})
 		msg.post(".", "acquire_input_focus")
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+
+		if gui_log then
+			print("Пришло сообщение о смерти от", sender, "Показан экран смерти, спрятан интерфейс очков, прокси level коллекции поставлен на паузу")
+		end
 	elseif message_id == hash("score") then
-		local score = message.value
-		gui.set_text(gui.get_node("score_num"), score)
+		gui.set_text(gui.get_node("score_num"), message.value)
+		
+		if gui_log then
+			print("Пришло сообщение о счете от", sender, " Счет выведен на экран -", message.value)
+		end
 	elseif message_id == hash("show") then
 		gui.set_enabled(gui.get_node("box"), true)
+
+		if gui_log then
+			print("Пришло сообщение о включении экрана смерти от", sender, "Экран смерти включен")
+		end
 	end
 end
 

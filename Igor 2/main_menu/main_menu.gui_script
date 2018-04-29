@@ -3,6 +3,10 @@ require "main_menu.ui_func"
 require "variables"
 
 function init(self)
+	if gui_log then
+		print("Экран главного меню проинициализирован")
+	end
+	
     msg.post(".", "acquire_input_focus")
     --gui.set_color(gui.get_node("exit_button"), self.normal_color);
     --gui.set_color(gui.get_node("start_button"), self.normal_color);
@@ -13,25 +17,40 @@ function init(self)
     self.nodes = {
 					{
 						node = gui.get_node("start_button"),
-						action = function () 
-							--gui.is_enabled(gui.get_node("start_button"))
-							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+						action = function ()
 							in_game = true
+							
+							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+
+							if gui_log then
+								print("Нажата кнопка старт, загружен прокси main коллекции")
+							end
 						end
 					},
 					{
 						node = gui.get_node("exit_button"),
-						action = function () msg.post("@system:", "exit", {code = 0}) end 
+						action = function ()
+							msg.post("@system:", "exit", {code = 0})
+
+							if gui_log then
+								print("Нажата кнопка выхода, приложение закрыто")
+							end
+						end 
 					},
 					{
 						node = gui.get_node("settings_button"),
-						action = function () 
-							msg.post("/menu#settings", "show")
+						action = function ()
 							gui.set_enabled(gui.get_node("start_button"), false)
 							gui.set_enabled(gui.get_node("exit_button"), false)
 							gui.set_enabled(gui.get_node("title"), false)
+							
+							msg.post("/menu#settings", "show")
+
+							if gui_log then
+								print("Нажата кнопка настроек")
+							end
 						end
-					},
+					}
 				}
 				
 	init_ui(self)
@@ -39,7 +58,7 @@ end
 
 function final(self)
 	msg.post(".", "release_input_focus")
-	msg.post("start_scene:/sound#sound", "sound_off");
+	--msg.post("start_scene:/sound#sound", "sound_off");
 end
 
 function on_message(self, message_id, message, sender)
@@ -47,7 +66,12 @@ function on_message(self, message_id, message, sender)
 		gui.set_enabled(gui.get_node("start_button"), true)
 		gui.set_enabled(gui.get_node("exit_button"), true)
 		gui.set_enabled(gui.get_node("title"), true)
+		
 		msg.post(".", "acquire_input_focus")
+		
+		if gui_log then
+			print("Пришло сообщение о включении интерфейса главного меню от", sender, "Показан интерфейс главного меню")
+		end
 	end
 end
 	
@@ -59,7 +83,8 @@ function on_input(self, action_id, action)
     	if action.released then
 			handle_click(self, action.x, action.y)
     	end
-    end
+	end
+	
 	handle_hover(self, action.x, action.y)
 end
 

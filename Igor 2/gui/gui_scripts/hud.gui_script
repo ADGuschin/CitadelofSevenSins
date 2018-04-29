@@ -5,13 +5,17 @@ local pause_state = false
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	msg.post("#level_proxy", "load")
+
+	if gui_log then
+		print("HUD интерфейс проинициализирован, загружен прокси level коллекции")
+	end
 	
 	self.hovered_node = nil
 	self.picked_node = nil
 
-	if not sound_off then
+	--[[if not sound_off then
 		msg.post("start_scene:/sound#sound", "sound_on")
-	end
+	end]]
 
 	--[[if sound_off then
 		gui.play_flipbook(gui.get_node("sound_button"), "1600")
@@ -25,11 +29,16 @@ function init(self)
 						node = gui.get_node("pause_button"),
 						action = function () 
 							pause_state = true
+							gui.set_enabled(gui.get_node("pause_button"), false)
+							
 							msg.post("/pause_screen", "show")
+							msg.post("level:/score#score", "hide")
 							msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1})
 							msg.post("level:/controller#script", "pause_state", {value = true})
-							msg.post("level:/score#score", "hide")
-							gui.set_enabled(gui.get_node("pause_button"), false)
+
+							if gui_log then
+								print("Нажата кнопка паузы, level прокси поставлен на паузу, скрыт интерфейс очков, скрыта кнопка паузы")
+							end
 						end
 					}
 				}
@@ -40,20 +49,32 @@ end
 
 function final(self)
 	msg.post(".", "release_input_focus")
-	msg.post("start_scene:/sound#sound", "sound_off")
+	--msg.post("start_scene:/sound#sound", "sound_off")
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("proxy_loaded") then
 		msg.post(sender, "enable")
+		
+		if gui_log then
+			print("Пришло сообщение о том, что прокси загружен от", sender, " Хз зачем оно вообще")
+		end
 	elseif message_id == hash("resume") then
 		pause_state = false
 		msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
 		msg.post("level:/controller#script", "pause_state", {value = false})
 		msg.post("level:/score#score", "show")
 		gui.set_enabled(gui.get_node("pause_button"), true)
+
+		if gui_log then
+			print("Пришло сообщение в hud интерфейс о продолжении игры от", sender, "level прокси убран с паузы, показан интерфейс очков, показана кнопка паузы")
+		end
 	elseif message_id == hash("check_for_pause") then
 		msg.post(sender, "pause_state", {value = pause_state})
+		
+		--[[if gui_log then
+			print("Пришло сообщение с запросом состояния паузы от", sender, "Состояние паузы отправлено обратно")
+		end]]
 	elseif message_id == hash("death_pause") then
 		if message.value then
 			pause_state = true
@@ -62,7 +83,10 @@ function on_message(self, message_id, message, sender)
 		else
 			pause_state = false
 			msg.post("level:/controller#script", "pause_state", {value = false})
-			--gui.set_enabled(gui.get_node("pause_button"), true)
+		end
+
+		if gui_log then
+			print("Пришло сообщение в hud интерфейс о состоянии паузы во время смерти от", sender, "В controller отправлено состояние паузы - ", pause_state)
 		end
 	end
 end

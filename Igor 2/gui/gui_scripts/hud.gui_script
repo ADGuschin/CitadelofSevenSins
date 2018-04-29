@@ -32,7 +32,6 @@ function init(self)
 							msg.post("/pause_screen", "show")
 							msg.post("level:/score#score", "hide")
 							msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1})
-							msg.post("level:/controller#script", "pause_state", {value = true})
 
 							if gui_log then
 								print("Нажата кнопка паузы, level прокси поставлен на паузу, скрыт интерфейс очков, скрыта кнопка паузы")
@@ -60,7 +59,6 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("resume") then
 		pause_state = false
 		msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
-		msg.post("level:/controller#script", "pause_state", {value = false})
 		msg.post("level:/score#score", "show")
 		gui.set_enabled(gui.get_node("pause_button"), true)
 
@@ -76,15 +74,13 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("death_pause") then
 		if message.value then
 			pause_state = true
-			msg.post("level:/controller#script", "pause_state", {value = true})
 			gui.set_enabled(gui.get_node("pause_button"), false)
 		else
 			pause_state = false
-			msg.post("level:/controller#script", "pause_state", {value = false})
 		end
 
 		if gui_log then
-			print("Пришло сообщение в hud интерфейс о состоянии паузы во время смерти от", sender, "В controller отправлено состояние паузы - ", pause_state)
+			print("Пришло сообщение в hud интерфейс о состоянии паузы во время смерти от", sender)
 		end
 	end
 end

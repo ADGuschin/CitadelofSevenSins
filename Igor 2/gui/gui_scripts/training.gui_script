@@ -17,7 +17,6 @@ function init(self)
 
 				msg.post(".", "release_input_focus")
 				msg.post("default:/hud#level_proxy", "set_time_step", {factor = 1, mode = 1})
-				msg.post("level:/controller#script", "pause_state", {value = false})
 
 				if gui_log then
 					print("Нажата кнопка ok")
@@ -54,7 +53,6 @@ function on_message(self, message_id, message, sender)
 		
 		msg.post(".", "acquire_input_focus")
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
-		msg.post("level:/controller#script", "pause_state", {value = true})
 	elseif message_id == hash("swipe_up") then
 		pause_state = true
 		gui.set_enabled(gui.get_node("background"), true)
@@ -62,7 +60,6 @@ function on_message(self, message_id, message, sender)
 		
 		msg.post(".", "acquire_input_focus")
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
-		msg.post("level:/controller#script", "pause_state", {value = true})
 	elseif message_id == hash("swipe_down") then
 		pause_state = true
 		gui.set_enabled(gui.get_node("background"), true)
@@ -70,7 +67,6 @@ function on_message(self, message_id, message, sender)
 
 		msg.post(".", "acquire_input_focus")
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
-		msg.post("level:/controller#script", "pause_state", {value = true})
 	end
 end
 

@@ -5,7 +5,6 @@ local grid = 600
 local platform_height = 48
 local default_speed = 360
 local score = 0
-local pause_state = false
 local max_speed = 1500
 local obstacle_var = 0
 local reset_timer = 0
@@ -87,8 +86,6 @@ function on_message(self, message_id, message, sender)
         elseif self.speed > max_speed then
             self.speed = max_speed
         end
-    elseif message_id == hash("pause_state") then
-        pause_state = message.value
     elseif message_id == hash("speed_request") then
         msg.post(sender, "set_speed", { speed = self.speed })
     elseif message_id == hash("death") then

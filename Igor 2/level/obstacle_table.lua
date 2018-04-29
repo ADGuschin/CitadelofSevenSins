@@ -4,6 +4,7 @@
 -- in any script using the functions.
 obstacle_table = {
 	["training"] = {"#training"},
+	["#training"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top", "#train_home", "#coll_1", "#coll_2", "#obstacle_pipes"},
 	["init"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top", "#train_home", "#coll_1", "#coll_2", "#obstacle_pipes"},
 	["#obstacle_small"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top", "#train_home", "#coll_1", "#obstacle_jumps", "#coll_2", "#coll_3", "#obstacle_pipes"},
 	["#obstacle_tall"] = {"#obstacle_small", "#obstacle_tall", "#obstacle_top", "#train_home", "#coll_1","#obstacle_jumps", "#coll_2", "#coll_3.1", "#coll_3.2", "#obstacle_pipes"},

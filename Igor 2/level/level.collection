@@ -416,7 +416,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"training\"\n"
   "  type: \"collectionfactory\"\n"
-  "  data: \"prototype: \\\"\\\"\\n"
+  "  data: \"prototype: \\\"/level/obstacles/collections/training.collection\\\"\\n"
   "load_dynamically: false\\n"
   "\"\n"
   "  position {\n"

@@ -2,8 +2,10 @@
 
 function init(self)
 	if sound then
-		msg.post("#maintheme", "play_sound", {delay = 0, gain = 0.1})
+		msg.post("#maintheme", "play_sound", {delay = 0, gain = 0.5})
 	end
+	--print(msg.url())
+	--print("KEK")
 end
 
 function final(self)
@@ -18,7 +20,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("sound_on") then
-		msg.post("sound", "play_sound", {delay = 0, gain = 0.1})
+		msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
 	elseif message_id == hash("sound_off") then
 		msg.post("sound", "stop_sound")
 	end

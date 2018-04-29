@@ -22,4 +22,4 @@ deathscreen_state = false
 --Переменные для включения логов
 gui_log = true
 
-training_state = false
+training_state = true

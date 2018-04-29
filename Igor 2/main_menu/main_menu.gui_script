@@ -18,36 +18,42 @@ function init(self)
 					{
 						node = gui.get_node("start_button"),
 						action = function ()
-							in_game = true
-							
-							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+							if gui.is_enabled(gui.get_node("start_button")) then
+								in_game = true
+								
+								msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
 
-							if gui_log then
-								print("Нажата кнопка старт, загружен прокси main коллекции")
+								if gui_log then
+									print("Нажата кнопка старт, загружен прокси main коллекции")
+								end
 							end
 						end
 					},
 					{
 						node = gui.get_node("exit_button"),
 						action = function ()
-							msg.post("@system:", "exit", {code = 0})
+							if gui.is_enabled(gui.get_node("exit_button")) then
+								msg.post("@system:", "exit", {code = 0})
 
-							if gui_log then
-								print("Нажата кнопка выхода, приложение закрыто")
+								if gui_log then
+									print("Нажата кнопка выхода, приложение закрыто")
+								end
 							end
 						end 
 					},
 					{
 						node = gui.get_node("settings_button"),
 						action = function ()
-							gui.set_enabled(gui.get_node("start_button"), false)
-							gui.set_enabled(gui.get_node("exit_button"), false)
-							gui.set_enabled(gui.get_node("title"), false)
-							
-							msg.post("/menu#settings", "show")
+							if gui.is_enabled(gui.get_node("settings_button")) then
+								gui.set_enabled(gui.get_node("start_button"), false)
+								gui.set_enabled(gui.get_node("exit_button"), false)
+								gui.set_enabled(gui.get_node("title"), false)
+								
+								msg.post("/menu#settings", "show")
 
-							if gui_log then
-								print("Нажата кнопка настроек")
+								if gui_log then
+									print("Нажата кнопка настроек, скрыт интерфейс главного меню")
+								end
 							end
 						end
 					}

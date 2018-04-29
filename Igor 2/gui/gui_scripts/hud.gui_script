@@ -28,7 +28,7 @@ function init(self)
 					{
 						node = gui.get_node("pause_button"),
 						action = function () 
-							pause_state = true
+							--[[pause_state = true
 							gui.set_enabled(gui.get_node("pause_button"), false)
 							
 							msg.post("/pause_screen", "show")
@@ -38,7 +38,8 @@ function init(self)
 
 							if gui_log then
 								print("Нажата кнопка паузы, level прокси поставлен на паузу, скрыт интерфейс очков, скрыта кнопка паузы")
-							end
+							end]]
+							msg.post("default:/training#training", "swipe_up")
 						end
 					}
 				}

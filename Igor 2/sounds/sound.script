@@ -22,7 +22,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("sound_on") then
 		msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
 	elseif message_id == hash("sound_off") then
-		msg.post("sound", "stop_sound", {delay = 0, gain = 0.5})
+		msg.post("sound", "stop_sound")
 	end
 	--[[if message_id == hash("sound_off") and sound then 
 		--print(msg.url())

@@ -18,17 +18,17 @@ function on_message(self, message_id, message, sender)
 	if sound then
 		if message_id == hash("step") then
 			print("aga")
-			msg.post("#step", "play_sound")
+			msg.post("#step", "play_sound", {delay = 0, gain = 0.5})
 		elseif message_id == hash("roll") then
-			msg.post("#roll", "play_sound")
+			msg.post("#roll", "play_sound", {delay = 0, gain = 0.5})
 		elseif message_id == hash("jump") then
-			msg.post("#jump", "play_sound")
+			msg.post("#jump", "play_sound", {delay = 0, gain = 0.5})
 		elseif message_id == hash("slide") then
-			msg.post("#slide", "play_sound")
+			msg.post("#slide", "play_sound", {delay = 0, gain = 0.5})
 		elseif message_id == hash("impact") then
-			msg.post("#impact", "play_sound")
+			msg.post("#impact", "play_sound", {delay = 0, gain = 0.5})
 		elseif message_id == hash("break_jump") then
-			msg.post("#break_jump", "play_sound")
+			msg.post("#break_jump", "play_sound", {delay = 0, gain = 0.5})
 		elseif message_id == hash("stop_step") then
 			msg.post("#step", "stop_sound")
 		end

@@ -26,7 +26,7 @@ function init(self)
     update_speed(self)
     self.gridw = 0
     --self.heroes = {}
-    previous_obstacle = obstacle_table["init"][math.random(table_length(self, obstacle_table["init"]))]
+    previous_obstacle = "init"--obstacle_table["init"][math.random(table_length(self, obstacle_table["init"]))]
     msg.post("#", "spawnhero")
     --print(msg.url())
 end
@@ -69,6 +69,7 @@ function on_message(self, message_id, message, sender)
         --table.insert(self.heroes, p)
         score = 0 
     elseif message_id == hash("reset") then 
+        previous_obstacle = "init"
         -- Tell the hero to reset.
         reset = true
         reset_timer = 0
@@ -87,6 +88,7 @@ function on_message(self, message_id, message, sender)
     elseif message_id == hash("speed_request") then
         msg.post(sender, "set_speed", { speed = self.speed })
     elseif message_id == hash("death") then
+        previous_obstacle = "init"
         msg.post("default:/death_screen#death_screen", "score", {value = math.ceil(score)})
     end
 end

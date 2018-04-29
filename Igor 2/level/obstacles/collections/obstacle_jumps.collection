@@ -1,7 +1,7 @@
 name: "default"
 instances {
   id: "obstacle_tall"
-  prototype: "/level/obstacles/obstacle_tall.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
   position {
     x: 132.0
     y: 0.0
@@ -21,7 +21,7 @@ instances {
 }
 instances {
   id: "obstacle_top"
-  prototype: "/level/obstacles/obstacle_top.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
   position {
     x: 202.0
     y: 50.0
@@ -41,7 +41,7 @@ instances {
 }
 instances {
   id: "obstacle_top1"
-  prototype: "/level/obstacles/obstacle_top.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
   position {
     x: 323.0
     y: 50.0
@@ -61,7 +61,7 @@ instances {
 }
 instances {
   id: "obstacle_tall1"
-  prototype: "/level/obstacles/obstacle_tall.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
   position {
     x: 384.0
     y: 0.0
@@ -81,7 +81,7 @@ instances {
 }
 instances {
   id: "platform1"
-  prototype: "/level/obstacles/platform.go"
+  prototype: "/level/obstacles/gameobjects/platform.go"
   position {
     x: 407.0
     y: 12.0
@@ -101,7 +101,7 @@ instances {
 }
 instances {
   id: "platform_long"
-  prototype: "/level/obstacles/platform_long.go"
+  prototype: "/level/obstacles/gameobjects/platform_long.go"
   position {
     x: 60.0
     y: 12.0
@@ -121,7 +121,7 @@ instances {
 }
 instances {
   id: "obstacle_top2"
-  prototype: "/level/obstacles/obstacle_top.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
   position {
     x: 221.0
     y: 50.0
@@ -141,7 +141,7 @@ instances {
 }
 instances {
   id: "obstacle_top3"
-  prototype: "/level/obstacles/obstacle_top.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
   position {
     x: 304.0
     y: 50.0
@@ -161,7 +161,7 @@ instances {
 }
 instances {
   id: "obstacle_fatal"
-  prototype: "/level/obstacles/obstacle_fatal.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
     x: 160.0
     y: 16.0
@@ -181,7 +181,7 @@ instances {
 }
 instances {
   id: "obstacle_fatal1"
-  prototype: "/level/obstacles/obstacle_fatal.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
     x: 192.0
     y: 16.0
@@ -201,7 +201,7 @@ instances {
 }
 instances {
   id: "obstacle_fatal2"
-  prototype: "/level/obstacles/obstacle_fatal.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
     x: 224.0
     y: 16.0
@@ -221,7 +221,7 @@ instances {
 }
 instances {
   id: "obstacle_fatal3"
-  prototype: "/level/obstacles/obstacle_fatal.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
     x: 257.0
     y: 16.0
@@ -241,7 +241,7 @@ instances {
 }
 instances {
   id: "obstacle_fatal4"
-  prototype: "/level/obstacles/obstacle_fatal.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
     x: 290.0
     y: 16.0
@@ -261,7 +261,7 @@ instances {
 }
 instances {
   id: "obstacle_fatal5"
-  prototype: "/level/obstacles/obstacle_fatal.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
     x: 323.0
     y: 16.0
@@ -281,7 +281,7 @@ instances {
 }
 instances {
   id: "obstacle_fatal6"
-  prototype: "/level/obstacles/obstacle_fatal.go"
+  prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
     x: 356.0
     y: 16.0

@@ -1,7 +1,7 @@
 script: "/gui/gui_scripts/settings.gui_script"
 fonts {
   name: "pixels"
-  font: "/pixels.font"
+  font: "/fonts/pixels.font"
 }
 textures {
   name: "Background"

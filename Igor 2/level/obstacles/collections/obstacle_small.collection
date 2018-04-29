@@ -1,9 +1,9 @@
 name: "default"
 instances {
-  id: "obstacle_top"
-  prototype: "/level/obstacles/obstacle_top.go"
+  id: "obstacle_small"
+  prototype: "/level/obstacles/gameobjects/obstacle_small.go"
   position {
-    x: 9.5
+    x: 16.0
     y: 0.0
     z: 0.0
   }

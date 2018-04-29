@@ -1,10 +1,10 @@
 name: "default"
 instances {
-  id: "train_home"
-  prototype: "/level/obstacles/train_home.go"
+  id: "obstacle_top"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
   position {
-    x: 67.5
-    y: 30.5
+    x: 9.5
+    y: 0.0
     z: 0.0
   }
   rotation {

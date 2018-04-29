@@ -1,0 +1,102 @@
+name: "default"
+instances {
+  id: "obstacle_small"
+  prototype: "/level/obstacles/gameobjects/obstacle_small.go"
+  position {
+    x: 225.0
+    y: 5.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_tall"
+  prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
+  position {
+    x: 135.0
+    y: 52.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_top"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
+  position {
+    x: 50.0
+    y: 52.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "train_home"
+  prototype: "/level/obstacles/gameobjects/train_home.go"
+  position {
+    x: 70.0
+    y: 30.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_tall1"
+  prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
+  position {
+    x: 228.0
+    y: 52.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

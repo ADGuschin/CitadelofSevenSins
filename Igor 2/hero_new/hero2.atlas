@@ -1,28 +1,34 @@
 animations {
   id: "player_right"
   images {
-    image: "/hero_new/images/running_animation/hero1.png"
+    image: "/hero_new/images/new hero/HERO1.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero2.png"
+    image: "/hero_new/images/new hero/HERO2.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero3.png"
+    image: "/hero_new/images/new hero/HERO3.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero4.png"
+    image: "/hero_new/images/new hero/HERO4.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero5.png"
+    image: "/hero_new/images/new hero/HERO5.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero6.png"
+    image: "/hero_new/images/new hero/HERO6.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero7.png"
+    image: "/hero_new/images/new hero/HERO7.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero8.png"
+    image: "/hero_new/images/new hero/HERO8.png"
+  }
+  images {
+    image: "/hero_new/images/new hero/HERO9.png"
+  }
+  images {
+    image: "/hero_new/images/new hero/HERO10.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 20
@@ -78,28 +84,34 @@ animations {
 animations {
   id: "player_fast_right"
   images {
-    image: "/hero_new/images/running_animation/hero1.png"
+    image: "/hero_new/images/new hero/HERO1.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero2.png"
+    image: "/hero_new/images/new hero/HERO2.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero3.png"
+    image: "/hero_new/images/new hero/HERO3.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero4.png"
+    image: "/hero_new/images/new hero/HERO4.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero5.png"
+    image: "/hero_new/images/new hero/HERO5.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero6.png"
+    image: "/hero_new/images/new hero/HERO6.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero7.png"
+    image: "/hero_new/images/new hero/HERO7.png"
   }
   images {
-    image: "/hero_new/images/running_animation/hero8.png"
+    image: "/hero_new/images/new hero/HERO8.png"
+  }
+  images {
+    image: "/hero_new/images/new hero/HERO9.png"
+  }
+  images {
+    image: "/hero_new/images/new hero/HERO10.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 25

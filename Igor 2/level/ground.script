@@ -5,12 +5,16 @@ end
 
 function update(self, dt)
 	msg.post("level:/controller#script", "speed_request")
-	local pos = go.get_position(p)
-	if pos.x <= -990 then
-		pos.x = 2970 + (pos.x + 330)
+	local pos = go.get_position()
+	if pos.x <= -970 then
+		pos.x = 2950 + (pos.x + 330)
+		factory.create("level:/ground/factory#ground1",vmath.vector3(pos), nil,{},5)
+		go.delete()
+
+
 	end
 	pos.x = pos.x - self.speed * dt
-	go.set_position(pos, p)
+	go.set_position(pos)
 end
 
 function on_message(self, message_id, message, sender)

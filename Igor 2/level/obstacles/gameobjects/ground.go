@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/level/ground.script"
+  component: "/level/ground/ground.script"
   position {
     x: 0.0
     y: 0.0

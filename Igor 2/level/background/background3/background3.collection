@@ -4,7 +4,7 @@ embedded_instances {
   id: "controller"
   data: "components {\n"
   "  id: \"background3\"\n"
-  "  component: \"/level/background/background3.script\"\n"
+  "  component: \"/level/background/background3/background3.script\"\n"
   "  position {\n"
   "    x: 0.0\n"
   "    y: 0.0\n"

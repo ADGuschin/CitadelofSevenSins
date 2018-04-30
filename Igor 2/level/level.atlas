@@ -22,6 +22,12 @@ images {
 images {
   image: "/level/images/pipe2.png"
 }
+images {
+  image: "/level/images/bochka.png"
+}
+images {
+  image: "/level/images/garage.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

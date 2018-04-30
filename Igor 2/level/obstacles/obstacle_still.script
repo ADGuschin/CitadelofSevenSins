@@ -1,9 +1,7 @@
 require "level.utils"
-local p
 function init(self)
     self.speed = 900
     --msg.post("level:/controller#script", "id_request", {url = go.get_id()})
-    p = obstacle_var
 end
 
 function update(self, dt)
@@ -21,8 +19,5 @@ end
 function on_message(self, message_id, message, sender)
     if message_id == hash("set_speed") then
         self.speed = message.speed 
-    elseif message_id == hash("id_response") then
-        p = message.id
-        print(p)
     end
 end

@@ -3,8 +3,6 @@ require "main_menu.ui_func"
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
 	
-	--msg.post("default:/training#training", "swipe_up")
-	
 	self.hovered_node = nil
 	self.picked_node = nil
 
@@ -50,6 +48,7 @@ function on_message(self, message_id, message, sender)
 		pause_state = true
 		gui.set_enabled(gui.get_node("background"), true)
 		gui.play_flipbook(gui.get_node("hint"), "swipe_right")
+		--pprint(gui.get_position(gui.get_node("hint")))
 		
 		msg.post(".", "acquire_input_focus")
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})

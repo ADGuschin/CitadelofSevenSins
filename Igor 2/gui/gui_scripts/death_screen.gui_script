@@ -7,6 +7,8 @@ function init(self)
 	end
 	
 	gui.set_enabled(gui.get_node("background"), false)
+	gui.set_enabled(gui.get_node("record_box"), false)
+	gui.set_enabled(gui.get_node("score_box"), true)
 	
 	self.hovered_node = nil
 	self.picked_node = nil
@@ -68,9 +70,16 @@ function on_message(self, message_id, message, sender)
 			gui.set_enabled(gui.get_node("background"), true)
 			deathscreen_state = true
 
+			if record_state then
+				print("Record = ", shared_data.player.highscore)
+				gui.set_enabled(gui.get_node("record_box"), true)
+				gui.set_enabled(gui.get_node("score_box"), false)
+				gui.set_text(gui.get_node("highscore_num"), shared_data.player.highscore)
+			end
+
+			msg.post(".", "acquire_input_focus")
 			msg.post("level:/score#score", "hide")
 			msg.post("/hud", "death_pause", {value = true})
-			msg.post(".", "acquire_input_focus")
 			msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
 
 			if gui_log then

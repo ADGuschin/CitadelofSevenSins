@@ -2,8 +2,7 @@ require "main_menu.ui_func"
 require "variables"
 
 function init(self)
-	local node = gui.get_node("background")
-	gui.set_enabled(node, false)
+	gui.set_enabled(gui.get_node("background"), false)
 
 	self.hovered_node = nil
 	self.picked_node = nil
@@ -85,6 +84,24 @@ function init(self)
 					end
 				end
 			end
+		},
+		{
+			node = gui.get_node("training_button"),
+			action = function ()
+				if gui.is_enabled(gui.get_node("background")) then
+					if training_state then
+						gui.set_text(gui.get_node("training_state"), "no")
+						training_state = false
+					else
+						gui.set_text(gui.get_node("training_state"), "yes")
+						training_state = true
+					end
+
+					if gui_log then
+						print("Нажата кнопка переключения тренировки, состояние авторестарта изменено на", training)
+					end
+				end
+			end
 		}
 	}
 
@@ -111,6 +128,12 @@ function on_message(self, message_id, message, sender)
 			gui.set_text(gui.get_node("autorestart_state"), "yes")
 		else
 			gui.set_text(gui.get_node("autorestart_state"), "no")
+		end
+
+		if training_state then
+			gui.set_text(gui.get_node("training_state"), "yes")
+		else
+			gui.set_text(gui.get_node("training_state"), "no")
 		end
 		
 		if in_game then

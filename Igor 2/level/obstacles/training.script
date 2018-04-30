@@ -1,20 +1,21 @@
+local isSwipeUpFirstTime = true
+local isSwipeDownFirstTime = true
+local isSwipeRightFirstTime= true
 function init(self)
 	self.speed = 900
 end
 
-function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
-end
-
 function update(self, dt)
 	local pos = go.get_position()
-	if pos.x >= 1000 and pos.x <= 1005 then
+	if pos.x >= 1000 and pos.x <= 1010 and isSwipeUpFirstTime then
 		msg.post("default:/training#training", "swipe_up")
-	elseif pos.x >= 100 and pos.x <= 110 then
+		isSwipeUpFirstTime = false
+	elseif pos.x >= 100 and pos.x <= 110 and isSwipeDownFirstTime then
 		msg.post("default:/training#training", "swipe_down")
-	elseif pos.x >= -550 and pos.x <= -540 then
+		isSwipeDownFirstTime = false
+	elseif pos.x >= -550 and pos.x <= -540 and isSwipeRightFirstTime then
 		msg.post("default:/training#training", "swipe_right")
+		isSwipeRightFirstTime = false
 	elseif pos.x < -1500 then
 		go.delete()
 	end

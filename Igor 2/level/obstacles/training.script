@@ -7,13 +7,13 @@ end
 
 function update(self, dt)
 	local pos = go.get_position()
-	if pos.x >= 1000 and pos.x <= 1010 and isSwipeUpFirstTime then
+	if pos.x >= 800 and pos.x <= 810 and isSwipeUpFirstTime then
 		msg.post("default:/training#training", "swipe_up")
 		isSwipeUpFirstTime = false
-	elseif pos.x >= 100 and pos.x <= 110 and isSwipeDownFirstTime then
+	elseif pos.x >= -30 and pos.x <= -20 and isSwipeDownFirstTime then
 		msg.post("default:/training#training", "swipe_down")
 		isSwipeDownFirstTime = false
-	elseif pos.x >= -550 and pos.x <= -540 and isSwipeRightFirstTime then
+	elseif pos.x >= -800 and pos.x <= -790 and isSwipeRightFirstTime then
 		msg.post("default:/training#training", "swipe_right")
 		isSwipeRightFirstTime = false
 	elseif pos.x < -1500 then

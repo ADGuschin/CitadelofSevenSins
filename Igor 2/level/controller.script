@@ -67,7 +67,7 @@ end
 
 function on_message(self, message_id, message, sender)
     if message_id == hash("spawnhero") then
-        local p = factory.create("#herofactory",vmath.vector3(300, 141, 0), nil,{},4)
+        local p = factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},4)
         --table.insert(self.heroes, p)
         score = 0 
     elseif message_id == hash("reset") then 

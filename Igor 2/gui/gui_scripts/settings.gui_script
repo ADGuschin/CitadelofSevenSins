@@ -18,6 +18,8 @@ function init(self)
 
 						if in_game then
 							msg.post("level:/sound#sound", "sound_off")
+						else
+							msg.post("default:/sound#sound", "sound_off")
 						end
 
 						if gui_log then
@@ -29,6 +31,8 @@ function init(self)
 
 						if in_game then
 							msg.post("level:/sound#sound", "sound_on")
+						else
+							msg.post("default:/sound#sound", "sound_on")
 						end
 
 						if gui_log then

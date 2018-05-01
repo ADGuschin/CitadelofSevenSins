@@ -40,6 +40,12 @@ images {
 images {
   image: "/level/images/button.png"
 }
+images {
+  image: "/level/images/shesterenka.png"
+}
+images {
+  image: "/level/images/key.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

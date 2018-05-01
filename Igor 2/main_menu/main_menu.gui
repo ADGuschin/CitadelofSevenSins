@@ -23,8 +23,8 @@ background_color {
 }
 nodes {
   position {
-    x: 640.0
-    y: 360.0
+    x: 1440.0
+    y: 329.0
     z: 0.0
     w: 1.0
   }
@@ -41,7 +41,7 @@ nodes {
     w: 1.0
   }
   size {
-    x: 480.0
+    x: 960.0
     y: 272.0
     z: 0.0
     w: 1.0
@@ -54,7 +54,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "Background/background_1-4_4"
+  texture: "Background/background_menu"
   id: "background"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -342,7 +342,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/applications-system_1315"
+  texture: "gui/key"
   id: "settings_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

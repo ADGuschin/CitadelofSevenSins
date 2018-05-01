@@ -6,7 +6,27 @@ function init(self)
 	if gui_log then
 		print("Экран главного меню проинициализирован")
 	end
-	
+	local values = { 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 1,
+	0, 0, 0, 0, 0, 0, 1, 1,
+	0, 0, 0, 0, 0, 1, 1, 1,
+	0, 0, 0, 0, 1, 1, 1, 1,
+	0, 0, 0, 1, 1, 1, 1, 1,
+	0, 0, 1, 1, 1, 1, 1, 1,
+	0, 1, 1, 1, 1, 1, 1, 1,
+	1, 1, 1, 1, 1, 1, 1, 1,
+	--0, 0, 0, 0, 0, 0, 0, 0 
+	0, 1, 1, 1, 1, 1, 1, 1,
+	0, 0, 1, 1, 1, 1, 1, 1,
+	0, 0, 0, 1, 1, 1, 1, 1,
+	0, 0, 0, 0, 1, 1, 1, 1,
+	0, 0, 0, 0, 0, 1, 1, 1,
+	0, 0, 0, 0, 0, 0, 1, 1,
+	0, 0, 0, 0, 0, 0, 0, 1,
+	0, 0, 0, 0, 0, 0, 0, 0 }
+	local vec = vmath.vector(values)
+	local node = gui.get_node("background")
+	gui.animate(node, "position.x", -120, vec, 400.0, -45, nil, gui.PLAYBACK_LOOP_BACKWARD)
 	msg.post(".", "acquire_input_focus")
 	
     --gui.set_color(gui.get_node("exit_button"), self.normal_color);
@@ -75,7 +95,7 @@ function on_message(self, message_id, message, sender)
 		gui.set_enabled(gui.get_node("title"), true)
 		
 		msg.post(".", "acquire_input_focus")
-		anim(gui.get_node("background"))
+		
 		if gui_log then
 			print("Пришло сообщение о включении интерфейса главного меню от", sender, "Показан интерфейс главного меню")
 		end
@@ -97,5 +117,5 @@ end
 
 local function anim(node)
 	--gui.animate(node, "position.x", 100, gui.EASING_IN, 1, gui.PLAYBACK_LOOP_BACKWARD)
-	gui.animate(node, "position.x", 1000, vec, 4.0, 0, nil, gui.PLAYBACK_LOOP_BACKWARD)
+	gui.animate(node, "position.x", 1000, vec, 4.0, 1, nil, gui.PLAYBACK_LOOP_BACKWARD)
 end

@@ -52,6 +52,9 @@ images {
 images {
   image: "/level/images/cotinue_background.png"
 }
+images {
+  image: "/level/images/background_menu.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

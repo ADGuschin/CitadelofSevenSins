@@ -1,10 +1,15 @@
 require "main_menu.collection_proxy_content"
 
+local logo_time = 0
+local menu_load_state = false
+
 function init(self)
 	math.randomseed(os.time())
 	self.active_proxy = nil
 	self.proxy_to_load = nil
-	msg.post("#", "load", { proxy = collection_proxies[1]})
+    msg.post("#", "load", { proxy = collection_proxies[1]})
+    --msg.post("#logo_proxy", "load")
+
     --msg.post("#main_menu_proxy", "load")
     msg.post(".", "acquire_input_focus")
 end
@@ -12,8 +17,8 @@ end
 function on_message(self, message_id, message, sender)
     if message_id == hash("proxy_loaded") then
         --msg.post(sender, "init")
-    	msg.post(sender, "enable")
-        self.active_proxy = sender 
+        msg.post(sender, "enable")
+        self.active_proxy = sender
     end
     if message_id == hash("load") then 
         self.proxy_to_load = message.proxy; 
@@ -29,11 +34,22 @@ function on_message(self, message_id, message, sender)
         msg.post(self.active_proxy, "unload")
     end
     if message_id == hash("proxy_unloaded") then
-    	msg.post(self.proxy_to_load, "load")
+        msg.post(self.proxy_to_load, "load")
     end
     if message_id == hash("reload_active") then
-    	if self.active_proxy ~= nil then
-    		msg.post("#", "load", { proxy = self.active_proxy })
-    	end
+        if self.active_proxy ~= nil then
+            msg.post("#", "load", { proxy = self.active_proxy })
+        end
+    end
+end
+
+function update(self, dt)
+    if logo_time == 500 then
+        msg.post("#", "load", { proxy = collection_proxies[2]})
+        menu_load_state = true
+        logo_time = logo_time + 1
+    end
+    if not menu_load_state then
+        logo_time = logo_time + 1
     end
 end

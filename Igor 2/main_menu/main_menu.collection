@@ -1,4 +1,4 @@
-name: "default"
+name: "default2"
 instances {
   id: "sound"
   prototype: "/sounds/sound.go"

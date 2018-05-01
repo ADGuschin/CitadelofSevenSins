@@ -46,6 +46,9 @@ images {
 images {
   image: "/level/images/key.png"
 }
+images {
+  image: "/gui/gui_images/Defold-logotypes_RGB-Original_Illustrator-02.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

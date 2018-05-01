@@ -340,7 +340,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/shesterenka"
+  texture: "gui/key"
   id: "settings_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

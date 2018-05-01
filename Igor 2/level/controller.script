@@ -13,7 +13,7 @@ local reset_timer_max = 5
 
 local previous_obstacle
 
-acceleration = 500
+acceleration = 20
 
 function table_length(self, table)
     local count = 0

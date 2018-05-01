@@ -157,7 +157,7 @@ local function break_roll(self)
 end
 
 function update(self, dt)
-	invincible = true
+	--invincible = true
 	if not pause_state then
 		local hero_position = go.get_position()
 

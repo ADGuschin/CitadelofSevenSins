@@ -69,7 +69,8 @@ function on_message(self, message_id, message, sender)
 		else]]
 			gui.set_enabled(gui.get_node("background"), true)
 			deathscreen_state = true
-
+			local node = gui.get_node("background")
+			gui.animate(node, "position.y", 100, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 			if record_state then
 				print("Record = ", shared_data.player.highscore)
 				gui.set_enabled(gui.get_node("record_box"), true)

@@ -3,7 +3,7 @@ require "variables"
 
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
-
+	
 	self.hovered_node = nil
 	self.picked_node = nil
 
@@ -113,14 +113,15 @@ function init(self)
 end
 
 function final(self)
-	-- Add finalization code here
-	-- Remove this function if not needed
+	--[[local node = gui.get_node("background")
+	gui.animate(node, "position.y", 0, gui.EASING_INCUBIC, 1, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)]]
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
 		gui.set_enabled(gui.get_node("background"), true)
-		
+		local node = gui.get_node("background")
+		gui.animate(node, "position.y", 100, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 		--if sound_off then
 		if sound then
 			gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")

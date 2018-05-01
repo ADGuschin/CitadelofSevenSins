@@ -159,7 +159,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "restart"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -277,7 +277,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "menu"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

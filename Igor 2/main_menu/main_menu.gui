@@ -101,14 +101,14 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.7019608
-    y: 0.3019608
-    z: 0.101960786
+    x: 1.0
+    y: 0.7019608
+    z: 0.7019608
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "start_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -218,14 +218,14 @@ nodes {
     w: 1.0
   }
   color {
-    x: 0.7019608
-    y: 0.3019608
-    z: 0.101960786
+    x: 1.0
+    y: 0.7019608
+    z: 0.7019608
     w: 1.0
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: ""
+  texture: "gui/button"
   id: "exit_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

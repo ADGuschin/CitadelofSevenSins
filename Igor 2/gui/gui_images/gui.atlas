@@ -37,6 +37,9 @@ images {
 images {
   image: "/gui/gui_images/swipe_right.png"
 }
+images {
+  image: "/level/images/button.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

@@ -1,6 +1,6 @@
-normal_color = vmath.vector4(.9, .3, .0, .9);
-hover_color = vmath.vector4(.9, .9, .9, .9);
-pressed_color = vmath.vector4(.6, .6, .6, 1);
+normal_color = vmath.vector4(.9, .1, .0, .9);
+hover_color = vmath.vector4(.7, .0, .0, .9);
+pressed_color = vmath.vector4(.5, .0, .0, 1);
 
 function init_ui(self)
 	for i, p in ipairs(self.nodes) do

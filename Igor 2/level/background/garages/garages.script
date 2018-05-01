@@ -9,6 +9,7 @@ function final(self)
 end
 
 function update(self, dt)
+	msg.post("level:/controller#script", "speed_request")
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
 		if pos.x <= -300 then

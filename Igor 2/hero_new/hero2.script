@@ -157,6 +157,7 @@ local function break_roll(self)
 end
 
 function update(self, dt)
+	invincible = true
 	if not pause_state then
 		local hero_position = go.get_position()
 
@@ -278,7 +279,7 @@ function on_message(self, message_id, message, sender)
 		msg.post("#running_state", "enable")
 	elseif message_id == hash("contact_point_response") then
 		local pos = go.get_position()
-		if (message.group == hash("danger") or pos.x < 10) and alive then
+		if (message.group == hash("danger") or pos.x < 10) and alive and not invincible then
 			alive = false
 			play_animation(self, hash("player_die"))
 			msg.post("#running_state", "disable")

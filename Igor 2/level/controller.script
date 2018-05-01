@@ -1,5 +1,6 @@
 require "level.obstacle_table"
 require "level.utils"
+require "variables"
 -- controller.script
 local grid = 600
 local platform_height = 48
@@ -12,7 +13,7 @@ local reset_timer_max = 5
 
 local previous_obstacle
 
-acceleration = 20;
+acceleration = 500
 
 function table_length(self, table)
     local count = 0
@@ -44,8 +45,10 @@ end
 
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
-    self.speed = self.speed + acceleration * dt
-    update_speed(self)
+    if self.speed < max_speed then 
+        self.speed = self.speed + acceleration * dt
+    end
+    --update_speed(self)
     check_for_reset(self)
     if self.gridw >= grid then
         self.gridw = 0

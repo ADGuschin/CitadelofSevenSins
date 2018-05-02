@@ -342,7 +342,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/key"
+  texture: "gui/gear"
   id: "settings_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

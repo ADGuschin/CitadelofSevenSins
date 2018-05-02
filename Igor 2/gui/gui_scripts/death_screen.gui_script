@@ -17,6 +17,7 @@ function init(self)
 					{
 						node = gui.get_node("restart"),
 						action = function () 
+							--finish_anim(gui.get_node("background"))
 							gui.set_enabled(gui.get_node("background"), false)
 
 							msg.post("/hud", "death_pause", {value = false})
@@ -31,6 +32,7 @@ function init(self)
 					{
 						node = gui.get_node("menu"),
 						action = function ()
+							--finish_anim(gui.get_node("background"))
 							in_game = false
 							gui.set_enabled(gui.get_node("background"), false)
 							
@@ -58,6 +60,10 @@ function init(self)
 	init_ui(self)
 end
 
+function finish_anim(node)
+	gui.animate(node, "position.y", -150, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
+end
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("death") then
 		--[[if autorestart_state then
@@ -70,7 +76,7 @@ function on_message(self, message_id, message, sender)
 			gui.set_enabled(gui.get_node("background"), true)
 			deathscreen_state = true
 			local node = gui.get_node("background")
-			gui.animate(node, "position.y", 100, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+			gui.animate(node, "position.y", 100, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 			if record_state then
 				print("Record = ", shared_data.player.highscore)
 				gui.set_enabled(gui.get_node("record_box"), true)

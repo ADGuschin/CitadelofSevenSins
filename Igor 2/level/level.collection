@@ -124,7 +124,7 @@ collection_instances {
   collection: "/level/background/background1/background1.collection"
   position {
     x: 962.0
-    y: 423.0
+    y: 410.0
     z: -0.5
   }
   rotation {
@@ -144,7 +144,7 @@ collection_instances {
   collection: "/level/background/background2/background2.collection"
   position {
     x: 964.0
-    y: 364.0
+    y: 340.0
     z: -0.6
   }
   rotation {
@@ -164,7 +164,7 @@ collection_instances {
   collection: "/level/background/background3/background3.collection"
   position {
     x: 1186.0
-    y: 255.0
+    y: 200.0
     z: -1.0
   }
   rotation {
@@ -174,8 +174,8 @@ collection_instances {
     w: 1.0
   }
   scale3 {
-    x: 5.0
-    y: 5.0
+    x: 4.0
+    y: 4.0
     z: 1.0
   }
 }

@@ -41,7 +41,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka_novye_colors3\\\"\\n"
+  "default_animation: \\\"background_mysorka3\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"

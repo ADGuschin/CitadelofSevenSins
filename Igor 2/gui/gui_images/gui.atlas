@@ -52,6 +52,9 @@ images {
 images {
   image: "/level/images/gear.png"
 }
+images {
+  image: "/level/images/button_new.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

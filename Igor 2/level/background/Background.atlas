@@ -55,6 +55,9 @@ images {
 images {
   image: "/level/images/background_menu.png"
 }
+images {
+  image: "/level/images/background_mysorka3.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

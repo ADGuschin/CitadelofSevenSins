@@ -14,8 +14,8 @@ function init(self)
 					{
 						node = gui.get_node("resume"),
 						action = function () 
-							finish_anim(gui.get_node("background"))
-							--gui.set_enabled(gui.get_node("background"), false)
+							--finish_anim(gui.get_node("background"))
+							gui.set_enabled(gui.get_node("background"), false)
 							
 							msg.post("/hud", "resume")
 							msg.post(".", "release_input_focus")

@@ -279,7 +279,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "Exit"
+  text: "Quit"
   font: "pixels"
   id: "exit_text"
   xanchor: XANCHOR_NONE

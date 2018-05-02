@@ -1,17 +1,6 @@
---[[local save_file = sys.get_save_file("Citadel of seven sins", "gamedata")
-
-shared_data = {
-	player = {
-		highscore = 0,
-		score = 0
-	}
-}
-]]
 record_state = false
 
 function init(self)
-	--load_gamedata()
-	
 	if gui_log then
 		print("Итерфейс счета проинициализирован")
 	end
@@ -66,25 +55,3 @@ function on_reload(self)
 	-- Add input-handling code here
 	-- Remove this function if not needed
 end
-
----------------------------------------------------
---[[
-function save_gamedata(self)
-	-- Save gamedata
-	if not sys.save(save_file, shared_data) then
-		print("Gamedata isn't saved")
-	end
-end
-
-function load_gamedata(self)
-	--	Load gamedata
-	local gamedata = sys.load(save_file)
-
-	if next(gamedata) then
-		pprint(gamedata)
-		shared_data.player.highscore = gamedata.player.highscore
-	else
-		print("Gamedata is empty")
-		sys.save(save_file, shared_data)
-	end
-end]]

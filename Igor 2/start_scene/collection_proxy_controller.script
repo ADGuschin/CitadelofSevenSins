@@ -44,7 +44,7 @@ function on_message(self, message_id, message, sender)
 end
 
 function update(self, dt)
-    if logo_time == 500 then
+    if logo_time == 250 then
         msg.post("#", "load", { proxy = collection_proxies[2]})
         menu_load_state = true
         logo_time = logo_time + 1

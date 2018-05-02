@@ -7,21 +7,21 @@ function init(self)
 	self.picked_node = nil
 
 	self.nodes = {
-		{
-			node = gui.get_node("ok_button"),
-			action = function () 
-				pause_state = false
-				gui.set_enabled(gui.get_node("background"), false)
+					{
+						node = gui.get_node("ok_button"),
+						action = function () 
+							pause_state = false
+							gui.set_enabled(gui.get_node("background"), false)
 
-				msg.post(".", "release_input_focus")
-				msg.post("default:/hud#level_proxy", "set_time_step", {factor = 1, mode = 1})
+							msg.post(".", "release_input_focus")
+							msg.post("default:/hud#level_proxy", "set_time_step", {factor = 1, mode = 1})
 
-				if gui_log then
-					print("Нажата кнопка ok")
-				end
-			end
-		}
-	}
+							if gui_log then
+								print("Нажата кнопка ok")
+							end
+						end
+					}
+				}
 
 	init_ui(self)
 end
@@ -37,18 +37,10 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	--[[if message_id == hash("show") then
-		local node = gui.get_node("background")
-		gui.set_enabled(node, true)
-		
-		msg.post(".", "acquire_input_focus")
-	end]]
-	--Не забыть про training_state при отправке сообщений из контроллера(наверное)
 	if message_id == hash("swipe_right") then
 		pause_state = true
 		gui.set_enabled(gui.get_node("background"), true)
 		gui.play_flipbook(gui.get_node("hint"), "swipe_right")
-		--pprint(gui.get_position(gui.get_node("hint")))
 		
 		msg.post(".", "acquire_input_focus")
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
@@ -81,7 +73,5 @@ function on_input(self, action_id, action)
 
 	handle_hover(self, action.x, action.y)
 
-	-- As long as we're listening to input, we're gonna consume it.
-	-- This disables game controls while the pause menu is showing.
 	return true
 end

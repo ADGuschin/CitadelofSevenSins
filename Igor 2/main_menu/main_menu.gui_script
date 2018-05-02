@@ -64,9 +64,10 @@ function init(self)
 						node = gui.get_node("settings_button"),
 						action = function ()
 							if gui.is_enabled(gui.get_node("settings_button")) then
-								gui.set_enabled(gui.get_node("start_button"), false)
-								gui.set_enabled(gui.get_node("exit_button"), false)
 								gui.set_enabled(gui.get_node("title"), false)
+								gui.set_enabled(gui.get_node("exit_button"), false)
+								gui.set_enabled(gui.get_node("start_button"), false)
+								gui.set_enabled(gui.get_node("settings_button"), false)
 								
 								msg.post("/menu#settings", "show")
 
@@ -89,10 +90,10 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
-		
-		gui.set_enabled(gui.get_node("start_button"), true)
-		gui.set_enabled(gui.get_node("exit_button"), true)
 		gui.set_enabled(gui.get_node("title"), true)
+		gui.set_enabled(gui.get_node("exit_button"), true)
+		gui.set_enabled(gui.get_node("start_button"), true)
+		gui.set_enabled(gui.get_node("settings_button"), true)
 		
 		msg.post(".", "acquire_input_focus")
 		

@@ -58,6 +58,9 @@ images {
 images {
   image: "/level/images/background_mysorka3.png"
 }
+images {
+  image: "/level/images/cotinue_background_2.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

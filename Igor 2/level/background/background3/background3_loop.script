@@ -1,8 +1,11 @@
-local pieces = {"mountain"}
+local pieces = {"mountloop1", "mountloop2", "mountloop3", "mountloop4"}
+local start_pos = {}
 function init(self)
 	self.speed = 2
-	local pos = go.get_position("mountain")
-	start_pos = pos.x
+	for i, p in ipairs(pieces) do
+		local pos = go.get_position(p)
+		table.insert(start_pos, pos.x)
+	end
 end
 
 function final(self)
@@ -14,9 +17,8 @@ function update(self, dt)
 	msg.post("level:/controller#script", "speed_request")
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
-		if pos.x <= -3000 then
-			self.speed = 0
-			--pos.x = 3960 + (pos.x + 1000)
+		if pos.x <= -1000 then
+			pos.x = 3960 + (pos.x + 1000)
 		end
 		pos.x = pos.x - self.speed * dt
 		go.set_position(pos, p)
@@ -27,9 +29,11 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("set_speed") then 
 		self.speed = (message.speed * 2) / 360
 	elseif message_id == hash("reset") then
-		local pos = go.get_position("mountain")
-		pos.x = start_pos
-		go.set_position(pos, "mountain")
+		for i, p in ipairs(pieces) do
+			local pos = go.get_position(p)
+			pos.x = start_pos[i]
+			go.set_position(pos, p)
+		end
 	end
 end
 

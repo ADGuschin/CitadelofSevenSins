@@ -219,6 +219,26 @@ collection_instances {
     z: 1.0
   }
 }
+collection_instances {
+  id: "bacground3_loop"
+  collection: "/level/background/background3/bacground3_loop.collection"
+  position {
+    x: 5026.0
+    y: 200.0
+    z: -1.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 4.0
+    y: 4.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "controller"

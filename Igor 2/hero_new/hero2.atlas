@@ -38,7 +38,7 @@ animations {
 animations {
   id: "player_jump"
   images {
-    image: "/hero_new/images/jumping_animation/jump1.png"
+    image: "/hero_new/images/jumping_animation/jump1_black.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 20
@@ -48,13 +48,7 @@ animations {
 animations {
   id: "player_slide"
   images {
-    image: "/hero_new/images/sliding_animation/hero_lies_64x64_3.png"
-  }
-  images {
-    image: "/hero_new/images/sliding_animation/hero_lies_64x64_4.png"
-  }
-  images {
-    image: "/hero_new/images/sliding_animation/hero_lies_64x64_5.png"
+    image: "/hero_new/images/sliding_animation/hero_lies_64x64_3_black.png"
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 20
@@ -64,7 +58,7 @@ animations {
 animations {
   id: "player_fall"
   images {
-    image: "/hero_new/images/jumping_animation/jump2.png"
+    image: "/hero_new/images/jumping_animation/jump2_black.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 20
@@ -74,7 +68,7 @@ animations {
 animations {
   id: "player_die"
   images {
-    image: "/hero_new/images/dying_animation/hero_lies_64x64_2.png"
+    image: "/hero_new/images/hero_impact_animation/hero_lies_64x64_2_black.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 20
@@ -121,7 +115,7 @@ animations {
 animations {
   id: "break_jump"
   images {
-    image: "/hero_new/images/jump_breaking_animation/hero_lies_64x64_1.png"
+    image: "/hero_new/images/jump_breaking_animation/hero_lies_64x64_1_black.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 20
@@ -131,7 +125,7 @@ animations {
 animations {
   id: "hero_impact"
   images {
-    image: "/hero_new/images/dying_animation/hero_lies_64x64_2.png"
+    image: "/hero_new/images/hero_impact_animation/hero_lies_64x64_2_black.png"
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 20
@@ -155,6 +149,68 @@ animations {
   }
   playback: PLAYBACK_ONCE_FORWARD
   fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_run_black"
+  images {
+    image: "/hero_new/images/running_animation_black/hero1_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero2_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero3_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero4_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero5_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero6_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero7_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero8_black.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_runfast_black"
+  images {
+    image: "/hero_new/images/running_animation_black/hero1_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero2_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero3_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero4_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero5_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero6_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero7_black.png"
+  }
+  images {
+    image: "/hero_new/images/running_animation_black/hero8_black.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 25
   flip_horizontal: 0
   flip_vertical: 0
 }

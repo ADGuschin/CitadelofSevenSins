@@ -68,7 +68,7 @@ embedded_components {
   id: "sprite"
   type: "sprite"
   data: "tile_set: \"/hero_new/hero2.atlas\"\n"
-  "default_animation: \"player_right\"\n"
+  "default_animation: \"player_run_black\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""

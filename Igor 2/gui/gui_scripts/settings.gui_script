@@ -54,9 +54,9 @@ function init(self)
 		{
 			node = gui.get_node("close_button"),
 			action = function ()
-				finish_anim(gui.get_node("background"))
-				--if gui.is_enabled(gui.get_node("background")) then
-					--gui.set_enabled(gui.get_node("background"), false)
+				--finish_anim(gui.get_node("background"))
+				if gui.is_enabled(gui.get_node("background")) then
+					gui.set_enabled(gui.get_node("background"), false)
 					
 					if in_game and deathscreen_state then
 						msg.post("default:/death_screen#death_screen", "show")
@@ -70,7 +70,7 @@ function init(self)
 						print("Нажата кнопка закрытия окна, окно настроек закрыто")
 					end
 				end
-			--end
+			end
 		},
 		{
 			node = gui.get_node("autorestart_button"),

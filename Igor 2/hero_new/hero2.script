@@ -133,7 +133,7 @@ end
 
 local function check_inv(self)
 	if invincibility < invincibility_max then
-		--invincibility = invincibility + 1
+		invincibility = invincibility + 1
 	else
 		invincible = false
 	end

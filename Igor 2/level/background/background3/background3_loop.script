@@ -17,8 +17,8 @@ function update(self, dt)
 	msg.post("level:/controller#script", "speed_request")
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
-		if pos.x <= -1000 then
-			pos.x = 3960 + (pos.x + 1000)
+		if pos.x <= -1186 then
+			pos.x = 5986 + (pos.x + 960)
 		end
 		pos.x = pos.x - self.speed * dt
 		go.set_position(pos, p)

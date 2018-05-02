@@ -55,6 +55,12 @@ images {
 images {
   image: "/level/images/button_new.png"
 }
+images {
+  image: "/gui/gui_images/music_off.png"
+}
+images {
+  image: "/gui/gui_images/music_on.png"
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

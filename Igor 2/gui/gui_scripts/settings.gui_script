@@ -14,7 +14,7 @@ function init(self)
 							if gui.is_enabled(gui.get_node("background")) then
 								if sound then
 									sound = false
-									gui.play_flipbook(gui.get_node("sound_button"), "1600")
+									gui.play_flipbook(gui.get_node("sound_button"), "music_off")
 
 									if in_game then
 										msg.post("level:/sound#sound", "sound_off")
@@ -27,7 +27,7 @@ function init(self)
 									end
 								else
 									sound = true
-									gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
+									gui.play_flipbook(gui.get_node("sound_button"), "music_on")
 
 									if in_game then
 										msg.post("level:/sound#sound", "sound_on")
@@ -121,9 +121,9 @@ function on_message(self, message_id, message, sender)
 		gui.animate(node, "position.y", 100, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 		
 		if sound then
-			gui.play_flipbook(gui.get_node("sound_button"), "Volume_up_font_awesome.svg")
+			gui.play_flipbook(gui.get_node("sound_button"), "music_on")
 		else
-			gui.play_flipbook(gui.get_node("sound_button"), "1600")
+			gui.play_flipbook(gui.get_node("sound_button"), "music_off")
 		end
 
 		if autorestart_state then

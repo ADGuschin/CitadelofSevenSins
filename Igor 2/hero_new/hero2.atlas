@@ -1,3 +1,6 @@
+images {
+  image: "/builtins/graphics/particle_blob.png"
+}
 animations {
   id: "player_right"
   images {
@@ -133,7 +136,7 @@ animations {
   flip_vertical: 0
 }
 animations {
-  id: "roll_over"
+  id: "roll_over_old"
   images {
     image: "/builtins/graphics/particle_blob.png"
   }
@@ -211,6 +214,31 @@ animations {
   }
   playback: PLAYBACK_LOOP_FORWARD
   fps: 25
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "roll_over"
+  images {
+    image: "/hero_new/images/hero_roll_animation/perecat_1.png"
+  }
+  images {
+    image: "/hero_new/images/hero_roll_animation/perecat_2.png"
+  }
+  images {
+    image: "/hero_new/images/hero_roll_animation/perecat_3.png"
+  }
+  images {
+    image: "/hero_new/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
+    image: "/hero_new/images/hero_roll_animation/perecat_5.png"
+  }
+  images {
+    image: "/hero_new/images/hero_roll_animation/perecat_6.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
   flip_horizontal: 0
   flip_vertical: 0
 }

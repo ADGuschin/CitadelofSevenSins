@@ -123,7 +123,7 @@ animations {
   playback: PLAYBACK_ONCE_FORWARD
   fps: 20
   flip_horizontal: 0
-  flip_vertical: 1
+  flip_vertical: 0
 }
 animations {
   id: "hero_impact"

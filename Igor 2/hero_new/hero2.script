@@ -348,7 +348,7 @@ local function abort_jump(self)
 end
 
 local function roll(self)
-	if roll_allowed then
+	if roll_allowed and not sliding then
 		play_sound(self, "roll")
 		rolling_over = true
 		enable_rolling_state(self)
@@ -359,7 +359,7 @@ local function roll(self)
 end
 
 local function slide(self)
-	if slide_cooldown == slide_cooldown_max then
+	if slide_cooldown == slide_cooldown_max and not rolling_over then
 		play_sound(self, "slide")
 		enable_sliding_state(self)
 		current_slide_moment = 1

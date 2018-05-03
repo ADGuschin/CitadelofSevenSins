@@ -29,7 +29,7 @@ function init(self)
 						node = gui.get_node("menu"),
 						action = function () 
 							in_game = false
-							pause_state = false
+							--pause_state = false
 							--gui.set_enabled(gui.get_node("background"), false)
 							
 							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})

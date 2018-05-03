@@ -24,7 +24,6 @@ local totalSwipeDistanceDown
 local touch
 
 function checkSwipeDirection(self)
-	print("hui")
 	if bDoingTouch == true then
 		xDistance =  math.abs(endX - beginX) -- math.abs will return the absolute, or non-negative value, of a given value.
 		print("xd"..xDistance)

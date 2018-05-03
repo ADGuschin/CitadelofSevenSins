@@ -89,7 +89,7 @@ local function play_sound(self, sfx)
 		msg.post("sfx#sound_script", "stop_step")
 		step_playing = false
 	end
-		msg.post("sfx#sound_script", sfx)
+		msg.post("sfx#sound_script", sfx, {id = "sfx"})
 end
 
 local function update_animation(self)
@@ -327,8 +327,8 @@ function on_message(self, message_id, message, sender)
 end
 
 local function jump(self, speed)
-	play_sound(self, "jump")
 	if self.ground_contact then
+		play_sound(self, "jump")
 		self.velocity.y = speed
 	end
 end
@@ -356,8 +356,10 @@ local function slide(self)
 end
 
 local function jump_break(self)
-	play_sound(self, "break_jump")
-	self.velocity.y = jump_break_speed
+	--if self.velocity.y > jump_break_speed then
+		play_sound(self, "break_jump")
+		self.velocity.y = jump_break_speed
+	--end
 end
 
 local beginX

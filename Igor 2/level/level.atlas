@@ -37,6 +37,9 @@ images {
 images {
   image: "/level/images/ground_2_3.png"
 }
+images {
+  image: "/level/images/car.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

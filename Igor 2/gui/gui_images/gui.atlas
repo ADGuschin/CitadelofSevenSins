@@ -64,6 +64,12 @@ images {
 images {
   image: "/level/images/for_menu.png"
 }
+images {
+  image: "/gui/gui_images/482484.png"
+}
+images {
+  image: "/gui/gui_images/for_logo.jpg"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

@@ -4,9 +4,10 @@ in_game = false
 autorestart_state = false
 pause_state = false
 training_state = false
+
 --Костыль
 deathscreen_state = false
-
+next_try_is_training = false
 
 --Числовые переменные
 gravity = -65

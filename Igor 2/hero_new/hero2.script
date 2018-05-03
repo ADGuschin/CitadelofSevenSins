@@ -349,18 +349,22 @@ end
 
 local function roll(self)
 	if roll_allowed and not sliding then
+		break_slide(self)
 		play_sound(self, "roll")
 		rolling_over = true
 		enable_rolling_state(self)
 	end
 	if pause_state then
+		break_slide(self)
 		msg.post("default:/training#training", "roll")
 	end
 end
 
 local function slide(self)
 	if slide_cooldown == slide_cooldown_max and not rolling_over then
-		play_sound(self, "slide")
+		if not pause_state then
+			play_sound(self, "slide")
+		end
 		enable_sliding_state(self)
 		current_slide_moment = 1
 	end

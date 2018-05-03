@@ -85,13 +85,24 @@ function init(self)
 						node = gui.get_node("training_button"),
 						action = function ()
 							if gui.is_enabled(gui.get_node("background")) then
-								if training_state then
-									gui.set_text(gui.get_node("training_state"), "no")
-									training_state = false
+								if in_game then
+									if next_try_is_training then
+										gui.set_text(gui.get_node("training_state"), "no")
+										next_try_is_training = false
+									else
+										gui.set_text(gui.get_node("training_state"), "yes")
+										next_try_is_training = true
+									end
 								else
-									gui.set_text(gui.get_node("training_state"), "yes")
-									training_state = true
+									if training_state then
+										gui.set_text(gui.get_node("training_state"), "no")
+										training_state = false
+									else
+										gui.set_text(gui.get_node("training_state"), "yes")
+										training_state = true
+									end
 								end
+								
 
 								if gui_log then
 									print("Нажата кнопка переключения тренировки, состояние авторестарта изменено на", training)
@@ -131,13 +142,19 @@ function on_message(self, message_id, message, sender)
 		else
 			gui.set_text(gui.get_node("autorestart_state"), "no")
 		end
-
-		if training_state then
-			gui.set_text(gui.get_node("training_state"), "yes")
+		if in_game then
+			if next_try_is_training then
+				gui.set_text(gui.get_node("training_state"), "yes")
+			else
+				gui.set_text(gui.get_node("training_state"), "no")
+			end
 		else
-			gui.set_text(gui.get_node("training_state"), "no")
+			if training_state then
+				gui.set_text(gui.get_node("training_state"), "yes")
+			else
+				gui.set_text(gui.get_node("training_state"), "no")
+			end
 		end
-		
 		if in_game then
 			msg.post(".", "acquire_input_focus")
 		end

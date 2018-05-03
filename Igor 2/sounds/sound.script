@@ -7,6 +7,12 @@ function init(self)
 		else
 			msg.post("#menutheme", "play_sound", {delay = 0, gain = 0.5})
 		end
+	else
+		if in_game then
+			msg.post("#gametheme", "play_sound", {delay = 0, gain = 0})
+		else
+			msg.post("#menutheme", "play_sound", {delay = 0, gain = 0})
+		end
 	end
 end
 
@@ -23,12 +29,18 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("sound_on") then
 		if in_game then
-			msg.post("#gametheme", "play_sound", {delay = 0, gain = 0.5})
+			--msg.post("#gametheme", "play_sound", {delay = 0, gain = 0.5})
+			msg.post("#gametheme", "set_gain", {gain = 0.5})
 		else
-			msg.post("#menutheme", "play_sound", {delay = 0, gain = 0.5})
+			msg.post("#menutheme", "set_gain", {gain = 0.5})
 		end
 	elseif message_id == hash("sound_off") then
-		msg.post("sound", "stop_sound")
+		--msg.post("sound", "stop_sound")
+		if in_game then
+			msg.post("#gametheme", "set_gain", {gain = 0})
+		else
+			msg.post("#menutheme", "set_gain", {gain = 0})
+		end
 	end
 	--[[if message_id == hash("sound_off") and sound then 
 		--print(msg.url())

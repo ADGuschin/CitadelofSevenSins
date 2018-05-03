@@ -1,4 +1,4 @@
-local save_file = sys.get_save_file("Citadel of seven sins", "gamedata")
+local save_file = sys.get_save_file("Citadel of seven sins", "datafile")
 
 shared_data = {
 	player = {
@@ -6,7 +6,6 @@ shared_data = {
 		score = 0
 	},
 	data = {
-		sound_state = true,
 		training_state = false,
 		autorestart_state = false,
 	}
@@ -34,7 +33,6 @@ function load_gamedata(self)
 		
 		shared_data.player.highscore = gamedata.player.highscore
 		
-		shared_data.data.sound_state = gamedata.data.sound_state
 		shared_data.data.training_state = gamedata.data.training_state
 		shared_data.data.autorestart_state = gamedata.data.autorestart_state
 	else

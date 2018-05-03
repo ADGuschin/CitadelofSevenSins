@@ -8,7 +8,6 @@ function init(self)
 	
 	load_gamedata()
 
-	sound = shared_data.data.sound_state
 	training_state = shared_data.data.training_state
 	autorestart_state = shared_data.data.autorestart_state
 end
@@ -22,7 +21,6 @@ function final(self)
 end
 
 function update(self, dt)
-	shared_data.data.sound_state = sound
 	shared_data.data.training_state = training_state
 	shared_data.data.autorestart_state = autorestart_state
 end

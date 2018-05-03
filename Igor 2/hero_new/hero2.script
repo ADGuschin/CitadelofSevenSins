@@ -158,6 +158,7 @@ end
 
 function update(self, dt)
 	--invincible = true
+	lock_character = true
 	if not pause_state then
 		local hero_position = go.get_position()
 
@@ -223,7 +224,9 @@ function update(self, dt)
 		go.set_position(go.get_position() + self.velocity * dt)
 
 		update_animation(self)
-
+		if training_state then
+			lock_character = training_state
+		end
 		--update_sound(self)
 		roll_allowed = false	
 		self.correction = vmath.vector3()
@@ -322,6 +325,9 @@ function on_message(self, message_id, message, sender)
 			end
 		elseif message.group == hash("rolling_platform") then
 			handle_geometry_contact(self, message.normal, message.distance)
+		elseif message.group == hash("training") then
+			lock_character = false
+			print("hui")
 		end
 	end
 end
@@ -330,6 +336,9 @@ local function jump(self, speed)
 	if self.ground_contact then
 		play_sound(self, "jump")
 		self.velocity.y = speed
+	end
+	if pause_state then
+		msg.post("default:/training#training", "jump")
 	end
 end
 
@@ -345,6 +354,9 @@ local function roll(self)
 		rolling_over = true
 		enable_rolling_state(self)
 	end
+	if pause_state then
+		msg.post("default:/training#training", "roll")
+	end
 end
 
 local function slide(self)
@@ -352,6 +364,9 @@ local function slide(self)
 		play_sound(self, "slide")
 		enable_sliding_state(self)
 		current_slide_moment = 1
+	end
+	if pause_state then
+		msg.post("default:/training#training", "slide")
 	end
 end
 
@@ -454,6 +469,7 @@ function swipe_on_input(self, action_id, action)
 end
 
 function on_input(self, action_id, action)
+	print("hui")
 	if not lock_character then
 		if action_id == hash("touch") then
 			swipe_on_input(self, action_id, action)

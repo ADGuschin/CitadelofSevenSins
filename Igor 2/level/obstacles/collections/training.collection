@@ -79,28 +79,12 @@ instances {
     z: 1.0
   }
 }
-scale_along_z: 0
-embedded_instances {
-  id: "go"
-  data: "components {\n"
-  "  id: \"training\"\n"
-  "  component: \"/level/obstacles/training.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
+instances {
+  id: "training_jump"
+  prototype: "/level/tutorial/training_jump.go"
   position {
-    x: -4.0
-    y: 0.0
+    x: 12.0
+    y: 50.0
     z: 0.0
   }
   rotation {
@@ -115,3 +99,44 @@ embedded_instances {
     z: 1.0
   }
 }
+instances {
+  id: "training_roll"
+  prototype: "/level/tutorial/training_roll.go"
+  position {
+    x: 400.0
+    y: 50.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "training_slide"
+  prototype: "/level/tutorial/training_slide.go"
+  position {
+    x: 200.0
+    y: 50.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

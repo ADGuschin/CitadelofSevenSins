@@ -31,10 +31,10 @@ function on_message(self, message_id, message, sender)
 				-- Store sound timer in table
 				self.sounds[message_id] = gate_time
 				-- Redirect the "play_sound" message to the real target
-				--msg.post(message.soundcomponent, "play_sound", { gain = message.gain })
+				--msg.post(message.soundcomponent, "play_sound", { gain = message.gain })		
 			if message_id == hash("step") then
 				msg.post("#step", "play_sound", {delay = 0, gain = 0.1})
-			elseif message_id == hash("roll") then
+			elseif message_id == hash("roll") then	
 				msg.post("#roll", "play_sound", {delay = 0, gain = 0.1})
 			elseif message_id == hash("jump") then
 				msg.post("#jump", "play_sound", {delay = 0, gain = 0.1})

@@ -1,22 +1,12 @@
-local isSwipeUpFirstTime = true
-local isSwipeDownFirstTime = true
 local isSwipeRightFirstTime= true
+local obstacle = 0
 function init(self)
 	self.speed = 900
 end
 
 function update(self, dt)
 	local pos = go.get_position()
-	if pos.x >= 800 and pos.x <= 810 and isSwipeUpFirstTime then
-		msg.post("default:/training#training", "swipe_up")
-		isSwipeUpFirstTime = false
-	elseif pos.x >= -30 and pos.x <= -20 and isSwipeDownFirstTime then
-		msg.post("default:/training#training", "swipe_down")
-		isSwipeDownFirstTime = false
-	elseif pos.x >= -800 and pos.x <= -790 and isSwipeRightFirstTime then
-		msg.post("default:/training#training", "swipe_right")
-		isSwipeRightFirstTime = false
-	elseif pos.x < -1500 then
+	if pos.x < -1500 then
 		go.delete()
 	end
 	pos.x = pos.x - self.speed * dt
@@ -27,6 +17,16 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("set_speed") then
 		self.speed = message.speed
+	--[[elseif message_id == hash("contact_point_response") then
+	if message.group == hash("hero")]]
+
+	elseif message_id == hash("contact_point_response") then
+		if message.group == hash("hero") then
+			if isSwipeRightFirstTime then
+				msg.post("default:/training#training", "swipe_right")
+				isSwipeRightFirstTime = false
+			end
+		end
 	end
 end
 

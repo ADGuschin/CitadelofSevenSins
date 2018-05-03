@@ -225,7 +225,7 @@ function update(self, dt)
 
 		update_animation(self)
 		if training_state then
-			lock_character = training_state
+			--lock_character = training_state
 		end
 		--update_sound(self)
 		roll_allowed = false	
@@ -325,10 +325,10 @@ function on_message(self, message_id, message, sender)
 			end
 		elseif message.group == hash("rolling_platform") then
 			handle_geometry_contact(self, message.normal, message.distance)
-		elseif message.group == hash("training") then
+		--[[elseif message.group == hash("training") then
 			lock_character = false
 			print("hui")
-		end
+		end]]
 	end
 end
 

@@ -158,7 +158,7 @@ end
 
 function update(self, dt)
 	--invincible = true
-	lock_character = true
+	--lock_character = true
 	if not pause_state then
 		local hero_position = go.get_position()
 
@@ -327,8 +327,8 @@ function on_message(self, message_id, message, sender)
 			handle_geometry_contact(self, message.normal, message.distance)
 		--[[elseif message.group == hash("training") then
 			lock_character = false
-			print("hui")
-		end]]
+			print("hui")]]
+		end
 	end
 end
 

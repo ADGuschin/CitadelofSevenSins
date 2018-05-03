@@ -42,7 +42,7 @@ function on_message(self, message_id, message, sender)
 		wait_for_roll = true
 		
 		gui.animate(gui.get_node("hint"), "position.x", 50, gui.EASING_INCUBIC, 1, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
-		gui.set_position(gui.get_node("hint"), vec)
+		--gui.set_position(gui.get_node("hint"), vec)
 	end	
 	if message_id == hash("swipe_up") then
 		--print("pause_state"..pause_state)

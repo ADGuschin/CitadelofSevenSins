@@ -97,7 +97,13 @@ function on_message(self, message_id, message, sender)
     elseif message_id == hash("speed_request") then
         msg.post(sender, "set_speed", { speed = self.speed })
     elseif message_id == hash("death") then
-        previous_obstacle = "init"
+        training_state = next_try_is_training
+        next_try_is_training = false
+        if training_state then
+            previous_obstacle = "training"
+        else
+            previous_obstacle = "init"
+        end
         msg.post("default:/death_screen#death_screen", "score", {value = math.ceil(score)})
     end
 end

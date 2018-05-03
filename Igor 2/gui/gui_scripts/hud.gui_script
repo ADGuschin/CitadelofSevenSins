@@ -4,6 +4,8 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	msg.post("#level_proxy", "load")
 
+
+
 	if gui_log then
 		print("HUD интерфейс проинициализирован, загружен прокси level коллекции")
 	end

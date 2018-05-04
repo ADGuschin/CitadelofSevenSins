@@ -41,7 +41,14 @@ images {
   image: "/level/images/car.png"
 }
 images {
+<<<<<<< HEAD
+  image: "/level/images/\320\272\321\200\320\260\320\275.png"
+}
+images {
+  image: "/level/images/\321\210\320\260\321\200_\320\264\320\273\321\217_\320\272\321\200\320\260\320\275\320\260.png"
+=======
   image: "/level/images/container.png"
+>>>>>>> dbca7e030c08535168e2519c30b215a4024e38a7
 }
 margin: 0
 extrude_borders: 2

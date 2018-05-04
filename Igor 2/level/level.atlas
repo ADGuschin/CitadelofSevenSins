@@ -46,6 +46,9 @@ images {
 images {
   image: "/level/images/\321\210\320\260\321\200_\320\264\320\273\321\217_\320\272\321\200\320\260\320\275\320\260.png"
 }
+images {
+  image: "/level/images/container.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

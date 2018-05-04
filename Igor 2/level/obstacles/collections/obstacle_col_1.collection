@@ -40,11 +40,11 @@ instances {
   }
 }
 instances {
-  id: "obstacle_top"
-  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
+  id: "obstacle_kran"
+  prototype: "/level/obstacles/gameobjects/obstacle_kran.go"
   position {
-    x: 150.0
-    y: 52.5
+    x: 44.0
+    y: 54.0
     z: 0.0
   }
   rotation {
@@ -60,12 +60,12 @@ instances {
   }
 }
 instances {
-  id: "obstacle_kran"
-  prototype: "/level/obstacles/gameobjects/obstacle_kran.go"
+  id: "obstacle_kran_short"
+  prototype: "/level/obstacles/gameobjects/obstacle_kran_short.go"
   position {
-    x: 44.0
-    y: 54.0
-    z: 0.0
+    x: 175.0
+    y: 59.0
+    z: -0.5
   }
   rotation {
     x: 0.0

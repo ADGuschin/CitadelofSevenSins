@@ -20,46 +20,6 @@ instances {
   }
 }
 instances {
-  id: "obstacle_top"
-  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
-  position {
-    x: 202.0
-    y: 50.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "obstacle_top1"
-  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
-  position {
-    x: 323.0
-    y: 50.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
   id: "obstacle_tall1"
   prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
   position {
@@ -105,46 +65,6 @@ instances {
   position {
     x: 60.0
     y: 12.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "obstacle_top2"
-  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
-  position {
-    x: 221.0
-    y: 50.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "obstacle_top3"
-  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
-  position {
-    x: 304.0
-    y: 50.0
     z: 0.0
   }
   rotation {
@@ -297,6 +217,46 @@ instances {
     x: 0.5
     y: 0.5
     z: 0.5
+  }
+}
+instances {
+  id: "obstacle_tower"
+  prototype: "/level/obstacles/gameobjects/obstacle_tower.go"
+  position {
+    x: 215.0
+    y: 40.0
+    z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_tower1"
+  prototype: "/level/obstacles/gameobjects/obstacle_tower.go"
+  position {
+    x: 315.0
+    y: 40.0
+    z: -0.1
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 scale_along_z: 0

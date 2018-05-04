@@ -103,8 +103,8 @@ instances {
   id: "obstacle_tall1"
   prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
   position {
-    x: 204.0
-    y: 92.0
+    x: 208.0
+    y: 102.0
     z: 0.0
   }
   rotation {
@@ -123,7 +123,7 @@ instances {
   id: "obstacle_tall2"
   prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
   position {
-    x: 204.0
+    x: 208.0
     y: 46.0
     z: 0.0
   }
@@ -203,7 +203,7 @@ instances {
   id: "obstacle_top4"
   prototype: "/level/obstacles/gameobjects/obstacle_top.go"
   position {
-    x: 204.0
+    x: 208.0
     y: 2.0
     z: 0.0
   }

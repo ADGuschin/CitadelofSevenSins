@@ -43,8 +43,8 @@ instances {
   id: "obstacle_kran"
   prototype: "/level/obstacles/gameobjects/obstacle_kran.go"
   position {
-    x: 44.0
-    y: 54.0
+    x: 46.0
+    y: 53.0
     z: 0.0
   }
   rotation {

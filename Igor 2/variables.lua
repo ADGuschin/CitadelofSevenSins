@@ -3,7 +3,7 @@ sound = true
 in_game = false
 autorestart_state = false
 pause_state = false
-training_state = false
+training_state = true
 
 --Костыль
 deathscreen_state = false

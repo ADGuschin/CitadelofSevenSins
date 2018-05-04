@@ -83,7 +83,7 @@ instances {
   id: "obstacle_tall"
   prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
   position {
-    x: 204.0
+    x: 210.0
     y: 0.0
     z: 0.0
   }
@@ -105,26 +105,6 @@ instances {
   position {
     x: 60.0
     y: 58.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "obstacle_tall1"
-  prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
-  position {
-    x: 204.0
-    y: 92.0
     z: 0.0
   }
   rotation {
@@ -184,26 +164,6 @@ instances {
   prototype: "/level/obstacles/gameobjects/platform.go"
   position {
     x: 180.0
-    y: 58.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-instances {
-  id: "platform3"
-  prototype: "/level/obstacles/gameobjects/platform.go"
-  position {
-    x: 204.0
     y: 58.0
     z: 0.0
   }

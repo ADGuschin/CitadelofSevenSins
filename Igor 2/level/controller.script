@@ -13,7 +13,7 @@ local reset_timer_max = 5
 
 local previous_obstacle
 
-acceleration = 20
+acceleration = 5
 
 function table_length(self, table)
     local count = 0
@@ -88,7 +88,7 @@ function on_message(self, message_id, message, sender)
         msg.post("#", "spawnhero")
         msg.post("background3/controller#background3", "reset")
     elseif message_id == hash("reset_speed") then
-        self.speed = self.speed * 0.66
+        self.speed = self.speed * 0.77
         if self.speed < default_speed then
             self.speed = default_speed
         elseif self.speed > max_speed then

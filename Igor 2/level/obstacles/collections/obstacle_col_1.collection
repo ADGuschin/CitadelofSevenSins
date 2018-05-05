@@ -3,7 +3,7 @@ instances {
   id: "train_home"
   prototype: "/level/obstacles/gameobjects/train_home.go"
   position {
-    x: 165.0
+    x: 200.0
     y: 30.5
     z: 0.0
   }
@@ -63,7 +63,7 @@ instances {
   id: "obstacle_kran_short"
   prototype: "/level/obstacles/gameobjects/obstacle_kran_short.go"
   position {
-    x: 175.0
+    x: 200.0
     y: 59.0
     z: -0.1
   }

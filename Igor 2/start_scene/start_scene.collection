@@ -56,7 +56,7 @@ embedded_instances {
   "embedded_components {\n"
   "  id: \"logo_proxy\"\n"
   "  type: \"collectionproxy\"\n"
-  "  data: \"collection: \\\"/start_scene/logo2.collection\\\"\\n"
+  "  data: \"collection: \\\"/start_scene/logo.collection\\\"\\n"
   "exclude: false\\n"
   "\"\n"
   "  position {\n"

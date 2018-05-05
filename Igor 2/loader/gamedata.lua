@@ -6,7 +6,7 @@ shared_data = {
 		score = 0
 	},
 	data = {
-		training_state = false,
+		training_state = true,
 		autorestart_state = false,
 	}
 }

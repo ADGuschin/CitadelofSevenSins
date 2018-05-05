@@ -1,11 +1,32 @@
 name: "default1"
-instances {
-  id: "Background"
-  prototype: "/level/background/Background.go"
+scale_along_z: 0
+embedded_instances {
+  id: "go1"
+  data: "embedded_components {\n"
+  "  id: \"sprite\"\n"
+  "  type: \"sprite\"\n"
+  "  data: \"tile_set: \\\"/gui/gui_images/gui.atlas\\\"\\n"
+  "default_animation: \\\"cvet-zalivka-goluboj-d1a7d2a\\\"\\n"
+  "material: \\\"/builtins/materials/sprite.material\\\"\\n"
+  "blend_mode: BLEND_MODE_ALPHA\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 640.0\n"
+  "    y: 360.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
   position {
-    x: 960.0
-    y: 362.0
-    z: -1.0
+    x: 0.0
+    y: 0.0
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -14,25 +35,24 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 4.0
-    y: 4.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
-scale_along_z: 0
 embedded_instances {
-  id: "go"
+  id: "go2"
   data: "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
-  "  data: \"tile_set: \\\"/hero_new/hero2.atlas\\\"\\n"
-  "default_animation: \\\"player_right\\\"\\n"
+  "  data: \"tile_set: \\\"/gui/gui_images/gui.atlas\\\"\\n"
+  "default_animation: \\\"482484\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
   "  position {\n"
-  "    x: 640.0\n"
-  "    y: 360.0\n"
+  "    x: 650.0\n"
+  "    y: 340.0\n"
   "    z: 0.0\n"
   "  }\n"
   "  rotation {\n"

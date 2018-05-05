@@ -6,7 +6,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/gui/gui_images/gui.atlas\\\"\\n"
-  "default_animation: \\\"cvet-zalivka-goluboj-d1a7d2a\\\"\\n"
+  "default_animation: \\\"logo_1280\\\\321\\\\205720\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -46,14 +46,14 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/gui/gui_images/gui.atlas\\\"\\n"
-  "default_animation: \\\"482484\\\"\\n"
+  "default_animation: \\\"for_logo_1280\\\\321\\\\205720\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
   "  position {\n"
-  "    x: 650.0\n"
-  "    y: 340.0\n"
-  "    z: 0.0\n"
+  "    x: 228.667\n"
+  "    y: 121.0\n"
+  "    z: -0.1\n"
   "  }\n"
   "  rotation {\n"
   "    x: 0.0\n"
@@ -64,8 +64,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 0.0
-    y: 0.0
+    x: 412.0
+    y: 240.0
     z: 0.0
   }
   rotation {

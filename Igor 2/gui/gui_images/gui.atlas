@@ -73,6 +73,18 @@ images {
 images {
   image: "/gui/gui_images/cvet-zalivka-goluboj-d1a7d2a.jpg"
 }
+images {
+  image: "/gui/gui_images/logo.png"
+}
+images {
+  image: "/gui/gui_images/for_logo.png"
+}
+images {
+  image: "/gui/gui_images/for_logo_1280\321\205720.png"
+}
+images {
+  image: "/gui/gui_images/logo_1280\321\205720.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

@@ -1,59 +1,11 @@
 images {
-  image: "/level/images/background_1-4_1.png"
-}
-images {
-  image: "/level/images/background_1-4_2.png"
-}
-images {
-  image: "/level/images/background_1-4_3.png"
-}
-images {
-  image: "/level/images/background_1-4_4.png"
-}
-images {
-  image: "/level/images/test2_red1.png"
-}
-images {
-  image: "/level/images/test2_red2.png"
-}
-images {
-  image: "/level/images/test2_red3.png"
-}
-images {
-  image: "/level/images/test2_red4.png"
-}
-images {
-  image: "/level/images/cotinue_background.png"
-}
-images {
-  image: "/level/images/background_mysorka1.png"
-}
-images {
-  image: "/level/images/background_mysorka2.png"
-}
-images {
   image: "/level/images/background_mysorka_novye_colors1.png"
 }
 images {
   image: "/level/images/background_mysorka_novye_colors2.png"
 }
 images {
-  image: "/level/images/background_mysorka_novye_colors3.png"
-}
-images {
   image: "/level/images/background_mysorka_novye_colors4.png"
-}
-images {
-  image: "/builtins/graphics/particle_blob.png"
-}
-images {
-  image: "/level/images/cotinue_background.png"
-}
-images {
-  image: "/level/images/cotinue_background.png"
-}
-images {
-  image: "/level/images/background_menu.png"
 }
 images {
   image: "/level/images/background_mysorka3.png"

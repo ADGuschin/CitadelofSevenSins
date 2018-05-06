@@ -327,6 +327,9 @@ function on_message(self, message_id, message, sender)
 			handle_geometry_contact(self, message.normal, message.distance)
 		elseif message.group == hash("training") then
 			lock_character = false
+		elseif message.group == hash("coin") then
+			coins = coins + 1
+			current_level_coins = current_level_coins + 1
 		end
 	end
 end
@@ -499,4 +502,8 @@ function on_input(self, action_id, action)
 			end
 		end
 	end
+end
+
+function final(self)
+	current_level_coins = 0
 end

@@ -38,6 +38,12 @@ function init(self)
     --print(msg.url())
 end
 
+function spawn_pickups(self, params)
+    for i = 1, params.count do
+        factory.create("#coin", vmath.vector3(params.pickup_positions[i].x + 1600, params.pickup_positions[i].y, 1))
+    end
+end
+
 function check_for_reset(self)
     if reset_timer < reset_timer_max then
         reset_timer = reset_timer + 1
@@ -59,10 +65,11 @@ function update(self, dt)
         local allowed_obstacles = obstacle_table[previous_obstacle]
         local random = math.random(table_length(self, allowed_obstacles))
         grid = grid_table[allowed_obstacles[random]]
-        pprint(grid_table[previous_obstacle])
-        pprint(previous_obstacle)
+        --pprint(grid_table[previous_obstacle])
+        --pprint(previous_obstacle)
         previous_obstacle = allowed_obstacles[random] 
         local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 4)
+        spawn_pickups(self, pickups_param_table[previous_obstacle])
     end
     if not pause_state then
         score = score + self.speed / 10000

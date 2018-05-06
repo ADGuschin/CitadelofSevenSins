@@ -20,6 +20,9 @@ catch_up_speed = 40
 jump_break_speed = -2000
 max_speed = 2000
 
+coins = 0
+current_level_coins = 0
+
 --Переменные для включения логов
 gui_log = false
 --Индекс нынешнего уровня

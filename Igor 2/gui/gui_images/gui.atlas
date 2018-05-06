@@ -1,25 +1,4 @@
 images {
-  image: "/gui/gui_images/flatDark25.png"
-}
-images {
-  image: "/level/images/pause.png"
-}
-images {
-  image: "/gui/gui_images/896px-Octicons-gear.svg.png"
-}
-images {
-  image: "/gui/gui_images/_avatar180.jpg"
-}
-images {
-  image: "/gui/gui_images/applications-system_1315.png"
-}
-images {
-  image: "/gui/gui_images/artage-io-thumb-2f676f7529aee1f0b883fef2d04ee477.png"
-}
-images {
-  image: "/gui/gui_images/automation-33ced5bdb14928a4-256x256.png"
-}
-images {
   image: "/gui/gui_images/close.png"
 }
 images {
@@ -32,40 +11,31 @@ images {
   image: "/gui/gui_images/swipe_right.png"
 }
 images {
-  image: "/level/images/button.png"
-}
-images {
-  image: "/level/images/shesterenka.png"
-}
-images {
-  image: "/level/images/key.png"
-}
-images {
-  image: "/level/images/gear.png"
-}
-images {
-  image: "/level/images/button_new.png"
-}
-images {
   image: "/gui/gui_images/music_off.png"
 }
 images {
   image: "/gui/gui_images/music_on.png"
 }
 images {
-  image: "/level/images/for_menu.png"
-}
-images {
-  image: "/gui/gui_images/482484.png"
-}
-images {
-  image: "/gui/gui_images/logo.png"
-}
-images {
   image: "/gui/gui_images/for_logo_1280\321\205720.png"
 }
 images {
   image: "/gui/gui_images/logo_1280\321\205720.png"
+}
+images {
+  image: "/gui/gui_images/gear.png"
+}
+images {
+  image: "/gui/gui_images/button.png"
+}
+images {
+  image: "/gui/gui_images/pause.png"
+}
+images {
+  image: "/gui/gui_images/background_menu.png"
+}
+images {
+  image: "/gui/gui_images/for_menu.png"
 }
 margin: 0
 extrude_borders: 2

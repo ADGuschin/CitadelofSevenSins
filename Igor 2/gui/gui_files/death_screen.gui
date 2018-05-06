@@ -50,7 +50,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "Background/test2_red4"
+  texture: "Background/background_mysorka_novye_colors4"
   id: "background"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE

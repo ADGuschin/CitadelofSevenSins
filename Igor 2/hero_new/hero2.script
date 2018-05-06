@@ -278,6 +278,7 @@ function on_message(self, message_id, message, sender)
 			abort_jump(self)
 		end
 	elseif message_id == hash("reset") then
+		save_gamedata()
 		msg.post("controller#script", "spawnhero")
 		msg.post("#running_state", "enable")
 	elseif message_id == hash("contact_point_response") then
@@ -292,11 +293,11 @@ function on_message(self, message_id, message, sender)
 				--print("здох4")
 				if autorestart_state then
 					go.delete(true)
-					msg.post("level:/controller#script", "reset")
+					msg.post(current_level..":/controller#script", "reset")
 					--print("здох2")
 				else
 					msg.post("default:/death_screen#death_screen", "death")
-					msg.post("level:/controller#script", "death")  
+					msg.post(current_level..":/controller#script", "death")  
 					--print("здох3")
 				end
 				isFirstTimeRun = false

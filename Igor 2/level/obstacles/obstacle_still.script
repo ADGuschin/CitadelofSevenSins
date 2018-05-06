@@ -13,7 +13,7 @@ function update(self, dt)
     --print(msg.url())
     pos.x = pos.x - self.speed * dt
     go.set_position(pos)
-    msg.post("level:/controller#script", "speed_request")
+    msg.post(current_level..":/controller#script", "speed_request")
 end
 
 function on_message(self, message_id, message, sender)

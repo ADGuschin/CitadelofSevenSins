@@ -101,11 +101,11 @@ function init(self)
 							if gui.is_enabled(gui.get_node("box")) then
 								gui.set_enabled(gui.get_node("comingsoon_box"), true)
 								
-								--[[in_game = true
+								in_game = true
 								index_of_current_level = 2
 								current_level = list_of_levels[index_of_current_level]
 								
-								msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})]]
+								msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
 
 								if gui_log then
 									print("Нажата кнопка второго уровня, выведена надпись Сoming soon")

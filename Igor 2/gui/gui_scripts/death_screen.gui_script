@@ -87,7 +87,7 @@ function on_message(self, message_id, message, sender)
 			msg.post(".", "acquire_input_focus")
 			msg.post(current_level..":/score#score", "hide")
 			msg.post("/hud", "death_pause", {value = true})
-			msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+			msg.post("default:/hud#"..current_level.."_proxy", "set_time_step", {factor = 0, mode = 1})
 
 			if gui_log then
 				print("Пришло сообщение о смерти от", sender, "Показан экран смерти, спрятан интерфейс очков, прокси level коллекции поставлен на паузу")

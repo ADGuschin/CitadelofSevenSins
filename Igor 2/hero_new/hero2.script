@@ -292,11 +292,11 @@ function on_message(self, message_id, message, sender)
 				--print("здох4")
 				if autorestart_state then
 					go.delete(true)
-					msg.post("level:/controller#script", "reset")
+					msg.post(current_level..":/controller#script", "reset")
 					--print("здох2")
 				else
 					msg.post("default:/death_screen#death_screen", "death")
-					msg.post("level:/controller#script", "death")  
+					msg.post(current_level..":/controller#script", "death")  
 					--print("здох3")
 				end
 				isFirstTimeRun = false

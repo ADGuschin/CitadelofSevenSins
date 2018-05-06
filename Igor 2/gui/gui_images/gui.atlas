@@ -5,12 +5,6 @@ images {
   image: "/level/images/pause.png"
 }
 images {
-  image: "/gui/gui_images/1600.png"
-}
-images {
-  image: "/gui/gui_images/Volume_up_font_awesome.svg.png"
-}
-images {
   image: "/gui/gui_images/896px-Octicons-gear.svg.png"
 }
 images {
@@ -47,9 +41,6 @@ images {
   image: "/level/images/key.png"
 }
 images {
-  image: "/gui/gui_images/Defold-logotypes_RGB-Original_Illustrator-02.png"
-}
-images {
   image: "/level/images/gear.png"
 }
 images {
@@ -68,7 +59,13 @@ images {
   image: "/gui/gui_images/482484.png"
 }
 images {
-  image: "/gui/gui_images/for_logo.jpg"
+  image: "/gui/gui_images/logo.png"
+}
+images {
+  image: "/gui/gui_images/for_logo_1280\321\205720.png"
+}
+images {
+  image: "/gui/gui_images/logo_1280\321\205720.png"
 }
 margin: 0
 extrude_borders: 2

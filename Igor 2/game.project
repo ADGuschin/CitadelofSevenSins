@@ -1,6 +1,6 @@
 [project]
-title = Citadel of seven sins
-version = 0.19 
+title = Citadel of Seven Sins
+version = 1.01
 
 [bootstrap]
 main_collection = /start_scene/start_scene.collectionc
@@ -25,6 +25,12 @@ default_texture_min_filter = nearest
 default_texture_mag_filter = nearest
 
 [android]
-app_icon_36x36 = /pix.png
-package = com.bluebeakstd.game
+app_icon_36x36 = /gui/gui_images/950954995.png
+package = com.bluebeakstd.coss
+version_code = 3
+app_icon_48x48 = /gui/gui_images/950954995.png
+app_icon_72x72 = /gui/gui_images/950954995.png
+app_icon_96x96 = /gui/gui_images/950954995.png
+app_icon_144x144 = /gui/gui_images/950954995.png
+app_icon_192x192 = /gui/gui_images/950954995.png
 

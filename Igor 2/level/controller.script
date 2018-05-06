@@ -22,6 +22,9 @@ function table_length(self, table)
 end
 
 function init(self)
+    index_of_current_level = 1 -- пока что захардкодил для теста
+    current_level = list_of_levels[index_of_current_level]
+    print(current_level)
     self.speed = default_speed
     update_speed(self)
     self.gridw = 0

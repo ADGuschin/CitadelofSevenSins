@@ -85,7 +85,7 @@ function on_message(self, message_id, message, sender)
 			end
 
 			msg.post(".", "acquire_input_focus")
-			msg.post("level:/score#score", "hide")
+			msg.post(current_level..":/score#score", "hide")
 			msg.post("/hud", "death_pause", {value = true})
 			msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
 

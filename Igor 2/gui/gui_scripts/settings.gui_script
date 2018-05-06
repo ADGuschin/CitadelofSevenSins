@@ -17,7 +17,7 @@ function init(self)
 									gui.play_flipbook(gui.get_node("sound_button"), "music_off")
 
 									if in_game then
-										msg.post("level:/sound#sound", "sound_off")
+										msg.post(current_level..":/sound#sound", "sound_off")
 									else
 										msg.post("default2:/sound#sound", "sound_off")
 									end
@@ -30,7 +30,7 @@ function init(self)
 									gui.play_flipbook(gui.get_node("sound_button"), "music_on")
 
 									if in_game then
-										msg.post("level:/sound#sound", "sound_on")
+										msg.post(current_level..":/sound#sound", "sound_on")
 									else
 										msg.post("default2:/sound#sound", "sound_on")
 									end

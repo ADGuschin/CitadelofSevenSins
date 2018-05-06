@@ -2,7 +2,7 @@ require "main_menu.ui_func"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	msg.post("#level_proxy", "load")
+	msg.post("#"..current_level.."_proxy", "load")
 
 	pause_state = false
 
@@ -22,8 +22,8 @@ function init(self)
 								gui.set_enabled(gui.get_node("pause_button"), false)
 								
 								msg.post("/pause_screen", "show")
-								msg.post("level:/score#score", "hide")
-								msg.post("#level_proxy", "set_time_step", {factor = 0, mode = 1})
+								msg.post(current_level..":/score#score", "hide")
+								msg.post("#"..current_level.."_proxy", "set_time_step", {factor = 0, mode = 1})
 
 								if gui_log then
 									print("Нажата кнопка паузы, level прокси поставлен на паузу, скрыт интерфейс очков, скрыта кнопка паузы")
@@ -50,8 +50,8 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("resume") then
 		pause_state = false
-		msg.post("#level_proxy", "set_time_step", {factor = 1, mode = 1})
-		msg.post("level:/score#score", "show")
+		msg.post("#"..current_level.."_proxy", "set_time_step", {factor = 1, mode = 1})
+		msg.post(current_level..":/score#score", "show")
 		gui.set_enabled(gui.get_node("pause_button"), true)
 
 		if gui_log then

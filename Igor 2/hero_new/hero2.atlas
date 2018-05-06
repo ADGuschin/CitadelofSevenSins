@@ -232,12 +232,18 @@ animations {
     image: "/hero_new/images/hero_roll_animation/perecat_4.png"
   }
   images {
+    image: "/hero_new/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
+    image: "/hero_new/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
     image: "/hero_new/images/hero_roll_animation/perecat_5.png"
   }
   images {
     image: "/hero_new/images/hero_roll_animation/perecat_6.png"
   }
-  playback: PLAYBACK_LOOP_FORWARD
+  playback: PLAYBACK_ONCE_FORWARD
   fps: 20
   flip_horizontal: 0
   flip_vertical: 0

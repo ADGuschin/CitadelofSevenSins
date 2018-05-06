@@ -24,6 +24,6 @@ max_speed = 2000
 gui_log = false
 --Индекс нынешнего уровня
 index_of_current_level = 1 --Счет идет с 1
---список уровней
-list_of_levels = {"level"}
+--Список уровней
+list_of_levels = {"level", "level2"}
 current_level = nil

@@ -28,6 +28,9 @@ function init(self)
 	local node = gui.get_node("background")
 	gui.animate(node, "position.x", -120, gui.EASING_INCUBIC, 100, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 	msg.post(".", "acquire_input_focus")
+
+	gui.set_enabled(gui.get_node("selectlevel_box"), false)
+	gui.set_enabled(gui.get_node("comingsoon_box"), false)
 	
     --gui.set_color(gui.get_node("exit_button"), self.normal_color);
     --gui.set_color(gui.get_node("start_button"), self.normal_color);
@@ -37,13 +40,12 @@ function init(self)
 					{
 						node = gui.get_node("start_button"),
 						action = function ()
-							if gui.is_enabled(gui.get_node("start_button")) then
-								in_game = true
-								
-								msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+							if gui.is_enabled(gui.get_node("box")) then
+								gui.set_enabled(gui.get_node("menu_box"), false)
+								gui.set_enabled(gui.get_node("selectlevel_box"), true)
 
 								if gui_log then
-									print("Нажата кнопка старт, загружен прокси main коллекции")
+									print("Нажата кнопка старт, открыт интерфейс выбора уровня")
 								end
 							end
 						end
@@ -51,7 +53,7 @@ function init(self)
 					{
 						node = gui.get_node("exit_button"),
 						action = function ()
-							if gui.is_enabled(gui.get_node("exit_button")) then
+							if gui.is_enabled(gui.get_node("box")) then
 								msg.post("@system:", "exit", {code = 0})
 
 								if gui_log then
@@ -64,10 +66,8 @@ function init(self)
 						node = gui.get_node("settings_button"),
 						action = function ()
 							if gui.is_enabled(gui.get_node("settings_button")) then
-								gui.set_enabled(gui.get_node("title"), false)
-								gui.set_enabled(gui.get_node("exit_button"), false)
-								gui.set_enabled(gui.get_node("start_button"), false)
-								gui.set_enabled(gui.get_node("settings_button"), false)
+								gui.set_enabled(gui.get_node("comingsoon_box"), false)
+								gui.set_enabled(gui.get_node("box"), false)
 								
 								msg.post("/menu#settings", "show")
 
@@ -76,24 +76,69 @@ function init(self)
 								end
 							end
 						end
-					}
+					},
+					{
+						node = gui.get_node("level1_button"),
+						action = function ()
+							if gui.is_enabled(gui.get_node("box")) then
+								gui.set_enabled(gui.get_node("comingsoon_box"), false)
+								
+								in_game = true
+								index_of_current_level = 1
+								current_level = list_of_levels[index_of_current_level]
+
+								msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+
+								if gui_log then
+									print("Нажата кнопка первого уровня, загружен прокси main коллекции")
+								end
+							end
+						end
+					},
+					{
+						node = gui.get_node("level2_button"),
+						action = function ()
+							if gui.is_enabled(gui.get_node("box")) then
+								gui.set_enabled(gui.get_node("comingsoon_box"), true)
+								
+								--[[in_game = true
+								index_of_current_level = 2
+								current_level = list_of_levels[index_of_current_level]
+								
+								msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})]]
+
+								if gui_log then
+									print("Нажата кнопка второго уровня, выведена надпись Сoming soon")
+								end
+							end
+						end
+					},
+					{
+						node = gui.get_node("back_button"),
+						action = function ()
+							if gui.is_enabled(gui.get_node("box")) then
+								gui.set_enabled(gui.get_node("menu_box"), true)
+								gui.set_enabled(gui.get_node("selectlevel_box"), false)
+								gui.set_enabled(gui.get_node("comingsoon_box"), false)
+
+								if gui_log then
+									print("Нажата кнопка назад, вернулись в главное меню")
+								end
+							end
+						end 
+					},
 				}
 				
-				init_ui(self)
-				
+	init_ui(self)
 end
 
 function final(self)
 	msg.post(".", "release_input_focus")
-	--msg.post("start_scene:/sound#sound", "sound_off");
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
-		gui.set_enabled(gui.get_node("title"), true)
-		gui.set_enabled(gui.get_node("exit_button"), true)
-		gui.set_enabled(gui.get_node("start_button"), true)
-		gui.set_enabled(gui.get_node("settings_button"), true)
+		gui.set_enabled(gui.get_node("box"), true)
 		
 		msg.post(".", "acquire_input_focus")
 		

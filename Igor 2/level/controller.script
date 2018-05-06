@@ -40,6 +40,7 @@ end
 
 function spawn_pickups(self, params)
     for i = 1, params.count do
+        print(previous_obstacle)
         factory.create("#coin", vmath.vector3(params.pickup_positions[i].x + 1600, params.pickup_positions[i].y, 1))
     end
 end
@@ -74,6 +75,7 @@ function update(self, dt)
     if not pause_state then
         score = score + self.speed / 10000
         msg.post("/score#score", "score", {value = math.ceil(score)})
+        msg.post("/score#score", "coins", {value = coins})
     end
 
 end

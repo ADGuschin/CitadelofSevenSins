@@ -58,7 +58,7 @@ end
 
 local function go_invincible(self)
 	invincible = true
-	print("going invincible")
+	--print("going invincible")
 	invincibility = 0
 end
 
@@ -331,6 +331,8 @@ function on_message(self, message_id, message, sender)
 		elseif message.group == hash("coin") then
 			coins = coins + 1
 			current_level_coins = current_level_coins + 1
+			--print("total coins:"..coins)
+			--print("coins this run:"..current_level_coins)
 		end
 	end
 end

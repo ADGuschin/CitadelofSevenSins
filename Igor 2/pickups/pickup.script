@@ -22,8 +22,6 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("set_speed") then
 		self.speed = message.speed 
-	elseif message_id == hash("collision_response") then
-		print(sender)
 	elseif message_id == hash("contact_point_response") then
 		go.delete(true)
 	end

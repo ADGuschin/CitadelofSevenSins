@@ -16,11 +16,13 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("score") then
+	if message_id == hash("coins") then
+		gui.set_text(gui.get_node("coins_num"), message.value)
+	elseif message_id == hash("score") then
 		local score = message.value
 		gui.set_text(gui.get_node("score_num"), score)
 		gui.set_text(gui.get_node("highscore_num"), shared_data.player.highscore)
-		
+		--print(sender)
 		shared_data.player.score = score
 		if score > shared_data.player.highscore then
 			shared_data.player.highscore = score

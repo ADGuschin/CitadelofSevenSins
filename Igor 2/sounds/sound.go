@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "gametheme"
   type: "sound"
-  data: "sound: \"/sounds/coss game.wav\"\n"
+  data: "sound: \"/sounds/Bylya.wav\"\n"
   "looping: 1\n"
   "group: \"master\"\n"
   "gain: 1.0\n"
@@ -36,10 +36,10 @@ embedded_components {
 embedded_components {
   id: "menutheme"
   type: "sound"
-  data: "sound: \"/sounds/coss menu.wav\"\n"
+  data: "sound: \"/sounds/Dimooon.wav\"\n"
   "looping: 1\n"
   "group: \"master\"\n"
-  "gain: 1.0\n"
+  "gain: 0.7\n"
   ""
   position {
     x: 0.0

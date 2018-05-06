@@ -46,85 +46,85 @@ pickups_param_table = {
 	["#obstacle_small"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	}, 
 	["#obstacle_tall"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
-	["#obstacle_top"] = {
+	["#obstacle_top_kran"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#train_home"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#coll_1"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#obstacle_jumps"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#coll_1"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#coll_2"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#coll_3"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#coll_3.1"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#coll_3.2"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#obstacle_pipes"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#obstacle_car"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 	["#obstacle_kran"] = {
 		powerup = true, count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
-			[2] = {x = 100, y = 200}
+			[2] = {x = 200, y = 200}
 		}
 	},
 }

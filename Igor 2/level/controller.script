@@ -90,6 +90,7 @@ function on_message(self, message_id, message, sender)
         self.speed = default_speed
         msg.post("#", "spawnhero")
         msg.post("background3/controller#background3", "reset")
+        msg.post("bacground3_loop/controller#background3_loop", "reset")
     elseif message_id == hash("reset_speed") then
         self.speed = self.speed * 0.77
         if self.speed < default_speed then

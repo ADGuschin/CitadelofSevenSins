@@ -16,9 +16,10 @@ jump_takeoff_speed = 1260
 invincibility_max = 50
 min_impact_speed = 1250
 max_impact_speed = 1400
-catch_up_speed = 40
+catch_up_speed = 50
 jump_break_speed = -2000
 max_speed = 2000
+acceleration = 8
 
 coins = 0
 current_level_coins = 0

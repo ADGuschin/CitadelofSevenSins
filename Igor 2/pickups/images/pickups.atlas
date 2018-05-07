@@ -1,0 +1,9 @@
+images {
+  image: "/pickups/images/botiki.png"
+}
+images {
+  image: "/pickups/images/denga.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

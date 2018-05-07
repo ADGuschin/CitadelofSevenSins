@@ -4,7 +4,7 @@ require "variables"
 -- controller.script
 local grid = 600
 local platform_height = 48
-local default_speed = 360
+local default_speed = 460
 local score = 0
 local max_speed = 1500
 local obstacle_var = 0
@@ -13,7 +13,7 @@ local reset_timer_max = 5
 
 local previous_obstacle
 
-acceleration = 5
+
 
 function table_length(self, table)
     local count = 0
@@ -38,6 +38,18 @@ function init(self)
     --print(msg.url())
 end
 
+function spawn_pickups(self, params)
+    for i = 1, params.count do
+        local spawn_position = vmath.vector3(params.pickup_positions[i].x + 1600, params.pickup_positions[i].y, 1)
+        if(previous_obstacle == "#obstacle_small") and math.random() > 0.65 then
+            spawn_position.y = spawn_position.y + 200
+        elseif(previous_obstacle == "#obstacle_top_kran") and math.random() > 0.65 then
+            spawn_position.y = spawn_position.y - 230
+        end
+        factory.create("#coin", spawn_position , nil, {}, 2)
+    end
+end
+
 function check_for_reset(self)
     if reset_timer < reset_timer_max then
         reset_timer = reset_timer + 1
@@ -59,14 +71,16 @@ function update(self, dt)
         local allowed_obstacles = obstacle_table[previous_obstacle]
         local random = math.random(table_length(self, allowed_obstacles))
         grid = grid_table[allowed_obstacles[random]]
-        pprint(grid_table[previous_obstacle])
-        pprint(previous_obstacle)
+        --pprint(grid_table[previous_obstacle])
+        --pprint(previous_obstacle)
         previous_obstacle = allowed_obstacles[random] 
         local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 4)
+        spawn_pickups(self, pickups_param_table[previous_obstacle])
     end
     if not pause_state then
         score = score + self.speed / 10000
         msg.post("/score#score", "score", {value = math.ceil(score)})
+        msg.post("/score#score", "coins", {value = coins})
     end
 
 end

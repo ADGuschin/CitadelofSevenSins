@@ -18,11 +18,9 @@ function init(self)
 						node = gui.get_node("restart"),
 						action = function () 
 							--finish_anim(gui.get_node("background"))
-							gui.set_enabled(gui.get_node("background"), false)
+							msg.post(".", "close")
 
-							msg.post("/hud", "death_pause", {value = false})
-							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
-							msg.post(".", "release_input_focus")
+							
 							
 							if gui_log then
 								print("Нажата кнопка рестарт, загружен прокси main коллекции")
@@ -65,6 +63,14 @@ function finish_anim(node)
 end
 
 function on_message(self, message_id, message, sender)
+	if message_id == hash("close") then
+		gui.set_enabled(gui.get_node("background"), false)
+
+		msg.post("/hud", "death_pause", {value = false})
+		msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+		msg.post(".", "release_input_focus")
+	end
+	
 	if message_id == hash("death") then
 		--[[if autorestart_state then
 			msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
@@ -73,10 +79,11 @@ function on_message(self, message_id, message, sender)
 				print("Пришло сообщение о смерти от", sender, "Загружен прокси main коллекции, т.к. авторестарт = ")
 			end
 		else]]
+			gui.set_position(gui.get_node("background"), vmath.vector3(640, 360, 0))
 			gui.set_enabled(gui.get_node("background"), true)
 			deathscreen_state = true
 			local node = gui.get_node("background")
-			gui.animate(node, "position.y", 100, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+			gui.animate(node, "position.y", 640, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 			if record_state then
 				print("Record = ", shared_data.player.highscore)
 				gui.set_enabled(gui.get_node("record_box"), true)

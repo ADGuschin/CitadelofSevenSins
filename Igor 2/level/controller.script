@@ -91,6 +91,7 @@ function on_message(self, message_id, message, sender)
         --table.insert(self.heroes, p)
         score = 0 
     elseif message_id == hash("reset") then 
+        save_gamedata()
         training_state = next_try_is_training
         next_try_is_training = false
         if training_state then

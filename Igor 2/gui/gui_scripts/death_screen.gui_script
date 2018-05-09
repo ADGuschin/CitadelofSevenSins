@@ -54,7 +54,21 @@ function init(self)
 								print("Нажата кнопка настроек, скрыт интерфейс экрана смерти")
 							end
 						end
-					}
+					},
+					{
+						node = gui.get_node("continue"),
+						action = function () 
+							gui.set_enabled(gui.get_node("background"), false)
+
+							msg.post("/hud", "resume")
+							msg.post(".", "release_input_focus")
+							
+
+							if gui_log then
+								--print("Нажата кнопка рестарт, загружен прокси main коллекции")
+							end
+						end
+					},
 				}
 	
 	init_ui(self)

@@ -63,6 +63,7 @@ function on_message(self, message_id, message, sender)
 			gui.set_enabled(gui.get_node("pause_button"), false)
 		else
 			pause_state = false
+			gui.set_enabled(gui.get_node("pause_button"), true)
 		end
 
 		if gui_log then

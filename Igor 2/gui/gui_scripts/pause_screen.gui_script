@@ -15,14 +15,7 @@ function init(self)
 						node = gui.get_node("resume"),
 						action = function () 
 							--finish_anim(gui.get_node("background"))
-							gui.set_enabled(gui.get_node("background"), false)
-							
-							msg.post("/hud", "resume")
-							msg.post(".", "release_input_focus")
-
-							if gui_log then
-								print("Нажата кнопка продолжить, скрыт интерфейс паузы")
-							end
+							msg.post(".", "hide")
 						end
 					},
 					{
@@ -60,15 +53,30 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
-		
+		gui.set_position(gui.get_node("background"), vmath.vector3(640, 360, 0))
 		gui.set_enabled(gui.get_node("background"), true)
 		local node = gui.get_node("background")
-		gui.animate(node, "position.y", 100, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+		--gui.set_position(node, 0)
+		gui.animate(node, "position.y", 640, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 		msg.post(".", "acquire_input_focus")
 
 		if gui_log then
 			print("Пришло сообщение о включении экрана паузы от", sender, "Показан экран паузы")
 		end
+	end
+
+	if message_id == hash("hide") then
+		gui.animate(gui.get_node("background"), "position.y", -450, gui.EASING_INCUBIC, 0.3, 0, msg.post(".", "close"), gui.PLAYBACK_ONCE_FORWARD)
+		--finish_anim(gui.get_node("background"))
+		
+		msg.post(".", "close")
+	end
+
+	if message_id == hash("close") then
+		gui.set_enabled(gui.get_node("background"), true)
+
+		msg.post("/hud", "resume")
+		msg.post(".", "release_input_focus")
 	end
 end
 

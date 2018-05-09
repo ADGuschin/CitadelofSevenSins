@@ -3,8 +3,6 @@ require "main_menu.ui_func"
 local wait_for_roll = false
 local wait_for_jump = false
 local wait_for_slide = false
-local values = {250, 0, 0}
-local vec = vmath.vector(values)
 
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
@@ -46,6 +44,10 @@ function on_message(self, message_id, message, sender)
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
 		
 		gui.animate(gui.get_node("hint"), "position.x", 50, gui.EASING_INCUBIC, 1, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+		
+		wait_for_roll = true
+		gui.set_position(gui.get_node("hint"), vmath.vector3(250, 0, 0))
+		gui.animate(gui.get_node("hint"), "position", vmath.vector3(100, 0, 0), gui.EASING_INCUBIC, 0.8, 0, nil, gui.PLAYBACK_LOOP_BACKWARD)
 		--gui.set_position(gui.get_node("hint"), vec)
 	end	
 	if message_id == hash("swipe_up") then
@@ -58,6 +60,9 @@ function on_message(self, message_id, message, sender)
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
 		
 		gui.animate(gui.get_node("hint"), "position.y", 250, gui.EASING_INCUBIC, 1, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
+		wait_for_jump = true		
+		gui.set_position(gui.get_node("hint"), vmath.vector3(250, 0, 0))
+		gui.animate(gui.get_node("hint"), "position.y", 250, gui.EASING_INCUBIC, 0.8, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
 		--gui.set_position(gui.get_node("hint"), vec)
 	end
 	if message_id == hash("swipe_down") then
@@ -70,6 +75,9 @@ function on_message(self, message_id, message, sender)
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
 		
 		gui.animate(gui.get_node("hint"), "position.y", 0, gui.EASING_INCUBIC, 1, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
+		wait_for_slide = true
+		gui.set_position(gui.get_node("hint"), vmath.vector3(250, 0, 0))
+		gui.animate(gui.get_node("hint"), "position.y", -250, gui.EASING_INCUBIC, 0.8, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
 		--gui.set_position(gui.get_node("hint"), 250, vec)
 	end
 	if message_id == hash("jump") and wait_for_jump then

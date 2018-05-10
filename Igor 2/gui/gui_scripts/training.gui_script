@@ -3,8 +3,6 @@ require "main_menu.ui_func"
 local wait_for_roll = false
 local wait_for_jump = false
 local wait_for_slide = false
-local values = {250, 0, 0}
-local vec = vmath.vector(values)
 
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
@@ -25,42 +23,61 @@ function update(self, dt)
 end
 
 function go_away(self)
-	pause_state = false
-	gui.set_enabled(gui.get_node("background"), false)
-	msg.post("default:/hud#level_proxy", "set_time_step", {factor = 1, mode = 1})
 	wait_for_roll = false
 	wait_for_jump = false
 	wait_for_slide = false
+	
+	gui.set_enabled(gui.get_node("background"), false)
+	
+	msg.post("/hud", "death_pause", {value = false})
+	msg.post("default:/hud#level_proxy", "set_time_step", {factor = 1, mode = 1})
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("swipe_right") then
-		pause_state = true
-		gui.set_enabled(gui.get_node("background"), true)
-		gui.play_flipbook(gui.get_node("hint"), "swipe_right")
-		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
 		wait_for_roll = true
 		
+		gui.set_enabled(gui.get_node("background"), true)
+		gui.play_flipbook(gui.get_node("hint"), "swipe_right")
+		
+		msg.post("/hud", "death_pause", {value = true})
+		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
+		
 		gui.animate(gui.get_node("hint"), "position.x", 50, gui.EASING_INCUBIC, 1, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+		
+		wait_for_roll = true
+		gui.set_position(gui.get_node("hint"), vmath.vector3(250, 0, 0))
+		gui.animate(gui.get_node("hint"), "position", vmath.vector3(100, 0, 0), gui.EASING_INCUBIC, 0.8, 0, nil, gui.PLAYBACK_LOOP_BACKWARD)
 		--gui.set_position(gui.get_node("hint"), vec)
 	end	
 	if message_id == hash("swipe_up") then
-		--print("pause_state"..pause_state)
-		pause_state = true
+		wait_for_jump = true
+		
 		gui.set_enabled(gui.get_node("background"), true)
 		gui.play_flipbook(gui.get_node("hint"), "swipe_up")
+
+		msg.post("/hud", "death_pause", {value = true})
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
-		wait_for_jump = true		
+		
 		gui.animate(gui.get_node("hint"), "position.y", 250, gui.EASING_INCUBIC, 1, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
+		wait_for_jump = true		
+		gui.set_position(gui.get_node("hint"), vmath.vector3(250, 0, 0))
+		gui.animate(gui.get_node("hint"), "position.y", 250, gui.EASING_INCUBIC, 0.8, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
 		--gui.set_position(gui.get_node("hint"), vec)
 	end
 	if message_id == hash("swipe_down") then
-		pause_state = true
+		wait_for_slide = true
+		
 		gui.set_enabled(gui.get_node("background"), true)
 		gui.play_flipbook(gui.get_node("hint"), "swipe_down")
+		
+		msg.post("/hud", "death_pause", {value = true})
 		msg.post("default:/hud#level_proxy", "set_time_step", {factor = 0, mode = 1})
-		wait_for_slide = true
+		
 		gui.animate(gui.get_node("hint"), "position.y", 0, gui.EASING_INCUBIC, 1, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
+		wait_for_slide = true
+		gui.set_position(gui.get_node("hint"), vmath.vector3(250, 0, 0))
+		gui.animate(gui.get_node("hint"), "position.y", -250, gui.EASING_INCUBIC, 0.8, 0, nil, gui.PLAYBACK_LOOP_FORWARD)
 		--gui.set_position(gui.get_node("hint"), 250, vec)
 	end
 	if message_id == hash("jump") and wait_for_jump then

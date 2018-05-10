@@ -8,6 +8,7 @@ shared_data = {
 	data = {
 		training_state = true,
 		autorestart_state = false,
+		coins = 0
 	}
 }
 
@@ -29,12 +30,20 @@ function load_gamedata(self)
 
 	if next(gamedata) then
 		print("Геймдата загружена")
+		print("Файл:")
 		pprint(gamedata)
-		
+
 		shared_data.player.highscore = gamedata.player.highscore
+		
+		if gamedata.data.coins then
+			shared_data.data.coins = gamedata.data.coins
+		end
 		
 		shared_data.data.training_state = gamedata.data.training_state
 		shared_data.data.autorestart_state = gamedata.data.autorestart_state
+		
+		print("Загруженное:")
+		pprint(shared_data)
 	else
 		print("Геймдата пуста")
 		sys.save(save_file, shared_data)

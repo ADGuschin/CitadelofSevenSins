@@ -7,7 +7,8 @@ function init(self)
 	end
 	
 	load_gamedata()
-
+	
+	coins = shared_data.data.coins
 	training_state = shared_data.data.training_state
 	autorestart_state = shared_data.data.autorestart_state
 end
@@ -21,6 +22,7 @@ function final(self)
 end
 
 function update(self, dt)
+	shared_data.data.coins = coins
 	shared_data.data.training_state = training_state
 	shared_data.data.autorestart_state = autorestart_state
 end

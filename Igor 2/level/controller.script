@@ -4,7 +4,7 @@ require "variables"
 -- controller.script
 local grid = 600
 local platform_height = 48
-local default_speed = 360
+local default_speed = 460
 local score = 0
 local max_speed = 1500
 local obstacle_var = 0
@@ -13,7 +13,7 @@ local reset_timer_max = 5
 
 local previous_obstacle
 
-acceleration = 5
+
 
 function table_length(self, table)
     local count = 0
@@ -40,8 +40,13 @@ end
 
 function spawn_pickups(self, params)
     for i = 1, params.count do
-        print(previous_obstacle)
-        factory.create("#coin", vmath.vector3(params.pickup_positions[i].x + 1600, params.pickup_positions[i].y, 1))
+        local spawn_position = vmath.vector3(params.pickup_positions[i].x + 1600, params.pickup_positions[i].y, 1)
+        if(previous_obstacle == "#obstacle_small") and math.random() > 0.65 then
+            spawn_position.y = spawn_position.y + 200
+        elseif(previous_obstacle == "#obstacle_top_kran") and math.random() > 0.65 then
+            spawn_position.y = spawn_position.y - 230
+        end
+        factory.create("#coin", spawn_position , nil, {}, 2)
     end
 end
 
@@ -86,6 +91,7 @@ function on_message(self, message_id, message, sender)
         --table.insert(self.heroes, p)
         score = 0 
     elseif message_id == hash("reset") then 
+        save_gamedata()
         training_state = next_try_is_training
         next_try_is_training = false
         if training_state then
@@ -99,6 +105,7 @@ function on_message(self, message_id, message, sender)
         self.speed = default_speed
         msg.post("#", "spawnhero")
         msg.post("background3/controller#background3", "reset")
+        msg.post("bacground3_loop/controller#background3_loop", "reset")
     elseif message_id == hash("reset_speed") then
         self.speed = self.speed * 0.77
         if self.speed < default_speed then

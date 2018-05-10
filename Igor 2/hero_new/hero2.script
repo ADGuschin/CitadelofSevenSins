@@ -278,7 +278,6 @@ function on_message(self, message_id, message, sender)
 			abort_jump(self)
 		end
 	elseif message_id == hash("reset") then
-		save_gamedata()
 		msg.post("controller#script", "spawnhero")
 		msg.post("#running_state", "enable")
 	elseif message_id == hash("contact_point_response") then

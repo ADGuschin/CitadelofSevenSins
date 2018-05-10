@@ -3,13 +3,15 @@ require "variables"
 
 local alive
 
+local prepare_slide = false
+
 local flicker_mechanism = 0
 
 local step_playing = false
 
 local current_slide_moment = 0
 local sliding = false
-local slide_cooldown = 15
+local slide_cooldown = 10
 local slide_time = 30
 
 local isFirstTimeRun = true
@@ -22,6 +24,8 @@ local pause = false
 local roll_allowed = false
 local lock_character = false
 local impact_speed = vmath.vector3(1250, 750,0)
+
+local swiped = false
 
 go.property("minSwipeDistance", 50)
 go.property("minSwipeTime", 0.4)
@@ -156,6 +160,64 @@ local function break_roll(self)
 	enable_running_state(self)
 end
 
+
+local function jump(self, speed)
+	if self.ground_contact then
+		play_sound(self, "jump")
+		self.velocity.y = speed
+	end
+	if pause_state then
+		msg.post("default:/training#training", "jump")
+	end
+end
+
+local function abort_jump(self)
+	if self.velocity.y > 0 then
+		self.velocity.y = self.velocity.y * 0.4
+	end
+end
+
+local function roll(self)
+	if roll_allowed and not sliding then
+		break_slide(self)
+		play_sound(self, "roll")
+		rolling_over = true
+		enable_rolling_state(self)
+	end
+	if pause_state then
+		break_slide(self)
+		msg.post("default:/training#training", "roll")
+	end
+end
+
+local function slide(self)
+	if slide_cooldown == slide_cooldown_max and not rolling_over then
+		if not pause_state then
+			play_sound(self, "slide")
+		end
+		enable_sliding_state(self)
+		current_slide_moment = 1
+	end
+	if pause_state then
+		msg.post("default:/training#training", "slide")
+	end
+end
+
+local function jump_break(self)
+	--if self.velocity.y > jump_break_speed then
+	play_sound(self, "break_jump")
+	self.velocity.y = jump_break_speed
+	--end
+end
+
+local function jump_break_slide(self)
+	--if self.velocity.y > jump_break_speed then
+	play_sound(self, "break_jump")
+	self.velocity.y = jump_break_speed
+	prepare_slide = true
+	--end
+end
+
 function update(self, dt)
 	--invincible = true
 	--lock_character = true
@@ -163,6 +225,11 @@ function update(self, dt)
 		local hero_position = go.get_position()
 
 		check_slide(self)
+
+		if prepare_slide and self.ground_contact then
+			slide(self)
+			prepare_slide = false
+		end
 		
 		impact_speed.x = impact_speed.x + acceleration * dt
 		if impact_speed.x > max_impact_speed then
@@ -337,54 +404,7 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
-local function jump(self, speed)
-	if self.ground_contact then
-		play_sound(self, "jump")
-		self.velocity.y = speed
-	end
-	if pause_state then
-		msg.post("default:/training#training", "jump")
-	end
-end
 
-local function abort_jump(self)
-	if self.velocity.y > 0 then
-		self.velocity.y = self.velocity.y * 0.4
-	end
-end
-
-local function roll(self)
-	if roll_allowed and not sliding then
-		break_slide(self)
-		play_sound(self, "roll")
-		rolling_over = true
-		enable_rolling_state(self)
-	end
-	if pause_state then
-		break_slide(self)
-		msg.post("default:/training#training", "roll")
-	end
-end
-
-local function slide(self)
-	if slide_cooldown == slide_cooldown_max and not rolling_over then
-		if not pause_state then
-			play_sound(self, "slide")
-		end
-		enable_sliding_state(self)
-		current_slide_moment = 1
-	end
-	if pause_state then
-		msg.post("default:/training#training", "slide")
-	end
-end
-
-local function jump_break(self)
-	--if self.velocity.y > jump_break_speed then
-		play_sound(self, "break_jump")
-		self.velocity.y = jump_break_speed
-	--end
-end
 
 local beginX
 local beginY
@@ -418,6 +438,7 @@ function checkSwipeDirection(self)
 				totalSwipeDistanceLeft = beginX - endX
 				if totalSwipeDistanceLeft > self.minSwipeDistance then
 					print("Swiped Left")
+					bDoingTouch = false
 					--action_id = hash("Swiped Left")
 				end
 			else
@@ -431,18 +452,19 @@ function checkSwipeDirection(self)
 			if beginY > endY then
 				totalSwipeDistanceUp = beginY - endY
 				if totalSwipeDistanceUp > self.minSwipeDistance and slide_cooldown == slide_cooldown_max then
+					bDoingTouch = false
 					if self.ground_contact then 
 						slide(self)
 					else 
-						jump_break(self)			
+						jump_break_slide(self)
 					end
 				end
 			else
 				totalSwipeDistanceDown = endY - beginY
 				if totalSwipeDistanceDown > self.minSwipeDistance then
-					action_id = "slide"
+					bDoingTouch = false
 					print("Swiped Up")
-					jump(self, jump_takeoff_speed)
+					--jump(self, jump_takeoff_speed)
 				end
 			end
 		end
@@ -450,35 +472,57 @@ function checkSwipeDirection(self)
 end
 
 function swipe_on_input(self, action_id, action)
-	if action_id == hash("touch") then
-		--touch = action.click
+	if action_id == hash("click") then
+		touch = action.click
 		if action.pressed then
 			bDoingTouch = true
 			beginX = action.x
 			beginY = action.y
 			startTime = socket.gettime()
 		end
-		for i, tpoint in ipairs(action.touch) do 
+		if socket.gettime() - startTime < self.minSwipeTime and socket.gettime() - startTime > self.minSwipeTime / 6 then
+			endX = action.x
+			endY = action.y
+			if endX == beginX and endY == beginY then
+				if self.ground_contact and bDoingTouch then
+					jump(self, jump_takeoff_speed)
+					bDoingTouch = false
+				elseif bDoingTouch then
+					jump_break(self)
+					bDoingTouch = false
+				end
+			else
+				checkSwipeDirection(self)
+			end
+			
+		end
+		if action.released then
+			if not self.ground_contact then
+				abort_jump(self)
+			end
+			bDoingTouch = false
+		end
+		--[[for i, tpoint in ipairs(touch) do 
+			
+			
+		end ]]
+		--[[if action.released  then
+			if socket.gettime() - startTime < 10 then
+				print(self.minSwipeTime)
+			end
 			endX = action.x
 			endY = action.y
 			if socket.gettime() - startTime < self.minSwipeTime then
 				checkSwipeDirection(self);
 			end
-		end 
-		if action.released  then
-			--[[endX = action.x
-			endY = action.y
-			if socket.gettime() - startTime < self.minSwipeTime then
-				checkSwipeDirection(self);
-			end--]]
 			bDoingTouch = false
-		end
+		end]]
 	end
 end
 
 function on_input(self, action_id, action)
 	if not lock_character then
-		if action_id == hash("touch") then
+		if action_id == hash("click") then
 			swipe_on_input(self, action_id, action)
 		end
 		--init_swipe(self)

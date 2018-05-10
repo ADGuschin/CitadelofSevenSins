@@ -5,7 +5,7 @@ require "variables"
 local grid = 600
 local platform_height = 48
 local default_speed = 460
-local score = 0
+
 local max_speed = 1500
 local obstacle_var = 0
 local reset_timer = 0

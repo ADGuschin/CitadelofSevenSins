@@ -20,6 +20,7 @@ catch_up_speed = 50
 jump_break_speed = -2000
 max_speed = 2000
 acceleration = 8
+score = 0
 
 coins = 0
 current_level_coins = 0

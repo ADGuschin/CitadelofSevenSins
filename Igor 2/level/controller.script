@@ -47,7 +47,23 @@ function spawn_pickups(self, params)
         elseif(previous_obstacle == "#obstacle_top_kran") and math.random() > 0.65 then
             spawn_position.y = spawn_position.y - 230
         end
-        factory.create("#coin", spawn_position , nil, {}, 2)
+        if score > 100 and score < 250 then 
+            local random = score/math.random(100, 250)
+            if random >= 1 then
+                factory.create("#coin2", spawn_position , nil, {}, 4)
+            else
+                factory.create("#coin", spawn_position , nil, {}, 4)
+            end
+        elseif score > 250 then
+            local random = score/math.random(300, 500)
+            if random >= 1 then
+                factory.create("#coin3", spawn_position , nil, {}, 4)
+            else
+                factory.create("#coin2", spawn_position , nil, {}, 4)
+            end
+        else
+            factory.create("#coin", spawn_position , nil, {}, 4)
+        end
     end
 end
 

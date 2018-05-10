@@ -1,8 +1,59 @@
-images {
-  image: "/pickups/images/botiki.png"
+animations {
+  id: "coin1"
+  images {
+    image: "/pickups/images/moentka-1_1.png"
+  }
+  images {
+    image: "/pickups/images/moentka-1_2.png"
+  }
+  images {
+    image: "/pickups/images/moentka-1_3.png"
+  }
+  images {
+    image: "/pickups/images/moentka-1_4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
 }
-images {
-  image: "/pickups/images/denga.png"
+animations {
+  id: "coin2"
+  images {
+    image: "/pickups/images/moentka-2-1.png"
+  }
+  images {
+    image: "/pickups/images/moentka-2-2.png"
+  }
+  images {
+    image: "/pickups/images/moentka-2-3.png"
+  }
+  images {
+    image: "/pickups/images/moentka-2-4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "coin3"
+  images {
+    image: "/pickups/images/moentka-3_1.png"
+  }
+  images {
+    image: "/pickups/images/moentka-3_2.png"
+  }
+  images {
+    image: "/pickups/images/moentka-3_3.png"
+  }
+  images {
+    image: "/pickups/images/moentka-3_4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 10
+  flip_horizontal: 0
+  flip_vertical: 0
 }
 margin: 0
 extrude_borders: 0

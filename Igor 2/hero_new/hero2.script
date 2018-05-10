@@ -386,6 +386,14 @@ function on_message(self, message_id, message, sender)
 			play_sound(self, "coin")
 			coins = coins + 1
 			current_level_coins = current_level_coins + 1
+		elseif message.group == hash("coin2") then
+			play_sound(self, "coin")
+			coins = coins + 2
+			current_level_coins = current_level_coins + 2
+		elseif message.group == hash("coin3") then
+			play_sound(self, "coin")
+			coins = coins + 3
+			current_level_coins = current_level_coins + 3
 		end
 	end
 end

@@ -50,6 +50,7 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	msg.post(current_level..":/controller#script", "spawned") 
 	self.position = go.get_position()
 	self.velocity = vmath.vector3(0,0,0)
 	enable_running_state(self)
@@ -335,18 +336,9 @@ local function handle_geometry_contact(self, normal, distance)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("jump") then
-		if action.pressed then
-			if current_slide_moment ~= 0 then
-				break_slide(self)--на всякий пожарный
-			end
-			jump(self)
-		elseif action.released then
-			abort_jump(self)
-		end
-	elseif message_id == hash("reset") then
-		msg.post("controller#script", "spawnhero")
-		msg.post("#running_state", "enable")
+	if message_id == hash("continue") then
+		msg.post("controller#script", "spawnhero", {continue = true})
+		go.delete(true)
 	elseif message_id == hash("contact_point_response") then
 		local pos = go.get_position()
 		if (message.group == hash("danger") or pos.x < 10) and alive and not invincible then
@@ -355,19 +347,15 @@ function on_message(self, message_id, message, sender)
 			msg.post("#running_state", "disable")
 			msg.post("#rolling_over_state", "disable")
 			msg.post("#sliding_state", "disable")
-			if true then
-				--print("здох4")
-				if autorestart_state then
-					go.delete(true)
-					msg.post(current_level..":/controller#script", "reset")
-					--print("здох2")
-				else
-					msg.post("default:/death_screen#death_screen", "death")
-					msg.post(current_level..":/controller#script", "death")  
-					--print("здох3")
-				end
-				isFirstTimeRun = false
+			if autorestart_state then
+				go.delete(true)
+				msg.post(current_level..":/controller#script", "reset")
+			else
+				msg.post("default:/death_screen#death_screen", "death")
+				msg.post(current_level..":/controller#script", "death")  
 			end
+		--[[elseif message.group == hash("danger") and invincible or pushed then
+			invincibility = 0.6*invincibility_max]]
 		elseif message.group == hash("still_slide") then
 			current_slide_moment = (2*slide_time) / 3
 		elseif (message.group == hash("impact") and not pushed and not invincible) then
@@ -398,8 +386,6 @@ function on_message(self, message_id, message, sender)
 			play_sound(self, "coin")
 			coins = coins + 1
 			current_level_coins = current_level_coins + 1
-			--print("total coins:"..coins)
-			--print("coins this run:"..current_level_coins)
 		end
 	end
 end

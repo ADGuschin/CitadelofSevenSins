@@ -10,6 +10,7 @@ local max_speed = 1500
 local obstacle_var = 0
 local reset_timer = 0
 local reset_timer_max = 5
+local current_hero
 
 local previous_obstacle
 
@@ -89,7 +90,13 @@ function on_message(self, message_id, message, sender)
     if message_id == hash("spawnhero") then
         local p = factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},4)
         --table.insert(self.heroes, p)
-        score = 0 
+        if message.continue == nil then
+            score = 0 
+        end
+    elseif message_id == hash("spawned") then
+        current_hero = sender
+    elseif message_id == hash("continue") then
+        msg.post(current_hero, "continue")
     elseif message_id == hash("reset") then 
         save_gamedata()
         training_state = next_try_is_training

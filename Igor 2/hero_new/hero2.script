@@ -329,6 +329,7 @@ function on_message(self, message_id, message, sender)
 		elseif message.group == hash("training") then
 			lock_character = false
 		elseif message.group == hash("coin") then
+			play_sound(self, "coin")
 			coins = coins + 1
 			current_level_coins = current_level_coins + 1
 			--print("total coins:"..coins)

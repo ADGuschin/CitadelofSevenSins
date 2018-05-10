@@ -27,7 +27,9 @@ end
 function on_message(self, message_id, message, sender)
 	if sound then
 		if message.id == "sfx" then
-			if self.sounds[message_id] == nil then
+			if message_id == hash("coin") then
+				msg.post("#coin", "play_sound", {delay = 0, gain = 0.1})
+			elseif self.sounds[message_id] == nil then
 				-- Store sound timer in table
 				self.sounds[message_id] = gate_time
 				-- Redirect the "play_sound" message to the real target
@@ -47,10 +49,10 @@ function on_message(self, message_id, message, sender)
 			elseif message_id == hash("stop_step") then
 				msg.post("#step", "stop_sound")
 			end
-		else
-			-- An attempt to play a sound was gated
-			print("gated " .. message_id)
-		end
+			else
+				-- An attempt to play a sound was gated
+				print("gated " .. message_id)
+			end
 		end
 	end
 end

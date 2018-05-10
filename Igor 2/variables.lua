@@ -12,7 +12,7 @@ next_try_is_training = false
 --Числовые переменные
 gravity = -65
 slide_cooldown_max = 10
-jump_takeoff_speed = 1260
+jump_takeoff_speed = 1300
 invincibility_max = 50
 min_impact_speed = 1250
 max_impact_speed = 1400

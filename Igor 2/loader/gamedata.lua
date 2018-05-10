@@ -16,8 +16,10 @@ function save_gamedata(self)
 	-- Save gamedata
 	
 	if sys.save(save_file, shared_data) then
-		print("Геймдата сохранена")
-		pprint(shared_data)
+		if gui_log then
+			print("Геймдата сохранена")
+			pprint(shared_data)
+		end
 	else
 		print("Геймдата не сохранена")
 	end
@@ -29,9 +31,11 @@ function load_gamedata(self)
 	local gamedata = sys.load(save_file)
 
 	if next(gamedata) then
-		print("Геймдата загружена")
-		print("Файл:")
-		pprint(gamedata)
+		if gui_log then
+			print("Геймдата загружена")
+			print("Файл:")
+			pprint(gamedata)
+		end
 
 		shared_data.player.highscore = gamedata.player.highscore
 		
@@ -42,8 +46,10 @@ function load_gamedata(self)
 		shared_data.data.training_state = gamedata.data.training_state
 		shared_data.data.autorestart_state = gamedata.data.autorestart_state
 		
-		print("Загруженное:")
-		pprint(shared_data)
+		if gui_log then
+			print("Загруженное:")
+			pprint(shared_data)
+		end
 	else
 		print("Геймдата пуста")
 		sys.save(save_file, shared_data)

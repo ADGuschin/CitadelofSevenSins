@@ -1,14 +1,17 @@
 require "main_menu.ui_func"
 require "variables"
 
+local reborn_cost = 100
+
 function init(self)
 	if gui_log then
 		print("Экран смерти проинициализирован")
 	end
-	
+
+	gui.set_enabled(gui.get_node("score_box"), true)
 	gui.set_enabled(gui.get_node("background"), false)
 	gui.set_enabled(gui.get_node("record_box"), false)
-	gui.set_enabled(gui.get_node("score_box"), true)
+	gui.set_enabled(gui.get_node("notenough_box"), false)
 	
 	self.hovered_node = nil
 	self.picked_node = nil
@@ -18,9 +21,9 @@ function init(self)
 						node = gui.get_node("restart"),
 						action = function () 
 							--finish_anim(gui.get_node("background"))
-							msg.post(".", "close")
-
+							deathscreen_state = false
 							
+							msg.post(".", "close")
 							
 							if gui_log then
 								print("Нажата кнопка рестарт, загружен прокси main коллекции")
@@ -32,6 +35,7 @@ function init(self)
 						action = function ()
 							--finish_anim(gui.get_node("background"))
 							in_game = false
+							deathscreen_state = false
 							gui.set_enabled(gui.get_node("background"), false)
 							
 							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
@@ -43,8 +47,9 @@ function init(self)
 					},
 					{
 						node = gui.get_node("settings_button"),
-						action = function () 
+						action = function ()
 							gui.set_enabled(gui.get_node("box"), false)
+							gui.set_enabled(gui.get_node("notenough_box"), false)
 
 							msg.post("default:/settings#settings", "show")
 
@@ -56,17 +61,28 @@ function init(self)
 					{
 						node = gui.get_node("continue"),
 						action = function () 
-							gui.set_enabled(gui.get_node("background"), false)
+							if coins >= reborn_cost then
+								deathscreen_state = false
+								coins = coins - reborn_cost
+								gui.set_enabled(gui.get_node("background"), false)
 
-							msg.post("/hud", "resume")
-							msg.post(".", "release_input_focus")
-							
+								msg.post("/hud", "resume")
+								msg.post(current_level..":/controller#script", "continue")
+								msg.post(".", "release_input_focus")
+								
 
-							if gui_log then
-								--print("Нажата кнопка рестарт, загружен прокси main коллекции")
+								if gui_log then
+									--print("Нажата кнопка рестарт, загружен прокси main коллекции")
+								end
+							else
+								if gui.is_enabled(gui.get_node("notenough_box")) then
+									gui.set_enabled(gui.get_node("notenough_box"), false)
+								else
+									gui.set_enabled(gui.get_node("notenough_box"), true)
+								end
 							end
 						end
-					},
+					}
 				}
 	
 	init_ui(self)

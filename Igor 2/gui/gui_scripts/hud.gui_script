@@ -50,9 +50,10 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("resume") then
 		pause_state = false
-		msg.post("#"..current_level.."_proxy", "set_time_step", {factor = 1, mode = 1})
-		msg.post(current_level..":/score#score", "show")
 		gui.set_enabled(gui.get_node("pause_button"), true)
+
+		msg.post(current_level..":/score#score", "show")
+		msg.post("#"..current_level.."_proxy", "set_time_step", {factor = 1, mode = 1})
 
 		if gui_log then
 			print("Пришло сообщение в hud интерфейс о продолжении игры от", sender, "level прокси убран с паузы, показан интерфейс очков, показана кнопка паузы")

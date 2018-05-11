@@ -18,6 +18,10 @@ key_trigger {
   input: KEY_RIGHT
   action: "roll_over"
 }
+key_trigger {
+  input: KEY_BACK
+  action: "back_pause"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "click"

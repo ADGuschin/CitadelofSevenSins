@@ -21,6 +21,8 @@ jump_break_speed = -2000
 max_speed = 2000
 acceleration = 8
 score = 0
+min_reborn_cost = 100
+reborn_cost = 0
 
 coins = 0
 current_level_coins = 0

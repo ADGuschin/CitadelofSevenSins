@@ -18,12 +18,7 @@ function init(self)
 						node = gui.get_node("pause_button"),
 						action = function () 
 							if not pause_state then
-								pause_state = true
-								gui.set_enabled(gui.get_node("pause_button"), false)
-								
-								msg.post("/pause_screen", "show")
-								msg.post(current_level..":/score#score", "hide")
-								msg.post("#"..current_level.."_proxy", "set_time_step", {factor = 0, mode = 1})
+								msg.post(".", "pause")
 
 								if gui_log then
 									print("Нажата кнопка паузы, level прокси поставлен на паузу, скрыт интерфейс очков, скрыта кнопка паузы")
@@ -70,6 +65,13 @@ function on_message(self, message_id, message, sender)
 		if gui_log then
 			print("Пришло сообщение в hud интерфейс о состоянии паузы во время смерти от", sender)
 		end
+	elseif message_id == hash("pause") then
+		pause_state = true
+		gui.set_enabled(gui.get_node("pause_button"), false)
+
+		msg.post("/pause_screen", "show")
+		msg.post(current_level..":/score#score", "hide")
+		msg.post("#"..current_level.."_proxy", "set_time_step", {factor = 0, mode = 1})
 	end
 end
 

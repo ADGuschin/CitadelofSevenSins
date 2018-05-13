@@ -1,8 +1,6 @@
 require "main_menu.ui_func"
 require "variables"
 
-local reborn_cost = 100
-
 function init(self)
 	if gui_log then
 		print("Экран смерти проинициализирован")
@@ -112,8 +110,18 @@ function on_message(self, message_id, message, sender)
 			gui.set_position(gui.get_node("background"), vmath.vector3(640, 360, 0))
 			gui.set_enabled(gui.get_node("background"), true)
 			deathscreen_state = true
+			
 			local node = gui.get_node("background")
 			gui.animate(node, "position.y", 640, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+
+			if score > 100 then
+				reborn_cost = min_reborn_cost + math.ceil(score / 10)
+			else 
+				reborn_cost = 100
+			end
+			
+			gui.set_text(gui.get_node("continue_cost"),"( "..reborn_cost.."     )")
+			
 			if record_state then
 				print("Record = ", shared_data.player.highscore)
 				gui.set_enabled(gui.get_node("record_box"), true)

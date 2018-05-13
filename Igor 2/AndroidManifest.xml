@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- BEGIN_INCLUDE(manifest) -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.bluebeakstd.coss_test"
-        android:versionCode="5"
-        android:versionName="1.05"
+        package="com.bluebeakstd.coss"
+        android:versionCode="4"
+        android:versionName="1.04"
         android:installLocation="auto">
 
     <uses-feature android:required="true" android:glEsVersion="0x00020000" />

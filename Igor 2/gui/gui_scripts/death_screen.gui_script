@@ -114,10 +114,10 @@ function on_message(self, message_id, message, sender)
 			local node = gui.get_node("background")
 			gui.animate(node, "position.y", 640, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 
-			if score > 100 then
+			if score > min_reborn_cost then
 				reborn_cost = min_reborn_cost + math.ceil(score / 10)
 			else 
-				reborn_cost = 100
+				reborn_cost = min_reborn_cost
 			end
 			
 			gui.set_text(gui.get_node("continue_cost"),"( "..reborn_cost.."     )")

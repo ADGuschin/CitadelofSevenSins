@@ -299,8 +299,8 @@ function update(self, dt)
 		roll_allowed = false	
 		self.correction = vmath.vector3()
 		self.ground_contact = false
-		self.platform_contact_from_below_last_frame = self.platform_contact_from_below
-		self.platform_contact_from_below = false
+		--self.platform_contact_from_below_last_frame = self.platform_contact_from_below остатки старого кода неуязвимости
+		--self.platform_contact_from_below = false
 	end
 end
 
@@ -368,7 +368,10 @@ function on_message(self, message_id, message, sender)
 			handle_geometry_contact(self, message.normal, message.distance)
 		elseif message.group == hash("obstacle") and (invincible or pushed) then
 			invincibility = 0.6*invincibility_max
-			if message.normal.y > 0 then
+			if message.normal.y > 0 or message.normal.y < 0 then
+				handle_geometry_contact(self, message.normal, message.distance)
+			
+				--[[if message.normal.y > 0 then  остатки старого кода неуязвимости
 				if not self.platform_contact_from_below_last_frame then
 					handle_geometry_contact(self, message.normal, message.distance)
 					self.platform_contact_from_below = false
@@ -376,7 +379,7 @@ function on_message(self, message_id, message, sender)
 					self.platform_contact_from_below = true
 				end
 			else
-				self.platform_contact_from_below = true
+				self.platform_contact_from_below = true--]]
 			end
 		elseif message.group == hash("rolling_platform") then
 			handle_geometry_contact(self, message.normal, message.distance)

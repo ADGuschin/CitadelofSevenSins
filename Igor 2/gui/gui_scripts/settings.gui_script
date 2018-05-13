@@ -95,6 +95,25 @@ function init(self)
 								end
 							end
 						end
+					},
+					{
+						node = gui.get_node("control_button"),
+						action = function ()
+							if gui.is_enabled(gui.get_node("background")) then
+								if options_swipe then
+									options_swipe = false
+									options_touch = true
+									gui.set_text(gui.get_node("control_state"), "touch")
+								else
+									options_swipe = true
+									options_touch = false
+									gui.set_text(gui.get_node("control_state"), "swipe")
+								end
+								if gui_log then
+									--print("Нажата кнопка переключения тренировки, состояние авторестарта изменено на", training)
+								end
+							end
+						end
 					}
 				}
 
@@ -129,6 +148,7 @@ function on_message(self, message_id, message, sender)
 		else
 			gui.set_text(gui.get_node("autorestart_state"), "no")
 		end
+		
 		if in_game then
 			if next_try_is_training then
 				gui.set_text(gui.get_node("training_state"), "yes")
@@ -142,6 +162,13 @@ function on_message(self, message_id, message, sender)
 				gui.set_text(gui.get_node("training_state"), "no")
 			end
 		end
+
+		if options_touch then
+			gui.set_text(gui.get_node("control_state"), "touch")
+		else
+			gui.set_text(gui.get_node("control_state"), "swipe")
+		end
+		
 		if in_game then
 			msg.post(".", "acquire_input_focus")
 		end

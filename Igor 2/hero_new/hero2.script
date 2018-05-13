@@ -165,6 +165,9 @@ end
 local function jump(self, speed)
 	if self.ground_contact then
 		play_sound(self, "jump")
+		if speed > jump_takeoff_speed then
+			speed = jump_takeoff_speed
+		end
 		self.velocity.y = speed
 	end
 	if pause_state then
@@ -457,8 +460,10 @@ function checkSwipeDirection(self)
 				totalSwipeDistanceDown = endY - beginY
 				if totalSwipeDistanceDown > self.minSwipeDistance then
 					bDoingTouch = false
-					print("Swiped Up")
-					--jump(self, jump_takeoff_speed)
+					if options_swipe then
+						print("Swiped Up")
+						jump(self, totalSwipeDistanceDown * 40 )
+					end
 				end
 			end
 		end
@@ -477,7 +482,7 @@ function swipe_on_input(self, action_id, action)
 		if socket.gettime() - startTime < self.minSwipeTime and socket.gettime() - startTime > self.minSwipeTime / 6 then
 			endX = action.x
 			endY = action.y
-			if endX == beginX and endY == beginY then
+			if options_touch and endX == beginX and endY == beginY then
 				if self.ground_contact and bDoingTouch then
 					jump(self, jump_takeoff_speed)
 					bDoingTouch = false

@@ -1,0 +1,21 @@
+images {
+  image: "/level/images/background_mysorka_novye_colors1.png"
+}
+images {
+  image: "/level/images/background_mysorka_novye_colors2.png"
+}
+images {
+  image: "/level/images/background_mysorka_novye_colors4.png"
+}
+images {
+  image: "/level/images/background_mysorka3.png"
+}
+images {
+  image: "/level/images/cotinue_background_2.png"
+}
+images {
+  image: "/level/images/cotinue_background_1.png"
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0

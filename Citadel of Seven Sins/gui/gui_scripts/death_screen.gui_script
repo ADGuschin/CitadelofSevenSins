@@ -1,0 +1,171 @@
+require "main_menu.ui_func"
+require "variables"
+
+function init(self)
+	if gui_log then
+		print("Экран смерти проинициализирован")
+	end
+
+	gui.set_enabled(gui.get_node("score_box"), true)
+	gui.set_enabled(gui.get_node("background"), false)
+	gui.set_enabled(gui.get_node("record_box"), false)
+	gui.set_enabled(gui.get_node("notenough_box"), false)
+	
+	self.hovered_node = nil
+	self.picked_node = nil
+
+	self.nodes = {
+					{
+						node = gui.get_node("restart"),
+						action = function () 
+							--finish_anim(gui.get_node("background"))
+							deathscreen_state = false
+							
+							msg.post(".", "close")
+							
+							if gui_log then
+								print("Нажата кнопка рестарт, загружен прокси main коллекции")
+							end
+						end
+					},
+					{
+						node = gui.get_node("menu"),
+						action = function ()
+							--finish_anim(gui.get_node("background"))
+							in_game = false
+							deathscreen_state = false
+							gui.set_enabled(gui.get_node("background"), false)
+							
+							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
+
+							if gui_log then
+								print("Нажата кнопка меню, загружен прокси main_menu коллекции")
+							end
+						end
+					},
+					{
+						node = gui.get_node("settings_button"),
+						action = function ()
+							gui.set_enabled(gui.get_node("box"), false)
+							gui.set_enabled(gui.get_node("notenough_box"), false)
+
+							msg.post("default:/settings#settings", "show")
+
+							if gui_log then
+								print("Нажата кнопка настроек, скрыт интерфейс экрана смерти")
+							end
+						end
+					},
+					{
+						node = gui.get_node("continue"),
+						action = function () 
+							if coins >= reborn_cost then
+								deathscreen_state = false
+								coins = coins - reborn_cost
+								gui.set_enabled(gui.get_node("background"), false)
+
+								msg.post("/hud", "resume")
+								msg.post(current_level..":/controller#script", "continue")
+								msg.post(".", "release_input_focus")
+								
+
+								if gui_log then
+									--print("Нажата кнопка рестарт, загружен прокси main коллекции")
+								end
+							else
+								if gui.is_enabled(gui.get_node("notenough_box")) then
+									gui.set_enabled(gui.get_node("notenough_box"), false)
+								else
+									gui.set_enabled(gui.get_node("notenough_box"), true)
+								end
+							end
+						end
+					}
+				}
+	
+	init_ui(self)
+end
+
+function finish_anim(node)
+	gui.animate(node, "position.y", -150, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("close") then
+		gui.set_enabled(gui.get_node("background"), false)
+
+		msg.post("/hud", "death_pause", {value = false})
+		msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+		msg.post(".", "release_input_focus")
+	end
+	
+	if message_id == hash("death") then
+		--[[if autorestart_state then
+			msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+
+			if gui_log then
+				print("Пришло сообщение о смерти от", sender, "Загружен прокси main коллекции, т.к. авторестарт = ")
+			end
+		else]]
+			gui.set_position(gui.get_node("background"), vmath.vector3(640, 360, 0))
+			gui.set_enabled(gui.get_node("background"), true)
+			deathscreen_state = true
+			
+			local node = gui.get_node("background")
+			gui.animate(node, "position.y", 640, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+
+			if score > min_reborn_cost then
+				reborn_cost = min_reborn_cost + math.ceil(score / 10)
+			else 
+				reborn_cost = min_reborn_cost
+			end
+			
+			gui.set_text(gui.get_node("continue_cost"),"( "..reborn_cost.."     )")
+			
+			if record_state then
+				print("Record = ", shared_data.player.highscore)
+				gui.set_enabled(gui.get_node("record_box"), true)
+				gui.set_enabled(gui.get_node("score_box"), false)
+				gui.set_text(gui.get_node("highscore_num"), shared_data.player.highscore)
+			end
+
+			msg.post(".", "acquire_input_focus")
+			msg.post(current_level..":/score#score", "hide")
+			msg.post("/hud", "death_pause", {value = true})
+			msg.post("default:/hud#"..current_level.."_proxy", "set_time_step", {factor = 0, mode = 1})
+
+			if gui_log then
+				print("Пришло сообщение о смерти от", sender, "Показан экран смерти, спрятан интерфейс очков, прокси level коллекции поставлен на паузу")
+			end
+		--end
+	elseif message_id == hash("score") then
+		gui.set_text(gui.get_node("score_num"), message.value)
+		
+		if gui_log then
+			print("Пришло сообщение о счете от", sender, " Счет выведен на экран -", message.value)
+		end
+	elseif message_id == hash("show") then
+		gui.set_enabled(gui.get_node("box"), true)
+
+		if gui_log then
+			print("Пришло сообщение о включении экрана смерти от", sender, "Экран смерти включен")
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("click") or action_id == hash("touch") then
+		if action.pressed then
+			handle_press(self, action.x, action.y)
+		end
+		if action.released then
+			handle_click(self, action.x, action.y)
+		end
+	end
+	
+	handle_hover(self, action.x, action.y)
+	
+-- As long as we're listening to input, we're gonna consume it.
+-- This disables game controls while the pause menu is showing.
+	return true
+end

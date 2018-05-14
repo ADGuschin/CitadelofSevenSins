@@ -1,0 +1,68 @@
+require "variables"
+
+local gate_time = 0.3
+
+function init(self)
+	-- Add initialization code here
+	-- Remove this function if not needed
+	self.sounds = {}
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+	for k,_ in pairs(self.sounds) do
+		self.sounds[k] = self.sounds[k] - dt
+		if self.sounds[k] < 0 then
+			self.sounds[k] = nil
+		end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if sound then
+		if message.id == "sfx" then
+			if message_id == hash("coin") then
+				msg.post("#coin", "play_sound", {delay = 0, gain = 0.1})
+			elseif self.sounds[message_id] == nil then
+				-- Store sound timer in table
+				self.sounds[message_id] = gate_time
+				-- Redirect the "play_sound" message to the real target
+				--msg.post(message.soundcomponent, "play_sound", { gain = message.gain })		
+			if message_id == hash("step") then
+				msg.post("#step", "play_sound", {delay = 0, gain = 0.1})
+			elseif message_id == hash("roll") then	
+				msg.post("#roll", "play_sound", {delay = 0, gain = 0.1})
+			elseif message_id == hash("jump") then
+				msg.post("#jump", "play_sound", {delay = 0, gain = 0.1})
+			elseif message_id == hash("slide") then
+				msg.post("#slide", "play_sound", {delay = 0, gain = 0.1})
+			elseif message_id == hash("impact") then
+				msg.post("#impact", "play_sound", {delay = 0, gain = 0.1})
+			elseif message_id == hash("break_jump") then
+				msg.post("#break_jump", "play_sound", {delay = 0, gain = 0.1})
+			elseif message_id == hash("stop_step") then
+				msg.post("#step", "stop_sound")
+			end
+			else
+				-- An attempt to play a sound was gated
+				print("gated " .. message_id)
+			end
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

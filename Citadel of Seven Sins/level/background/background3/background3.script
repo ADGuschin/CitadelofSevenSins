@@ -1,0 +1,44 @@
+local pieces = {"mountain"}
+function init(self)
+	self.speed = 2
+	local pos = go.get_position("mountain")
+	start_pos = pos.x
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	msg.post(current_level..":/controller#script", "speed_request")
+	for i, p in ipairs(pieces) do
+		local pos = go.get_position(p)
+		if pos.x <= -3000 then
+			self.speed = 0
+			--pos.x = 3960 + (pos.x + 1000)
+		end
+		pos.x = pos.x - self.speed * dt
+		go.set_position(pos, p)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("set_speed") then 
+		self.speed = (message.speed * 2) / 360
+	elseif message_id == hash("reset") then
+		local pos = go.get_position("mountain")
+		pos.x = start_pos
+		go.set_position(pos, "mountain")
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

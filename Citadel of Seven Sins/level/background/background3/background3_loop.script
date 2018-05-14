@@ -1,0 +1,48 @@
+local pieces = {"mountloop1", "mountloop2", "mountloop3", "mountloop4"}
+local start_pos = {}
+function init(self)
+	self.speed = 2
+	for i, p in ipairs(pieces) do
+		local pos = go.get_position(p)
+		table.insert(start_pos, pos.x)
+	end
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	msg.post(current_level..":/controller#script", "speed_request")
+	for i, p in ipairs(pieces) do
+		local pos = go.get_position(p)
+		if pos.x <= -1186 then
+			pos.x = 5986 + (pos.x + 960)
+		end
+		pos.x = pos.x - self.speed * dt
+		go.set_position(pos, p)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("set_speed") then 
+		self.speed = (message.speed * 2) / 360
+	elseif message_id == hash("reset") then
+		for i, p in ipairs(pieces) do
+			local pos = go.get_position(p)
+			pos.x = start_pos[i]
+			go.set_position(pos, p)
+		end
+	end
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

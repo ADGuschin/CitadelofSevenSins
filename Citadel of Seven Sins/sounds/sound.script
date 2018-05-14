@@ -1,0 +1,72 @@
+--sound_off = false
+
+function init(self)
+	if sound then
+		if in_game then
+			msg.post("#gametheme", "play_sound", {delay = 0, gain = 0.5})
+		else
+			msg.post("#menutheme", "play_sound", {delay = 0, gain = 0.5})
+		end
+	else
+		if in_game then
+			msg.post("#gametheme", "play_sound", {delay = 0, gain = 0})
+		else
+			msg.post("#menutheme", "play_sound", {delay = 0, gain = 0})
+		end
+	end
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("sound_on") then
+		if in_game then
+			--msg.post("#gametheme", "play_sound", {delay = 0, gain = 0.5})
+			msg.post("#gametheme", "set_gain", {gain = 0.5})
+		else
+			msg.post("#menutheme", "set_gain", {gain = 0.5})
+		end
+	elseif message_id == hash("sound_off") then
+		--msg.post("sound", "stop_sound")
+		if in_game then
+			msg.post("#gametheme", "set_gain", {gain = 0})
+		else
+			msg.post("#menutheme", "set_gain", {gain = 0})
+		end
+	end
+	--[[if message_id == hash("sound_off") and sound then 
+		--print(msg.url())
+		msg.post("sound", "stop_sound", {delay = 0, gain = 0.5})
+		--sound_off = true
+		--print("KEK")
+	elseif message_id == hash("sound_on") then 
+		--print(msg.url())
+		msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
+		--sound_off = false
+		--print("KEK1")
+	elseif message_id == hash("soundoff_but") then 
+		msg.post("sound", "stop_sound", {delay = 0, gain = 0.5})
+		sound_off = true
+	elseif message_id == hash("soundon_but") then 
+		msg.post("sound", "play_sound", {delay = 0, gain = 0.5})
+		sound_off = false
+	end]]
+end
+
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

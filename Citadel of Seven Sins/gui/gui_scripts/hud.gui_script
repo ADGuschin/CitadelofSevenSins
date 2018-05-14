@@ -1,0 +1,90 @@
+require "main_menu.ui_func"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#"..current_level.."_proxy", "load")
+
+	pause_state = false
+
+	if gui_log then
+		print("HUD интерфейс проинициализирован, загружен прокси level коллекции")
+	end
+	
+	self.hovered_node = nil
+	self.picked_node = nil
+	
+	self.nodes = {
+					{
+						node = gui.get_node("pause_button"),
+						action = function () 
+							if not pause_state then
+								msg.post(".", "pause")
+
+								if gui_log then
+									print("Нажата кнопка паузы, level прокси поставлен на паузу, скрыт интерфейс очков, скрыта кнопка паузы")
+								end
+							end
+						end
+					}
+				}
+	
+	init_ui(self)
+	
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "enable")
+		
+		if gui_log then
+			print("Пришло сообщение о том, что прокси загружен от", sender, " Хз зачем оно вообще")
+		end
+	elseif message_id == hash("resume") then
+		pause_state = false
+		gui.set_enabled(gui.get_node("pause_button"), true)
+
+		msg.post(current_level..":/score#score", "show")
+		msg.post("#"..current_level.."_proxy", "set_time_step", {factor = 1, mode = 1})
+
+		if gui_log then
+			print("Пришло сообщение в hud интерфейс о продолжении игры от", sender, "level прокси убран с паузы, показан интерфейс очков, показана кнопка паузы")
+		end
+	elseif message_id == hash("death_pause") then
+		if message.value then
+			pause_state = true
+			gui.set_enabled(gui.get_node("pause_button"), false)
+		else
+			pause_state = false
+			gui.set_enabled(gui.get_node("pause_button"), true)
+		end
+
+		if gui_log then
+			print("Пришло сообщение в hud интерфейс о состоянии паузы во время смерти от", sender)
+		end
+	elseif message_id == hash("pause") then
+		pause_state = true
+		gui.set_enabled(gui.get_node("pause_button"), false)
+
+		msg.post("/pause_screen", "show")
+		msg.post(current_level..":/score#score", "hide")
+		msg.post("#"..current_level.."_proxy", "set_time_step", {factor = 0, mode = 1})
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("click") or action_id == hash("touch") then
+		if action.pressed then
+			handle_press(self, action.x, action.y)
+		end
+		if action.released then
+			handle_click(self, action.x, action.y)
+		end
+	end
+	if not pause_state then
+		handle_hover(self, action.x, action.y)
+	end
+end

@@ -1,0 +1,41 @@
+local isSwipeDownFirstTime = true
+local obstacle = 0
+function init(self)
+	self.speed = 900
+end
+
+function update(self, dt)
+	local pos = go.get_position()
+	if pos.x < -1500 then
+		go.delete()
+	end
+	pos.x = pos.x - self.speed * dt
+	go.set_position(pos)
+	msg.post("level:/controller#script", "speed_request")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("set_speed") then
+		self.speed = message.speed
+	elseif message_id == hash("contact_point_response") then
+		if message.group == hash("hero") then
+			if isSwipeDownFirstTime then
+				msg.post("default:/training#training", "swipe_down")
+				isSwipeDownFirstTime = false
+			end
+		end
+	end
+end
+
+function final(self)
+	isSwipeDownFirstTime = true
+end
+function on_input(self, action_id, action)
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

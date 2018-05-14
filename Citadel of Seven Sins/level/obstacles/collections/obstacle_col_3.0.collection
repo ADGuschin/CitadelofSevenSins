@@ -1,0 +1,182 @@
+name: "default"
+instances {
+  id: "obstacle_top"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
+  position {
+    x: 12.0
+    y: 2.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_top2"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
+  position {
+    x: 108.0
+    y: 2.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform_long"
+  prototype: "/level/obstacles/gameobjects/platform_long.go"
+  position {
+    x: 60.0
+    y: 58.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_tall1"
+  prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
+  position {
+    x: 208.0
+    y: 102.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_tall2"
+  prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
+  position {
+    x: 208.0
+    y: 46.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform"
+  prototype: "/level/obstacles/gameobjects/platform.go"
+  position {
+    x: 132.0
+    y: 58.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform1"
+  prototype: "/level/obstacles/gameobjects/platform.go"
+  position {
+    x: 156.0
+    y: 58.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "platform2"
+  prototype: "/level/obstacles/gameobjects/platform.go"
+  position {
+    x: 180.0
+    y: 58.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "obstacle_top4"
+  prototype: "/level/obstacles/gameobjects/obstacle_top.go"
+  position {
+    x: 208.0
+    y: 2.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+scale_along_z: 0

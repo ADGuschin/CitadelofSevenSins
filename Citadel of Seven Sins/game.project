@@ -1,0 +1,37 @@
+[project]
+title = Citadel of Seven Sins
+version = 1.01
+
+[bootstrap]
+main_collection = /start_scene/start_scene.collectionc
+render = /camera/test.renderc
+
+[input]
+game_binding = /input/game.input_bindingc
+use_accelerometer = 0
+
+[display]
+width = 1280
+height = 720
+
+[physics]
+scale = 0.02
+
+[script]
+shared_state = 1
+
+[graphics]
+default_texture_min_filter = nearest
+default_texture_mag_filter = nearest
+
+[android]
+app_icon_36x36 = /gui/gui_images/950954995.png
+package = com.bluebeakstd.coss
+version_code = 3
+app_icon_48x48 = /gui/gui_images/950954995.png
+app_icon_72x72 = /gui/gui_images/950954995.png
+app_icon_96x96 = /gui/gui_images/950954995.png
+app_icon_144x144 = /gui/gui_images/950954995.png
+app_icon_192x192 = /gui/gui_images/950954995.png
+manifest = /AndroidManifest.xml
+

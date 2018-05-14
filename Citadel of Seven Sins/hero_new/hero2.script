@@ -482,7 +482,7 @@ function swipe_on_input(self, action_id, action)
 			beginY = action.y
 			bDoingTouch = true
 		end
-		if socket.gettime() - startTime > 0.0001 then
+		if socket.gettime() - startTime > 0.001 then
 			touch = (math.abs(beginX - action.x) < 1) and (math.abs(beginY - action.y) < 1)
 			swipe = not touch
 		end

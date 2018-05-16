@@ -2,6 +2,15 @@ require "main_menu.collection_proxy_content"
 require "main_menu.ui_func"
 require "variables"
 
+local title = {
+	start = { "Start", "CTAPT"},
+	exit = { "Quit", "VIIYTI"},
+	level1 = { "Level 1", "Yroven 1"},
+	level2 = { "Level 2", "Yroven 2"},
+	back = { "Back", "Nazad"},
+	comingsoon = { "Coming soon..", "CKOPO.."}
+}
+
 function init(self)
 	if gui_log then
 		print("Экран главного меню проинициализирован")
@@ -132,6 +141,13 @@ function init(self)
 						end 
 					},
 				}
+
+		gui.set_text(gui.get_node("start_text"), title.start[language_state])
+		gui.set_text(gui.get_node("exit_text"), title.exit[language_state])
+		gui.set_text(gui.get_node("level1_text"), title.level1[language_state])
+		gui.set_text(gui.get_node("level2_text"), title.level2[language_state])
+		gui.set_text(gui.get_node("back_text"), title.back[language_state])
+		gui.set_text(gui.get_node("comingsoon_text"), title.comingsoon[language_state])
 				
 	init_ui(self)
 end
@@ -143,6 +159,13 @@ end
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
 		gui.set_enabled(gui.get_node("box"), true)
+
+		gui.set_text(gui.get_node("start_text"), title.start[language_state])
+		gui.set_text(gui.get_node("exit_text"), title.exit[language_state])
+		gui.set_text(gui.get_node("level1_text"), title.level1[language_state])
+		gui.set_text(gui.get_node("level2_text"), title.level2[language_state])
+		gui.set_text(gui.get_node("back_text"), title.back[language_state])
+		gui.set_text(gui.get_node("comingsoon_text"), title.comingsoon[language_state])
 		
 		msg.post(".", "acquire_input_focus")
 		

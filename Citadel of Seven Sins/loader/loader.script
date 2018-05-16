@@ -9,8 +9,15 @@ function init(self)
 	load_gamedata()
 	
 	coins = shared_data.data.coins
+
+	options_swipe = shared_data.control.options_swipe
+	options_touch = shared_data.control.options_touch
+	
 	training_state = shared_data.data.training_state
 	autorestart_state = shared_data.data.autorestart_state
+
+	sound = shared_data.options.sound
+	language_state = shared_data.options.language_state
 end
 
 function final(self)
@@ -23,8 +30,15 @@ end
 
 function update(self, dt)
 	shared_data.data.coins = coins
+
+	shared_data.control.options_swipe = options_swipe
+	shared_data.control.options_touch = options_touch
+	
 	shared_data.data.training_state = training_state
 	shared_data.data.autorestart_state = autorestart_state
+
+	shared_data.options.sound = sound
+	shared_data.options.language_state = language_state
 end
 
 function on_message(self, message_id, message, sender)

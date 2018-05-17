@@ -14,7 +14,7 @@ local reset_timer_max = 5
 local current_hero
 
 local previous_obstacle
-
+table_backgrounds_objects = {"#garage","#barrel","#tent_1","#tent_2","#tent_3","#tent_4"}
 
 
 function table_length(self, table)
@@ -82,19 +82,14 @@ function update(self, dt)
     self.gridbackground = self.gridbackground + ((self.speed * 200) / 360) * dt
     if self.gridbackground >= grido then
         self.gridbackground = 0
-        local indx = math.random(0,6)
-        if indx == 0 then 
-            collectionfactory.create("#garage", vmath.vector3(1600, 195, -0.55), nil, {}, 4)          
-        elseif indx == 1 then
-            collectionfactory.create("#barrel", vmath.vector3(1600, 100, -0.45), nil, {}, 4)
-        elseif indx == 2 then
-            collectionfactory.create("#tent_1", vmath.vector3(1600, 100, -0.45), nil, {}, 4)
-        elseif indx == 3 then
-            collectionfactory.create("#tent_2", vmath.vector3(1600, 100, -0.45), nil, {}, 4)
-        elseif indx == 4 then
-            collectionfactory.create("#tent_3", vmath.vector3(1600, 100, -0.45), nil, {}, 4)
-        elseif indx == 5 then
-            collectionfactory.create("#tent_4", vmath.vector3(1600, 100, -0.45), nil, {}, 4)
+        local indx = math.random(1,6)
+        local obj = table_backgrounds_objects[indx]
+        pprint(indx)
+        pprint(obj)
+        if indx == 1 then
+            collectionfactory.create(obj, vmath.vector3(1600, 195, -0.55), nil, {}, 4)
+        else
+            collectionfactory.create(obj, vmath.vector3(1600, 100, -0.45), nil, {}, 4)
         end
     end
     if self.speed < max_speed then 

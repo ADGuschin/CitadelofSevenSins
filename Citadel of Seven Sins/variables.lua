@@ -4,8 +4,8 @@ in_game = false
 autorestart_state = false
 pause_state = false
 training_state = true
-options_touch = false
 options_swipe = true
+options_touch = false
 
 --Костыль
 deathscreen_state = false
@@ -36,3 +36,6 @@ index_of_current_level = 1 --Счет идет с 1
 --Список уровней
 list_of_levels = {"level", "level2"}
 current_level = nil
+
+language = {"EU", "RU"}
+language_state = 1

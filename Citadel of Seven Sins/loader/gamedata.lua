@@ -9,6 +9,14 @@ shared_data = {
 		training_state = true,
 		autorestart_state = false,
 		coins = 0
+	},
+	control = {
+		options_swipe = true,
+		options_touch = false
+	},
+	options = {
+		sound = true,
+		language_state = 1
 	}
 }
 
@@ -41,6 +49,16 @@ function load_gamedata(self)
 		
 		if gamedata.data.coins then
 			shared_data.data.coins = gamedata.data.coins
+		end
+
+		if gamedata.control then
+			shared_data.control.options_swipe = gamedata.control.options_swipe
+			shared_data.control.options_touch = gamedata.control.options_touch
+		end
+
+		if gamedata.options then
+			shared_data.options.sound = gamedata.options.sound 
+			shared_data.options.language_state = gamedata.options.language_state
 		end
 		
 		shared_data.data.training_state = gamedata.data.training_state

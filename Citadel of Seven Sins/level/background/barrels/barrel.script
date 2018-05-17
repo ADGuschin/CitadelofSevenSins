@@ -14,6 +14,7 @@ function update(self, dt)
 		local pos = go.get_position(p)
 		if pos.x <= -200 then
 			pos.x = 960 + (pos.x + 1000)
+			go.delete()
 		end
 		pos.x = pos.x - self.speed * dt
 		go.set_position(pos, p)

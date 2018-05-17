@@ -1,4 +1,4 @@
-local pieces = {"garage"}
+local pieces = {"tent_2"}
 function init(self)
 	self.speed = 200
 end
@@ -12,9 +12,8 @@ function update(self, dt)
 	msg.post(current_level..":/controller#script", "speed_request")
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
-		if pos.x <= -300 then
-			pos.x = 1160 + (pos.x + 1000)
-			go.delete()
+		if pos.x <= -1000 then
+			pos.x = 3960 + (pos.x + 1000)
 		end
 		pos.x = pos.x - self.speed * dt
 		go.set_position(pos, p)

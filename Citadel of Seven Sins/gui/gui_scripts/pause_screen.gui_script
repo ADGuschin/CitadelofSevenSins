@@ -1,5 +1,11 @@
 require "main_menu.ui_func"
 require "variables"
+
+local title = {
+	resume = { "Resume", "Продолжить" },
+	menu = { "Menu", "Меню" }
+}
+
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
 
@@ -49,6 +55,11 @@ end
 
 function finish_anim(node)
 	gui.animate(node, "position.y", -150, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
+end
+
+function update(self, dt)
+	gui.set_text(gui.get_node("Resume"), title.resume[language_state]) 
+	gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
 end
 
 function on_message(self, message_id, message, sender)

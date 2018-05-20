@@ -90,6 +90,26 @@ function finish_anim(node)
 	gui.animate(node, "position.y", -150, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
 end
 
+function update(self, dt)
+	if language_state == 1 then
+		gui.set_text(gui.get_node("Restart"), "Restart") 
+		gui.set_text(gui.get_node("Menu"), "Menu") 
+		gui.set_text(gui.get_node("death_message"), "You died ^_^") 
+		gui.set_text(gui.get_node("continue_text"), "Continue") 
+		gui.set_text(gui.get_node("notenough_text"), "Not enough money :)") 
+		gui.set_text(gui.get_node("score_message"), "Your score:") 
+		gui.set_text(gui.get_node("highscore_message"), "NEW HIGHSCORE:") 
+	elseif language_state == 2 then
+		gui.set_text(gui.get_node("Restart"), "Заново") 
+		gui.set_text(gui.get_node("Menu"), "Меню") 
+		gui.set_text(gui.get_node("death_message"), "Ты умер ^_^") 
+		gui.set_text(gui.get_node("continue_text"), "Продолжить") 
+		gui.set_text(gui.get_node("notenough_text"), "Не достаточно монет :)") 
+		gui.set_text(gui.get_node("score_message"), "Счет:") 
+		gui.set_text(gui.get_node("highscore_message"), "НОВЫЙ РЕКОРД:")
+	end
+end
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("close") then
 		gui.set_enabled(gui.get_node("background"), false)

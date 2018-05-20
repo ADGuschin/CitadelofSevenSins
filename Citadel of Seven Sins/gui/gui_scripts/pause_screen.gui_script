@@ -51,6 +51,16 @@ function finish_anim(node)
 	gui.animate(node, "position.y", -150, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
 end
 
+function update(self, dt)
+	if language_state == 1 then
+		gui.set_text(gui.get_node("Resume"), "Resume") 
+		gui.set_text(gui.get_node("Menu"), "Menu") 
+	elseif language_state == 2 then
+		gui.set_text(gui.get_node("Resume"), "Продолжить") 
+		gui.set_text(gui.get_node("Menu"), "Меню") 
+	end
+end
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
 		gui.set_position(gui.get_node("background"), vmath.vector3(640, 360, 0))

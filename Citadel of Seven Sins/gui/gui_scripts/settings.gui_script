@@ -2,10 +2,14 @@ require "main_menu.ui_func"
 require "variables"
 
 local title = {
-	language = { "Language:", "Yazik:" },
-	training = { "Tutotial:", "Obychenie:" },
-	control = { "Control:", "Ypravlenie:" },
-	autorestart = { "Autorestart:", "Avtorestart:" }
+	language = { "Language:", "Язык:" },
+	training = { "Tutotial:", "Обучение:" },
+	control = { "Control:", "Пилотаж:" },
+	autorestart = { "Autorestart:", "Авторестарт:" },
+	logical_yes = {"yes", "да"},
+	logical_no = {"no", "нет"},
+	control_touch = {"touch", "тык"},
+	control_swipe = {"swipe", "свайп"}
 }
 
 function init(self)
@@ -61,10 +65,10 @@ function init(self)
 						action = function ()
 							if gui.is_enabled(gui.get_node("background")) then
 								if autorestart_state then
-									gui.set_text(gui.get_node("autorestart_state"), "no")
+									gui.set_text(gui.get_node("autorestart_state"), title.logical_no[language_state])
 									autorestart_state = false
 								else
-									gui.set_text(gui.get_node("autorestart_state"), "yes")
+									gui.set_text(gui.get_node("autorestart_state"), title.logical_yes[language_state])
 									autorestart_state = true
 								end
 
@@ -80,18 +84,18 @@ function init(self)
 							if gui.is_enabled(gui.get_node("background")) then
 								if in_game then
 									if next_try_is_training then
-										gui.set_text(gui.get_node("training_state"), "no")
+										gui.set_text(gui.get_node("training_state"), title.logical_no[language_state])
 										next_try_is_training = false
 									else
-										gui.set_text(gui.get_node("training_state"), "yes")
+										gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state])
 										next_try_is_training = true
 									end
 								else
 									if training_state then
-										gui.set_text(gui.get_node("training_state"), "no")
+										gui.set_text(gui.get_node("training_state"), title.logical_no[language_state])
 										training_state = false
 									else
-										gui.set_text(gui.get_node("training_state"), "yes")
+										gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state])
 										training_state = true
 									end
 								end
@@ -110,11 +114,11 @@ function init(self)
 								if options_swipe then
 									options_swipe = false
 									options_touch = true
-									gui.set_text(gui.get_node("control_state"), "touch")
+									gui.set_text(gui.get_node("control_state"), title.control_touch[language_state])
 								else
 									options_swipe = true
 									options_touch = false
-									gui.set_text(gui.get_node("control_state"), "swipe")
+									gui.set_text(gui.get_node("control_state"), title.control_swipe[language_state])
 								end
 								if gui_log then
 									--print("Нажата кнопка переключения тренировки, состояние авторестарта изменено на", training)
@@ -135,9 +139,27 @@ function init(self)
 								end
 								
 								gui.set_text(gui.get_node("language_text"), title.language[language_state])
+								
 								gui.set_text(gui.get_node("training_text"), title.training[language_state])
+								if training_state == true then
+									gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state]) 
+								elseif training_state == false then
+									gui.set_text(gui.get_node("training_state"), title.logical_no[language_state]) 
+								end
+								
 								gui.set_text(gui.get_node("control_text"), title.control[language_state])
+								if options_swipe == true then
+									gui.set_text(gui.get_node("control_state"), title.control_swipe[language_state]) 
+								elseif options_touch == true then
+									gui.set_text(gui.get_node("control_state"), title.control_touch[language_state]) 
+								end
+								
 								gui.set_text(gui.get_node("autorestart_text"), title.autorestart[language_state])
+								if autorestart_state == true then
+									gui.set_text(gui.get_node("autorestart_state"), title.logical_yes[language_state]) 
+								elseif autorestart_state == false then
+									gui.set_text(gui.get_node("autorestart_state"), title.logical_no[language_state]) 
+								end
 								
 								if gui_log then
 									--print("Нажата кнопка переключения тренировки, состояние авторестарта изменено на", training)
@@ -181,29 +203,29 @@ function on_message(self, message_id, message, sender)
 		end
 
 		if autorestart_state then
-			gui.set_text(gui.get_node("autorestart_state"), "yes")
+			gui.set_text(gui.get_node("autorestart_state"), title.logical_yes[language_state])
 		else
-			gui.set_text(gui.get_node("autorestart_state"), "no")
+			gui.set_text(gui.get_node("autorestart_state"), title.logical_no[language_state])
 		end
 		
 		if in_game then
 			if next_try_is_training then
-				gui.set_text(gui.get_node("training_state"), "yes")
+				gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state])
 			else
-				gui.set_text(gui.get_node("training_state"), "no")
+				gui.set_text(gui.get_node("training_state"), title.logical_no[language_state])
 			end
 		else
 			if training_state then
-				gui.set_text(gui.get_node("training_state"), "yes")
+				gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state])
 			else
-				gui.set_text(gui.get_node("training_state"), "no")
+				gui.set_text(gui.get_node("training_state"), title.logical_no[language_state])
 			end
 		end
 
 		if options_touch then
-			gui.set_text(gui.get_node("control_state"), "touch")
+			gui.set_text(gui.get_node("control_state"), title.control_touch[language_state])
 		else
-			gui.set_text(gui.get_node("control_state"), "swipe")
+			gui.set_text(gui.get_node("control_state"), title.control_swipe[language_state])
 		end
 		
 		if in_game then

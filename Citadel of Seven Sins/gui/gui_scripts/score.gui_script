@@ -11,8 +11,13 @@ function final(self)
 end
 
 function update(self, dt)
-	-- Add update code here
-	-- Remove this function if not needed
+	if language_state == 1 then
+		gui.set_text(gui.get_node("score_text"), "Score:") 
+		gui.set_text(gui.get_node("highscore_text"), "Highscore:") 
+	elseif language_state == 2 then
+		gui.set_text(gui.get_node("score_text"), "Счет:") 
+		gui.set_text(gui.get_node("highscore_text"), "Рекорд:") 
+	end
 end
 
 function on_message(self, message_id, message, sender)

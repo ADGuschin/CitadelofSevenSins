@@ -1,5 +1,10 @@
 record_state = false
 
+local title = {
+	score_text = { "Score:", "Счет:" },
+	highscore_text = { "Highscore:", "Рекорд:" }
+}
+
 function init(self)
 	if gui_log then
 		print("Итерфейс счета проинициализирован")
@@ -11,13 +16,9 @@ function final(self)
 end
 
 function update(self, dt)
-	if language_state == 1 then
-		gui.set_text(gui.get_node("score_text"), "Score:") 
-		gui.set_text(gui.get_node("highscore_text"), "Highscore:") 
-	elseif language_state == 2 then
-		gui.set_text(gui.get_node("score_text"), "Счет:") 
-		gui.set_text(gui.get_node("highscore_text"), "Рекорд:") 
-	end
+	gui.set_text(gui.get_node("score_text"), title.score_text[language_state]) 
+	gui.set_text(gui.get_node("highscore_text"), title.highscore_text[language_state]) 
+
 end
 
 function on_message(self, message_id, message, sender)

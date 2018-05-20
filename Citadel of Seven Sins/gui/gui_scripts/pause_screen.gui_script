@@ -1,5 +1,11 @@
 require "main_menu.ui_func"
 require "variables"
+
+local title = {
+	resume = { "Resume", "Продолжить" },
+	menu = { "Menu", "Меню" }
+}
+
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
 
@@ -52,13 +58,8 @@ function finish_anim(node)
 end
 
 function update(self, dt)
-	if language_state == 1 then
-		gui.set_text(gui.get_node("Resume"), "Resume") 
-		gui.set_text(gui.get_node("Menu"), "Menu") 
-	elseif language_state == 2 then
-		gui.set_text(gui.get_node("Resume"), "Продолжить") 
-		gui.set_text(gui.get_node("Menu"), "Меню") 
-	end
+	gui.set_text(gui.get_node("Resume"), title.resume[language_state]) 
+	gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
 end
 
 function on_message(self, message_id, message, sender)

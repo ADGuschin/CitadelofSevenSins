@@ -157,6 +157,9 @@ function on_message(self, message_id, message, sender)
 end
 	
 function on_input(self, action_id, action)
+	if action_id == hash("back_clicked") then
+		msg.post("@system:", "exit", {code = 0})
+	end
     if action_id == hash("click") or action_id == hash("touch") then
     	if action.pressed then
 	    	handle_press(self, action.x, action.y)

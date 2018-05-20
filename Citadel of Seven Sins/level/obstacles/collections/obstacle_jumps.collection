@@ -3,7 +3,7 @@ instances {
   id: "obstacle_tall"
   prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
   position {
-    x: 130.0
+    x: 128.0
     y: 0.0
     z: 0.0
   }
@@ -23,7 +23,7 @@ instances {
   id: "obstacle_tall1"
   prototype: "/level/obstacles/gameobjects/obstacle_tall.go"
   position {
-    x: 384.0
+    x: 385.0
     y: 0.0
     z: 0.0
   }
@@ -63,7 +63,7 @@ instances {
   id: "platform_long"
   prototype: "/level/obstacles/gameobjects/platform_long.go"
   position {
-    x: 53.0
+    x: 52.0
     y: 12.0
     z: 0.0
   }
@@ -83,7 +83,7 @@ instances {
   id: "obstacle_fatal"
   prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
-    x: 160.0
+    x: 161.0
     y: 16.0
     z: 0.0
   }
@@ -103,7 +103,7 @@ instances {
   id: "obstacle_fatal1"
   prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
-    x: 192.0
+    x: 193.0
     y: 16.0
     z: 0.0
   }
@@ -123,7 +123,7 @@ instances {
   id: "obstacle_fatal2"
   prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
-    x: 224.0
+    x: 225.0
     y: 16.0
     z: 0.0
   }
@@ -163,7 +163,7 @@ instances {
   id: "obstacle_fatal4"
   prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
-    x: 290.0
+    x: 289.0
     y: 16.0
     z: 0.0
   }
@@ -183,7 +183,7 @@ instances {
   id: "obstacle_fatal5"
   prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
-    x: 323.0
+    x: 321.0
     y: 16.0
     z: 0.0
   }
@@ -203,7 +203,7 @@ instances {
   id: "obstacle_fatal6"
   prototype: "/level/obstacles/gameobjects/obstacle_fatal.go"
   position {
-    x: 356.0
+    x: 353.0
     y: 16.0
     z: 0.0
   }
@@ -223,7 +223,7 @@ instances {
   id: "obstacle_tower"
   prototype: "/level/obstacles/gameobjects/obstacle_tower.go"
   position {
-    x: 215.0
+    x: 212.0
     y: 40.0
     z: -0.1
   }
@@ -243,7 +243,7 @@ instances {
   id: "obstacle_tower1"
   prototype: "/level/obstacles/gameobjects/obstacle_tower.go"
   position {
-    x: 315.0
+    x: 312.0
     y: 40.0
     z: -0.1
   }

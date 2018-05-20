@@ -781,7 +781,7 @@ nodes {
 }
 nodes {
   position {
-    x: 121.0
+    x: 115.0
     y: 30.0
     z: 0.0
     w: 1.0
@@ -844,7 +844,7 @@ nodes {
 }
 nodes {
   position {
-    x: 220.0
+    x: 223.0
     y: 30.0
     z: 0.0
     w: 1.0
@@ -875,7 +875,7 @@ nodes {
   }
   type: TYPE_TEXT
   blend_mode: BLEND_MODE_ALPHA
-  text: "RU"
+  text: "ENG"
   font: "pixels"
   id: "language_state"
   xanchor: XANCHOR_NONE

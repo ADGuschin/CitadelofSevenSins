@@ -37,5 +37,5 @@ index_of_current_level = 1 --Счет идет с 1
 list_of_levels = {"level", "level2"}
 current_level = nil
 
-language = {"EU", "RU"}
+language = {"ENG", "RUS"}
 language_state = 1

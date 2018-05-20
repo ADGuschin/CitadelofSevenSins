@@ -126,13 +126,13 @@ function init(self)
 						node = gui.get_node("language_button"),
 						action = function ()
 							if gui.is_enabled(gui.get_node("background")) then
-								if language_state == 1 then
+								--[[if language_state == 1 then
 									language_state = 2
 									gui.set_text(gui.get_node("language_state"), language[language_state])
 								elseif language_state == 2 then
 									language_state = 1
 									gui.set_text(gui.get_node("language_state"), language[language_state])
-								end
+								end]]
 								
 								gui.set_text(gui.get_node("language_text"), title.language[language_state])
 								gui.set_text(gui.get_node("training_text"), title.training[language_state])

@@ -37,6 +37,12 @@ images {
 images {
   image: "/gui/gui_images/for_menu.png"
 }
+images {
+  image: "/gui/gui_images/touch.png"
+}
+images {
+  image: "/gui/gui_images/touch_pressed.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

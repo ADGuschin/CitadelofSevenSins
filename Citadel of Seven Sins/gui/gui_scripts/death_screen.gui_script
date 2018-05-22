@@ -23,7 +23,14 @@ function init(self)
 	
 	self.hovered_node = nil
 	self.picked_node = nil
-
+	gui.set_enabled(gui.get_node("box"), true)
+	gui.set_text(gui.get_node("Restart"), title.restart[language_state]) 
+	gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
+	gui.set_text(gui.get_node("death_message"), title.death_message[language_state]) 
+	gui.set_text(gui.get_node("continue_text"), title.continue_text[language_state]) 
+	gui.set_text(gui.get_node("notenough_text"), title.notenough_text[language_state]) 
+	gui.set_text(gui.get_node("score_message"), title.score_message[language_state]) 
+	gui.set_text(gui.get_node("highscore_message"), title.highscore_message[language_state])
 	self.nodes = {
 					{
 						node = gui.get_node("restart"),
@@ -100,16 +107,6 @@ function finish_anim(node)
 	gui.animate(node, "position.y", -150, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
 end
 
-function update(self, dt)
-	gui.set_text(gui.get_node("Restart"), title.restart[language_state]) 
-	gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
-	gui.set_text(gui.get_node("death_message"), title.death_message[language_state]) 
-	gui.set_text(gui.get_node("continue_text"), title.continue_text[language_state]) 
-	gui.set_text(gui.get_node("notenough_text"), title.notenough_text[language_state]) 
-	gui.set_text(gui.get_node("score_message"), title.score_message[language_state]) 
-	gui.set_text(gui.get_node("highscore_message"), title.highscore_message[language_state])  
-end
-
 function on_message(self, message_id, message, sender)
 	if message_id == hash("close") then
 		gui.set_enabled(gui.get_node("background"), false)
@@ -166,7 +163,14 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("show") then
 		gui.set_enabled(gui.get_node("box"), true)
-
+		gui.set_text(gui.get_node("Restart"), title.restart[language_state]) 
+		gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
+		gui.set_text(gui.get_node("death_message"), title.death_message[language_state]) 
+		gui.set_text(gui.get_node("continue_text"), title.continue_text[language_state]) 
+		gui.set_text(gui.get_node("notenough_text"), title.notenough_text[language_state]) 
+		gui.set_text(gui.get_node("score_message"), title.score_message[language_state]) 
+		gui.set_text(gui.get_node("highscore_message"), title.highscore_message[language_state])  
+		
 		if gui_log then
 			print("Пришло сообщение о включении экрана смерти от", sender, "Экран смерти включен")
 		end

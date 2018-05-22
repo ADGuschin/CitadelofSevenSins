@@ -12,7 +12,7 @@ key_trigger {
 }
 key_trigger {
   input: KEY_ESC
-  action: "unpause"
+  action: "back_clicked"
 }
 key_trigger {
   input: KEY_RIGHT

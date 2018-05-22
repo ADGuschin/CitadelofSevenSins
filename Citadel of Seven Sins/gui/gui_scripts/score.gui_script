@@ -6,6 +6,7 @@ local title = {
 }
 
 function init(self)
+	
 	if gui_log then
 		print("Итерфейс счета проинициализирован")
 	end
@@ -13,12 +14,6 @@ end
 
 function final(self)
 	save_gamedata()
-end
-
-function update(self, dt)
-	gui.set_text(gui.get_node("score_text"), title.score_text[language_state]) 
-	gui.set_text(gui.get_node("highscore_text"), title.highscore_text[language_state]) 
-
 end
 
 function on_message(self, message_id, message, sender)
@@ -41,7 +36,8 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("show") then
 		gui.set_enabled(gui.get_node("score_box"), true)
 		gui.set_enabled(gui.get_node("coins_box"), true)
-		
+		gui.set_text(gui.get_node("score_text"), title.score_text[language_state]) 
+		gui.set_text(gui.get_node("highscore_text"), title.highscore_text[language_state]) 
 		if gui_log then
 			print("Пришло сообщение о включении интерфейса очков от", sender, "Интерфейс показан")
 		end

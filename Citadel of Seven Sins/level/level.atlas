@@ -61,6 +61,18 @@ images {
 images {
   image: "/level/images/wall1.png"
 }
+images {
+  image: "/level/images/palatka1.png"
+}
+images {
+  image: "/level/images/palatka2.png"
+}
+images {
+  image: "/level/images/palatka_3.png"
+}
+images {
+  image: "/level/images/palatka_4.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

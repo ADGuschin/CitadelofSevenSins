@@ -1,6 +1,16 @@
 require "main_menu.ui_func"
 require "variables"
 
+local title = {
+	restart = { "Restart", "Заново" },
+	menu = { "Menu", "Меню" },
+	death_message = { "You died ^_^", "Ты умер ^_^" },
+	continue_text = { "Continue", "Продолжить" },
+	notenough_text = {"Not enough money :)", "Не достаточно монет :)"},
+	score_message = {"Your score:", "Счет:"},
+	highscore_message = {"NEW HIGHSCORE:", "НОВЫЙ РЕКОРД:"}
+}
+
 function init(self)
 	if gui_log then
 		print("Экран смерти проинициализирован")
@@ -13,7 +23,14 @@ function init(self)
 	
 	self.hovered_node = nil
 	self.picked_node = nil
-
+	gui.set_enabled(gui.get_node("box"), true)
+	gui.set_text(gui.get_node("Restart"), title.restart[language_state]) 
+	gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
+	gui.set_text(gui.get_node("death_message"), title.death_message[language_state]) 
+	gui.set_text(gui.get_node("continue_text"), title.continue_text[language_state]) 
+	gui.set_text(gui.get_node("notenough_text"), title.notenough_text[language_state]) 
+	gui.set_text(gui.get_node("score_message"), title.score_message[language_state]) 
+	gui.set_text(gui.get_node("highscore_message"), title.highscore_message[language_state])
 	self.nodes = {
 					{
 						node = gui.get_node("restart"),
@@ -146,7 +163,14 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("show") then
 		gui.set_enabled(gui.get_node("box"), true)
-
+		gui.set_text(gui.get_node("Restart"), title.restart[language_state]) 
+		gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
+		gui.set_text(gui.get_node("death_message"), title.death_message[language_state]) 
+		gui.set_text(gui.get_node("continue_text"), title.continue_text[language_state]) 
+		gui.set_text(gui.get_node("notenough_text"), title.notenough_text[language_state]) 
+		gui.set_text(gui.get_node("score_message"), title.score_message[language_state]) 
+		gui.set_text(gui.get_node("highscore_message"), title.highscore_message[language_state])  
+		
 		if gui_log then
 			print("Пришло сообщение о включении экрана смерти от", sender, "Экран смерти включен")
 		end
@@ -154,6 +178,9 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
+	if action_id == hash("back_clicked") then
+		msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
+	end
 	if action_id == hash("click") or action_id == hash("touch") then
 		if action.pressed then
 			handle_press(self, action.x, action.y)

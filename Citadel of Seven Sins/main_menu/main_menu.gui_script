@@ -3,37 +3,18 @@ require "main_menu.ui_func"
 require "variables"
 
 local title = {
-	start = { "Start", "CTAPT"},
-	exit = { "Quit", "VIIYTI"},
-	level1 = { "Level 1", "Yroven 1"},
-	level2 = { "Level 2", "Yroven 2"},
-	back = { "Back", "Nazad"},
-	comingsoon = { "Coming soon..", "CKOPO.."}
+	start = { "Start", "Cтарт"},
+	exit = { "Quit", "Выход"},
+	level1 = { "Level 1", "Уровень 1"},
+	level2 = { "Level 2", "Уровень 2"},
+	back = { "Back", "Назад"},
+	comingsoon = { "Coming soon..", "Скоро.."}
 }
 
 function init(self)
 	if gui_log then
 		print("Экран главного меню проинициализирован")
 	end
-	--[[local values = { 0, 0, 0, 0, 0, 0, 0, 0,
-	0, 0, 0, 0, 0, 0, 0, 1,
-	0, 0, 0, 0, 0, 0, 1, 1,
-	0, 0, 0, 0, 0, 1, 1, 1,
-	0, 0, 0, 0, 1, 1, 1, 1,
-	0, 0, 0, 1, 1, 1, 1, 1,
-	0, 0, 1, 1, 1, 1, 1, 1,
-	0, 1, 1, 1, 1, 1, 1, 1,
-	1, 1, 1, 1, 1, 1, 1, 1,
-	--0, 0, 0, 0, 0, 0, 0, 0 
-	0, 1, 1, 1, 1, 1, 1, 1,
-	0, 0, 1, 1, 1, 1, 1, 1,
-	0, 0, 0, 1, 1, 1, 1, 1,
-	0, 0, 0, 0, 1, 1, 1, 1,
-	0, 0, 0, 0, 0, 1, 1, 1,
-	0, 0, 0, 0, 0, 0, 1, 1,
-	0, 0, 0, 0, 0, 0, 0, 1,
-	0, 0, 0, 0, 0, 0, 0, 0 }
-	local vec = vmath.vector(values)]]
 	local node = gui.get_node("background")
 	gui.animate(node, "position.x", -120, gui.EASING_INCUBIC, 100, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 	msg.post(".", "acquire_input_focus")
@@ -176,6 +157,9 @@ function on_message(self, message_id, message, sender)
 end
 	
 function on_input(self, action_id, action)
+	if action_id == hash("back_clicked") then
+		msg.post("@system:", "exit", {code = 0})
+	end
     if action_id == hash("click") or action_id == hash("touch") then
     	if action.pressed then
 	    	handle_press(self, action.x, action.y)

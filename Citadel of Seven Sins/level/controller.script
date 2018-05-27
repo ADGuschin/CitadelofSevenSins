@@ -3,6 +3,7 @@ require "level.utils"
 require "variables"
 -- controller.script
 local grid = 600
+local grido = 2100
 local platform_height = 48
 local default_speed = 460
 
@@ -13,7 +14,7 @@ local reset_timer_max = 5
 local current_hero
 
 local previous_obstacle
-
+table_backgrounds_objects = {"#garage","#barrel","#tent_1","#tent_2","#tent_3","#tent_4"}
 
 
 function table_length(self, table)
@@ -29,6 +30,7 @@ function init(self)
     self.speed = default_speed
     update_speed(self)
     self.gridw = 0
+    self.gridbackground = 0
     --self.heroes = {}
     if training_state then
         previous_obstacle = "training"
@@ -90,6 +92,19 @@ end
 
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
+    self.gridbackground = self.gridbackground + ((self.speed * 200) / 360) * dt
+    if self.gridbackground >= grido then
+        self.gridbackground = 0
+        local indx = math.random(1,6)
+        local obj = table_backgrounds_objects[indx]
+        pprint(indx)
+        pprint(obj)
+        if indx == 1 then
+            collectionfactory.create(obj, vmath.vector3(1600, 195, -0.55), nil, {}, 4)
+        else
+            collectionfactory.create(obj, vmath.vector3(1600, 100, -0.45), nil, {}, 4)
+        end
+    end
     if self.speed < max_speed then 
         self.speed = self.speed + acceleration * dt
     end

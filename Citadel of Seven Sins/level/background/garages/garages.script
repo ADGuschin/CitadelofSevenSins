@@ -13,7 +13,7 @@ function update(self, dt)
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
 		if pos.x <= -300 then
-			pos.x = 1160 + (pos.x + 1000)
+			go.delete()
 		end
 		pos.x = pos.x - self.speed * dt
 		go.set_position(pos, p)

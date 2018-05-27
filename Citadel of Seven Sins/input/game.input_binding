@@ -12,7 +12,7 @@ key_trigger {
 }
 key_trigger {
   input: KEY_ESC
-  action: "unpause"
+  action: "back_clicked"
 }
 key_trigger {
   input: KEY_RIGHT
@@ -20,7 +20,7 @@ key_trigger {
 }
 key_trigger {
   input: KEY_BACK
-  action: "back_pause"
+  action: "back_clicked"
 }
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT

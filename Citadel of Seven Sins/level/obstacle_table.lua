@@ -37,62 +37,62 @@ grid_table = {
 
 pickups_param_table = {
 	["#training"] = {
-		powerup = true, count = 0, pickup_positions = {}
+		count = 0, pickup_positions = {}
 	},
 	["#obstacle_small"] = {
-		powerup = true, count = 1, pickup_positions = {
+		count = 1, pickup_positions = {
 			[1] = {x = 80, y = 140}
 		}
 	}, 
 	["#obstacle_tall"] = {
-		powerup = true, count = 2, pickup_positions = {
+		count = 2, pickup_positions = {
 			[1] = {x = 200, y = 600},
 			[2] = {x = 45, y = 300}
 		}
 	},
 	["#obstacle_top_kran"] = {
-		powerup = true, count = 1, pickup_positions = {
+		count = 1, pickup_positions = {
 			[1] = {x = 0, y = 350}
 		}
 	},
 	["#train_home"] = {
-		powerup = true, count = 2, pickup_positions = {
+		count = 2, pickup_positions = {
 			[1] = {x = 240, y = 600},
 			[2] = {x = 535, y = 200}
 		}
 	},
 	["#coll_1"] = {
-		powerup = true, count = 2, pickup_positions = {
+		count = 2, pickup_positions = {
 			[1] = {x = 300, y = 350},
 			[2] = {x = 900, y = 600}
 		}
 	},
 	["#obstacle_jumps"] = {
-		powerup = true, count = 3, pickup_positions = {
+		count = 3, pickup_positions = {
 			[1] = {x = 30, y = 200},
 			[2] = {x = 1650, y = 200},
 			[3] = {x = 1070, y = 600}
 		}
 	},
 	["#coll_2"] = {
-		powerup = true, count = 1, pickup_positions = {
+		count = 1, pickup_positions = {
 			[1] = {x = 960, y = 350},
 			--[2] = {x = 200, y = 200}
 		}
 	},
 	["#coll_3"] = {
-		powerup = true, count = 2, pickup_positions = {
+		count = 2, pickup_positions = {
 			[1] = {x = 360, y = 200},
 			[2] = {x = 760, y = 200}
 		}
 	},
 	["#coll_3.1"] = {
-		powerup = true, count = 1, pickup_positions = {
+		count = 1, pickup_positions = {
 			[1] = {x = 45, y = 400}
 		}
 	},
 	["#coll_3.2"] = {
-		powerup = true, count = 5, pickup_positions = {
+		count = 5, pickup_positions = {
 			[1] = {x = 360, y = 200},
 			[2] = {x = 760, y = 200},
 			[3] = {x = 430, y = 400},
@@ -101,15 +101,15 @@ pickups_param_table = {
 		}
 	},
 	["#obstacle_pipes"] = {
-		powerup = true, count = 1, pickup_positions = {
+		count = 1, pickup_positions = {
 			[1] = {x = 750, y = 100}
 		}
 	},
 	["#obstacle_car"] = {
-		powerup = true, count = 0, pickup_positions = {}
+		count = 0, pickup_positions = {}
 	},
 	["#obstacle_kran"] = {
-		powerup = true, count = 2, pickup_positions = {
+		count = 2, pickup_positions = {
 			[1] = {x = 100, y = 200},
 			[2] = {x = 200, y = 200}
 		}

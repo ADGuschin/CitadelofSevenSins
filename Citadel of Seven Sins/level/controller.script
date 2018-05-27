@@ -75,6 +75,19 @@ function check_for_reset(self)
     end
 end
 
+
+function calculate_score(self)
+    if not pause_state then
+        score = score + self.speed / 10000
+        x2_bar = x2_bar + self.speed / 10000
+        if x2_bar >= x2_bar_max then
+            current_score_multiplier = "x2"
+        end
+        msg.post("/score#score", "score", {value = math.ceil(score)})
+        msg.post("/score#score", "coins", {value = coins})
+    end
+end
+
 function update(self, dt)
     self.gridw = self.gridw + self.speed * dt
     if self.speed < max_speed then 
@@ -94,11 +107,7 @@ function update(self, dt)
         local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 4)
         spawn_pickups(self, pickups_param_table[previous_obstacle])
     end
-    if not pause_state then
-        score = score + self.speed / 10000
-        msg.post("/score#score", "score", {value = math.ceil(score)})
-        msg.post("/score#score", "coins", {value = coins})
-    end
+    calculate_score(self)
 
 end
 

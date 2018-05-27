@@ -55,6 +55,31 @@ animations {
   flip_horizontal: 0
   flip_vertical: 0
 }
+animations {
+  id: "pickup"
+  images {
+    image: "/pickups/images/ischeznovenie1.png"
+  }
+  images {
+    image: "/pickups/images/ischeznovenie2.png"
+  }
+  images {
+    image: "/pickups/images/ischeznovenie3.png"
+  }
+  images {
+    image: "/pickups/images/ischeznovenie4.png"
+  }
+  images {
+    image: "/pickups/images/ischeznovenie5.png"
+  }
+  images {
+    image: "/pickups/images/ischeznovenie6.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
 margin: 0
 extrude_borders: 0
 inner_padding: 0

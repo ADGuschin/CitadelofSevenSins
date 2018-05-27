@@ -29,6 +29,13 @@ reborn_cost = 0
 coins = 0
 current_level_coins = 0
 
+
+x2_bar = 0
+x2_bar_max = 30
+
+score_multiplier = {["default"] = 1; ["x2"] = 2;} 
+current_score_multiplier = "default"
+
 --Переменные для включения логов
 gui_log = false
 --Индекс нынешнего уровня

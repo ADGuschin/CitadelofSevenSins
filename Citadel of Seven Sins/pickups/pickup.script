@@ -24,6 +24,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("set_speed") then
 		self.speed = message.speed 
 	elseif message_id == hash("contact_point_response") then
+		msg.post("#sprite", "play_animation", {id = hash("pickup")})
 		go.delete(true)
 	end
 end

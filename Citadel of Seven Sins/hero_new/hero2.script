@@ -67,9 +67,17 @@ local function go_invincible(self)
 	invincibility = 0
 end
 
+function reset_multiplier(self)
+	current_score_multiplier = "default"
+	x2_bar = 0
+end
+
 function final(self)
+	reset_multiplier(self)
 	msg.post(".", "release_input_focus")
 end
+
+
 
 local function flicker(self)
 	if invincible then
@@ -319,6 +327,7 @@ local function on_impact(self, impact_type)
 		pushed = true
 		lock_character = true
 		impact_speed.x = impact_speed.x * 0.66
+		reset_multiplier(self)
 	elseif impact_type == "soft" then
 		roll_allowed = true
 	end
@@ -390,15 +399,15 @@ function on_message(self, message_id, message, sender)
 			lock_character = false
 		elseif message.group == hash("coin") then
 			play_sound(self, "coin")
-			coins = coins + 1
+			coins = coins + 1 * score_multiplier[current_score_multiplier]
 			current_level_coins = current_level_coins + 1
 		elseif message.group == hash("coin2") then
 			play_sound(self, "coin")
-			coins = coins + 2
+			coins = coins + 2 * score_multiplier[current_score_multiplier]
 			current_level_coins = current_level_coins + 2
 		elseif message.group == hash("coin3") then
 			play_sound(self, "coin")
-			coins = coins + 3
+			coins = coins + 3 * score_multiplier[current_score_multiplier]
 			current_level_coins = current_level_coins + 3
 		end
 	end
@@ -428,7 +437,7 @@ local swipe
 local touch
 
 function checkSwipeDirection(self)
-	if bDoingTouch == true then
+	if action.pressed then
 		xDistance =  math.abs(endX - beginX) -- math.abs will return the absolute, or non-negative value, of a given value.
 		print("xd"..xDistance)
 		yDistance =  math.abs(endY - beginY)
@@ -475,7 +484,7 @@ end
 
 function swipe_on_input(self, action_id, action)
 	if action_id == hash("click") then
-		if action.pressed then
+		if true then
 			startTime = socket.gettime()
 			beginX = action.x
 			beginY = action.y
@@ -498,24 +507,26 @@ function swipe_on_input(self, action_id, action)
 end
 
 function touch_on_input(self, action_id, action)
-	if action.pressed then
-		print(action.x)
-		print(action.y)
-		if action.x > 50 and action.x < 150 and action.y < 670 and action.y > 570 then
-		else
-			if action.x > 750 then
-				roll(self)
-			elseif action.y < 300 then
-				if self.ground_contact then
-					slide(self)
-				else
-					jump_break(self)
-				end
+	--print(action.x)
+	--print(action.y)
+	
+	if action.x > 50 and action.x < 150 and action.y < 670 and action.y > 570 then
+	else
+		if action.x > 750 then
+			roll(self)
+		elseif action.y < 300 then
+			if self.ground_contact then
+				slide(self)
 			else
+				jump_break(self)
+			end
+		else
+			if action.pressed then
 				jump(self, jump_takeoff_speed)
 			end
 		end
 	end
+
 	if action.released then
 		if not self.ground_contact then
 			abort_jump(self)

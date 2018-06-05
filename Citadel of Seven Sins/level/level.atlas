@@ -73,6 +73,9 @@ images {
 images {
   image: "/level/images/palatka_4.png"
 }
+images {
+  image: "/level/images/example_for_story.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

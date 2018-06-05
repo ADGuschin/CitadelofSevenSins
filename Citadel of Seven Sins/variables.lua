@@ -41,7 +41,7 @@ gui_log = false
 --Индекс нынешнего уровня
 index_of_current_level = 1 --Счет идет с 1
 --Список уровней
-list_of_levels = {"level", "level2"}
+list_of_levels = {"level", "1_story_collection"}
 current_level = nil
 
 language = {"EN", "РУ"}

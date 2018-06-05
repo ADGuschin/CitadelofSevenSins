@@ -32,9 +32,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "level2_proxy"
+  id: "1_story_collection_proxy"
   type: "collectionproxy"
-  data: "collection: \"/level/level2.collection\"\n"
+  data: "collection: \"/level/1_story_collection.collection\"\n"
   "exclude: false\n"
   ""
   position {

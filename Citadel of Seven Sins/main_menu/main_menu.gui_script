@@ -87,19 +87,19 @@ function init(self)
 						node = gui.get_node("level2_button"),
 						action = function ()
 							if gui.is_enabled(gui.get_node("box")) and gui.is_enabled(gui.get_node("selectlevel_box")) then
-								if gui.is_enabled(gui.get_node("comingsoon_box")) then
+								--[[if gui.is_enabled(gui.get_node("comingsoon_box")) then
 									gui.set_enabled(gui.get_node("comingsoon_box"), false)
 								else
 									gui.set_enabled(gui.get_node("comingsoon_box"), true)
-								end
+								end]]
 								
-								--[[
+								
 								in_game = true
 								index_of_current_level = 2
 								current_level = list_of_levels[index_of_current_level]
 								
 								msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
-								]]
+								
 
 								if gui_log then
 									print("Нажата кнопка второго уровня, выведена надпись Сoming soon")

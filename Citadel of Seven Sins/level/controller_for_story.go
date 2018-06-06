@@ -1,5 +1,5 @@
 components {
-  id: "controller_for_story"
+  id: "script"
   component: "/level/controller_for_story.script"
   position {
     x: 0.0

@@ -17,11 +17,7 @@ local previous_obstacle
 table_backgrounds_objects = {"#garage","#barrel","#tent_1","#tent_2","#tent_3","#tent_4"}
 
 
-function table_length(self, table)
-	local count = 0
-	for x in pairs(table) do count = count + 1 end
-	return count
-end
+
 
 function init(self)
 	--index_of_current_level = 1 -- пока что захардкодил для теста
@@ -68,29 +64,18 @@ function update(self, dt)
 		local obj = table_backgrounds_objects[indx]
 		pprint(indx)
 		pprint(obj)
-		if indx == 1 then
+		--[[if indx == 1 then
 			collectionfactory.create(obj, vmath.vector3(1600, 195, -0.55), nil, {}, 4)
 		else
 			collectionfactory.create(obj, vmath.vector3(1600, 100, -0.45), nil, {}, 4)
-		end
+		end]]
 	end
 	if self.speed < max_speed then 
 		self.speed = self.speed + acceleration * dt
 	end
 	--update_speed(self)
 	check_for_reset(self)
-	if self.gridw >= grid then
-		self.gridw = 0
-		local h = platform_height
-		local allowed_obstacles = obstacle_table[previous_obstacle]
-		local random = math.random(table_length(self, allowed_obstacles))
-		grid = grid_table[allowed_obstacles[random]]
-		--pprint(grid_table[previous_obstacle])
-		--pprint(previous_obstacle)
-		previous_obstacle = allowed_obstacles[random] 
-		local p = collectionfactory.create(previous_obstacle, vmath.vector3(1600, h, 0), nil, {}, 4)
-		spawn_pickups(self, pickups_param_table[previous_obstacle])
-	end
+	
 	calculate_score(self)
 
 end

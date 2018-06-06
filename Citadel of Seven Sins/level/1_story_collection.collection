@@ -1,4 +1,4 @@
-name: "level"
+name: "1_story_collection"
 instances {
   id: "shadow"
   prototype: "/shadow/shadow.go"
@@ -120,7 +120,7 @@ instances {
   }
 }
 instances {
-  id: "controller_for_story"
+  id: "controller"
   prototype: "/level/controller_for_story.go"
   position {
     x: 0.0

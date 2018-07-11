@@ -63,6 +63,7 @@ local function go_invincible(self)
 end
 
 function reset_multiplier(self)
+	msg.post("controller#script", "reset_multiplier")
 	current_score_multiplier = score_multiplier["default"]
 	multiplier_bar = 0
 end

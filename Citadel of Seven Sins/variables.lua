@@ -29,11 +29,11 @@ current_level_coins = 0
 
 
 multiplier_bar = 0
-bar_maxs = {["x2"] = 150; ["x3"] = 300;}
+bar_maxs = {["x2"] = 10; ["x3"] = 15;}
 
-score_multiplier = {["default"] = {multiplier = 1; next = "x2"};
-["x2"] = {multiplier = 2; next = "x3"};
-["x3"] = {multiplier = 3; next = "none"};} 
+score_multiplier = {["default"] = {multiplier = 1; next = "x2"; current = "default"};
+["x2"] = {multiplier = 2; next = "x3"; current = "x2"};
+["x3"] = {multiplier = 3; next = "none"; current = "x3"};} 
 current_score_multiplier = score_multiplier["default"]
 
 --Переменные для включения логов

@@ -84,7 +84,9 @@ function calculate_score(self)
         if current_score_multiplier.next ~= "none" then 
             multiplier_bar = multiplier_bar + self.speed / 10000
             if multiplier_bar >= bar_maxs[current_score_multiplier.next] then
+                multiplier_bar = 0
                 current_score_multiplier = score_multiplier[current_score_multiplier.next]
+                msg.post("/score#score", "change_multiplier")
             end
         end
         msg.post("/score#score", "score", {value = math.ceil(score)})
@@ -129,7 +131,9 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
-    if message_id == hash("spawnhero") then
+    if message_id == hash("reset_multiplier") then
+        msg.post("/score#score", "change_multiplier")
+    elseif message_id == hash("spawnhero") then
         local p = factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},4)
         --table.insert(self.heroes, p)
         if message.continue == nil then

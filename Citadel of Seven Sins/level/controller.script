@@ -83,10 +83,6 @@ function calculate_score(self)
         score = score + self.speed / 10000
         if current_score_multiplier.next ~= "none" then 
             multiplier_bar = multiplier_bar + self.speed / 10000
-            print(multiplier_bar)
-            print(current_score_multiplier)
-            print(current_score_multiplier.next)
-            print(bar_maxs[current_score_multiplier.next])
             if multiplier_bar >= bar_maxs[current_score_multiplier.next] then
                 current_score_multiplier = score_multiplier[current_score_multiplier.next]
             end

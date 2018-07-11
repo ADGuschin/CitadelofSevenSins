@@ -83,13 +83,13 @@ animations {
 animations {
   id: "kek"
   images {
-    image: "/pickups/images/qlE0fRBgOa8.jpg"
+    image: "/pickups/images/\320\273\321\203\320\2731.png"
   }
   images {
-    image: "/pickups/images/\320\221\320\265\320\267\321\213\320\274\321\217\320\275\320\275\321\213\320\271.png"
+    image: "/pickups/images/\320\273\321\203\320\2732.jpg"
   }
   playback: PLAYBACK_LOOP_FORWARD
-  fps: 20
+  fps: 1
   flip_horizontal: 0
   flip_vertical: 0
 }

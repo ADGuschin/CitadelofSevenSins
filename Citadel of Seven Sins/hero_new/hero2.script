@@ -68,8 +68,8 @@ local function go_invincible(self)
 end
 
 function reset_multiplier(self)
-	current_score_multiplier = "default"
-	x2_bar = 0
+	current_score_multiplier = score_multiplier["default"]
+	multiplier_bar = 0
 end
 
 function final(self)
@@ -399,16 +399,16 @@ function on_message(self, message_id, message, sender)
 			lock_character = false
 		elseif message.group == hash("coin") then
 			play_sound(self, "coin")
-			coins = coins + 1 * score_multiplier[current_score_multiplier]
-			current_level_coins = current_level_coins + 1
+			coins = coins + 1 * current_score_multiplier.multiplier
+			--current_level_coins = current_level_coins + 1
 		elseif message.group == hash("coin2") then
 			play_sound(self, "coin")
-			coins = coins + 2 * score_multiplier[current_score_multiplier]
-			current_level_coins = current_level_coins + 2
+			coins = coins + 2 * current_score_multiplier.multiplier
+			--current_level_coins = current_level_coins + 2
 		elseif message.group == hash("coin3") then
 			play_sound(self, "coin")
-			coins = coins + 3 * score_multiplier[current_score_multiplier]
-			current_level_coins = current_level_coins + 3
+			coins = coins + 3 * current_score_multiplier.multiplier
+			--current_level_coins = current_level_coins + 3
 		end
 	end
 end

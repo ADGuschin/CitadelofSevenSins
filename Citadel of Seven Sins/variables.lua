@@ -30,11 +30,13 @@ coins = 0
 current_level_coins = 0
 
 
-x2_bar = 0
-x2_bar_max = 30
+multiplier_bar = 0
+bar_maxs = {["x2"] = 150; ["x3"] = 300;}
 
-score_multiplier = {["default"] = 1; ["x2"] = 2;} 
-current_score_multiplier = "default"
+score_multiplier = {["default"] = {multiplier = 1; next = "x2"};
+["x2"] = {multiplier = 2; next = "x3"};
+["x3"] = {multiplier = 3; next = "none"};} 
+current_score_multiplier = score_multiplier["default"]
 
 --Переменные для включения логов
 gui_log = false

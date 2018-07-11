@@ -25,11 +25,6 @@ local roll_allowed = false
 local lock_character = false
 local impact_speed = vmath.vector3(1250, 750,0)
 
-local swiped = false
-
-go.property("minSwipeDistance", 50)
-go.property("minSwipeTime", 0.4)
-
 local function enable_rolling_state(self)
 	msg.post("#sliding_state", "disable")
 	msg.post("#rolling_over_state", "enable")
@@ -413,103 +408,9 @@ function on_message(self, message_id, message, sender)
 	end
 end
 
-
-
-local beginX
-local beginY
-local endX
-local endY
-
-local startTime
-
-local xDistance
-local yDistance
-
-go.property("minSwipeDistance", 20)
-go.property("minSwipeTime", 0.2)
-
-local bDoingTouch
-local totalSwipeDistanceLeft
-local totalSwipeDistanceRight
-local totalSwipeDistanceUp
-local totalSwipeDistanceDown
-local swipe
 local touch
 
-function checkSwipeDirection(self)
-	if action.pressed then
-		xDistance =  math.abs(endX - beginX) -- math.abs will return the absolute, or non-negative value, of a given value.
-		print("xd"..xDistance)
-		yDistance =  math.abs(endY - beginY)
-		print("yd"..yDistance)
-		if xDistance > yDistance then
-			if beginX > endX then
-				totalSwipeDistanceLeft = beginX - endX
-				if totalSwipeDistanceLeft > self.minSwipeDistance then
-					print("Swiped Left")
-					bDoingTouch = false
-					--action_id = hash("Swiped Left")
-				end
-			else
-				totalSwipeDistanceRight = endX - beginX
-				if totalSwipeDistanceRight > self.minSwipeDistance then
-					print("Swiped Right")
-					roll(self)
-				end
-			end
-		else
-			if beginY > endY then
-				totalSwipeDistanceUp = beginY - endY
-				if totalSwipeDistanceUp > self.minSwipeDistance and slide_cooldown == slide_cooldown_max then
-					bDoingTouch = false
-					if self.ground_contact then 
-						slide(self)
-					else 
-						jump_break_slide(self)
-					end
-				end
-			else
-				totalSwipeDistanceDown = endY - beginY
-				if totalSwipeDistanceDown > self.minSwipeDistance then
-					bDoingTouch = false
-					if options_swipe then
-						print("Swiped Up")
-						jump(self, jump_takeoff_speed)
-					end
-				end
-			end
-		end
-	end
-end
-
-function swipe_on_input(self, action_id, action)
-	if action_id == hash("click") then
-		if true then
-			startTime = socket.gettime()
-			beginX = action.x
-			beginY = action.y
-			bDoingTouch = true
-		end
-		if socket.gettime() - startTime > 0.001 then
-			touch = (math.abs(beginX - action.x) < 1) and (math.abs(beginY - action.y) < 1)
-			swipe = not touch
-		end
-
-		if swipe then
-			swipe = false
-			if socket.gettime() - startTime < self.minSwipeTime then
-				endX = action.x
-				endY = action.y
-				checkSwipeDirection(self)
-			end
-		end
-	end
-end
-
 function touch_on_input(self, action_id, action)
-	--print(action.x)
-	--print(action.y)
-	
 	if action.x > 50 and action.x < 150 and action.y < 670 and action.y > 570 then
 	else
 		if action.x > 750 then
@@ -537,9 +438,7 @@ end
 
 function on_input(self, action_id, action)
 	if not lock_character then
-		if action_id == hash("click") and options_swipe then
-			swipe_on_input(self, action_id, action)
-		elseif action_id == hash("click") and options_touch then 
+		if action_id == hash("click") then 
 			touch_on_input(self, action_id, action)
 		end
 		if action_id == hash("jump") then

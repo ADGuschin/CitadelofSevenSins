@@ -4,12 +4,9 @@ require "variables"
 local title = {
 	language = { "Language:", "Язык:" },
 	training = { "Tutotial:", "Обучение:" },
-	control = { "Control:", "Пилотаж:" },
 	autorestart = { "Autorestart:", "Авторестарт:" },
 	logical_yes = {"yes", "да"},
-	logical_no = {"no", "нет"},
-	control_touch = {"touch", "тык"},
-	control_swipe = {"swipe", "свайп"}
+	logical_no = {"no", "нет"}
 }
 
 function init(self)
@@ -108,25 +105,6 @@ function init(self)
 						end
 					},
 					{
-						node = gui.get_node("control_button"),
-						action = function ()
-							if gui.is_enabled(gui.get_node("background")) then
-								if options_swipe then
-									options_swipe = false
-									options_touch = true
-									gui.set_text(gui.get_node("control_state"), title.control_touch[language_state])
-								else
-									options_swipe = true
-									options_touch = false
-									gui.set_text(gui.get_node("control_state"), title.control_swipe[language_state])
-								end
-								if gui_log then
-									--print("Нажата кнопка переключения тренировки, состояние авторестарта изменено на", training)
-								end
-							end
-						end
-					},
-					{
 						node = gui.get_node("language_button"),
 						action = function ()
 							if gui.is_enabled(gui.get_node("background")) then
@@ -145,13 +123,6 @@ function init(self)
 									gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state]) 
 								elseif training_state == false then
 									gui.set_text(gui.get_node("training_state"), title.logical_no[language_state]) 
-								end
-								
-								gui.set_text(gui.get_node("control_text"), title.control[language_state])
-								if options_swipe == true then
-									gui.set_text(gui.get_node("control_state"), title.control_swipe[language_state]) 
-								elseif options_touch == true then
-									gui.set_text(gui.get_node("control_state"), title.control_touch[language_state]) 
 								end
 								
 								gui.set_text(gui.get_node("autorestart_text"), title.autorestart[language_state])
@@ -192,7 +163,6 @@ function on_message(self, message_id, message, sender)
 
 		gui.set_text(gui.get_node("language_text"), title.language[language_state])
 		gui.set_text(gui.get_node("training_text"), title.training[language_state])
-		gui.set_text(gui.get_node("control_text"), title.control[language_state])
 		gui.set_text(gui.get_node("autorestart_text"), title.autorestart[language_state])
 		
 		if sound then
@@ -221,11 +191,6 @@ function on_message(self, message_id, message, sender)
 			end
 		end
 
-		if options_touch then
-			gui.set_text(gui.get_node("control_state"), title.control_touch[language_state])
-		else
-			gui.set_text(gui.get_node("control_state"), title.control_swipe[language_state])
-		end
 		
 		if in_game then
 			msg.post(".", "acquire_input_focus")

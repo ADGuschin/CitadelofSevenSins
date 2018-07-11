@@ -4,8 +4,6 @@ in_game = false
 autorestart_state = false
 pause_state = false
 training_state = true
-options_swipe = true
-options_touch = false
 
 --Костыль
 deathscreen_state = false

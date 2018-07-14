@@ -228,6 +228,7 @@ end
 
 function on_input(self, action_id, action)
 	if action_id == hash("back_clicked") then
+		--finish_anim(gui.get_node("background"))
 		msg.post(".", "hide")
 	end
 	if action_id == hash("click") or action_id == hash("touch") then

@@ -43,6 +43,18 @@ images {
 images {
   image: "/gui/gui_images/touch_pressed.png"
 }
+images {
+  image: "/gui/gui_images/old/flatDark25.png"
+}
+images {
+  image: "/gui/gui_images/forTutorial.png"
+}
+images {
+  image: "/gui/gui_images/forTutorial2.png"
+}
+images {
+  image: "/gui/gui_images/forTutorial3.png"
+}
 animations {
   id: "touch"
   images {

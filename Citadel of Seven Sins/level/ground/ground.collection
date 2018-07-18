@@ -40,7 +40,7 @@ embedded_instances {
   ""
   position {
     x: -264.0
-    y: -74.0
+    y: -15.0
     z: 0.0
   }
   rotation {
@@ -50,8 +50,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 4.0
-    y: 4.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -95,7 +95,7 @@ embedded_instances {
   ""
   position {
     x: 264.0
-    y: -74.0
+    y: -15.0
     z: 0.0
   }
   rotation {
@@ -105,8 +105,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 4.0
-    y: 4.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -150,7 +150,7 @@ embedded_instances {
   ""
   position {
     x: 792.0
-    y: -74.0
+    y: -15.0
     z: 0.0
   }
   rotation {
@@ -160,8 +160,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 4.0
-    y: 4.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -205,7 +205,7 @@ embedded_instances {
   ""
   position {
     x: 1320.0
-    y: -74.0
+    y: -15.0
     z: 0.0
   }
   rotation {
@@ -215,8 +215,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 4.0
-    y: 4.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -260,7 +260,7 @@ embedded_instances {
   ""
   position {
     x: 1848.0
-    y: -74.0
+    y: -15.0
     z: 0.0
   }
   rotation {
@@ -270,8 +270,8 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 4.0
-    y: 4.0
+    x: 1.0
+    y: 1.0
     z: 1.0
   }
 }
@@ -315,7 +315,7 @@ embedded_instances {
   ""
   position {
     x: 2376.0
-    y: -74.0
+    y: -15.0
     z: 0.0
   }
   rotation {
@@ -325,9 +325,9 @@ embedded_instances {
     w: 1.0
   }
   scale3 {
-    x: 4.0
-    y: 4.0
-    z: 10000.0
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 embedded_instances {
@@ -346,8 +346,8 @@ embedded_instances {
   "  shapes {\\n"
   "    shape_type: TYPE_BOX\\n"
   "    position {\\n"
-  "      x: 951.47\\n"
-  "      y: -104.798\\n"
+  "      x: 947.0\\n"
+  "      y: -50.0\\n"
   "      z: 0.0\\n"
   "    }\\n"
   "    rotation {\\n"

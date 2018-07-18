@@ -5,7 +5,7 @@ require "variables"
 local grid = 600
 local grido = 2100
 local platform_height = 48
-local default_speed = 460
+local default_speed = 450
 
 local max_speed = 1500
 local obstacle_var = 0
@@ -28,7 +28,7 @@ function init(self)
 	self.gridw = 0
 	self.gridbackground = 0
 	--self.heroes = {}
-	
+	collectionfactory.create("#story1", vmath.vector3(1600, 48, 0), nil, {}, 1)
 	msg.post("#", "spawnhero")
 	--print(msg.url())
 end
@@ -66,11 +66,6 @@ function update(self, dt)
 		local obj = table_backgrounds_objects[indx]
 		pprint(indx)
 		pprint(obj)
-		--[[if indx == 1 then
-			collectionfactory.create(obj, vmath.vector3(1600, 195, -0.55), nil, {}, 4)
-		else
-			collectionfactory.create(obj, vmath.vector3(1600, 100, -0.45), nil, {}, 4)
-		end]]
 	end
 	if self.speed < max_speed then 
 		self.speed = self.speed + acceleration * dt
@@ -84,7 +79,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("spawnhero") then
-		local p = factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},4)
+		local p = factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},1)
 		--table.insert(self.heroes, p)
 		if message.continue == nil then
 			score = 0 

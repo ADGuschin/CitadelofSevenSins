@@ -11,8 +11,6 @@ local step_playing = false
 
 local current_slide_moment = 0
 local sliding = false
-local slide_cooldown = 10
-local slide_time = 30
 
 local isFirstTimeRun = true
 local invincibility = 0
@@ -23,7 +21,8 @@ local rolling_over = false
 local pause = false
 local roll_allowed = false
 local lock_character = false
-local impact_speed = vmath.vector3(1250, 750,0)
+
+local debug_ground_position = vmath.vector3(0,0,0)
 
 local function enable_rolling_state(self)
 	msg.post("#sliding_state", "disable")
@@ -44,6 +43,7 @@ local function enable_running_state(self)
 end
 
 function init(self)
+	msg.post("@system:", "toggle_physics_debug")
 	msg.post(".", "acquire_input_focus")
 	msg.post(current_level..":/controller#script", "spawned") 
 	self.position = go.get_position()
@@ -165,9 +165,13 @@ local function break_roll(self)
 	enable_running_state(self)
 end
 
+local debug_jump = false
+local debug_jump_peak = false
 
 local function jump(self, speed)
 	if self.ground_contact then
+		print("jumped x="..go.get_position().x)
+		debug_jump = true
 		play_sound(self, "jump")
 		if speed > jump_takeoff_speed then
 			speed = jump_takeoff_speed
@@ -226,33 +230,45 @@ local function jump_break_slide(self)
 	--end
 end
 
+
+
 function update(self, dt)
-	--invincible = true
-	--lock_character = true
 	if not pause_state then
 		local hero_position = go.get_position()
-
+		--print(hero_position.y)
 		check_slide(self)
 
 		if prepare_slide and self.ground_contact then
 			slide(self)
 			prepare_slide = false
 		end
-		
+
 		impact_speed.x = impact_speed.x + acceleration * dt
 		if impact_speed.x > max_impact_speed then
 			impact_speed.x = max_impact_speed
 		elseif impact_speed.x < min_impact_speed then
 			impact_speed.x = min_impact_speed
 		end
+
+		if self.velocity.y < 0 and not debug_jump_peak then
+			print("peaked height:"..(hero_position.y - debug_ground_position.y))
+			debug_jump_peak = true
+		end
+		
 		if not self.ground_contact then
 			self.velocity.y = self.velocity.y + gravity
 		else
+			if debug_jump then
+				debug_ground_position = hero_position
+				debug_jump = false
+				debug_jump_peak = false
+			end
+			
 			lock_character = false
-			if not step_playing then
+			--[[if not step_playing then
 				--play_sound(self, "step")
 				step_playing = true
-			end
+			end]]
 		end
 		
 		if self.velocity.y ~= 0  then
@@ -437,7 +453,16 @@ function touch_on_input(self, action_id, action)
 	
 end
 
+local debug = false
+
 function on_input(self, action_id, action)
+	if action_id == hash("debug_on") and not debug then 
+		msg.post("@system:", "toggle_physics_debug")
+		debug = true
+	elseif action_id == hash("debug_off") and debug then 
+		msg.post("@system:", "toggle_physics_debug")
+		debug = false
+	end
 	if not lock_character then
 		if action_id == hash("click") then 
 			touch_on_input(self, action_id, action)

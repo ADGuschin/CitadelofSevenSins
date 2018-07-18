@@ -34,7 +34,7 @@ embedded_components {
 embedded_components {
   id: "1_story_collection_proxy"
   type: "collectionproxy"
-  data: "collection: \"/level/1_story_collection.collection\"\n"
+  data: "collection: \"/level/story_levels/level1/1_story_collection.collection\"\n"
   "exclude: false\n"
   ""
   position {

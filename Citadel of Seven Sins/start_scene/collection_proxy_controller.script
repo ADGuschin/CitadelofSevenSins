@@ -7,7 +7,10 @@ function init(self)
 	math.randomseed(os.time())
 	self.active_proxy = nil
 	self.proxy_to_load = nil
-    msg.post("#", "load", { proxy = collection_proxies[1]})
+    in_game = true
+    index_of_current_level = 2
+    current_level = list_of_levels[index_of_current_level]
+    msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
     --msg.post("#logo_proxy", "load")
 
     --msg.post("#main_menu_proxy", "load")
@@ -44,12 +47,12 @@ function on_message(self, message_id, message, sender)
 end
 
 function update(self, dt)
-    if logo_time == 250 then
-        msg.post("#", "load", { proxy = collection_proxies[2]})
+    if logo_time == 250 or false then
+        --msg.post("#", "load", { proxy = collection_proxies[2]})
         menu_load_state = true
-        logo_time = logo_time + 1
+        --logo_time = logo_time + 1
     end
-    if not menu_load_state then
+    if not menu_load_state or false then
         logo_time = logo_time + 1
     end
 end

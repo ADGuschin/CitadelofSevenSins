@@ -30,6 +30,10 @@ key_trigger {
   input: KEY_A
   action: "debug_off"
 }
+key_trigger {
+  input: KEY_R
+  action: "restart_game"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "click"

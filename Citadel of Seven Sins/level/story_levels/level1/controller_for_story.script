@@ -90,21 +90,19 @@ function on_message(self, message_id, message, sender)
 	elseif message_id == hash("continue") then
 		msg.post(current_hero, "continue")
 	elseif message_id == hash("reset") then 
-		save_gamedata()
+		--[[save_gamedata()
 		training_state = next_try_is_training
-		next_try_is_training = false
-		if training_state then
-			previous_obstacle = "training"
-		else
-			previous_obstacle = "init"
-		end
+		next_try_is_training = false]]
 		-- Tell the hero to reset.
 		reset = true
 		reset_timer = 0
 		self.speed = default_speed
+		
+		collectionfactory.create("#story1", vmath.vector3(1600, 48, 0), nil, {}, 1)
 		msg.post("#", "spawnhero")
 		msg.post("background3/controller#background3", "reset")
 		msg.post("bacground3_loop/controller#background3_loop", "reset")
+		
 	elseif message_id == hash("reset_speed") then
 		self.speed = self.speed * 0.77
 		if self.speed < default_speed then

@@ -10,16 +10,19 @@ deathscreen_state = false
 next_try_is_training = false
 
 --Числовые переменные
-gravity = -65
+slide_cooldown = 10
+slide_time = 30
+impact_speed = vmath.vector3(1000, 500,0)
+gravity = -56
 slide_cooldown_max = 10
-jump_takeoff_speed = 1300
+jump_takeoff_speed = 1100
 invincibility_max = 50
-min_impact_speed = 1250
-max_impact_speed = 1400
-catch_up_speed = 50
+min_impact_speed = 1000
+max_impact_speed = 1250
+catch_up_speed = 25
 jump_break_speed = -2000
 max_speed = 2000
-acceleration = 8
+acceleration = 7
 score = 0
 min_reborn_cost = 100
 reborn_cost = 0

@@ -2,7 +2,6 @@ require "level.utils"
 require "variables"
 function init(self)
     self.speed = 900
-    --msg.post(current_level..":/controller#script", "spawn_pickup_request")
 end
 
 function update(self, dt)
@@ -18,7 +17,5 @@ end
 function on_message(self, message_id, message, sender)
     if message_id == hash("set_speed") then
         self.speed = message.speed 
-    --elseif message_id == hash("spawn_pickups") then
-      --  spawn_pickups(self, message.params)
     end
 end

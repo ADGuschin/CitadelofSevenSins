@@ -22,6 +22,18 @@ key_trigger {
   input: KEY_BACK
   action: "back_clicked"
 }
+key_trigger {
+  input: KEY_F
+  action: "debug_on"
+}
+key_trigger {
+  input: KEY_A
+  action: "debug_off"
+}
+key_trigger {
+  input: KEY_R
+  action: "restart_game"
+}
 mouse_trigger {
   input: MOUSE_BUTTON_LEFT
   action: "click"

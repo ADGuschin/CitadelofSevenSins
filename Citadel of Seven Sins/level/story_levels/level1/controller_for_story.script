@@ -5,7 +5,7 @@ require "variables"
 local grid = 600
 local grido = 2100
 local platform_height = 48
-local default_speed = 460
+local default_speed = 450
 
 local max_speed = 1500
 local obstacle_var = 0
@@ -22,13 +22,14 @@ table_backgrounds_objects = {"#garage","#barrel","#tent_1","#tent_2","#tent_3","
 function init(self)
 	--index_of_current_level = 1 -- пока что захардкодил для теста
 	--current_level = list_of_levels[index_of_current_level]
+	window.set_dim_mode(window.DIMMING_OFF)
 	print(current_level)
 	self.speed = default_speed
 	update_speed(self)
 	self.gridw = 0
 	self.gridbackground = 0
 	--self.heroes = {}
-	
+	collectionfactory.create("#story1", vmath.vector3(1600, 48, 0), nil, {}, 1)
 	msg.post("#", "spawnhero")
 	--print(msg.url())
 end
@@ -38,6 +39,7 @@ function check_for_reset(self)
 	if reset_timer < reset_timer_max then
 		reset_timer = reset_timer + 1
 	else 
+		--print('hihi')
 		reset = false
 	end
 end
@@ -66,11 +68,6 @@ function update(self, dt)
 		local obj = table_backgrounds_objects[indx]
 		pprint(indx)
 		pprint(obj)
-		--[[if indx == 1 then
-			collectionfactory.create(obj, vmath.vector3(1600, 195, -0.55), nil, {}, 4)
-		else
-			collectionfactory.create(obj, vmath.vector3(1600, 100, -0.45), nil, {}, 4)
-		end]]
 	end
 	if self.speed < max_speed then 
 		self.speed = self.speed + acceleration * dt
@@ -84,7 +81,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("spawnhero") then
-		local p = factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},4)
+		local p = factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},1)
 		--table.insert(self.heroes, p)
 		if message.continue == nil then
 			score = 0 
@@ -97,18 +94,15 @@ function on_message(self, message_id, message, sender)
 		save_gamedata()
 		training_state = next_try_is_training
 		next_try_is_training = false
-		if training_state then
-			previous_obstacle = "training"
-		else
-			previous_obstacle = "init"
-		end
 		-- Tell the hero to reset.
 		reset = true
 		reset_timer = 0
 		self.speed = default_speed
+		--collectionfactory.create("#story1", vmath.vector3(1600, 48, 0), nil, {}, 1)
 		msg.post("#", "spawnhero")
 		msg.post("background3/controller#background3", "reset")
 		msg.post("bacground3_loop/controller#background3_loop", "reset")
+		
 	elseif message_id == hash("reset_speed") then
 		self.speed = self.speed * 0.77
 		if self.speed < default_speed then

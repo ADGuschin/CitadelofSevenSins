@@ -231,6 +231,7 @@ function update(self, dt)
 	--lock_character = true
 	if not pause_state then
 		local hero_position = go.get_position()
+		msg.post(current_level..":/camera#camera_controller", "watch_to_hero", {pos = hero_position})
 
 		check_slide(self)
 

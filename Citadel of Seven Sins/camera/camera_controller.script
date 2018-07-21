@@ -27,7 +27,15 @@ function init(self)
 end
 
 function update(self, dt)
+	
 end
 
 function on_message(self, message_id, message, sender)
+	if message_id == hash("watch_to_hero") then
+		local camera_position = go.get_position()
+		
+		camera_position.x = message.pos.x - 300 --что бы камера была не в игроке, а на позиции где всегда, для игрика(ось y, а не игрока) нужно отнимать 182
+		go.set_position(camera_position)
+	end
+
 end

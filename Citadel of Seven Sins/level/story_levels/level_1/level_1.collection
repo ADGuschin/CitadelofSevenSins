@@ -61,7 +61,7 @@ instances {
 }
 instances {
   id: "sfx"
-  prototype: "/hero_new/sfx.go"
+  prototype: "/hero/sirod_sfx.go"
   position {
     x: 0.0
     y: 0.0
@@ -121,7 +121,7 @@ instances {
 }
 instances {
   id: "controller"
-  prototype: "/level/story_levels/level1/controller_for_story.go"
+  prototype: "/level/story_levels/level_1/level_1_controller.go"
   position {
     x: 0.0
     y: 0.0

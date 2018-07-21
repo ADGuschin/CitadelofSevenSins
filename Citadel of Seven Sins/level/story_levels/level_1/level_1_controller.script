@@ -30,6 +30,7 @@ function init(self)
 	self.gridbackground = 0
 	--self.heroes = {}
 	collectionfactory.create("#story1", vmath.vector3(1600, 48, 0), nil, {}, 1)
+	factory.create("#boss", vmath.vector3(1200, 180, 0), nil,{},1)
 	msg.post("#", "spawnhero")
 	--print(msg.url())
 end

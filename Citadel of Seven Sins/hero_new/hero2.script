@@ -465,8 +465,7 @@ function on_input(self, action_id, action)
 	end
 
 	if action_id == hash("restart_game") then
-		go.delete(true)
-		msg.post(current_level..":/controller#script", "reset")
+		msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"}) 
 	end
 	
 	if not lock_character then

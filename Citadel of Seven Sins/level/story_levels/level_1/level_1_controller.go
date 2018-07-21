@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/level/story_levels/level1/controller_for_story.script"
+  component: "/level/story_levels/level_1/level_1_controller.script"
   position {
     x: 0.0
     y: 0.0
@@ -34,7 +34,7 @@ embedded_components {
 embedded_components {
   id: "story1"
   type: "collectionfactory"
-  data: "prototype: \"/level/story_levels/level1/obstacles1.collection\"\n"
+  data: "prototype: \"/level/story_levels/level_1/level1_obstacles.collection\"\n"
   "load_dynamically: false\n"
   ""
   position {

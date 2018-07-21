@@ -5,6 +5,7 @@ autorestart_state = false
 pause_state = false
 training_state = true
 
+
 --Костыль
 deathscreen_state = false
 next_try_is_training = false
@@ -27,10 +28,13 @@ score = 0
 min_reborn_cost = 100
 reborn_cost = 0
 
+current_position = 0
+
+--Магазин
 coins = 0
 current_level_coins = 0
 
-
+--Множители
 multiplier_bar = 0
 bar_maxs = {["x2"] = 10; ["x3"] = 15;}
 

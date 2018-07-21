@@ -39,6 +39,7 @@ function check_for_reset(self)
 	if reset_timer < reset_timer_max then
 		reset_timer = reset_timer + 1
 	else 
+		--print('hihi')
 		reset = false
 	end
 end
@@ -97,7 +98,7 @@ function on_message(self, message_id, message, sender)
 		reset = true
 		reset_timer = 0
 		self.speed = default_speed
-		
+		--collectionfactory.create("#story1", vmath.vector3(1600, 48, 0), nil, {}, 1)
 		msg.post("#", "spawnhero")
 		msg.post("background3/controller#background3", "reset")
 		msg.post("bacground3_loop/controller#background3_loop", "reset")

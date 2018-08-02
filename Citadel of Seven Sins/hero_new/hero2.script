@@ -27,24 +27,24 @@ local function enable_rolling_state(self)
 	msg.post("#sliding_state", "disable")
 	msg.post("#rolling_over_state", "enable")
 	msg.post("#running_state", "disable")
-	msg.post("#go_down", "disable")
-	msg.post("#climb", "disable")
+	--msg.post("#go_down", "disable")
+	--msg.post("#climb", "disable")
 end
 
 local function enable_sliding_state(self)
 	msg.post("#sliding_state", "enable")
 	msg.post("#rolling_over_state", "disable")
 	msg.post("#running_state", "disable")
-	msg.post("#go_down", "enable")
-	msg.post("#climb", "enable")
+	--msg.post("#go_down", "enable")
+	--msg.post("#climb", "enable")
 end
 
 local function enable_running_state(self)
 	msg.post("#sliding_state", "disable")
 	msg.post("#rolling_over_state", "disable")
 	msg.post("#running_state", "enable")
-	msg.post("#go_down", "enable")
-	msg.post("#climb", "enable")
+	--msg.post("#go_down", "enable")
+	--msg.post("#climb", "enable")
 end
 
 function init(self)

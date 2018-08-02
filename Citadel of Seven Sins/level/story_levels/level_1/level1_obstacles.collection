@@ -629,8 +629,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 3464.0
-    y: 180.0
+    x: 3462.0
+    y: 179.0
     z: 0.0
   }
   rotation {
@@ -887,8 +887,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 3565.0
-    y: 194.0
+    x: 3563.0
+    y: 193.0
     z: 0.0
   }
   rotation {
@@ -1077,7 +1077,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 4.5\\n"
-  "  data: 24.0\\n"
+  "  data: 59.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -1124,7 +1124,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 30.0\\n"
-  "  data: 30.0\\n"
+  "  data: 65.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -1146,7 +1146,7 @@ embedded_instances {
   ""
   position {
     x: 5360.0
-    y: 150.0
+    y: 200.0
     z: 0.0
   }
   rotation {
@@ -1206,7 +1206,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 13.5\\n"
-  "  data: 24.0\\n"
+  "  data: 59.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -1253,7 +1253,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 90.0\\n"
-  "  data: 30.0\\n"
+  "  data: 65.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -1287,7 +1287,7 @@ embedded_instances {
   "    shape_type: TYPE_BOX\\n"
   "    position {\\n"
   "      x: 0.0\\n"
-  "      y: -60.0\\n"
+  "      y: -100.0\\n"
   "      z: 0.0\\n"
   "    }\\n"
   "    rotation {\\n"
@@ -1322,7 +1322,7 @@ embedded_instances {
   ""
   position {
     x: 5730.0
-    y: 150.0
+    y: 200.0
     z: 0.0
   }
   rotation {
@@ -1382,7 +1382,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 2.5\\n"
-  "  data: 24.0\\n"
+  "  data: 59.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -1429,7 +1429,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 15.0\\n"
-  "  data: 30.0\\n"
+  "  data: 65.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -1451,7 +1451,7 @@ embedded_instances {
   ""
   position {
     x: 6160.0
-    y: 150.0
+    y: 200.0
     z: 0.0
   }
   rotation {
@@ -1769,7 +1769,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 4.5\\n"
-  "  data: 24.0\\n"
+  "  data: 59.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -1816,7 +1816,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 30.0\\n"
-  "  data: 30.0\\n"
+  "  data: 65.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -1837,8 +1837,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 7620.0
-    y: 293.0
+    x: 7580.0
+    y: 348.0
     z: 0.0
   }
   rotation {
@@ -2027,7 +2027,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 4.5\\n"
-  "  data: 24.0\\n"
+  "  data: 59.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -2074,7 +2074,7 @@ embedded_instances {
   "    count: 3\\n"
   "  }\\n"
   "  data: 30.0\\n"
-  "  data: 30.0\\n"
+  "  data: 65.0\\n"
   "  data: 10.0\\n"
   "}\\n"
   "linear_damping: 0.0\\n"
@@ -2095,8 +2095,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 6890.0
-    y: 343.0
+    x: 6880.0
+    y: 378.0
     z: 0.0
   }
   rotation {
@@ -2327,6 +2327,264 @@ embedded_instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "dummy17"
+  data: "components {\n"
+  "  id: \"obstacle_still\"\n"
+  "  component: \"/level/obstacles/obstacle_still.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"impact\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_KINEMATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"impact\\\"\\n"
+  "mask: \\\"hero\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: -42.5\\n"
+  "      y: -16.0\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 5.0\\n"
+  "  data: 5.0\\n"
+  "  data: 10.0\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"obstacle\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_STATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"obstacle\\\"\\n"
+  "mask: \\\"hero\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 500.0\\n"
+  "  data: 0.5\\n"
+  "  data: 0.5\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 9152.35
+    y: 317.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.26723838
+    w: 0.96363044
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "dummy18"
+  data: "components {\n"
+  "  id: \"obstacle_still\"\n"
+  "  component: \"/level/obstacles/obstacle_still.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"impact\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_KINEMATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"impact\\\"\\n"
+  "mask: \\\"hero\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: -42.5\\n"
+  "      y: -16.0\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 5.0\\n"
+  "  data: 5.0\\n"
+  "  data: 0.5\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"obstacle\"\n"
+  "  type: \"collisionobject\"\n"
+  "  data: \"collision_shape: \\\"\\\"\\n"
+  "type: COLLISION_OBJECT_TYPE_KINEMATIC\\n"
+  "mass: 0.0\\n"
+  "friction: 0.1\\n"
+  "restitution: 0.5\\n"
+  "group: \\\"obstacle\\\"\\n"
+  "mask: \\\"hero\\\"\\n"
+  "embedded_collision_shape {\\n"
+  "  shapes {\\n"
+  "    shape_type: TYPE_BOX\\n"
+  "    position {\\n"
+  "      x: -1.575\\n"
+  "      y: 49.219\\n"
+  "      z: 0.0\\n"
+  "    }\\n"
+  "    rotation {\\n"
+  "      x: 0.0\\n"
+  "      y: 0.0\\n"
+  "      z: 0.0\\n"
+  "      w: 1.0\\n"
+  "    }\\n"
+  "    index: 0\\n"
+  "    count: 3\\n"
+  "  }\\n"
+  "  data: 500.0\\n"
+  "  data: 0.5\\n"
+  "  data: 0.5\\n"
+  "}\\n"
+  "linear_damping: 0.0\\n"
+  "angular_damping: 0.0\\n"
+  "locked_rotation: false\\n"
+  "\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 9985.0
+    y: 274.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: -0.26723838
+    w: 0.96363044
   }
   scale3 {
     x: 1.0

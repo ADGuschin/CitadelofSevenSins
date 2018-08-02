@@ -36,7 +36,7 @@ current_level_coins = 0
 
 --Множители
 multiplier_bar = 0
-bar_maxs = {["x2"] = 10; ["x3"] = 15;}
+bar_maxs = {["x2"] = 100; ["x3"] = 150;}
 
 score_multiplier = {["default"] = {multiplier = 1; next = "x2"; current = "default"};
 ["x2"] = {multiplier = 2; next = "x3"; current = "x2"};

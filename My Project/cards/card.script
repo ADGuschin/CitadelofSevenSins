@@ -1,0 +1,61 @@
+
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	print(go.get_position())
+	local pos = vmath.vector3(500, 200, 0)
+	print(go.set_position(pos))
+	print(go.get_position())
+end
+
+function final(self)
+	-- Add finalization code here
+	-- Remove this function if not needed
+end
+
+function update(self, dt)
+	if(go.get_position().y == 500) then
+		go.animate(go.get_id(), "position.y", go.PLAYBACK_ONCE_FORWARD, 200, go.EASING_LINEAR, 1)
+	end
+	if (go.get_position().y == 200) then
+		go.animate(go.get_id(), "position.y", go.PLAYBACK_ONCE_FORWARD, 500, go.EASING_LINEAR, 1)
+		up = true
+	end
+	-- Add update code here
+	-- Remove this function if not needed
+end
+
+function on_message(self, message_id, message, sender)
+	-- Add message-handling code here
+	-- Remove this function if not needed
+end
+
+function clicked_on_card(self, action)
+	local center = vmath.vector3(go.get_position().x, go.get_position().y, 0)
+	if (action.x < center.x + 100 and
+		action.x > center.x - 100 and
+		action.y < center.y + 150 and
+		action.y > center.y - 150) then
+		return true 
+	else 
+		return false
+	end
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") then
+		if(clicked_on_card(self, action)) then
+			print("clicked")
+		end
+		local pos = go.get_position()
+		print("x = "..action.x.."y = "..action.y)
+		print("card x = "..pos.x.."card y = "..pos.y)
+	end
+	-- Add input-handling code here
+	-- Remove this function if not needed
+end
+
+function on_reload(self)
+	-- Add reload-handling code here
+	-- Remove this function if not needed
+end

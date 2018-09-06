@@ -13,6 +13,8 @@ local reset_timer = 0
 local reset_timer_max = 5
 local current_hero
 
+local current_dt
+
 local previous_obstacle
 table_backgrounds_objects = {"#garage","#barrel","#tent_1","#tent_2","#tent_3","#tent_4"}
 
@@ -28,11 +30,9 @@ function init(self)
 	update_speed(self)
 	self.gridw = 0
 	self.gridbackground = 0
-	--self.heroes = {}
 	collectionfactory.create("#story1", vmath.vector3(1600, 48, 0), nil, {}, 1)
 	factory.create("#boss", vmath.vector3(1200, 180, 0), nil,{},1)
 	msg.post("#", "spawnhero")
-	--print(msg.url())
 end
 
 
@@ -49,20 +49,15 @@ end
 function calculate_score(self)
 	if not pause_state then
 		score = score + self.speed / 10000
-		if current_score_multiplier.next ~= "none" then 
-			multiplier_bar = multiplier_bar + self.speed / 10000
-			if multiplier_bar >= bar_maxs[current_score_multiplier.next] then
-				multiplier_bar = 0
-				current_score_multiplier = score_multiplier[current_score_multiplier.next]
-				msg.post("/score#score", "change_multiplier")
-			end
-		end
+		current_progress = current_progress + self.speed * current_dt
+		msg.post("/score#score", "progress", {value = math.ceil(current_progress*100/level_progress[current_level])})
 		msg.post("/score#score", "score", {value = math.ceil(score)})
 		msg.post("/score#score", "coins", {value = coins})
 	end
 end
 
 function update(self, dt)
+	current_dt = dt
 	self.gridw = self.gridw + self.speed * dt
 	self.gridbackground = self.gridbackground + ((self.speed * 200) / 360) * dt
 	if self.gridbackground >= grido then

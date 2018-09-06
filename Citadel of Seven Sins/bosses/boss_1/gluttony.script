@@ -9,9 +9,9 @@ function final(self)
 	-- Remove this function if not needed
 end
 
-function jump(self)
+local function jump(self)
 	self.velocity.y = 1500
-	print('jump???')
+	--print('jump???')
 end
 
 local function handle_geometry_contact(self, normal, distance)

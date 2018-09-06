@@ -27,21 +27,21 @@ acceleration = 7
 score = 0
 min_reborn_cost = 100
 reborn_cost = 0
-
+dashing_speed = 1500
+dashing_distance = 150
+default_hero_posititon_x = 300
+going_back_speed = -70
 current_position = 0
 
 --Магазин
 coins = 0
 current_level_coins = 0
 
---Множители
-multiplier_bar = 0
-bar_maxs = {["x2"] = 100; ["x3"] = 150;}
-
-score_multiplier = {["default"] = {multiplier = 1; next = "x2"; current = "default"};
-["x2"] = {multiplier = 2; next = "x3"; current = "x2"};
-["x3"] = {multiplier = 3; next = "none"; current = "x3"};} 
-current_score_multiplier = score_multiplier["default"]
+--Прогресс
+current_progress = 0
+level_progress = {
+	["level"] = 100, 
+	["1_story_collection"] = 10000}
 
 --Переменные для включения логов
 gui_log = false

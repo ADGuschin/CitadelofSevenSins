@@ -1,0 +1,9 @@
+images {
+  image: "/cards/images/36.png"
+}
+images {
+  image: "/cards/images/dixit-card-1.jpg"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

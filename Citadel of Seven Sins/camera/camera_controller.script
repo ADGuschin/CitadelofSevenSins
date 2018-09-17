@@ -9,6 +9,7 @@ go.property("initial_fixed_position", vmath.vector3(0,0,0))
 
 local screen_width
 local screen_height
+local watch_hero_y = false
 
 function init(self)
 	-- Add initialization code here
@@ -30,4 +31,16 @@ function update(self, dt)
 end
 
 function on_message(self, message_id, message, sender)
+	if message_id == hash("watch_to_hero") then
+		local camera_position = go.get_position()
+		camera_position.x = message.pos.x - 300 --что бы камера была не в игроке, а на позиции где всегда, для игрика(ось y, а не игрока) нужно отнимать 182
+		if watch_hero_y then
+			camera_position.y = message.pos.y - 167
+		end
+		go.set_position(camera_position)
+	elseif message_id == hash("start_watch") then
+		watch_hero_y = true
+	elseif message_id == hash("stop_watch") then
+		watch_hero_y = false
+	end
 end

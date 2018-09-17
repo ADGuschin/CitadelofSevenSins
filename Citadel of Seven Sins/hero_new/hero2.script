@@ -20,6 +20,7 @@ local rolling_over = false
 local pause = false
 local roll_allowed = false
 local lock_character = false
+local must_follow = false
 
 local debug_ground_position = vmath.vector3(0,0,0)
 
@@ -238,6 +239,12 @@ end
 function update(self, dt)
 	if not pause_state then
 		local hero_position = go.get_position()
+		if must_follow and self.ground_contact then
+			print("camera_follow")
+			msg.post(current_level..":/camera#camera_controller", "start_watch")
+			must_follow = false
+		end
+		msg.post(current_level..":/camera#camera_controller", "watch_to_hero", {pos = hero_position})
 		--print(hero_position.y)
 		check_slide(self)
 
@@ -385,6 +392,16 @@ function on_message(self, message_id, message, sender)
 			invincibility = 0.6*invincibility_max]]
 		elseif message.group == hash("still_slide") then
 			current_slide_moment = (2*slide_time) / 3
+		elseif message.group == hash("camera_follow") then
+			if self.ground_contact then
+				print("camera_follow")
+				msg.post(current_level..":/camera#camera_controller", "start_watch")
+			else
+				must_follow = true
+			end
+		elseif message.group == hash("camera_stop_follow") then
+			print("camera_stop_follow")
+			msg.post(current_level..":/camera#camera_controller", "stop_watch")
 		elseif (message.group == hash("impact") and not pushed and not invincible) then
 			on_impact(self, "hard")
 		elseif message.group == hash("impact_soft") then

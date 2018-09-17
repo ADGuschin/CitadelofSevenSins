@@ -1,4 +1,44 @@
 name: "default"
+instances {
+  id: "test_camera_follow"
+  prototype: "/level/obstacles/gameobjects/test_camera_follow.go"
+  position {
+    x: 2063.0
+    y: 144.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "test_camera_stop_follow"
+  prototype: "/level/obstacles/gameobjects/test_camera_stop_follow.go"
+  position {
+    x: 5023.0
+    y: 143.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "dummy"

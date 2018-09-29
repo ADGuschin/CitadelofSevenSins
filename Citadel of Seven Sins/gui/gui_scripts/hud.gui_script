@@ -29,7 +29,6 @@ function init(self)
 				}
 	
 	init_ui(self)
-	
 end
 
 function final(self)

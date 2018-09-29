@@ -1,14 +1,6 @@
 require "main_menu.ui_func"
 require "variables"
 
-local title = {
-	language = { "Language:", "Язык:" },
-	training = { "Tutotial:", "Обучение:" },
-	autorestart = { "Autorestart:", "Авторестарт:" },
-	logical_yes = {"yes", "да"},
-	logical_no = {"no", "нет"}
-}
-
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
 
@@ -31,7 +23,7 @@ function init(self)
 									end
 
 									if gui_log then
-										print("Нажата кнопка звука, звук должен был быть включен, нажали на кнопку, выключаем")
+										print("Нажата кнопка звука, звук отключен")
 									end
 								else
 									sound = true
@@ -44,7 +36,7 @@ function init(self)
 									end
 
 									if gui_log then
-										print("Нажата кнопка звука, звук должен был быть выключен, нажали на кнопку, включаем")
+										print("Нажата кнопка звука, звук включен")
 									end
 								end
 							end
@@ -54,7 +46,9 @@ function init(self)
 						node = gui.get_node("close_button"),
 						action = function ()
 							--finish_anim(gui.get_node("background"))
-							msg.post(".", "hide")
+							if gui.is_enabled(gui.get_node("background")) then
+								msg.post(".", "close")
+							end
 						end
 					},
 					{
@@ -62,10 +56,10 @@ function init(self)
 						action = function ()
 							if gui.is_enabled(gui.get_node("background")) then
 								if autorestart_state then
-									gui.set_text(gui.get_node("autorestart_state"), title.logical_no[language_state])
+									gui.set_text(gui.get_node("autorestart_state"), localization.settings.logical_no[language_state])
 									autorestart_state = false
 								else
-									gui.set_text(gui.get_node("autorestart_state"), title.logical_yes[language_state])
+									gui.set_text(gui.get_node("autorestart_state"), localization.settings.logical_yes[language_state])
 									autorestart_state = true
 								end
 
@@ -81,25 +75,24 @@ function init(self)
 							if gui.is_enabled(gui.get_node("background")) then
 								if in_game then
 									if next_try_is_training then
-										gui.set_text(gui.get_node("training_state"), title.logical_no[language_state])
+										gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state])
 										next_try_is_training = false
 									else
-										gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state])
+										gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state])
 										next_try_is_training = true
 									end
 								else
 									if training_state then
-										gui.set_text(gui.get_node("training_state"), title.logical_no[language_state])
+										gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state])
 										training_state = false
 									else
-										gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state])
+										gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state])
 										training_state = true
 									end
 								end
-								
 
 								if gui_log then
-									print("Нажата кнопка переключения тренировки, состояние авторестарта изменено на", training)
+									print("Нажата кнопка переключения тренировки, состояние тренировки изменено на", training_state)
 								end
 							end
 						end
@@ -116,29 +109,30 @@ function init(self)
 									gui.set_text(gui.get_node("language_state"), language[language_state])
 								end
 								
-								gui.set_text(gui.get_node("language_text"), title.language[language_state])
+								gui.set_text(gui.get_node("language_text"), localization.settings.language[language_state])
 								
-								gui.set_text(gui.get_node("training_text"), title.training[language_state])
+								gui.set_text(gui.get_node("training_text"), localization.settings.training[language_state])
 								if training_state == true then
-									gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state]) 
+									gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state]) 
 								elseif training_state == false then
-									gui.set_text(gui.get_node("training_state"), title.logical_no[language_state]) 
+									gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state]) 
 								end
 								
-								gui.set_text(gui.get_node("autorestart_text"), title.autorestart[language_state])
+								gui.set_text(gui.get_node("autorestart_text"), localization.settings.autorestart[language_state])
 								if autorestart_state == true then
-									gui.set_text(gui.get_node("autorestart_state"), title.logical_yes[language_state]) 
+									gui.set_text(gui.get_node("autorestart_state"), localization.settings.logical_yes[language_state]) 
 								elseif autorestart_state == false then
-									gui.set_text(gui.get_node("autorestart_state"), title.logical_no[language_state]) 
+									gui.set_text(gui.get_node("autorestart_state"), localization.settings.logical_no[language_state]) 
 								end
 								
 								if gui_log then
-									--print("Нажата кнопка переключения тренировки, состояние авторестарта изменено на", training)
+									print("Нажата кнопка переключения языка, состояние аязыка изменено на", language[language_state])
 								end
 							end
 						end
 					}
 				}
+				
 	--init_ui(self)
 end
 
@@ -156,14 +150,13 @@ function on_message(self, message_id, message, sender)
 		gui.set_position(gui.get_node("background"), vmath.vector3(640, 360, 0))
 		gui.set_enabled(gui.get_node("background"), true)
 		
-		local node = gui.get_node("background")
-		gui.animate(node, "position.y", 640, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+		gui.animate(gui.get_node("background"), "position.y", 640, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 
 		gui.set_text(gui.get_node("language_state"), language[language_state])
 
-		gui.set_text(gui.get_node("language_text"), title.language[language_state])
-		gui.set_text(gui.get_node("training_text"), title.training[language_state])
-		gui.set_text(gui.get_node("autorestart_text"), title.autorestart[language_state])
+		gui.set_text(gui.get_node("language_text"), localization.settings.language[language_state])
+		gui.set_text(gui.get_node("training_text"), localization.settings.training[language_state])
+		gui.set_text(gui.get_node("autorestart_text"), localization.settings.autorestart[language_state])
 		
 		if sound then
 			gui.play_flipbook(gui.get_node("sound_button"), "music_on")
@@ -172,22 +165,22 @@ function on_message(self, message_id, message, sender)
 		end
 
 		if autorestart_state then
-			gui.set_text(gui.get_node("autorestart_state"), title.logical_yes[language_state])
+			gui.set_text(gui.get_node("autorestart_state"), localization.settings.logical_yes[language_state])
 		else
-			gui.set_text(gui.get_node("autorestart_state"), title.logical_no[language_state])
+			gui.set_text(gui.get_node("autorestart_state"), localization.settings.logical_no[language_state])
 		end
 		
 		if in_game then
 			if next_try_is_training then
-				gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state])
+				gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state])
 			else
-				gui.set_text(gui.get_node("training_state"), title.logical_no[language_state])
+				gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state])
 			end
 		else
 			if training_state then
-				gui.set_text(gui.get_node("training_state"), title.logical_yes[language_state])
+				gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state])
 			else
-				gui.set_text(gui.get_node("training_state"), title.logical_no[language_state])
+				gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state])
 			end
 		end
 
@@ -200,14 +193,9 @@ function on_message(self, message_id, message, sender)
 			print("Пришло сообщение о включении экрана настроек от", sender, "Показан экран настроек")
 		end
 	end
-	if message_id == hash("hide") then
-		gui.animate(gui.get_node("background"), "position.y", -450, gui.EASING_INCUBIC, 0.5, 0, msg.post(".", "close"), gui.PLAYBACK_ONCE_FORWARD)
-		--finish_anim(gui.get_node("background"))
-
-		msg.post(".", "close")
-	end
-
 	if message_id == hash("close") then
+		gui.animate(gui.get_node("background"), "position.y", -450, gui.EASING_INCUBIC, 0.5, 0, gui.PLAYBACK_ONCE_FORWARD)
+		
 		if gui.is_enabled(gui.get_node("background")) then
 			gui.set_enabled(gui.get_node("background"), true)
 
@@ -229,7 +217,7 @@ end
 function on_input(self, action_id, action)
 	if action_id == hash("back_clicked") then
 		--finish_anim(gui.get_node("background"))
-		msg.post(".", "hide")
+		--msg.post(".", "hide")
 	end
 	if action_id == hash("click") or action_id == hash("touch") then
 

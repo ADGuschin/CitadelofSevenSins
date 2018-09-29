@@ -1,16 +1,6 @@
 require "main_menu.ui_func"
 require "variables"
 
-local title = {
-	restart = { "Restart", "Заново" },
-	menu = { "Menu", "Меню" },
-	death_message = { "You died ^_^", "Ты умер ^_^" },
-	continue_text = { "Continue", "Продолжить" },
-	notenough_text = {"Not enough money :)", "Не достаточно монет :)"},
-	score_message = {"Your score:", "Счет:"},
-	highscore_message = {"NEW HIGHSCORE:", "НОВЫЙ РЕКОРД:"}
-}
-
 function init(self)
 	if gui_log then
 		print("Экран смерти проинициализирован")
@@ -21,16 +11,11 @@ function init(self)
 	gui.set_enabled(gui.get_node("record_box"), false)
 	gui.set_enabled(gui.get_node("notenough_box"), false)
 	
+	msg.post("/death_screen#death_screen", "show")
+	
 	self.hovered_node = nil
 	self.picked_node = nil
-	gui.set_enabled(gui.get_node("box"), true)
-	gui.set_text(gui.get_node("Restart"), title.restart[language_state]) 
-	gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
-	gui.set_text(gui.get_node("death_message"), title.death_message[language_state]) 
-	gui.set_text(gui.get_node("continue_text"), title.continue_text[language_state]) 
-	gui.set_text(gui.get_node("notenough_text"), title.notenough_text[language_state]) 
-	gui.set_text(gui.get_node("score_message"), title.score_message[language_state]) 
-	gui.set_text(gui.get_node("highscore_message"), title.highscore_message[language_state])
+	
 	self.nodes = {
 					{
 						node = gui.get_node("restart"),
@@ -87,7 +72,7 @@ function init(self)
 								
 
 								if gui_log then
-									--print("Нажата кнопка рестарт, загружен прокси main коллекции")
+									print("Нажата кнопка выкупа, игра продолжена")
 								end
 							else
 								if gui.is_enabled(gui.get_node("notenough_box")) then
@@ -163,13 +148,13 @@ function on_message(self, message_id, message, sender)
 		end
 	elseif message_id == hash("show") then
 		gui.set_enabled(gui.get_node("box"), true)
-		gui.set_text(gui.get_node("Restart"), title.restart[language_state]) 
-		gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
-		gui.set_text(gui.get_node("death_message"), title.death_message[language_state]) 
-		gui.set_text(gui.get_node("continue_text"), title.continue_text[language_state]) 
-		gui.set_text(gui.get_node("notenough_text"), title.notenough_text[language_state]) 
-		gui.set_text(gui.get_node("score_message"), title.score_message[language_state]) 
-		gui.set_text(gui.get_node("highscore_message"), title.highscore_message[language_state])  
+		gui.set_text(gui.get_node("Restart"), localization.death_screen.restart[language_state]) 
+		gui.set_text(gui.get_node("Menu"), localization.death_screen.menu[language_state]) 
+		gui.set_text(gui.get_node("death_message"), localization.death_screen.death_message[language_state]) 
+		gui.set_text(gui.get_node("continue_text"), localization.death_screen.continue_text[language_state]) 
+		gui.set_text(gui.get_node("notenough_text"), localization.death_screen.notenough_text[language_state]) 
+		gui.set_text(gui.get_node("score_message"), localization.death_screen.score_message[language_state]) 
+		gui.set_text(gui.get_node("highscore_message"), localization.death_screen.highscore_message[language_state])  
 		
 		if gui_log then
 			print("Пришло сообщение о включении экрана смерти от", sender, "Экран смерти включен")

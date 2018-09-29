@@ -4,6 +4,7 @@ pressed_color = vmath.vector4(.5, .0, .0, 1);
 
 function init_ui(self)
 	for i, p in ipairs(self.nodes) do
+		--normal_color = gui.get_color(p.node)
 		gui.set_color(p.node, normal_color);
 	end
 end
@@ -43,8 +44,10 @@ function handle_hover(self, x, y)
 	end
 	if node_picked then
 		if self.hovered_node == self.picked_node then
+			--normal_color = gui.get_color(self.picked_node)
 			gui.animate(self.picked_node, "color", pressed_color, gui.EASING_OUTQUAD, 0.1)
 		elseif self.picked_node == nil then
+			--normal_color = gui.get_color(self.hovered_node)
 			gui.animate(self.hovered_node, "color", hover_color, gui.EASING_OUTQUAD, 0.1)
 		end
 	end

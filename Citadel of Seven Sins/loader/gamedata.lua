@@ -8,7 +8,8 @@ shared_data = {
 	data = {
 		training_state = true,
 		autorestart_state = false,
-		coins = 0
+		coins = 0,
+		diamonds = 0
 	},
 	control = {
 		options_swipe = true,
@@ -49,6 +50,10 @@ function load_gamedata(self)
 		
 		if gamedata.data.coins then
 			shared_data.data.coins = gamedata.data.coins
+		end
+
+		if gamedata.data.diamonds then
+			shared_data.data.diamonds = gamedata.data.diamonds
 		end
 
 		if gamedata.control then

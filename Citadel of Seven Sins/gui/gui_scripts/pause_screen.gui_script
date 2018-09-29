@@ -1,11 +1,6 @@
 require "main_menu.ui_func"
 require "variables"
 
-local title = {
-	resume = { "Resume", "Продолжить" },
-	menu = { "Menu", "Меню" }
-}
-
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
 
@@ -28,8 +23,6 @@ function init(self)
 						node = gui.get_node("menu"),
 						action = function () 
 							in_game = false
-							--pause_state = false
-							--gui.set_enabled(gui.get_node("background"), false)
 							
 							msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_menu_proxy"})
 
@@ -42,9 +35,19 @@ function init(self)
 						node = gui.get_node("settings_button"),
 						action = function () 
 							msg.post("default:/settings#settings", "show")
-							
+
 							if gui_log then
 								print("Нажата кнопка настроек")
+							end
+						end
+					},
+					{
+						node = gui.get_node("shop_button"),
+						action = function () 
+							msg.post("default:/shop#shop", "show")
+							
+							if gui_log then
+								print("Нажата кнопка магазина")
 							end
 						end
 					}
@@ -53,22 +56,21 @@ function init(self)
 	init_ui(self)
 end
 
-function finish_anim(node)
+--[[function finish_anim(node)
 	gui.animate(node, "position.y", -150, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
-end
+end]]
 
 function update(self, dt)
-	gui.set_text(gui.get_node("Resume"), title.resume[language_state]) 
-	gui.set_text(gui.get_node("Menu"), title.menu[language_state]) 
+	gui.set_text(gui.get_node("Resume"), localization.pause_screen.resume[language_state]) 
+	gui.set_text(gui.get_node("Menu"), localization.pause_screen.menu[language_state]) 
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
 		gui.set_position(gui.get_node("background"), vmath.vector3(640, 360, 0))
 		gui.set_enabled(gui.get_node("background"), true)
-		local node = gui.get_node("background")
-		--gui.set_position(node, 0)
-		gui.animate(node, "position.y", 640, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+		
+		gui.animate(gui.get_node("background"), "position.y", 640, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 		msg.post(".", "acquire_input_focus")
 
 		if gui_log then

@@ -1,5 +1,24 @@
-require "loader.gamedata"
+require "loader.gamedata" --delete
 require "variables"
+
+--local save_file = sys.get_save_file("Citadel of Seven Sins", "gamedata")
+
+--[[
+shared_data = {
+	player = {
+		score = 0,
+		highscore = 0,
+		coins = 0,
+		diamonds = 0
+		level = 1
+	},
+	options = {
+		sound = true,
+		language_state = 1,
+		autorestart_state = false
+	}
+}
+]]
 
 function init(self)
 	if gui_log then
@@ -9,6 +28,7 @@ function init(self)
 	load_gamedata()
 	
 	coins = shared_data.data.coins
+	diamonds = shared_data.data.diamonds
 
 	options_swipe = shared_data.control.options_swipe
 	options_touch = shared_data.control.options_touch
@@ -18,6 +38,20 @@ function init(self)
 
 	sound = shared_data.options.sound
 	language_state = shared_data.options.language_state
+	--[[
+	load_gamedata()
+
+	coins = shared_data.player.coins
+	diamonds = shared_data.player.diamonds
+	player_level = shared_data.player.level
+	sound = shared_data.options.sound
+	language_state = shared_data.options.language_state
+	autorestart_state = shared_data.options.autorestart_state
+	
+	if gui_log then
+		print("Loader проинициализирован")
+	end
+	]]
 end
 
 function final(self)
@@ -30,6 +64,7 @@ end
 
 function update(self, dt)
 	shared_data.data.coins = coins
+	shared_data.data.diamonds = diamonds
 
 	shared_data.control.options_swipe = options_swipe
 	shared_data.control.options_touch = options_touch
@@ -39,19 +74,53 @@ function update(self, dt)
 
 	shared_data.options.sound = sound
 	shared_data.options.language_state = language_state
+	--[[
+	shared_data.player.coins = coins
+	shared_data.player.diamonds = diamonds
+	shared_data.player.level = player_level
+	shared_data.options.sound = sound
+	shared_data.options.language_state = language_state
+	shared_data.options.autorestart_state = autorestart_state
+	]]
 end
 
-function on_message(self, message_id, message, sender)
-	-- 
-	-- 
+--[[
+function save_gamedata(self)
+	-- Save gamedata
+
+	if sys.save(save_file, shared_data) then
+		if gui_log then
+			print("Геймдата сохранена")
+			pprint(shared_data)
+		end
+	else
+		print("Геймдата не сохранена")
+	end
 end
 
-function on_input(self, action_id, action)
-	-- Add input-handling code here
-	-- Remove this function if not needed
-end
+function load_gamedata(self)
+	--	Load gamedata
+	
+	local datafile = sys.load(save_file)
 
-function on_reload(self)
-	-- Add input-handling code here
-	-- Remove this function if not needed
-end
+	if next(datafile) then
+		shared_data.player.highscore = datafile.player.highscore
+		shared_data.player.coins = datafile.player.coins
+		shared_data.player.diamonds = datafile.player.diamonds
+
+		shared_data.options.sound = datafile.options.sound 
+		shared_data.options.language_state = datafile.options.language_state
+		shared_data.options.autorestart_state = datafile.options.autorestart_state
+
+		if gui_log then
+			print("Геймдата загружена")
+			print("Файл:")
+			pprint(datafile)
+			print("Загруженное:")
+			pprint(shared_data)
+		end
+	else
+		print("Геймдата пуста")
+		sys.save(save_file, shared_data)
+	end
+end]]

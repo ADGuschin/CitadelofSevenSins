@@ -34,7 +34,7 @@ max_boss_progress = {
 }
 
 --Переменные для включения логов
-gui_log = true
+gui_log = false
 
 --Индекс нынешнего уровня
 index_of_current_level = 1 --Счет идет с 1
@@ -51,11 +51,6 @@ skins = {
 	names = { "player_runfast_black", "player_fast_right", "test", "test", "test", "test", "test", "test" },
 	shop = { true, false, false, false, false, false, false, false },
 	cost = { 0, 50, 100, 150, 250, 300, 350, 400}
-	--[[ ["black"] = {
-		anim = {["run"] = }
-		shop = true
-		cost = 0
-	}]]
 }
 
 --Стоимость лутбоксов
@@ -72,7 +67,7 @@ localization = 	{
 										menu = { "Menu", "Меню" },
 										death_message = { "You died ^_^", "Ты умер ^_^" },
 										continue_text = { "Continue", "Продолжить" },
-										notenough_text = {"Not enough money :)", "Не достаточно монет :)"},
+										notenough_text = {"Not enough money :(", "Не достаточно монет :("},
 										score_message = {"Your score:", "Счет:"},
 										highscore_message = {"NEW HIGHSCORE:", "НОВЫЙ РЕКОРД:"}
 					},
@@ -97,6 +92,7 @@ localization = 	{
 										selected = { "Selected", "Выбран" },
 										skins = { "Skins", "Скины" },
 										boxes = { "Boxes", "Лутбоксы" },
+										msg = { money = { "Not enough money :(", "Не достаточно монет :(" }, success = { "Successful  purchase! :)", "Успешная покупка! :)" } },
 										donate = { "DONATION:", "ДОНАТ:" },
 										back = { "Back", "Назад"}
 					},

@@ -52,8 +52,12 @@ player_level = 2
 language = {"EN", "РУ"}
 language_state = 1
 
---Стоимость скинов
-skins_cost = { 50, 100, 150, 200, 250, 300, 350, 400}
+skins = {
+	type = 2,
+	names = { "player_runfast_black", "player_fast_right", "test", "test", "test", "test", "test", "test" },
+	shop = { true, false, false, false, false, false, false, false },
+	cost = { 0, 50, 100, 150, 250, 300, 350, 400}
+}
 
 --Стоимость лутбоксов
 lootboxes_cost = { 50, 100, 150, 200, 250, 300, 350, 400}

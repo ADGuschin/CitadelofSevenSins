@@ -11,6 +11,10 @@ textures {
   name: "pickups"
   texture: "/pickups/images/pickups.atlas"
 }
+textures {
+  name: "hero2"
+  texture: "/hero_new/hero2.atlas"
+}
 background_color {
   x: 0.0
   y: 0.0
@@ -616,7 +620,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_price1"
+  id: "skin_button1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NE
@@ -691,7 +695,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_price1"
+  parent: "skin_button1"
   layer: ""
   inherit_alpha: false
   alpha: 1.0
@@ -722,7 +726,7 @@ nodes {
   }
   size {
     x: 200.0
-    y: 300.0
+    y: 200.0
     z: 0.0
     w: 1.0
   }
@@ -734,7 +738,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/Steve"
+  texture: "hero2/player_run_black"
   id: "box"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -845,7 +849,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_price2"
+  id: "skin_button2"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NE
@@ -920,7 +924,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_price2"
+  parent: "skin_button2"
   layer: ""
   inherit_alpha: false
   alpha: 1.0
@@ -963,7 +967,7 @@ nodes {
   }
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
-  texture: "gui/d9b381a5a6bef18a7e675214111804e0a748a8598932aa991142156e007295f9"
+  texture: "hero2/player_fast_right"
   id: "box1"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
@@ -1074,7 +1078,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_price3"
+  id: "skin_button3"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NE
@@ -1149,7 +1153,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_price3"
+  parent: "skin_button3"
   layer: ""
   inherit_alpha: false
   alpha: 1.0
@@ -1303,7 +1307,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_price4"
+  id: "skin_button4"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NE
@@ -1378,7 +1382,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_price4"
+  parent: "skin_button4"
   layer: ""
   inherit_alpha: false
   alpha: 1.0
@@ -1532,7 +1536,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_price5"
+  id: "skin_button5"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NE
@@ -1607,7 +1611,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_price5"
+  parent: "skin_button5"
   layer: ""
   inherit_alpha: false
   alpha: 1.0
@@ -1761,7 +1765,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_price6"
+  id: "skin_button6"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NE
@@ -1836,7 +1840,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_price6"
+  parent: "skin_button6"
   layer: ""
   inherit_alpha: false
   alpha: 1.0
@@ -1990,7 +1994,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_price7"
+  id: "skin_button7"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NE
@@ -2065,7 +2069,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_price7"
+  parent: "skin_button7"
   layer: ""
   inherit_alpha: false
   alpha: 1.0
@@ -2219,7 +2223,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_price8"
+  id: "skin_button8"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NE
@@ -2294,7 +2298,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_price8"
+  parent: "skin_button8"
   layer: ""
   inherit_alpha: false
   alpha: 1.0
@@ -2629,7 +2633,7 @@ nodes {
   type: TYPE_BOX
   blend_mode: BLEND_MODE_ALPHA
   texture: ""
-  id: "skin_button"
+  id: "skins_button"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_NW
@@ -2703,7 +2707,7 @@ nodes {
   }
   adjust_mode: ADJUST_MODE_FIT
   line_break: false
-  parent: "skin_button"
+  parent: "skins_button"
   layer: ""
   inherit_alpha: false
   alpha: 1.0

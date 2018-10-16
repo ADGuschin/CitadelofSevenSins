@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "gametheme"
   type: "sound"
-  data: "sound: \"/sounds/coss game.wav\"\n"
+  data: "sound: \"/sounds/Igr1a.wav\"\n"
   "looping: 1\n"
   "group: \"master\"\n"
   "gain: 1.0\n"

@@ -2689,7 +2689,7 @@ nodes {
   blend_mode: BLEND_MODE_ALPHA
   text: "Skins"
   font: "pixels"
-  id: "skin_text"
+  id: "skins_text"
   xanchor: XANCHOR_NONE
   yanchor: YANCHOR_NONE
   pivot: PIVOT_CENTER

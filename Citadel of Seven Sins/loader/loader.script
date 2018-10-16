@@ -1,57 +1,45 @@
-require "loader.gamedata" --delete
 require "variables"
 
---local save_file = sys.get_save_file("Citadel of Seven Sins", "gamedata")
+local save_file = sys.get_save_file("Citadel_of_Seven_Sins", "gamedata")
 
---[[
 shared_data = {
 	player = {
 		score = 0,
 		highscore = 0,
 		coins = 0,
-		diamonds = 0
+		diamonds = 0,
 		level = 1
 	},
 	options = {
 		sound = true,
 		language_state = 1,
 		autorestart_state = false
+	},
+	skins = {
+		type = 1,
+		shop = { true, false, false, false, false, false, false, false }
 	}
 }
-]]
 
 function init(self)
-	if gui_log then
-		print("Loader проинициализирован")
-	end
-	
-	load_gamedata()
-	
-	coins = shared_data.data.coins
-	diamonds = shared_data.data.diamonds
-
-	options_swipe = shared_data.control.options_swipe
-	options_touch = shared_data.control.options_touch
-	
-	training_state = shared_data.data.training_state
-	autorestart_state = shared_data.data.autorestart_state
-
-	sound = shared_data.options.sound
-	language_state = shared_data.options.language_state
-	--[[
 	load_gamedata()
 
 	coins = shared_data.player.coins
 	diamonds = shared_data.player.diamonds
 	player_level = shared_data.player.level
+	
 	sound = shared_data.options.sound
 	language_state = shared_data.options.language_state
 	autorestart_state = shared_data.options.autorestart_state
+
+	skins.type = shared_data.skins.type
+	for i = 1, #skins.names do
+		skins.shop[i] = shared_data.skins.shop[i]
+	end
 	
 	if gui_log then
 		print("Loader проинициализирован")
 	end
-	]]
 end
 
 function final(self)
@@ -63,28 +51,20 @@ function final(self)
 end
 
 function update(self, dt)
-	shared_data.data.coins = coins
-	shared_data.data.diamonds = diamonds
-
-	shared_data.control.options_swipe = options_swipe
-	shared_data.control.options_touch = options_touch
-	
-	shared_data.data.training_state = training_state
-	shared_data.data.autorestart_state = autorestart_state
-
-	shared_data.options.sound = sound
-	shared_data.options.language_state = language_state
-	--[[
 	shared_data.player.coins = coins
 	shared_data.player.diamonds = diamonds
 	shared_data.player.level = player_level
+	
 	shared_data.options.sound = sound
 	shared_data.options.language_state = language_state
 	shared_data.options.autorestart_state = autorestart_state
-	]]
+
+	shared_data.skins.type = skins.type
+	for i = 1, #skins.names do
+		shared_data.skins.shop[i] = skins.shop[i]
+	end
 end
 
---[[
 function save_gamedata(self)
 	-- Save gamedata
 
@@ -112,6 +92,11 @@ function load_gamedata(self)
 		shared_data.options.language_state = datafile.options.language_state
 		shared_data.options.autorestart_state = datafile.options.autorestart_state
 
+		shared_data.skins.type = datafile.skins.type
+		for i = 1, #skins.names do
+			shared_data.skins.shop[i] = datafile.skins.shop[i]
+		end
+
 		if gui_log then
 			print("Геймдата загружена")
 			print("Файл:")
@@ -123,4 +108,4 @@ function load_gamedata(self)
 		print("Геймдата пуста")
 		sys.save(save_file, shared_data)
 	end
-end]]
+end

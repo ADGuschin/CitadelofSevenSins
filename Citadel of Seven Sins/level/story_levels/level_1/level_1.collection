@@ -200,7 +200,7 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "background3"
+  id: "background_level_1"
   collection: "/level/background/background_level_1/background.collection"
   position {
     x: 1186.0
@@ -220,7 +220,7 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "bacground3_loop"
+  id: "background_level_1_loop"
   collection: "/level/background/background_level_1/bacground_loop.collection"
   position {
     x: 5026.0

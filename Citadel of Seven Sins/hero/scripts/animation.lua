@@ -22,9 +22,9 @@ function update_animation(self)
 			play_animation(self, hash("roll_over"))
 		else
 			if self.velocity.x > 0 then
-				play_animation(self, hash("player_runfast_black"))
+				play_animation(self, hash(skins.names[skins.type]))
 			else
-				play_animation(self, hash("player_run_black"))
+				play_animation(self, hash(skins.names[skins.type]))
 			end
 		end
 	else

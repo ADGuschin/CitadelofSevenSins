@@ -43,8 +43,10 @@ function init(self)
 						skins.type = 1
 						gui.set_text(gui.get_node("price_text1"), "Selected")
 					else
-						coins = coins - skis.cost[1]
+						coins = coins - skins.cost[1]
 						skins.shop[1] = true
+						gui.set_text(gui.get_node("coins_num"), coins)
+						gui.set_text(gui.get_node("price_text1"), "Select")
 					end
 				end
 			end
@@ -58,8 +60,10 @@ function init(self)
 						skins.type = 2
 						gui.set_text(gui.get_node("price_text"..skins.type), "Selected")
 					else
-						coins = coins - skis.cost[2]
+						coins = coins - skins.cost[2]
 						skins.shop[2] = true
+						gui.set_text(gui.get_node("coins_num"), coins)
+						gui.set_text(gui.get_node("price_text2"), "Select")
 					end
 				end
 			end
@@ -73,8 +77,10 @@ function init(self)
 						skins.type = 3
 						gui.set_text(gui.get_node("price_text"..skins.type), "Selected")
 					else
-						coins = coins - skis.cost[3]
+						coins = coins - skins.cost[3]
 						skins.shop[3] = true
+						gui.set_text(gui.get_node("coins_num"), coins)
+						gui.set_text(gui.get_node("price_text3"), "Select")
 					end
 				end
 			end

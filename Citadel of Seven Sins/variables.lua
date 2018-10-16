@@ -53,7 +53,7 @@ language = {"EN", "РУ"}
 language_state = 1
 
 skins = {
-	type = 2,
+	type = 1,
 	names = { "player_runfast_black", "player_fast_right", "test", "test", "test", "test", "test", "test" },
 	shop = { true, false, false, false, false, false, false, false },
 	cost = { 0, 50, 100, 150, 250, 300, 350, 400}

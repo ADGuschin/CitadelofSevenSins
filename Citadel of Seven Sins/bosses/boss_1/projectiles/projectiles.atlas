@@ -1,0 +1,6 @@
+images {
+  image: "/bosses/boss_1/projectiles/images/ischeznovenie1.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

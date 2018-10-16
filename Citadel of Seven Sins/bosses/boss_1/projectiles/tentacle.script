@@ -1,0 +1,54 @@
+require "level.utils"
+require "variables"
+local flag = true
+local counter = 0
+local flag2 = false
+local start_posititon_x
+function init(self)
+	self.speed = 150
+	start_posititon_x = go.get_position().x
+end
+
+function update(self, dt)
+	local pos = go.get_position()
+	
+	if pos.x < -1000 or reset then
+		flag = true
+		go.delete(true)
+	end
+	
+	pos.x = pos.x - self.speed * dt
+	if go.get_position().x < 400 and not flag2 then
+		flag = false
+		self.speed = 900
+	end
+	if not flag then
+		counter = counter + 1
+		if counter == 100 then
+			counter = 0
+			flag2 = true
+			--msg.post("#hitbox", )
+		end
+	end
+	
+	if flag2 and start_posititon_x < go.get_position().x then
+		go.delete()
+	end
+	
+	--pos.y = pos.x*pos.x + pos.y
+	--pos.y = 30*math.cos(pos.x * 0.01) + pos.y
+	go.set_position(pos)
+	msg.post(current_level..":/controller#script", "speed_request")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("set_speed") then
+		if flag then 
+			self.speed = message.speed + 150
+		elseif flag2 then
+			self.speed = -message.speed - 150
+		else 
+			self.speed = 0
+		end
+	end
+end

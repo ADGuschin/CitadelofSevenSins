@@ -13,17 +13,10 @@ function final(self)
 end
 
 function on_message(self, message_id, message, sender)
-	if message_id == hash("change_multiplier") then
-		local multiplier_name = "x1"
-		local next_multiplier_name = current_score_multiplier.next
-		if(next_multiplier_name == "none")then
-			next_multiplier_name = ""
+	if message_id == hash("progress") then
+		if current_progress <= max_level_progress[current_level] then
+			gui.animate(gui.get_node("bar"), "size", vmath.vector3(current_progress*100/max_level_progress[current_level], 30, 0), gui.EASING_INCUBIC, 0)
 		end
-		if(current_score_multiplier.current ~= "default")then
-			multiplier_name = current_score_multiplier.current
-		end
-		gui.set_text(gui.get_node("current"), multiplier_name)
-		gui.set_text(gui.get_node("next"), next_multiplier_name)
 	elseif message_id == hash("coins") then
 		gui.set_text(gui.get_node("coins_num"), message.value)
 	elseif message_id == hash("score") then
@@ -32,9 +25,6 @@ function on_message(self, message_id, message, sender)
 		local score = message.value
 		gui.set_text(gui.get_node("score_num"), score)
 		gui.set_text(gui.get_node("highscore_num"), shared_data.player.highscore)
-		if(current_score_multiplier.next ~= "none") then
-			gui.animate(gui.get_node("bar"), "size", vmath.vector3((multiplier_bar*100/bar_maxs[current_score_multiplier.next]), 30, 0), gui.EASING_INCUBIC, 0)
-		end
 		shared_data.player.score = score
 		if score > shared_data.player.highscore then
 			shared_data.player.highscore = score

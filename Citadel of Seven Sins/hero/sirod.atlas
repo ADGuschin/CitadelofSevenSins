@@ -1,0 +1,253 @@
+images {
+  image: "/builtins/graphics/particle_blob.png"
+}
+animations {
+  id: "player_right"
+  images {
+    image: "/hero/images/new hero/HERO1.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO2.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO3.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO4.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO5.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO6.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO7.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO8.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO9.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO10.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_jump"
+  images {
+    image: "/hero/images/jumping_animation/jump1_black.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_slide"
+  images {
+    image: "/hero/images/sliding_animation/hero_lies_64x64_3_black.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_fall"
+  images {
+    image: "/hero/images/jumping_animation/jump2_black.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_die"
+  images {
+    image: "/hero/images/hero_impact_animation/hero_lies_64x64_2_black.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_fast_right"
+  images {
+    image: "/hero/images/new hero/HERO1.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO2.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO3.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO4.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO5.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO6.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO7.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO8.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO9.png"
+  }
+  images {
+    image: "/hero/images/new hero/HERO10.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 25
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "break_jump"
+  images {
+    image: "/hero/images/jump_breaking_animation/hero_lies_64x64_1_black.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "hero_impact"
+  images {
+    image: "/hero/images/hero_impact_animation/hero_lies_64x64_2_black.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "roll_over_old"
+  images {
+    image: "/builtins/graphics/particle_blob.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "inv"
+  images {
+    image: "/hero/images/Novy_kholst.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_run_black"
+  images {
+    image: "/hero/images/running_animation_black/hero1_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero2_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero3_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero4_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero5_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero6_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero7_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero8_black.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "player_runfast_black"
+  images {
+    image: "/hero/images/running_animation_black/hero1_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero2_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero3_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero4_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero5_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero6_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero7_black.png"
+  }
+  images {
+    image: "/hero/images/running_animation_black/hero8_black.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 25
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+animations {
+  id: "roll_over"
+  images {
+    image: "/hero/images/hero_roll_animation/perecat_1.png"
+  }
+  images {
+    image: "/hero/images/hero_roll_animation/perecat_2.png"
+  }
+  images {
+    image: "/hero/images/hero_roll_animation/perecat_3.png"
+  }
+  images {
+    image: "/hero/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
+    image: "/hero/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
+    image: "/hero/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
+    image: "/hero/images/hero_roll_animation/perecat_5.png"
+  }
+  images {
+    image: "/hero/images/hero_roll_animation/perecat_6.png"
+  }
+  playback: PLAYBACK_ONCE_FORWARD
+  fps: 20
+  flip_horizontal: 0
+  flip_vertical: 0
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

@@ -1,0 +1,27 @@
+require "level.utils"
+require "variables"
+require "global"
+
+function init(self)
+	self.speed = 1800
+end
+
+function update(self, dt)
+	local pos = go.get_position()
+	if pos.x < -200 or pos.y < 0 or reset then
+		proj_on_screen = false
+		go.delete(true)
+	end
+	pos.x = pos.x - self.speed * dt
+	go.set_position(pos)
+	msg.post(current_level..":/controller#script", "speed_request")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("set_speed") then
+		self.speed = message.speed + 1300
+	elseif message.group == hash("geometry") then
+		flag = true
+		go.delete(true)
+	end
+end

@@ -1,7 +1,10 @@
 require "main_menu.ui_func"
+require "variables"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	current_level = "level_1"
+	print(current_level)
 	msg.post("#"..current_level.."_proxy", "load")
 
 	pause_state = false

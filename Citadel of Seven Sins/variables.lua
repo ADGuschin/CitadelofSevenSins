@@ -61,31 +61,43 @@ lootboxes_cost = { 50, 100, 150, 200, 250, 300, 350, 400}
 
 --Локализация
 localization = 	{
-					death_screen =  {
-										restart = { "Restart", "Заново" },
-										score_text = { "Score:", "Счет:" },
-										highscore_text = { "Highscore:", "Рекорд:" }
-									},
-					settings = 		{
-										language = { "Language:", "Язык:" },
-										training = { "Tutorial:", "Обучение:" },
-										autorestart = { "Autorestart:", "Авторестарт:" },
-										logical_yes = {"yes", "да"},
-										logical_no = {"no", "нет"}
-									},
-					shop = 			{
-										price = { "Buy:", "Купить:" },
-										donate = { "DONATION:", "ДОНАТ:" },
-										back = { "Back", "Назад"}
-									},
-					main_menu = {
-										start = { "Start", "Cтарт"},
-										exit = { "Quit", "Выход"},
-										level = { "Level ", "Уровень "},
-										overrun_mode = { "Overrun", "Заново"},
-										endless_mode = { "Endless", "Бесконечно"},
-										back = { "Back", "Назад"},
-										comingsoon = { "Coming soon..", "Скоро.."}
-								}
-									
-				}
+	death_screen =  {
+		restart = { "Restart", "Заново" },
+		menu = { "Menu", "Меню" },
+		death_message = { "You died ^_^", "Ты умер ^_^" },
+		continue_text = { "Continue", "Продолжить" },
+		notenough_text = {"Not enough money :)", "Не достаточно монет :)"},
+		score_message = {"Your score:", "Счет:"},
+		highscore_message = {"NEW HIGHSCORE:", "НОВЫЙ РЕКОРД:"}
+	},
+	pause_screen =  {
+		resume = { "Resume", "Продолжить" },
+		menu = { "Menu", "Меню" }
+	},
+	score = 		{
+		score_text = { "Score:", "Счет:" },
+		highscore_text = { "Highscore:", "Рекорд:" }
+	},
+	settings = 		{
+		language = { "Language:", "Язык:" },
+		training = { "Tutorial:", "Обучение:" },
+		autorestart = { "Autorestart:", "Авторестарт:" },
+		logical_yes = {"yes", "да"},
+		logical_no = {"no", "нет"}
+	},
+	shop = 			{
+		price = { "Buy:", "Купить:" },
+		donate = { "DONATION:", "ДОНАТ:" },
+		back = { "Back", "Назад"}
+	},
+	main_menu = {
+		start = { "Start", "Cтарт"},
+		exit = { "Quit", "Выход"},
+		level = { "Level ", "Уровень "},
+		overrun_mode = { "Overrun", "Заново"},
+		endless_mode = { "Endless", "Бесконечно"},
+		back = { "Back", "Назад"},
+		comingsoon = { "Coming soon..", "Скоро.."}
+	}
+
+}

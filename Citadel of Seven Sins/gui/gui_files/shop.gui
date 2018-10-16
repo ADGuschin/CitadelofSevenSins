@@ -13,7 +13,7 @@ textures {
 }
 textures {
   name: "hero2"
-  texture: "/hero_new/hero2.atlas"
+  texture: "/hero/sirod.atlas"
 }
 background_color {
   x: 0.0

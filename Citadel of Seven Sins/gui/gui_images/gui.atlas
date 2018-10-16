@@ -38,9 +38,6 @@ images {
   image: "/gui/gui_images/for_menu.png"
 }
 images {
-  image: "/gui/gui_images/touch.png"
-}
-images {
   image: "/gui/gui_images/touch_pressed.png"
 }
 images {
@@ -78,25 +75,6 @@ images {
 }
 images {
   image: "/gui/gui_images/329273.png"
-}
-animations {
-  id: "touch"
-  images {
-    image: "/gui/gui_images/touch.png"
-  }
-  images {
-    image: "/gui/gui_images/touch_pressed.png"
-  }
-  images {
-    image: "/gui/gui_images/touch_pressed.png"
-  }
-  images {
-    image: "/gui/gui_images/touch_pressed.png"
-  }
-  playback: PLAYBACK_LOOP_FORWARD
-  fps: 5
-  flip_horizontal: 0
-  flip_vertical: 0
 }
 margin: 0
 extrude_borders: 2

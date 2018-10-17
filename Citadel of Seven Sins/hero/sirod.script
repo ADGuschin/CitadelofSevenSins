@@ -150,8 +150,6 @@ function on_message(self, message_id, message, sender)
 			end
 		elseif message.group == hash("rolling_platform") then
 			handle_geometry_contact(self, message.normal, message.distance)
-		elseif message.group == hash("training") then
-			lock_character = false
 		elseif message.group == hash("coin") then
 			play_sound(self, "coin")
 			coins = coins + 1
@@ -216,9 +214,9 @@ function on_input(self, action_id, action)
 	if action_id == hash("restart_game") then
 		msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"}) 
 	end
-	
 	if not lock_character then
 		if action_id == hash("click") then 
+			
 			touch_on_input(self, action_id, action)
 		end
 		if action_id == hash("jump") then

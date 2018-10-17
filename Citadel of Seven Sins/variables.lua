@@ -3,11 +3,9 @@ sound = true
 in_game = false
 autorestart_state = false
 pause_state = false
-training_state = true
 
 --Костыль
 deathscreen_state = false
-next_try_is_training = false
 
 --Числовые переменные
 max_speed = 2000
@@ -83,7 +81,6 @@ localization = 	{
 					},
 					settings = 		{
 										language = { "Language:", "Язык:" },
-										training = { "Tutorial:", "Обучение:" },
 										autorestart = { "Autorestart:", "Авторестарт:" },
 										logical_yes = {"yes", "да"},
 										logical_no = {"no", "нет"}

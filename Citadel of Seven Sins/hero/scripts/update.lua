@@ -91,9 +91,6 @@ function check_for_jump(self)
 end
 
 function lock_character_update(self)
-	if training_state then
-		lock_character = training_state
-	end
 	if rolling_over then
 		lock_character = true
 	end

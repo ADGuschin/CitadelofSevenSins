@@ -39,9 +39,6 @@ function jump(self, speed)
 		end
 		self.velocity.y = speed
 	end
-	if pause_state then
-		msg.post("default:/training#training", "jump")
-	end
 end
 
 function abort_jump(self)
@@ -56,10 +53,6 @@ function roll(self)
 		play_sound(self, "roll")
 		rolling_over = true
 		enable_rolling_state(self)
-	end
-	if pause_state then
-		break_slide(self)
-		msg.post("default:/training#training", "roll")
 	end
 end
 
@@ -78,9 +71,6 @@ function slide(self)
 		end
 		enable_sliding_state(self)
 		current_slide_moment = 1
-	end
-	if pause_state then
-		msg.post("default:/training#training", "slide")
 	end
 end
 

@@ -70,34 +70,6 @@ function init(self)
 						end
 					},
 					{
-						node = gui.get_node("training_button"),
-						action = function ()
-							if gui.is_enabled(gui.get_node("background")) then
-								if in_game then
-									if next_try_is_training then
-										gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state])
-										next_try_is_training = false
-									else
-										gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state])
-										next_try_is_training = true
-									end
-								else
-									if training_state then
-										gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state])
-										training_state = false
-									else
-										gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state])
-										training_state = true
-									end
-								end
-
-								if gui_log then
-									print("Нажата кнопка переключения тренировки, состояние тренировки изменено на", training_state)
-								end
-							end
-						end
-					},
-					{
 						node = gui.get_node("language_button"),
 						action = function ()
 							if gui.is_enabled(gui.get_node("background")) then
@@ -110,14 +82,6 @@ function init(self)
 								end
 								
 								gui.set_text(gui.get_node("language_text"), localization.settings.language[language_state])
-								
-								gui.set_text(gui.get_node("training_text"), localization.settings.training[language_state])
-								if training_state == true then
-									gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state]) 
-								elseif training_state == false then
-									gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state]) 
-								end
-								
 								gui.set_text(gui.get_node("autorestart_text"), localization.settings.autorestart[language_state])
 								if autorestart_state == true then
 									gui.set_text(gui.get_node("autorestart_state"), localization.settings.logical_yes[language_state]) 
@@ -155,7 +119,6 @@ function on_message(self, message_id, message, sender)
 		gui.set_text(gui.get_node("language_state"), language[language_state])
 
 		gui.set_text(gui.get_node("language_text"), localization.settings.language[language_state])
-		gui.set_text(gui.get_node("training_text"), localization.settings.training[language_state])
 		gui.set_text(gui.get_node("autorestart_text"), localization.settings.autorestart[language_state])
 		
 		if sound then
@@ -169,21 +132,6 @@ function on_message(self, message_id, message, sender)
 		else
 			gui.set_text(gui.get_node("autorestart_state"), localization.settings.logical_no[language_state])
 		end
-		
-		if in_game then
-			if next_try_is_training then
-				gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state])
-			else
-				gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state])
-			end
-		else
-			if training_state then
-				gui.set_text(gui.get_node("training_state"), localization.settings.logical_yes[language_state])
-			else
-				gui.set_text(gui.get_node("training_state"), localization.settings.logical_no[language_state])
-			end
-		end
-
 		
 		if in_game then
 			msg.post(".", "acquire_input_focus")

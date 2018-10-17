@@ -51,7 +51,7 @@ function init(self)
 							end
 						end
 					}
-				}
+	}
 	
 	init_ui(self)
 end

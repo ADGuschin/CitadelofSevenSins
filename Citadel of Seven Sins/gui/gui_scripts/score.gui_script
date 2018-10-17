@@ -12,6 +12,11 @@ function final(self)
 	save_gamedata()
 end
 
+--[[function update(self, dt)
+	
+end]]
+
+
 function on_message(self, message_id, message, sender)
 	if message_id == hash("progress") then
 		if current_progress <= max_level_progress[current_level] then

@@ -1,4 +1,5 @@
-require "level.obstacle_table"
+require "level.misc_objects"
+require "level.story_levels.level_1.obstacle_table"
 require "level.utils"
 require "variables"
 -- controller.script
@@ -15,17 +16,18 @@ local current_hero
 
 local boss = false
 
+local stage_phase = true
+
 local current_dt
 
 
 function init(self)
+	current_obstacle = 1
 	window.set_dim_mode(window.DIMMING_OFF)
 	print(current_level)
 	self.speed = default_speed
 	update_speed(self)
 	self.gridbackground = 0
-	collectionfactory.create("#"..current_level, vmath.vector3(1600, 48, 0), nil, {}, 1)
-	--
 	msg.post("#", "spawnhero")
 end
 
@@ -52,8 +54,20 @@ end
 function update(self, dt)
 	current_dt = dt
 	local value = math.ceil(current_progress*100/max_level_progress[current_level])
-	if value >= 100 and not boss then
-		boss = true
+	
+	if current_progress >= obstacles[current_obstacle].distance and stage_phase then
+		factory.create(obstacles[current_obstacle].type, vmath.vector3(1500, 180, 0), nil,{},1)
+		if obstacles[current_obstacle + 1] ~= nil then 
+			current_obstacle = current_obstacle + 1
+		else
+			stage_phase = false 
+		end
+	end
+	
+	
+	if value >= 100 and not boss_phase then
+		boss_phase = true
+		stage_phase = false
 		factory.create("#"..current_level.."_boss", vmath.vector3(1200, 180, 0), nil,{},1)
 	end
 	if self.speed < max_speed then 
@@ -78,10 +92,10 @@ function on_message(self, message_id, message, sender)
 		msg.post(current_hero, "continue")
 	elseif message_id == hash("reset") then 
 		save_gamedata()
+		current_obstacle = 1
 		reset = true
 		reset_timer = 0
 		self.speed = default_speed
-		collectionfactory.create("#"..current_level, vmath.vector3(1600, 48, 0), nil, {}, 1)
 		msg.post("#", "spawnhero")
 		print(current_level)
 		msg.post("background_"..current_level.."/controller#background", "reset")

@@ -22,7 +22,7 @@ diamonds = 0
 --Прогресс
 current_progress = 0
 max_level_progress = {
-	["level_1"] = 200
+	["level_1"] = 4000
 }
 
 --Прогресс босса

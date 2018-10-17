@@ -4,6 +4,8 @@ require "hero/variables"
 
 function init(self)
 	--test(self)
+	current_progress = 0
+	current_boss_progress = 0
 	msg.post("@system:", "toggle_physics_debug")
 	msg.post(".", "acquire_input_focus")
 	msg.post(current_level..":/controller#script", "spawned") 
@@ -14,12 +16,6 @@ function init(self)
 	self.platform_contact_from_below = false
 	self.platform_contact_from_below_last_frame = false
 end
-
---[[local function go_invincible(self)
-	invincible = true
-	--print("going invincible")
-	invincibility = 0
-end]]
 
 function reset_multiplier(self)
 	msg.post("controller#script", "reset_multiplier")
@@ -32,18 +28,6 @@ function final(self)
 	msg.post(".", "release_input_focus")
 end
 
-
-
---[[local function flicker(self)
-	if invincible then
-		flicker_mechanism = flicker_mechanism + 1
-		if flicker_mechanism % 2 == 0 then
-			go.set("#sprite", "tint", vmath.vector4(1, 1, 1, 0))
-		else
-			go.set("#sprite", "tint", vmath.vector4(1, 1, 1, 1))
-		end
-	end
-end]]
 
 
 
@@ -135,9 +119,6 @@ function on_message(self, message_id, message, sender)
 			handle_geometry_contact(self, message.normal, message.distance)
 		elseif message.group == hash("obstacle") and (invincible or pushed) then
 			invincibility = 0.6*invincibility_max
-			--if message.normal.y > 0 or message.normal.y < 0 then
-				--handle_geometry_contact(self, message.normal, message.distance)
-			
 			if message.normal.y > 0 then
 				if not self.platform_contact_from_below_last_frame then
 					handle_geometry_contact(self, message.normal, message.distance)
@@ -153,15 +134,12 @@ function on_message(self, message_id, message, sender)
 		elseif message.group == hash("coin") then
 			play_sound(self, "coin")
 			coins = coins + 1
-			--current_level_coins = current_level_coins + 1
 		elseif message.group == hash("coin2") then
 			play_sound(self, "coin")
 			coins = coins + 2
-			--current_level_coins = current_level_coins + 2
 		elseif message.group == hash("coin3") then
 			play_sound(self, "coin")
 			coins = coins + 3
-			--current_level_coins = current_level_coins + 3
 		end
 	end
 end

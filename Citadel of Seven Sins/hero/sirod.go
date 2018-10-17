@@ -78,8 +78,8 @@ embedded_components {
   "blend_mode: BLEND_MODE_ALPHA\n"
   ""
   position {
-    x: 0.0
-    y: -63.0
+    x: 3.0
+    y: 0.0
     z: 1.0
   }
   rotation {
@@ -283,8 +283,8 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 10.0\n"
-  "  data: 10.0\n"
+  "  data: 0.5\n"
+  "  data: 0.5\n"
   "  data: 10.0\n"
   "}\n"
   "linear_damping: 0.0\n"

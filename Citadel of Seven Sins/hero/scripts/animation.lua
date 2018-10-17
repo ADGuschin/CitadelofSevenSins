@@ -13,9 +13,9 @@ function update_animation(self)
 	else 
 		go.set("#sprite", "tint", vmath.vector4(1, 1, 1, 1))
 	end]]
-	if self.velocity.x < 0 then
+	--[[if self.velocity.x < 0 then
 		play_animation(self, hash("hero_impact"))
-	elseif self.ground_contact then
+	else]]if self.ground_contact then
 		if sliding then
 			play_animation(self, hash("player_slide"))
 		elseif rolling_over then

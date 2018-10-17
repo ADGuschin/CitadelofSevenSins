@@ -53,8 +53,11 @@ skins = {
 	cost = { 0, 50, 100, 150, 250, 300, 350, 400}
 }
 
+boxes = {
+	names = { "common", "uncommon", "rare", "mythical", "legendary", "immortal", "arcana", "ancient" },
+	cost = { 50, 100, 150, 200, 250, 300, 350, 400}
+}
 --Стоимость лутбоксов
-lootboxes_cost = { 50, 100, 150, 200, 250, 300, 350, 400}
 
 --Настройки языка
 language_state = 1

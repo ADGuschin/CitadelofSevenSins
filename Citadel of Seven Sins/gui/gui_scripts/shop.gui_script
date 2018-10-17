@@ -5,6 +5,7 @@ local is_animation_end = true
 
 function init(self)
 	gui.set_enabled(gui.get_node("background"), false)
+	gui.set_enabled(gui.get_node("boxes_windows"), false)
 	gui.set_enabled(gui.get_node("msg_box"), false)
 
 	self.hovered_node = nil
@@ -25,7 +26,8 @@ function init(self)
 			action = function ()
 				if not gui.is_enabled(gui.get_node("donate_window")) then
 					gui.set_enabled(gui.get_node("msg_box"), false)
-					--msg.post(".", "hide")
+					gui.set_enabled(gui.get_node("skins_windows"), true)
+					gui.set_enabled(gui.get_node("boxes_windows"), false)
 				end
 			end
 		},
@@ -34,7 +36,8 @@ function init(self)
 			action = function ()
 				if not gui.is_enabled(gui.get_node("donate_window")) then
 					gui.set_enabled(gui.get_node("msg_box"), false)
-					--msg.post(".", "hide")
+					gui.set_enabled(gui.get_node("boxes_windows"), true)
+					gui.set_enabled(gui.get_node("skins_windows"), false)
 				end
 			end
 		},
@@ -47,9 +50,9 @@ function init(self)
 					gui.set_enabled(gui.get_node("msg_box"), false)
 					
 					if skins.type ~= type then
-						gui.set_text(gui.get_node("price_text"..skins.type), localization.shop.select[language_state])
+						gui.set_text(gui.get_node("skin_price"..skins.type), localization.shop.select[language_state])
 						skins.type = type
-						gui.set_text(gui.get_node("price_text"..type), localization.shop.selected[language_state])
+						gui.set_text(gui.get_node("skin_price"..type), localization.shop.selected[language_state])
 					end
 				end
 			end
@@ -57,99 +60,50 @@ function init(self)
 		{
 			node = gui.get_node("skin_button2"),
 			action = function ()
-				local type = 2
-				
-				if not gui.is_enabled(gui.get_node("donate_window")) then
-					gui.set_enabled(gui.get_node("msg_box"), false)
-
-					if skins.shop[type] then
-						gui.set_text(gui.get_node("price_text"..skins.type), localization.shop.select[language_state])
-						gui.set_text(gui.get_node("price_text"..type), localization.shop.selected[language_state])
-						skins.type = type
-					else
-						if coins >= skins.cost[type] then
-							coins = coins - skins.cost[type]
-							skins.shop[type] = true
-							gui.set_text(gui.get_node("coins_num"), coins)
-							gui.set_text(gui.get_node("price_text"..type), localization.shop.select[language_state])
-							gui.set_enabled(gui.get_node("msg_box"), true)
-							gui.set_text(gui.get_node("msg_text"), localization.shop.msg.success[language_state])
-						else
-							gui.set_enabled(gui.get_node("msg_box"), true)
-							gui.set_text(gui.get_node("msg_text"), localization.shop.msg.money[language_state])
-						end
-					end
-				end
+				msg.post(".", "skin_button_press", {type = 2})
 			end
 		},
 		{
 			node = gui.get_node("skin_button3"),
 			action = function ()
-				local type = 3
-				
-				if not gui.is_enabled(gui.get_node("donate_window")) then
-					gui.set_enabled(gui.get_node("msg_box"), false)
-					
-					if skins.shop[type] then
-						gui.set_text(gui.get_node("price_text"..skins.type), localization.shop.select[language_state])
-						gui.set_text(gui.get_node("price_text"..type), localization.shop.selected[language_state])
-						skins.type = type
-					else
-						if coins >= skins.cost[type] then
-							coins = coins - skins.cost[type]
-							skins.shop[type] = true
-							gui.set_text(gui.get_node("coins_num"), coins)
-							gui.set_text(gui.get_node("price_text"..type), localization.shop.select[language_state])
-							gui.set_enabled(gui.get_node("msg_box"), true)
-							gui.set_text(gui.get_node("msg_text"), localization.shop.msg.success[language_state])
-						else
-							gui.set_enabled(gui.get_node("msg_box"), true)
-							gui.set_text(gui.get_node("msg_text"), localization.shop.msg.money[language_state])
-						end
-					end
-				end
+				msg.post(".", "skin_button_press", {type = 3})
 			end
 		},
 		{
 			node = gui.get_node("skin_button4"),
 			action = function ()
-				local type = 4
-
-				if not gui.is_enabled(gui.get_node("donate_window")) then
-					gui.set_enabled(gui.get_node("msg_box"), false)
-
-					if skins.shop[type] then
-						gui.set_text(gui.get_node("price_text"..skins.type), localization.shop.select[language_state])
-						gui.set_text(gui.get_node("price_text"..type), localization.shop.selected[language_state])
-						skins.type = type
-					else
-						if coins >= skins.cost[type] then
-							coins = coins - skins.cost[type]
-							skins.shop[type] = true
-							gui.set_text(gui.get_node("coins_num"), coins)
-							gui.set_text(gui.get_node("price_text"..type), localization.shop.select[language_state])
-							gui.set_enabled(gui.get_node("msg_box"), true)
-							gui.set_text(gui.get_node("msg_text"), localization.shop.msg.success[language_state])
-						else
-							gui.set_enabled(gui.get_node("msg_box"), true)
-							gui.set_text(gui.get_node("msg_text"), localization.shop.msg.money[language_state])
-						end
-					end
-				end
+				msg.post(".", "skin_button_press", {type = 4})
 			end
 		},
+		--[[{
+			node = gui.get_node("box_button1"),
+			action = function ()
+				msg.post(".", "box_button_press", {type = 1})
+			end
+		},]]
 		{
 			node = gui.get_node("left_button"),
 			action = function ()
 				if not gui.is_enabled(gui.get_node("donate_window")) then
 					gui.set_enabled(gui.get_node("msg_box"), false)
-					
-					pos = gui.get_position(gui.get_node("skin_windows"))
 
-					if pos.x ~= 0 then
-						if is_animation_end then
-							is_animation_end = false
-							gui.animate(gui.get_node("skin_windows"), "position.x", gui.get_position(gui.get_node("skin_windows"))+vmath.vector3(300,0,0), gui.EASING_INCUBIC, 0.5, 0, function () is_animation_end = true end, gui.PLAYBACK_ONCE_FORWARD)
+					if gui.is_enabled(gui.get_node("skins_windows")) then
+						pos = gui.get_position(gui.get_node("skins_windows"))
+
+						if pos.x ~= 0 then
+							if is_animation_end then
+								is_animation_end = false
+								gui.animate(gui.get_node("skins_windows"), "position.x", gui.get_position(gui.get_node("skins_windows"))+vmath.vector3(300,0,0), gui.EASING_INCUBIC, 0.5, 0, function () is_animation_end = true end, gui.PLAYBACK_ONCE_FORWARD)
+							end
+						end
+					else
+						pos = gui.get_position(gui.get_node("boxes_windows"))
+
+						if pos.x ~= 0 then
+							if is_animation_end then
+								is_animation_end = false
+								gui.animate(gui.get_node("boxes_windows"), "position.x", gui.get_position(gui.get_node("boxes_windows"))+vmath.vector3(300,0,0), gui.EASING_INCUBIC, 0.5, 0, function () is_animation_end = true end, gui.PLAYBACK_ONCE_FORWARD)
+							end
 						end
 					end
 				end
@@ -160,13 +114,24 @@ function init(self)
 			action = function ()
 				if not gui.is_enabled(gui.get_node("donate_window")) then
 					gui.set_enabled(gui.get_node("msg_box"), false)
-					
-					pos = gui.get_position(gui.get_node("skin_windows"))
 
-					if pos.x > -300 * (#skins.names - 4) then
-						if is_animation_end then
-							is_animation_end = false
-							gui.animate(gui.get_node("skin_windows"), "position.x", gui.get_position(gui.get_node("skin_windows"))-vmath.vector3(300,0,0), gui.EASING_INCUBIC, 0.5, 0, function () is_animation_end = true end, gui.PLAYBACK_ONCE_FORWARD)
+					if gui.is_enabled(gui.get_node("skins_windows")) then
+						pos = gui.get_position(gui.get_node("skins_windows"))
+
+						if pos.x > -300 * (#skins.names - 4) then
+							if is_animation_end then
+								is_animation_end = false
+								gui.animate(gui.get_node("skins_windows"), "position.x", gui.get_position(gui.get_node("skins_windows"))-vmath.vector3(300,0,0), gui.EASING_INCUBIC, 0.5, 0, function () is_animation_end = true end, gui.PLAYBACK_ONCE_FORWARD)
+							end
+						end
+					else
+						pos = gui.get_position(gui.get_node("boxes_windows"))
+
+						if pos.x > -300 * (#boxes.names - 4) then
+							if is_animation_end then
+								is_animation_end = false
+								gui.animate(gui.get_node("boxes_windows"), "position.x", gui.get_position(gui.get_node("boxes_windows"))-vmath.vector3(300,0,0), gui.EASING_INCUBIC, 0.5, 0, function () is_animation_end = true end, gui.PLAYBACK_ONCE_FORWARD)
+							end
 						end
 					end
 				end
@@ -240,7 +205,7 @@ end]]
 function on_message(self, message_id, message, sender)
 	if message_id == hash("show") then
 		gui.set_position(gui.get_node("background"), vmath.vector3(640, 360, 0))
-		gui.set_position(gui.get_node("skin_windows"), vmath.vector3(0, 0, 0))
+		gui.set_position(gui.get_node("skins_windows"), vmath.vector3(0, 0, 0))
 
 		--[[for i = 1, #skins_cost do
 			gui.set_text(gui.get_node("price_num"..i), skins_cost[i])
@@ -249,13 +214,16 @@ function on_message(self, message_id, message, sender)
 		for i = 1, #skins.names do
 			if skins.shop[i] then
 				if skins.type == i then
-					gui.set_text(gui.get_node("price_text"..i), localization.shop.selected[language_state])
+					gui.set_text(gui.get_node("skin_price"..i), localization.shop.selected[language_state])
 				else
-					gui.set_text(gui.get_node("price_text"..i), localization.shop.select[language_state])
+					gui.set_text(gui.get_node("skin_price"..i), localization.shop.select[language_state])
 				end
 			else
-				gui.set_text(gui.get_node("price_text"..i), localization.shop.price[language_state].." "..skins.cost[i])
+				gui.set_text(gui.get_node("skin_price"..i), localization.shop.price[language_state].." "..skins.cost[i])
 			end
+		end
+		for i = 1, #boxes.names do
+			gui.set_text(gui.get_node("box_price"..i), localization.shop.price[language_state].." "..boxes.cost[i])
 		end
 		gui.set_text(gui.get_node("donate_text"), localization.shop.donate[language_state])
 		gui.set_text(gui.get_node("back_text"), localization.shop.back[language_state])
@@ -292,6 +260,44 @@ function on_message(self, message_id, message, sender)
 
 			if gui_log then
 				print("Нажата кнопка закрытия окна, окно магазина закрыто")
+			end
+		end
+	end
+	if message_id == hash("skin_button_press") then
+		if not gui.is_enabled(gui.get_node("donate_window")) then
+			gui.set_enabled(gui.get_node("msg_box"), false)
+
+			if skins.shop[message.type] then
+				gui.set_text(gui.get_node("skin_price"..skins.type), localization.shop.select[language_state])
+				gui.set_text(gui.get_node("skin_price"..message.type), localization.shop.selected[language_state])
+				skins.type = message.type
+			else
+				if coins >= skins.cost[message.type] then
+					coins = coins - skins.cost[message.type]
+					skins.shop[message.type] = true
+					gui.set_text(gui.get_node("coins_num"), coins)
+					gui.set_text(gui.get_node("skin_price"..message.type), localization.shop.select[language_state])
+					gui.set_enabled(gui.get_node("msg_box"), true)
+					gui.set_text(gui.get_node("msg_text"), localization.shop.msg.success[language_state])
+				else
+					gui.set_enabled(gui.get_node("msg_box"), true)
+					gui.set_text(gui.get_node("msg_text"), localization.shop.msg.money[language_state])
+				end
+			end
+		end
+	end
+	if message_id == hash("box_button_press") then
+		if not gui.is_enabled(gui.get_node("donate_window")) then
+			gui.set_enabled(gui.get_node("msg_box"), false)
+
+			if coins >= boxes.cost[message.type] then
+				coins = coins - boxes.cost[message.type]
+				gui.set_text(gui.get_node("coins_num"), coins)
+				gui.set_enabled(gui.get_node("msg_box"), true)
+				gui.set_text(gui.get_node("msg_text"), localization.shop.msg.success[language_state])
+			else
+				gui.set_enabled(gui.get_node("msg_box"), true)
+				gui.set_text(gui.get_node("msg_text"), localization.shop.msg.money[language_state])
 			end
 		end
 	end

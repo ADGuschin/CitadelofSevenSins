@@ -41,19 +41,19 @@ images {
   image: "/gui/gui_images/Steve.png"
 }
 images {
-  image: "/gui/gui_images/2218980_0.png"
-}
-images {
-  image: "/gui/gui_images/d9b381a5a6bef18a7e675214111804e0a748a8598932aa991142156e007295f9.png"
-}
-images {
-  image: "/gui/gui_images/unnamed.png"
-}
-images {
-  image: "/gui/gui_images/d0e8f34cb62a7623bfdbb922546edbf24584f4201b7fa8a0ed4c7de0c2440685.png"
-}
-images {
   image: "/gui/gui_images/329273.png"
+}
+images {
+  image: "/level/images/old/for_menu.png"
+}
+images {
+  image: "/gui/gui_images/carrito.png"
+}
+images {
+  image: "/gui/gui_images/for_logo_1280\321\205720.png"
+}
+images {
+  image: "/gui/gui_images/bestskinever.png"
 }
 margin: 0
 extrude_borders: 2

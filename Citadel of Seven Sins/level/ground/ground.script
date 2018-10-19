@@ -1,10 +1,24 @@
-local ground_table = {current_level..":/ground/factory#ground1", current_level..":/ground/factory#ground2", current_level..":/ground/factory#ground3"}
+--local ground_table = {current_level..":/ground/factory#ground1", current_level..":/ground/factory#ground2", current_level..":/ground/factory#ground3"}
+local pieces = {"ground", "ground1", "ground2", "ground3", "ground4", "ground5"}
+
 function init(self)
 	msg.post(current_level..":/controller#script", "speed_request")
 end
 
 function update(self, dt)
 	msg.post(current_level..":/controller#script", "speed_request")
+
+	for i, p in ipairs(pieces) do
+		local pos = go.get_position(p)
+
+		if pos.x <= -132 then
+			pos.x = pos.x + 6 * 264
+		end
+
+		pos.x = pos.x - self.speed * dt
+		go.set_position(pos, p)
+	end
+	--[[
 	local pos = go.get_position()
 	if pos.x <= -264 then
 		pos.x = 2376 + (pos.x + 264)
@@ -13,11 +27,11 @@ function update(self, dt)
 		go.delete()
 	end
 	pos.x = pos.x - self.speed * dt
-	go.set_position(pos)
+	go.set_position(pos)--]]
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("set_speed") then 
-		self.speed = message.speed 
+		self.speed = (message.speed * 50) / 360 
 	end
 end

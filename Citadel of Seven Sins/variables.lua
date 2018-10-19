@@ -91,7 +91,7 @@ localization = 	{
 										selected = { "Selected", "Выбран" },
 										skins = { "Skins", "Скины" },
 										boxes = { "Boxes", "Лутбоксы" },
-										msg = { money = { "Not enough money :(", "Не достаточно монет :(" }, success = { "Successful  purchase! :)", "Успешная покупка! :)" } },
+										msg = { money = { "Not enough money :(", "Не достаточно монет :(" }, success = { "Successful  purchase :)", "Успешная покупка :)" } },
 										donate = { "DONATION:", "ДОНАТ:" },
 										back = { "Back", "Назад"}
 					},

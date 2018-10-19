@@ -16,6 +16,18 @@ images {
 images {
   image: "/level/images/cotinue_background_1.png"
 }
+images {
+  image: "/level/images/background_1_location_13_10_18_1.png"
+}
+images {
+  image: "/level/images/background_1_location_13_10_18_2.png"
+}
+images {
+  image: "/level/images/background_1_location_13_10_18_3.png"
+}
+images {
+  image: "/level/images/background_1_location_13_10_18_4.png"
+}
 margin: 0
 extrude_borders: 2
 inner_padding: 0

@@ -6,7 +6,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka_novye_colors2\\\"\\n"
+  "default_animation: \\\"background_1_location_13_10_18_2\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -24,8 +24,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 0.0
-    y: 0.0
+    x: 320.0
+    y: 180.0
     z: 0.0
   }
   rotation {
@@ -46,7 +46,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka_novye_colors2\\\"\\n"
+  "default_animation: \\\"background_1_location_13_10_18_2\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -64,8 +64,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 480.0
-    y: 0.0
+    x: 960.0
+    y: 180.0
     z: 0.0
   }
   rotation {
@@ -86,7 +86,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka_novye_colors2\\\"\\n"
+  "default_animation: \\\"background_1_location_13_10_18_2\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -104,8 +104,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 960.0
-    y: 0.0
+    x: 1600.0
+    y: 180.0
     z: 0.0
   }
   rotation {
@@ -126,7 +126,7 @@ embedded_instances {
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/Background.atlas\\\"\\n"
-  "default_animation: \\\"background_mysorka_novye_colors2\\\"\\n"
+  "default_animation: \\\"background_1_location_13_10_18_2\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -144,8 +144,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 1440.0
-    y: 0.0
+    x: 2240.0
+    y: 180.0
     z: 0.0
   }
   rotation {

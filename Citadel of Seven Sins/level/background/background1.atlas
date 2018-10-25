@@ -1,0 +1,66 @@
+images {
+  image: "/level/images/new/1st_level_1.png"
+}
+images {
+  image: "/level/images/new/1st_level_10.png"
+}
+images {
+  image: "/level/images/new/1st_level_11.png"
+}
+images {
+  image: "/level/images/new/1st_level_2.png"
+}
+images {
+  image: "/level/images/new/1st_level_3.png"
+}
+images {
+  image: "/level/images/new/1st_level_4.png"
+}
+images {
+  image: "/level/images/new/1st_level_5.png"
+}
+images {
+  image: "/level/images/new/1st_level_6.png"
+}
+images {
+  image: "/level/images/new/1st_level_7.png"
+}
+images {
+  image: "/level/images/new/1st_level_8.png"
+}
+images {
+  image: "/level/images/new/1st_level_9.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_10.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_11.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_12.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_13.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_5.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_6.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_7.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_8.png"
+}
+images {
+  image: "/level/images/new/background_1_location_13_10_18_9.png"
+}
+images {
+  image: "/level/images/new/background_1_location_1.png"
+}
+margin: 0
+extrude_borders: 0
+inner_padding: 0

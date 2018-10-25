@@ -1,4 +1,4 @@
-local pieces = {"sand", "sand1", "sand2", "sand3"}
+local pieces = {"sand", "sand1", "sand2", "sand3", "sand4", "sand5", "sand6", "sand7", "sand8", "sand9", "sand10", "sand11", "sand12", "sand13", "sand14", "sand15", "sand16", "sand17", "sand18", "sand19", "sand20"}
 
 function init(self)
 	self.speed = 200
@@ -11,7 +11,8 @@ function update(self, dt)
 		local pos = go.get_position(p)
 		
 		if pos.x <= -1280 then
-			pos.x = pos.x + 3840
+			print("1 screen")
+			pos.x = pos.x + 20 * 1280
 		end
 		
 		pos.x = pos.x - self.speed * dt

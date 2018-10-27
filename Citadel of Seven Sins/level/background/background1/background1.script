@@ -1,12 +1,20 @@
 local pieces = {"sand", "sand1", "sand2", "sand3", "sand4", "sand5", "sand6", "sand7", "sand8", "sand9", "sand10", "sand11", "sand12", "sand13", "sand14", "sand15", "sand16", "sand17", "sand18", "sand19", "sand20"}
 
+local backgrounds_count = 21
+
 function init(self)
 	self.speed = 200
+	
+	msg.post("level_1:/background1/sand#sprite", "play_animation", {id = hash("1st_level_1")})
+	
+	for i = 1, backgrounds_count - 1 do
+		msg.post("level_1:/background1/sand"..i.."#sprite", "play_animation", {id = hash("1st_level_"..i+1)})
+	end
 end
 
 function update(self, dt)
 	msg.post(current_level..":/controller#script", "speed_request")
-	
+
 	for i, p in ipairs(pieces) do
 		local pos = go.get_position(p)
 		

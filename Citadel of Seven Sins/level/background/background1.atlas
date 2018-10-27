@@ -32,34 +32,34 @@ images {
   image: "/level/images/new/1st_level_9.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_10.png"
+  image: "/level/images/new/1st_level_12.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_11.png"
+  image: "/level/images/new/1st_level_13.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_12.png"
+  image: "/level/images/new/1st_level_14.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_13.png"
+  image: "/level/images/new/1st_level_15.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_5.png"
+  image: "/level/images/new/1st_level_16.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_6.png"
+  image: "/level/images/new/1st_level_17.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_7.png"
+  image: "/level/images/new/1st_level_18.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_8.png"
+  image: "/level/images/new/1st_level_19.png"
 }
 images {
-  image: "/level/images/new/background_1_location_13_10_18_9.png"
+  image: "/level/images/new/1st_level_20.png"
 }
 images {
-  image: "/level/images/new/background_1_location_1.png"
+  image: "/level/images/new/1st_level_21.png"
 }
 margin: 0
 extrude_borders: 0

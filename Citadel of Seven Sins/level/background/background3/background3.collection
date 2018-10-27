@@ -1,12 +1,47 @@
 name: "default"
 scale_along_z: 0
 embedded_instances {
-  id: "grass"
+  id: "controller"
+  data: "components {\n"
+  "  id: \"background3\"\n"
+  "  component: \"/level/background/background3/background3.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
+  id: "mountain"
   data: "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/background.atlas\\\"\\n"
-  "default_animation: \\\"background_1_location_13_10_18_2\\\"\\n"
+  "default_animation: \\\"background_1_location_13_10_18_3\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -41,12 +76,12 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "grass1"
+  id: "mountain1"
   data: "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/background.atlas\\\"\\n"
-  "default_animation: \\\"background_1_location_13_10_18_2\\\"\\n"
+  "default_animation: \\\"background_1_location_13_10_18_3\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -81,12 +116,12 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "grass2"
+  id: "mountain2"
   data: "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/background.atlas\\\"\\n"
-  "default_animation: \\\"background_1_location_13_10_18_2\\\"\\n"
+  "default_animation: \\\"background_1_location_13_10_18_3\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -121,12 +156,12 @@ embedded_instances {
   }
 }
 embedded_instances {
-  id: "grass3"
+  id: "mountain3"
   data: "embedded_components {\n"
   "  id: \"sprite\"\n"
   "  type: \"sprite\"\n"
   "  data: \"tile_set: \\\"/level/background/background.atlas\\\"\\n"
-  "default_animation: \\\"background_1_location_13_10_18_2\\\"\\n"
+  "default_animation: \\\"background_1_location_13_10_18_3\\\"\\n"
   "material: \\\"/builtins/materials/sprite.material\\\"\\n"
   "blend_mode: BLEND_MODE_ALPHA\\n"
   "\"\n"
@@ -146,41 +181,6 @@ embedded_instances {
   position {
     x: 2240.0
     y: 180.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "controller"
-  data: "components {\n"
-  "  id: \"script\"\n"
-  "  component: \"/level/background/background2/background2.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
     z: 0.0
   }
   rotation {

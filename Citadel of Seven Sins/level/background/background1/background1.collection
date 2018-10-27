@@ -41,6 +41,41 @@ embedded_instances {
   }
 }
 embedded_instances {
+  id: "controller"
+  data: "components {\n"
+  "  id: \"script\"\n"
+  "  component: \"/level/background/background1/background1.script\"\n"
+  "  position {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "  }\n"
+  "  rotation {\n"
+  "    x: 0.0\n"
+  "    y: 0.0\n"
+  "    z: 0.0\n"
+  "    w: 1.0\n"
+  "  }\n"
+  "}\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+embedded_instances {
   id: "sand1"
   data: "embedded_components {\n"
   "  id: \"sprite\"\n"
@@ -64,7 +99,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 960.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -104,7 +139,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 1600.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -144,43 +179,8 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 2240.0
+    x: 320.0
     y: 180.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
-}
-embedded_instances {
-  id: "controller"
-  data: "components {\n"
-  "  id: \"script\"\n"
-  "  component: \"/level/background/background1/background1.script\"\n"
-  "  position {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "  }\n"
-  "  rotation {\n"
-  "    x: 0.0\n"
-  "    y: 0.0\n"
-  "    z: 0.0\n"
-  "    w: 1.0\n"
-  "  }\n"
-  "}\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
     z: 0.0
   }
   rotation {
@@ -219,7 +219,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 2880.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -259,7 +259,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 3520.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -299,7 +299,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 4160.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -339,7 +339,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 4800.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -379,7 +379,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 5440.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -419,7 +419,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 6080.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -459,7 +459,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 6720.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -499,7 +499,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 7360.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -539,7 +539,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 8000.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -579,7 +579,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 8640.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -619,7 +619,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 9280.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -659,7 +659,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 9920.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -699,7 +699,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 10560.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -739,7 +739,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 11200.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -779,7 +779,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 11840.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -819,7 +819,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 12480.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }
@@ -859,7 +859,7 @@ embedded_instances {
   "}\n"
   ""
   position {
-    x: 13120.0
+    x: 320.0
     y: 180.0
     z: 0.0
   }

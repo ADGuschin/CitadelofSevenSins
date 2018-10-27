@@ -1,0 +1,81 @@
+images {
+  image: "/level/images/box.png"
+}
+images {
+  image: "/level/images/ground.png"
+}
+images {
+  image: "/level/images/\320\261\320\276\321\207\320\272\320\260.png"
+}
+images {
+  image: "/level/images/kalesa_32-32.png"
+}
+images {
+  image: "/level/images/train_home.png"
+}
+images {
+  image: "/level/images/slide.png"
+}
+images {
+  image: "/level/images/pipe1.png"
+}
+images {
+  image: "/level/images/pipe2.png"
+}
+images {
+  image: "/level/images/bochka.png"
+}
+images {
+  image: "/level/images/garage.png"
+}
+images {
+  image: "/level/images/ground_2_1.png"
+}
+images {
+  image: "/level/images/ground_2_2.png"
+}
+images {
+  image: "/level/images/ground_2_3.png"
+}
+images {
+  image: "/level/images/car.png"
+}
+images {
+  image: "/level/images/\320\272\321\200\320\260\320\275.png"
+}
+images {
+  image: "/level/images/\321\210\320\260\321\200_\320\264\320\273\321\217_\320\272\321\200\320\260\320\275\320\260.png"
+}
+images {
+  image: "/level/images/container.png"
+}
+images {
+  image: "/level/images/\321\210\320\260\321\200_\320\264\320\273\321\217_\320\272\321\200\320\260\320\275\320\260_\320\272\320\276\321\200\320\276\321\202\320\272\320\270\320\271.png"
+}
+images {
+  image: "/level/images/bohka_with_water.png"
+}
+images {
+  image: "/level/images/\321\210\320\260\321\200_\320\264\320\273\321\217_\320\272\321\200\320\260\320\275\320\260_\320\264\320\273\320\270\320\275\320\275\321\213\320\271.png"
+}
+images {
+  image: "/level/images/wall1.png"
+}
+images {
+  image: "/level/images/palatka1.png"
+}
+images {
+  image: "/level/images/palatka2.png"
+}
+images {
+  image: "/level/images/palatka_3.png"
+}
+images {
+  image: "/level/images/palatka_4.png"
+}
+images {
+  image: "/level/images/example_for_story.png"
+}
+margin: 0
+extrude_borders: 2
+inner_padding: 0

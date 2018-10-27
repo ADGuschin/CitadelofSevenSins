@@ -4,11 +4,16 @@ local backgrounds_count = 21
 
 function init(self)
 	self.speed = 200
+
+	local bg_pos = 640
 	
 	msg.post("level_1:/background1/sand#sprite", "play_animation", {id = hash("1st_level_1")})
+	go.set_position(vmath.vector3(bg_pos, 360, -0.5), "sand")
 	
 	for i = 1, backgrounds_count - 1 do
 		msg.post("level_1:/background1/sand"..i.."#sprite", "play_animation", {id = hash("1st_level_"..i+1)})
+		bg_pos = bg_pos + 1280
+		go.set_position(vmath.vector3(bg_pos, 360, -0.5), "sand"..i)
 	end
 end
 

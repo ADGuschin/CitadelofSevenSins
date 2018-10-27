@@ -8,8 +8,8 @@ fonts {
   font: "/fonts/pixels_big.font"
 }
 textures {
-  name: "Background"
-  texture: "/level/background/Background.atlas"
+  name: "background"
+  texture: "/level/background/background.atlas"
 }
 textures {
   name: "gui"

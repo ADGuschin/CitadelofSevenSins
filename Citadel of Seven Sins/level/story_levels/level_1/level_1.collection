@@ -20,8 +20,8 @@ instances {
   }
 }
 instances {
-  id: "Background"
-  prototype: "/level/background/Background.go"
+  id: "background4"
+  prototype: "/level/background/background4/background4.go"
   position {
     x: 0.0
     y: 0.0
@@ -200,8 +200,8 @@ collection_instances {
   }
 }
 collection_instances {
-  id: "background_level_1"
-  collection: "/level/background/background_level_1/background.collection"
+  id: "background3"
+  collection: "/level/background/background3/background3.collection"
   position {
     x: 0.0
     y: 0.0
@@ -216,26 +216,6 @@ collection_instances {
   scale3 {
     x: 2.0
     y: 2.0
-    z: 1.0
-  }
-}
-collection_instances {
-  id: "background_level_1_loop"
-  collection: "/level/background/background_level_1/bacground_loop.collection"
-  position {
-    x: 5026.0
-    y: 200.0
-    z: -1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 4.0
-    y: 4.0
     z: 1.0
   }
 }

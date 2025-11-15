@@ -1,4 +1,4 @@
-require "main_menu.ui_func"
+require "main_menu.scripts.ui_func"
 require "variables"
 
 local is_animation_end = true

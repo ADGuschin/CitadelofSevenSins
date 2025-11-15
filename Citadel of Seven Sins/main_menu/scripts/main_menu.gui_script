@@ -1,0 +1,115 @@
+require "main_menu.scripts.collection_proxy_content"
+require "main_menu.scripts.ui_func"
+require "main_menu.scripts.get_main_menu_nodes"
+require "variables"
+
+function init(self)
+	if gui_log then
+		print("Экран главного меню проинициализирован")
+	end
+	
+	gui.animate(gui.get_node("background"), "position.x", -120, gui.EASING_INCUBIC, 100, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+	
+	msg.post("/menu#main_menu", "init")
+	msg.post("/menu#main_menu", "show")
+	
+    self.hovered_node = nil
+	self.picked_node = nil
+	
+	self.nodes = get_main_menu_nodes()
+				
+	init_ui(self)
+end
+
+function final(self)
+	msg.post(".", "release_input_focus")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("show") then
+		gui.set_enabled(gui.get_node("box"), true)
+		
+		for i = 1, player_level do
+			gui.set_enabled(gui.get_node("level_button"..i), true)
+		end
+		
+		for i = 1, player_level do
+			gui.set_text(gui.get_node("level_text"..i), localization.main_menu.level[language_state]..i)
+		end
+		gui.set_text(gui.get_node("overrun_text"), localization.main_menu.overrun_mode[language_state])
+		gui.set_text(gui.get_node("endless_text"), localization.main_menu.endless_mode[language_state])
+		gui.set_text(gui.get_node("start_text"), localization.main_menu.start[language_state])
+		gui.set_text(gui.get_node("exit_text"), localization.main_menu.exit[language_state])
+		gui.set_text(gui.get_node("back_text"), localization.main_menu.back[language_state])
+		gui.set_text(gui.get_node("comingsoon_text"), localization.main_menu.comingsoon[language_state])
+
+		--gui.move_below(gui.get_node("menu_box"), gui.get_node("selectlevel_box"))
+		
+		msg.post(".", "acquire_input_focus")
+		
+		if gui_log then
+			print("Пришло сообщение о включении интерфейса главного меню от", sender, "Показан интерфейс главного меню")
+		end
+	end
+	if message_id == hash("level_button") then
+		if gui.is_enabled(gui.get_node("box")) and gui.is_enabled(gui.get_node("selectlevel_box")) and gui.is_enabled(gui.get_node("level_button"..message.level)) and not gui.is_enabled(gui.get_node("mode_window")) then
+			index_of_current_level = message.level
+			
+			if index_of_current_level < player_level then
+				gui.set_enabled(gui.get_node("mode_window"), true)
+				gui.set_position(gui.get_node("mode_window"), vmath.vector3(640,360,0))
+				gui.animate(gui.get_node("mode_window"), "position.y", 640, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
+
+				if gui_log then
+					print("Пришло сообщение о нажатии кнопки "..index_of_current_level.." уровня, открыто окно выбора режима")
+				end
+			else
+				in_game = true
+				current_level = list_of_levels[index_of_current_level]
+
+				msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
+
+				if gui_log then
+					print("Нажата кнопка "..index_of_current_level.." уровня, загружен прокси main коллекции")
+				end
+			end
+		end
+	end
+	if message_id == hash("init") then
+		gui.set_enabled(gui.get_node("selectlevel_box"), false)
+		gui.set_enabled(gui.get_node("comingsoon_box"), false)
+		gui.set_enabled(gui.get_node("level_button1"), false)
+		gui.set_enabled(gui.get_node("level_button2"), false)
+		gui.set_enabled(gui.get_node("level_button3"), false)
+		gui.set_enabled(gui.get_node("level_button4"), false)
+		gui.set_enabled(gui.get_node("level_button5"), false)
+		gui.set_enabled(gui.get_node("level_button6"), false)
+		gui.set_enabled(gui.get_node("level_button7"), false)
+		gui.set_enabled(gui.get_node("level_button8"), false)
+		gui.set_enabled(gui.get_node("level_button9"), false)
+		gui.set_enabled(gui.get_node("mode_window"), false)
+		
+		gui.set_position(gui.get_node("selectlevel_box"), vmath.vector3(0,720,0))
+	end
+end
+	
+function on_input(self, action_id, action)
+	if action_id == hash("back_clicked") then
+		msg.post("@system:", "exit", {code = 0})
+	end
+	if action_id == hash("click") or action_id == hash("touch") then
+		if action.pressed then
+			handle_press(self, action.x, action.y)
+		end
+		if action.released then
+			handle_click(self, action.x, action.y)
+		end
+	end
+	
+	handle_hover(self, action.x, action.y)
+end
+
+local function anim(node)
+	--gui.animate(node, "position.x", 100, gui.EASING_IN, 1, gui.PLAYBACK_LOOP_BACKWARD)
+	gui.animate(node, "position.x", 1000, vec, 4.0, 1, nil, gui.PLAYBACK_LOOP_BACKWARD)
+end

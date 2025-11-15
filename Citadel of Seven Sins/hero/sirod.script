@@ -38,29 +38,17 @@ function update(self, dt)
 		--msg.post(current_level..":/camera#camera_controller", "watch_to_hero", {pos = hero_position})
 
 		check_slide(self)
-
 		prepare_slide_update(self)
-		
 		impact_speed_change(self, dt)
-
 		check_for_ground_contact(self)
-
 		check_for_jump(self)
-
 		lock_character_update(self)
-		
 		check_inv(self)
-		
 		slide_cooldown_tick(self)
-
 		correct_x_pos(self, hero_posititon)
-		
 		go.set_position(go.get_position() + self.velocity * dt)
-
 		update_animation(self)
-		
-		--update_sound(self)
-		
+		--update_sound(self)		
 		self.correction = vmath.vector3()
 		roll_allowed = false
 		pole_in_range = false

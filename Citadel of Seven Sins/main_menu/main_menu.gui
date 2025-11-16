@@ -708,27 +708,5 @@ nodes {
   pivot: PIVOT_NE
   parent: "box"
 }
-nodes {
-  position {
-    x: 1100.0
-    y: 685.0
-  }
-  size {
-    x: 100.0
-    y: 100.0
-  }
-  color {
-    x: 0.3019608
-    y: 0.0
-    z: 0.101960786
-  }
-  type: TYPE_BOX
-  texture: "gui/carrito"
-  id: "shop_button"
-  pivot: PIVOT_NE
-  parent: "box"
-  enabled: false
-  visible: false
-}
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

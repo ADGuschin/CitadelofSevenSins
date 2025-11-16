@@ -14,7 +14,7 @@ local reset_timer = 0
 local reset_timer_max = 5
 local current_hero
 
-local boss = false
+local boss_phase = false
 
 local stage_phase = true
 
@@ -42,13 +42,14 @@ end
 
 
 function calculate_score(self)
-	if not pause_state then
-		score = score + self.speed / 10000
-		current_progress = current_progress + 1
-		msg.post("/score#score", "progress", {value = math.ceil(current_progress*100/max_level_progress[current_level])})
-		msg.post("/score#score", "score", {value = math.ceil(score)})
-		msg.post("/score#score", "coins", {value = coins})
+	if pause_state then
+		return
 	end
+	score = score + self.speed / 10000
+	current_progress = current_progress + 1
+	msg.post("/score#score", "progress", {value = math.ceil(current_progress*100/max_level_progress[current_level])})
+	msg.post("/score#score", "score", {value = math.ceil(score)})
+	msg.post("/score#score", "coins", {value = coins})
 end
 
 function update(self, dt)
@@ -82,7 +83,7 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("spawnhero") then
-		local p = factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},1)
+		factory.create("#herofactory",vmath.vector3(300, 142, 0), nil,{},1)
 		if message.continue == nil then
 			score = 0 
 		end
@@ -97,7 +98,6 @@ function on_message(self, message_id, message, sender)
 		reset_timer = 0
 		self.speed = default_speed
 		msg.post("#", "spawnhero")
-		print(current_level)
 		msg.post("background_"..current_level.."/controller#background", "reset")
 		--msg.post("background_"..current_level.."_loop/controller#background_loop", "reset")
 	elseif message_id == hash("reset_speed") then

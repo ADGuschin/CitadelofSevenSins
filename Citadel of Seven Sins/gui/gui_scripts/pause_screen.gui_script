@@ -15,7 +15,6 @@ function init(self)
 					{
 						node = gui.get_node("resume"),
 						action = function () 
-							--finish_anim(gui.get_node("background"))
 							msg.post(".", "hide")
 						end
 					},
@@ -40,25 +39,11 @@ function init(self)
 								print("Нажата кнопка настроек")
 							end
 						end
-					},
-					{
-						node = gui.get_node("shop_button"),
-						action = function () 
-							msg.post("default:/shop#shop", "show")
-							
-							if gui_log then
-								print("Нажата кнопка магазина")
-							end
-						end
 					}
 	}
 	
 	init_ui(self)
 end
-
---[[function finish_anim(node)
-	gui.animate(node, "position.y", -150, gui.EASING_INCUBIC, 0.3, 0, nil, gui.PLAYBACK_ONCE_FORWARD)
-end]]
 
 function update(self, dt)
 	gui.set_text(gui.get_node("Resume"), localization.pause_screen.resume[language_state]) 
@@ -80,7 +65,6 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash("hide") then
 		gui.animate(gui.get_node("background"), "position.y", -450, gui.EASING_INCUBIC, 0.3, 0, msg.post(".", "close"), gui.PLAYBACK_ONCE_FORWARD)
-		--finish_anim(gui.get_node("background"))
 		
 		msg.post(".", "close")
 	end

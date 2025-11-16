@@ -1,4 +1,4 @@
-require "gui.debug"
+require "trace"
 require "variables"
 
 function start()
@@ -13,7 +13,7 @@ function start()
 
 	msg.post("/menu#main_menu", "show")
 
-	debug("Нажата кнопка старт, открыт интерфейс выбора уровня")
+	trace("Нажата кнопка старт, открыт интерфейс выбора уровня")
 end
 
 function exit()
@@ -21,17 +21,7 @@ function exit()
 		return
 	end
 	msg.post("@system:", "exit", {code = 0})
-	debug("Нажата кнопка выхода, приложение закрыто")
-end
-
-function open_shop()
-	if not is_in_start_screen() then
-		return
-	end
-	exit_start_screen()
-
-	msg.post("/menu#shop", "show")
-	debug("Нажата кнопка магазина, скрыт интерфейс главного меню")
+	trace("Нажата кнопка выхода, приложение закрыто")
 end
 
 function open_settings()
@@ -41,7 +31,7 @@ function open_settings()
 	exit_start_screen()
 
 	msg.post("/menu#settings", "show")
-	debug("Нажата кнопка настроек, скрыт интерфейс главного меню")
+	trace("Нажата кнопка настроек, скрыт интерфейс главного меню")
 end
 
 function back()
@@ -49,7 +39,7 @@ function back()
 		return
 	end
 	enter_start_screen()
-	debug("Нажата кнопка назад, вернулись в главное меню")
+	trace("Нажата кнопка назад, вернулись в главное меню")
 end
 
 function overrun()
@@ -57,7 +47,7 @@ function overrun()
 		return
 	end
 	enter_current_level()
-	debug("Нажата кнопка перепрохождения "..index_of_current_level.." уровня, уровень загружен")
+	trace("Нажата кнопка перепрохождения "..index_of_current_level.." уровня, уровень загружен")
 end
 
 function endless()
@@ -65,7 +55,7 @@ function endless()
 		return
 	end
 	enter_current_level()
-	debug("Нажата кнопка бесконечного режима "..index_of_current_level.." уровня, уровень загружен")
+	trace("Нажата кнопка бесконечного режима "..index_of_current_level.." уровня, уровень загружен")
 end
 
 function enter_current_level()
@@ -82,7 +72,7 @@ function close()
 	gui.set_enabled(gui.get_node("selectlevel_box"), true)
 	gui.set_enabled(gui.get_node("comingsoon_box"), false)
 	gui.set_position(gui.get_node("mode_window"), vmath.vector3(640,1000,0))
-	debug("Нажата кнопка закрыть, закрыто окно выбора режимов")
+	trace("Нажата кнопка закрыть, закрыто окно выбора режимов")
 end
 
 function select_level(level_number)

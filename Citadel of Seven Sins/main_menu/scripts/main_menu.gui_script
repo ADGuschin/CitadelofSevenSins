@@ -2,11 +2,11 @@ require "main_menu.scripts.collection_proxy_content"
 require "main_menu.scripts.ui_func"
 require "main_menu.scripts.get_main_menu_nodes"
 require "variables"
+require "trace"
 
 function init(self)
-	if gui_log then
-		print("Экран главного меню проинициализирован")
-	end
+
+	trace("Экран главного меню проинициализирован")
 	
 	gui.animate(gui.get_node("background"), "position.x", -120, gui.EASING_INCUBIC, 100, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 	
@@ -47,9 +47,7 @@ function on_message(self, message_id, message, sender)
 		
 		msg.post(".", "acquire_input_focus")
 		
-		if gui_log then
-			print("Пришло сообщение о включении интерфейса главного меню от", sender, "Показан интерфейс главного меню")
-		end
+		trace("Пришло сообщение о включении интерфейса главного меню от", sender, "Показан интерфейс главного меню")		
 	end
 	if message_id == hash("level_button") then
 		if gui.is_enabled(gui.get_node("box")) and gui.is_enabled(gui.get_node("selectlevel_box")) and gui.is_enabled(gui.get_node("level_button"..message.level)) and not gui.is_enabled(gui.get_node("mode_window")) then
@@ -60,18 +58,14 @@ function on_message(self, message_id, message, sender)
 				gui.set_position(gui.get_node("mode_window"), vmath.vector3(640,360,0))
 				gui.animate(gui.get_node("mode_window"), "position.y", 640, gui.EASING_INCUBIC, 0.5, 0, nil, gui.PLAYBACK_ONCE_BACKWARD)
 
-				if gui_log then
-					print("Пришло сообщение о нажатии кнопки "..index_of_current_level.." уровня, открыто окно выбора режима")
-				end
+				trace("Пришло сообщение о нажатии кнопки "..index_of_current_level.." уровня, открыто окно выбора режима")
 			else
 				in_game = true
 				current_level = list_of_levels[index_of_current_level]
 
 				msg.post("start_scene:/collection_proxy_controller#collection_proxy_controller", "load", {proxy = "#main_proxy"})
 
-				if gui_log then
-					print("Нажата кнопка "..index_of_current_level.." уровня, загружен прокси main коллекции")
-				end
+				trace("Нажата кнопка "..index_of_current_level.." уровня, загружен прокси main коллекции")
 			end
 		end
 	end
@@ -93,7 +87,7 @@ function on_message(self, message_id, message, sender)
 	end
 end
 	
-function on_input(self, action_id, action)
+function on_input(self, action_id, action)	
 	if action_id == hash("back_clicked") then
 		msg.post("@system:", "exit", {code = 0})
 	end
@@ -105,8 +99,10 @@ function on_input(self, action_id, action)
 			handle_click(self, action.x, action.y)
 		end
 	end
-	
-	handle_hover(self, action.x, action.y)
+
+	if action_id == nil then
+		handle_hover(self, action.x, action.y)
+	end
 end
 
 local function anim(node)

@@ -25,8 +25,8 @@ end
 function handle_press(self, x, y)
 	for i, p in ipairs(self.nodes) do
 		if gui.pick_node(p.node, x, y) then
-    		self.picked_node = p.node
-	    end
+			self.picked_node = p.node
+		end
 	end
 end
 

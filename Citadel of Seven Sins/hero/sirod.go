@@ -1,6 +1,6 @@
 components {
   id: "script"
-  component: "/bosses/boss_1/gluttony.script"
+  component: "/hero/sirod.script"
 }
 embedded_components {
   id: "running_state"
@@ -40,7 +40,7 @@ embedded_components {
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"player_run_black\"\n"
+  data: "default_animation: \"run\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "textures {\n"
   "  sampler: \"texture_sampler\"\n"
@@ -50,6 +50,10 @@ embedded_components {
   position {
     x: 3.0
     z: 1.0
+  }
+  scale {
+    x: 2.274578
+    y: 3.85754
   }
 }
 embedded_components {

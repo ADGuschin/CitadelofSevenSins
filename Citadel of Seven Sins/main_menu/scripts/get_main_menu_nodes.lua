@@ -26,7 +26,6 @@ function get_base_node_handlers()
 		start_button=start,
 		exit_button=exit,
 		settings_button=open_settings,
-		shop_button=open_shop,
 		back_button=back,
 		overrun_button=overrun,
 		endless_button=endless,

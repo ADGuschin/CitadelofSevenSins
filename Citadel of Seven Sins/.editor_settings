@@ -8,62 +8,6 @@
   :workflow {
     :recent-files [
       [
-        "/start_scene/collection_proxy_controller.script"
-        :code
-      ]
-      [
-        "/global.lua"
-        :code
-      ]
-      [
-        "/debugger.lua"
-        :code
-      ]
-      [
-        "/level/story_levels/level_1/obstacles/test.go"
-        :scene
-      ]
-      [
-        "/variables.lua"
-        :code
-      ]
-      [
-        "/level/story_levels/level_1/level_1_controller.go"
-        :scene
-      ]
-      [
-        "/loader/loader.script"
-        :code
-      ]
-      [
-        "/shadow/shadow.go"
-        :scene
-      ]
-      [
-        "/bosses/boss_1/gluttony.go"
-        :scene
-      ]
-      [
-        "/pickups/pickup.script"
-        :code
-      ]
-      [
-        "/bosses/boss_1/gluttony.script"
-        :code
-      ]
-      [
-        "/builtins/materials/sprite.material"
-        :cljfx-form-view
-      ]
-      [
-        "/hero/sirod.atlas"
-        :scene
-      ]
-      [
-        "/hero/scripts/animation_handler.lua"
-        :code
-      ]
-      [
         "/gui/gui_scripts/death_screen.gui_script"
         :code
       ]
@@ -128,11 +72,67 @@
         :code
       ]
       [
+        "/main_menu/scripts/main_menu.gui_script"
+        :code
+      ]
+      [
+        "/player/sound_player"
+        :code
+      ]
+      [
+        "/player/sirod.atlas"
+        :scene
+      ]
+      [
+        "/player/sirod.script"
+        :code
+      ]
+      [
+        "/player/all.lua"
+        :code
+      ]
+      [
+        "/player/scripts/actions.lua"
+        :code
+      ]
+      [
+        "/player/scripts/animations.lua"
+        :code
+      ]
+      [
+        "/player/scripts/sounds.lua"
+        :code
+      ]
+      [
+        "/player/scripts/update.lua"
+        :code
+      ]
+      [
+        "/player/sirod_sfx.go"
+        :scene
+      ]
+      [
+        "/player/variables.lua"
+        :code
+      ]
+      [
+        "/handlers/animation_handler.lua"
+        :code
+      ]
+      [
         "/gui/gui_scripts/pause_screen.gui_script"
         :code
       ]
       [
-        "/main_menu/scripts/main_menu.gui_script"
+        "/player/sound.script"
+        :code
+      ]
+      [
+        "/handlers/sound_handler.lua"
+        :code
+      ]
+      [
+        "/player/player.script"
         :code
       ]
     ]

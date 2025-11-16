@@ -4,219 +4,81 @@ instances {
   prototype: "/shadow/shadow.go"
   position {
     x: -180.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
   }
 }
 instances {
   id: "background4"
   prototype: "/level/background/background4/background4.go"
   position {
-    x: 0.0
-    y: 0.0
     z: -1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 2.0
     y: 2.0
-    z: 1.0
   }
 }
 instances {
   id: "score"
   prototype: "/gui/gui_gameobjects/score.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
 }
 instances {
   id: "sfx"
-  prototype: "/hero/sirod_sfx.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
+  prototype: "/player/sound.go"
 }
 instances {
   id: "sound"
   prototype: "/sounds/sound.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
 }
 instances {
   id: "camera"
   prototype: "/camera/camera.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
 }
 instances {
   id: "controller"
   prototype: "/level/story_levels/level_1/level_1_controller.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
-  }
 }
 collection_instances {
   id: "ground"
   collection: "/level/ground/ground.collection"
   position {
-    x: 0.0
     y: -20.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 2.0
     y: 2.0
-    z: 1.0
   }
 }
 collection_instances {
   id: "background1"
   collection: "/level/background/background1/background1.collection"
   position {
-    x: 0.0
-    y: 0.0
     z: -0.5
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 2.0
     y: 2.0
-    z: 1.0
   }
 }
 collection_instances {
   id: "background2"
   collection: "/level/background/background2/background2.collection"
   position {
-    x: 0.0
-    y: 0.0
     z: -0.6
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 2.0
     y: 2.0
-    z: 1.0
   }
 }
 collection_instances {
   id: "background3"
   collection: "/level/background/background3/background3.collection"
   position {
-    x: 0.0
-    y: 0.0
     z: -1.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
   }
   scale3 {
     x: 2.0
     y: 2.0
-    z: 1.0
   }
 }
 scale_along_z: 0

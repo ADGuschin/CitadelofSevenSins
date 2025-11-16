@@ -1,0 +1,122 @@
+animations {
+  id: "roll_over"
+  images {
+    image: "/player/images/hero_roll_animation/perecat_1.png"
+  }
+  images {
+    image: "/player/images/hero_roll_animation/perecat_2.png"
+  }
+  images {
+    image: "/player/images/hero_roll_animation/perecat_3.png"
+  }
+  images {
+    image: "/player/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
+    image: "/player/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
+    image: "/player/images/hero_roll_animation/perecat_4.png"
+  }
+  images {
+    image: "/player/images/hero_roll_animation/perecat_5.png"
+  }
+  images {
+    image: "/player/images/hero_roll_animation/perecat_6.png"
+  }
+  fps: 20
+}
+animations {
+  id: "run"
+  images {
+    image: "/player/images/running_animation/hero1.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero2.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero3.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero4.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero5.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero6.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero7.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero8.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+}
+animations {
+  id: "dash"
+  images {
+    image: "/player/images/running_animation/hero1.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero2.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero3.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero4.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero5.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero6.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero7.png"
+  }
+  images {
+    image: "/player/images/running_animation/hero8.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 25
+}
+animations {
+  id: "slide"
+  images {
+    image: "/player/images/sliding_animation/hero_lies_64x64_3_black.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 20
+}
+animations {
+  id: "jump"
+  images {
+    image: "/player/images/jumping_animation/jump1_black.png"
+  }
+  fps: 20
+}
+animations {
+  id: "fall"
+  images {
+    image: "/player/images/jumping_animation/jump2_black.png"
+  }
+  fps: 20
+}
+animations {
+  id: "damage"
+  images {
+    image: "/player/images/hero_impact_animation/hero_lies_64x64_2_black.png"
+  }
+  fps: 20
+}
+animations {
+  id: "ground_pound"
+  images {
+    image: "/player/images/jump_breaking_animation/hero_lies_64x64_1_black.png"
+  }
+  fps: 20
+}

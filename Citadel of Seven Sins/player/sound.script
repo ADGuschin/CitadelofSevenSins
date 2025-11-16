@@ -1,0 +1,27 @@
+require "handlers.sound_handler"
+
+function init(self)
+	self.handler = new_sound_hanlder()
+	self.handler:add_sounds(get_player_sounds())
+end
+
+function update(self, dt)
+	self.handler:reduce_durations(dt)
+end
+
+function on_message(self, message_id, message, sender)
+	self.handler:handle_message(message, message_id)
+end
+
+function get_player_sounds()
+	return {
+		"break_jump",
+		"coin",
+		"impact",
+		"jump",
+		"roll",
+		"slide",
+		"step"
+	}
+end
+

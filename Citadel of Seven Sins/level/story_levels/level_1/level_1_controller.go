@@ -5,7 +5,7 @@ components {
 embedded_components {
   id: "herofactory"
   type: "factory"
-  data: "prototype: \"/hero/sirod.go\"\n"
+  data: "prototype: \"/player/player.go\"\n"
   ""
 }
 embedded_components {
